@@ -4,7 +4,7 @@ Link: `https://andremossi.vercel.app/`
 
 <hr>
     <img src="WebPic_1.png" width="70%" />
-    <img src="WebPic_2.png" width="26.7%"/>
+    <img align="right" src="WebPic_2.png" width="26.7%"/>
 </hr>
 
 ## Tools ⚒️
