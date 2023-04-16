@@ -17,6 +17,7 @@ const Main = ({ children, router }) => {
                 <meta property="og:title" content="André Mossi" />
                 <meta property="og:type" content="website" />
                 <meta property="og:image" content="https://andremossi.vercel.app/Banner.png" />
+                <meta property="og:desciption" content="Full-Stack developer, designer, and artist" />
                 <meta name="twitter:title" content="André Mossi" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AndreMossi" />
