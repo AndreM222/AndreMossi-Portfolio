@@ -70,8 +70,8 @@ const Page = () => {
                         studying Computer Science. I was inspired to start this
                         journey since I was in highschool after watching a video
                         regarding programming. At that moment I knew that this
-                        was the path which I yearn to walk this path no matter
-                        what challenges might step on my path.
+                        was the path which I yearn to walk, no matter what
+                        challenges might step in my way.
                     </Paragraph>
                 </Section>
 
@@ -109,12 +109,12 @@ const Page = () => {
                     <Paragraph>
                         My main editor is Neovim but I also have experience
                         using Visual Studio, VSCode, and InteliJ. I started
-                        using Neovim because someone mentioned to me that it was
-                        very powerfull but too complicated to learn, I am the
-                        type of person who enjoys challenges and took on the
-                        challenge of learning it. The language I enjoy
-                        programming the most is C++ but I am also familiar with
-                        other languages and love learning more.
+                        using Neovim because I had heard that it was very
+                        powerful but too complicated to learn, I am the type of
+                        person who enjoys challenges and took on the challenge
+                        of learning it. The language I enjoy programming the
+                        most is C++ but I am also familiar with other languages
+                        and love learning more.
                     </Paragraph>
                     <Box align="center" my={4}>
                         <Button
@@ -138,7 +138,7 @@ const Page = () => {
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>2016</TimeYear>
-                        School award for developing a game
+                        School award, Software Development
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>2020</TimeYear>
