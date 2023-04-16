@@ -5,7 +5,7 @@ import Layout from '../components/layouts/article'
 
 import thumbHarvard from '../public/images/practices/Harvard.png'
 import thumbExtreme from '../public/images/practices/ExtremeNetworks.png'
-import thumbGithub from '../public/images/practices/Github.png'
+import thumbGithub from '../public/images/practices/GitBanner.png'
 
 const Practice = () => {
     return (
