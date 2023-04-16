@@ -14,14 +14,12 @@ const Main = ({ children, router }) => {
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
                 <meta name="author" content="André Mossi" />
-                <meta property="og:image" content="/Banner.png" />
                 <meta property="og:title" content="André Mossi" />
                 <meta property="og:type" content="website" />
                 <meta name="twitter:title" content="André Mossi" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AndreMossi" />
                 <meta name="twitter:creator" content="@AndreMossi" />
-                <meta name="twitter:image" content="/Banner.png" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
