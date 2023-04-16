@@ -16,10 +16,12 @@ const Main = ({ children, router }) => {
                 <meta name="author" content="André Mossi" />
                 <meta property="og:title" content="André Mossi" />
                 <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://andremossi.vercel.app/Banner.png" />
                 <meta name="twitter:title" content="André Mossi" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@AndreMossi" />
                 <meta name="twitter:creator" content="@AndreMossi" />
+                <meta name="twitter:image" content="https://andremossi.vercel.app/Banner.png" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"

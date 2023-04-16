@@ -11,7 +11,7 @@ const Section = ({
     children,
     delay = 0,
     align = 'left',
-    maxW = 'container.sm',
+    maxW = 'container.sm'
 }) => (
     <StyledDiv
         align={align}
@@ -20,7 +20,7 @@ const Section = ({
         animate={{ y: 0, opacity: 1 }}
         transition={({ duration: 0.8 }, delay)}
         mb={6}
-        maxW={maxW}
+        maxW={{ lg: maxW }}
     >
         {children}
     </StyledDiv>

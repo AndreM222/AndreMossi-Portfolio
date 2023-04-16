@@ -3,12 +3,13 @@ import styled from '@emotion/styled'
 
 export const TimeBox = ({ children, last = false }) => (
     <Box>
-        <Box pl="3.4em" textIndent="-3.4em">
+        <Box pl="3.4em" textIndent="-3.4em" textAlign={{ base: "left", sm: "center" }}>
             {children}
         </Box>
         <Circle
-            w={ last == true ? 2 : 1}
-            h={ last == true ? 2 : 7}
+            display={{ base: "none", sm: "flex" }}
+            w={last == true ? 2 : 1}
+            h={last == true ? 2 : 7}
             bg={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
         />
 

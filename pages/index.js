@@ -17,7 +17,7 @@ import Layout from '../components/layouts/article'
 const Page = () => {
     return (
         <Layout>
-            <Container maxW="100%">
+            <Container maxW={{ base: 'container.md', lg: '100%' }}>
                 <Box maxW="container.md" m="auto">
                     <Box
                         boxShadow="lg"
