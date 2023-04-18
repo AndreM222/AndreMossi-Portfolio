@@ -7,8 +7,6 @@ const CharModel = dynamic(() => import('../character'), {
 })
 import Footer from '../footer'
 
-// createjs image banner
-// apple-touch-icon
 const Main = ({ children, router }) => {
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
