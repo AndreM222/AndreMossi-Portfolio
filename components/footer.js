@@ -14,7 +14,6 @@ import {
     Box,
     useColorModeValue,
 } from '@chakra-ui/react'
-import Section from './section'
 import UpToggle from './up-toggle'
 
 const Footer = () => {
