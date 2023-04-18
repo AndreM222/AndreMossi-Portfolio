@@ -10,7 +10,7 @@ import thumbGithub from '../public/images/practices/GitBanner.png'
 const Practice = () => {
     return (
         <Layout title="Practices">
-            <Container maxW="container.md">
+            <Container maxW="container.lg">
                 <Heading as="h3">
                     Practices
                 </Heading>

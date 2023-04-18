@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { chakra, shouldForwardProp } from '@chakra-ui/react'
+import { useColorModeValue, chakra, shouldForwardProp } from '@chakra-ui/react'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: (prop) => {
@@ -11,9 +11,13 @@ const Section = ({
     children,
     delay = 0,
     align = 'left',
-    maxW = 'container.sm'
+    maxW = 'container.sm',
 }) => (
     <StyledDiv
+        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+        boxShadow="lg"
+        p={3}
+        borderRadius="lg"
         align={align}
         ml={align == 'left' ? 0 : 'auto'}
         initial={{ y: 10, opacity: 0 }}

@@ -25,11 +25,10 @@ const Footer = () => {
             py={2}
             marginTop="auto"
         >
-            <Section delay={0.5} maxW="100%">
                 <Heading as="h3" variant="section-title">
                     Connect
                 </Heading>
-                <Box display="flex" justifyContent="space-between">
+                <Box display="flex" justifyContent="space-between" pb={3}>
                     <Box>
                         <Link
                             href="https://github.com/AndreM222"
@@ -106,7 +105,6 @@ const Footer = () => {
                     </Box>
                     <UpToggle />
                 </Box>
-            </Section>
         </Box>
     )
 }

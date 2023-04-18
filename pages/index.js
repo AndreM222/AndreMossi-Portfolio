@@ -13,6 +13,7 @@ import NextLink from 'next/link'
 import { TimeBox, TimeYear } from '../components/timeline'
 import TimeSection from '../components/time-section'
 import Layout from '../components/layouts/article'
+import { motion } from 'framer-motion'
 
 const Page = () => {
     return (
@@ -28,13 +29,13 @@ const Page = () => {
                             'whiteAlpha.200'
                         )}
                         p={3}
-                        mb={6}
+                        mb={10}
                         align="center"
                     >
                         Hello, I&apos;m a full-stack developer
                     </Box>
 
-                    <Box display={{ md: 'flex' }} maxW="container.md" m="auto">
+                    <Box display={{ md: 'flex' }} maxW="container.md" my="auto" mb={10}>
                         <Box flexGrow={1}>
                             <Heading as="h2" variant="page-title">
                                 André Mossi
@@ -48,16 +49,26 @@ const Page = () => {
                             ml={{ md: 6 }}
                             align="center"
                         >
-                            <Image
-                                borderColor="whiteAlpha.800"
-                                borderWidth={2}
-                                borderStyle="solid"
-                                maxWidth="100px"
-                                display="inline-block"
-                                borderRadius="full"
-                                src="/images/PortfolioPic.png"
-                                alt="Profile Image"
-                            />
+                            <motion.div
+                                initial={{ scale: 0 , rotate: 180 }}
+                                animate={{ rotate: 0, scale: 1 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20
+                                }}
+                            >
+                                <Image
+                                    borderColor="whiteAlpha.800"
+                                    borderWidth={2}
+                                    borderStyle="solid"
+                                    maxWidth="100px"
+                                    display="inline-block"
+                                    borderRadius="full"
+                                    src="/images/PortfolioPic.png"
+                                    alt="Profile Image"
+                                />
+                            </motion.div>
                         </Box>
                     </Box>
                 </Box>
