@@ -24,86 +24,80 @@ const Footer = () => {
             py={2}
             marginTop="auto"
         >
-                <Heading as="h3" variant="section-title">
-                    Connect
-                </Heading>
-                <Box display="flex" justifyContent="space-between" pb={3}>
-                    <Box>
-                        <Link
-                            href="https://github.com/AndreM222"
-                            target="_blank"
+            <Heading as="h3" variant="section-title">
+                Connect
+            </Heading>
+            <Box display="flex" justifyContent="space-between" pb={3}>
+                <Box>
+                    <Link href="https://github.com/AndreM222" target="_blank">
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoLogoGithub} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoLogoGithub} />}
-                            >
-                                @andrem222
-                            </Button>
-                        </Link>
-                        <Link
-                            href="https://www.instagram.com/andremoxxi/"
-                            target="_blank"
+                            @andrem222
+                        </Button>
+                    </Link>
+                    <Link
+                        href="https://www.reddit.com/user/Temix222"
+                        target="_blank"
+                    >
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoLogoReddit} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoLogoInstagram} />}
-                            >
-                                @andremoxxi
-                            </Button>
-                        </Link>
-                        <Link
-                            href="https://twitter.com/AndreMossi"
-                            target="_blank"
+                            @Temix222
+                        </Button>
+                    </Link>
+                    <Link
+                        href="https://www.linkedin.com/in/andre-mossi-803765236/"
+                        target="_blank"
+                    >
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoLogoLinkedin} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoLogoTwitter} />}
-                            >
-                                @AndreMossi
-                            </Button>
-                        </Link>
-                        <Link
-                            href="https://www.reddit.com/user/Temix222"
-                            target="_blank"
+                            Andre Mossi
+                        </Button>
+                    </Link>
+                    <Link
+                        href="https://www.instagram.com/andremoxxi/"
+                        target="_blank"
+                    >
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoLogoInstagram} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoLogoReddit} />}
-                            >
-                                @Temix222
-                            </Button>
-                        </Link>
-                        <Link
-                            href="https://www.linkedin.com/in/andre-mossi-803765236/"
-                            target="_blank"
+                            @andremoxxi
+                        </Button>
+                    </Link>
+                    <Link href="https://twitter.com/AndreMossi" target="_blank">
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoLogoTwitter} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoLogoLinkedin} />}
-                            >
-                                Andre Mossi
-                            </Button>
-                        </Link>
-                        <Link
-                            href="mailto: mossiroberto0392@gmail.com"
-                            target="_blank"
+                            @AndreMossi
+                        </Button>
+                    </Link>
+                    <Link
+                        href="mailto: mossiroberto0392@gmail.com"
+                        target="_blank"
+                    >
+                        <Button
+                            variant="ghost"
+                            colorScheme="orange"
+                            leftIcon={<Icon as={IoMail} />}
                         >
-                            <Button
-                                variant="ghost"
-                                colorScheme="orange"
-                                leftIcon={<Icon as={IoMail} />}
-                            >
-                                Andre Mossi
-                            </Button>
-                        </Link>
-                    </Box>
-                    <UpToggle />
+                            Andre Mossi
+                        </Button>
+                    </Link>
                 </Box>
+                <UpToggle />
+            </Box>
         </Box>
     )
 }
