@@ -140,7 +140,7 @@ const Page = () => {
                 </Section>
 
                 <TimeSection delay={0.4}>
-                    <Heading as="h3" variant="section-title">
+                    <Heading as="h2" fontSize='2xl' variant="section-title">
                         Timeline
                     </Heading>
                     <TimeBox>
