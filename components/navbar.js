@@ -92,20 +92,20 @@ const Navbar = (props) => {
                     </Stack>
 
                     <Link
-                        href="AndreCV.pdf"
-                        display={{ base: 'none', md: 'inline-block' }}
+                        style={{ textDecoration: 'none' }}
                         target="_blank"
-                    >
+                        href="AndreCV.pdf"
+                        >
                         <Button
                             colorScheme="cyan"
                             align="right"
                             display="flex"
                             alignItems="center"
-                            gap={0.5}
+                            rightIcon={<MdDocumentScanner />}
                         >
                             Curriculum
-                            <MdDocumentScanner />
                         </Button>
+
                     </Link>
                     <Box pl={2} align="right">
                         <ThemeToggleButton />
