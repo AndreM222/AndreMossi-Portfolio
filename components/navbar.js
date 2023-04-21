@@ -14,8 +14,10 @@ import {
     MenuButton,
     IconButton,
     useColorModeValue,
+    Button,
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
+import { MdDocumentScanner } from 'react-icons/md'
 import ThemeToggleButton from './theme-toggle-button'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
@@ -88,6 +90,23 @@ const Navbar = (props) => {
                             Others
                         </LinkItem>
                     </Stack>
+
+                    <Link
+                        href="AndreCV.pdf"
+                        display={{ base: 'none', md: 'inline-block' }}
+                        target="_blank"
+                    >
+                        <Button
+                            colorScheme="cyan"
+                            align="right"
+                            display="flex"
+                            alignItems="center"
+                            gap={0.5}
+                        >
+                            Curriculum
+                            <MdDocumentScanner />
+                        </Button>
+                    </Link>
                     <Box pl={2} align="right">
                         <ThemeToggleButton />
                         <Box
@@ -110,6 +129,13 @@ const Navbar = (props) => {
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/other">
                                         Others
+                                    </MenuItem>
+                                    <MenuItem
+                                        as={MenuLink}
+                                        href="AndreCV.pdf"
+                                        target="_blank"
+                                    >
+                                        Curriculum
                                     </MenuItem>
                                 </MenuList>
                             </Menu>

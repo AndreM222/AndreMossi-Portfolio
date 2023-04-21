@@ -35,7 +35,12 @@ const Page = () => {
                         Hello, I&apos;m a full-stack developer
                     </Box>
 
-                    <Box display={{ md: 'flex' }} maxW="container.md" my="auto" mb={10}>
+                    <Box
+                        display={{ md: 'flex' }}
+                        maxW="container.md"
+                        my="auto"
+                        mb={10}
+                    >
                         <Box flexGrow={1}>
                             <Heading as="h2" variant="page-title">
                                 André Mossi
@@ -50,12 +55,12 @@ const Page = () => {
                             align="center"
                         >
                             <motion.div
-                                initial={{ scale: 0 , rotate: 180 }}
+                                initial={{ scale: 0, rotate: 180 }}
                                 animate={{ rotate: 0, scale: 1 }}
                                 transition={{
-                                    type: "spring",
+                                    type: 'spring',
                                     stiffness: 260,
-                                    damping: 20
+                                    damping: 20,
                                 }}
                             >
                                 <Image
@@ -140,7 +145,7 @@ const Page = () => {
                 </Section>
 
                 <TimeSection delay={0.4}>
-                    <Heading as="h2" fontSize='2xl' variant="section-title">
+                    <Heading as="h2" fontSize="2xl" variant="section-title">
                         Timeline
                     </Heading>
                     <TimeBox>
@@ -152,8 +157,12 @@ const Page = () => {
                         School award, Software Development
                     </TimeBox>
                     <TimeBox>
-                        <TimeYear>2020</TimeYear>
+                        <TimeYear>2019</TimeYear>
                         President of the school computer club
+                    </TimeBox>
+                    <TimeBox>
+                        <TimeYear>2020</TimeYear>
+                        Second school award, Software Development
                     </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>2022 To Present</TimeYear>
