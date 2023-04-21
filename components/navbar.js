@@ -95,6 +95,7 @@ const Navbar = (props) => {
                         style={{ textDecoration: 'none' }}
                         target="_blank"
                         href="AndreCV.pdf"
+                        display={{ base: "none", md: "inline-block" }}
                         >
                         <Button
                             colorScheme="cyan"
