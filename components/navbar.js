@@ -104,7 +104,7 @@ const Navbar = (props) => {
                             alignItems="center"
                             rightIcon={<MdDocumentScanner />}
                         >
-                            Curriculum
+                            Resume
                         </Button>
 
                     </Link>
@@ -136,7 +136,7 @@ const Navbar = (props) => {
                                         href="AndreCV.pdf"
                                         target="_blank"
                                     >
-                                        Curriculum
+                                        Resume
                                     </MenuItem>
                                 </MenuList>
                             </Menu>
