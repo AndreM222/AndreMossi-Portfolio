@@ -3,8 +3,8 @@
 Link: [`https://andremossi.vercel.app/`](https://andremossi.vercel.app/)
 
 <hr>
-    <img align="right" src="WebPic_2.png" width="26.7%"/>
-    <img src="WebPic_1.png" width="70%" />
+    <img align="right" src="doc/WebPic_2.png" width="26.7%"/>
+    <img src="doc/WebPic_1.png" width="70%" />
 </hr>
 
 ## Tools ⚒️
