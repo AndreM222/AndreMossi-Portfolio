@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 export const TimeBox = ({ children, last = false }) => (
     <Box>
-        <Box pl="3.4em" textIndent="-3.4em" textAlign={{ base: "left", md: "center" }}>
+        <Box pl="3.4em" textIndent="-3.4em" display="row" textAlign={{ base: "left", md: "center" }}>
             {children}
         </Box>
         <Circle

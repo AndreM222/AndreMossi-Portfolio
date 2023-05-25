@@ -22,7 +22,7 @@ const Section = ({
         ml={align == 'left' ? 0 : 'auto'}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={({ duration: 0.8 }, delay)}
+        transition={{ duration: 0.8, delay }}
         mb={6}
         maxW={{ lg: maxW }}
     >

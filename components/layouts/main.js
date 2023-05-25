@@ -6,6 +6,8 @@ const CharModel = dynamic(() => import('../character'), {
     ssr: false,
 })
 import Footer from '../footer'
+import Content from '../content'
+import miscLang from '../../pages/assets/misc.json'
 
 const Main = ({ children, router }) => {
     return (
@@ -27,7 +29,7 @@ const Main = ({ children, router }) => {
                 />
                 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
                 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-                <title>André Mossi</title>
+                <title>{Content(miscLang, 'title', 'name')}</title>
             </Head>
 
             <Navbar path={router.asPath} />

@@ -14,6 +14,9 @@ import { TimeBox, TimeYear } from '../components/timeline'
 import TimeSection from '../components/time-section'
 import Layout from '../components/layouts/article'
 import { motion } from 'framer-motion'
+import Content from '../components/content'
+import indexLang from './assets/index.json'
+import miscLang from './assets/misc.json'
 
 const Page = () => {
     return (
@@ -32,7 +35,8 @@ const Page = () => {
                         mb={10}
                         align="center"
                     >
-                        Hello, I&apos;m a full-stack developer
+                        {Content(indexLang, 'quote', 'content')}
+                        <p>{Content(indexLang, 'quote', 'author')}</p>
                     </Box>
 
                     <Box
@@ -43,10 +47,10 @@ const Page = () => {
                     >
                         <Box flexGrow={1}>
                             <Heading as="h2" variant="page-title">
-                                André Mossi
+                                {Content(miscLang, 'title', 'name')}
                             </Heading>
-                            <p> Programmer | Artist | Designer </p>
-                            <p> Software & Game Dev </p>
+                            <p>{Content(indexLang, 'card', 'work')}</p>
+                            <p>{Content(indexLang, 'card', 'type')}</p>
                         </Box>
                         <Box
                             flexShrink={0}
@@ -79,32 +83,19 @@ const Page = () => {
                 </Box>
                 <Section delay={0.1}>
                     <Heading as="h3" variant="section-title">
-                        About
+                        {Content(indexLang, 'about', 'title')}
                     </Heading>
                     <Paragraph>
-                        I am currently a University Student at Gannon University
-                        studying Computer Science. I was inspired to start this
-                        journey since I was in highschool after watching a video
-                        regarding programming. At that moment I knew that this
-                        was the path which I yearn to walk, no matter what
-                        challenges might step in my way.
+                        {Content(indexLang, 'about', 'content')}
                     </Paragraph>
                 </Section>
 
                 <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
-                        Practice
+                        {Content(indexLang, 'practice', 'title')}
                     </Heading>
                     <Paragraph>
-                        Besides the homeworks given in class I try to obtain
-                        more experiene by doing my own projects. I have taken
-                        some online classes which two of them have given me
-                        certificates while the others where just practice.
-                        Besides classes I tried to adventure myself by making a
-                        sorting algorithm for excel files, some websites to
-                        improve my abilities not just as back-end but also
-                        front-end, etc. I love exploring new languages and
-                        taking up new challenges.
+                        {Content(indexLang, 'practice', 'content')}
                     </Paragraph>
                     <Box align="center" my={4}>
                         <Button
@@ -113,24 +104,17 @@ const Page = () => {
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
-                            More
+                            {Content(miscLang, 'button', 'content')}
                         </Button>
                     </Box>
                 </Section>
 
                 <Section delay={0.3}>
                     <Heading as="h3" variant="section-title">
-                        Others
+                        {Content(indexLang, 'others', 'title')}
                     </Heading>
                     <Paragraph>
-                        My main editor is Neovim but I also have experience
-                        using Visual Studio, VSCode, and InteliJ. I started
-                        using Neovim because I had heard that it was very
-                        powerful but too complicated to learn, I am the type of
-                        person who enjoys challenges and took on the challenge
-                        of learning it. The language I enjoy programming the
-                        most is C++ but I am also familiar with other languages
-                        and love learning more.
+                        {Content(indexLang, 'others', 'content')}
                     </Paragraph>
                     <Box align="center" my={4}>
                         <Button
@@ -139,34 +123,34 @@ const Page = () => {
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
-                            More
+                            {Content(miscLang, 'button', 'content')}
                         </Button>
                     </Box>
                 </Section>
 
                 <TimeSection delay={0.4}>
                     <Heading as="h2" fontSize="2xl" variant="section-title">
-                        Timeline
+                        {Content(indexLang, 'timeline', 'title')}
                     </Heading>
                     <TimeBox>
                         <TimeYear>2002</TimeYear>
-                        Born in Honduras, Tegucigalpa
+                        {Content(indexLang, 'timeline', 'first')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>2016</TimeYear>
-                        School award, Software Development
+                        {Content(indexLang, 'timeline', 'second')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>2019</TimeYear>
-                        President of the school computer club
+                        {Content(indexLang, 'timeline', 'third')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>2020</TimeYear>
-                        Second school award, Software Development
+                        {Content(indexLang, 'timeline', 'fourth')}
                     </TimeBox>
                     <TimeBox last={true}>
-                        <TimeYear>2022 To Present</TimeYear>
-                        Student at Gannon University
+                        <TimeYear>{Content(indexLang, 'timeline', 'fifth-time')}</TimeYear>
+                        {Content(indexLang, 'timeline', 'fifth')}
                     </TimeBox>
                 </TimeSection>
             </Container>

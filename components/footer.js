@@ -15,6 +15,8 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react'
 import UpToggle from './up-toggle'
+import miscLang from '../pages/assets/misc.json'
+import Content from './content'
 
 const Footer = () => {
     return (
@@ -25,7 +27,7 @@ const Footer = () => {
             marginTop="auto"
         >
             <Heading as="h3" variant="section-title">
-                Connect
+                {Content(miscLang, 'footer', 'connect')}
             </Heading>
             <Box display="flex" justifyContent="space-between" pb={3}>
                 <Box>

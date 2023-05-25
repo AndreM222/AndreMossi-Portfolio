@@ -3,13 +3,15 @@ import { Heading, Box, Image, Link, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { AiFillFolderOpen } from 'react-icons/ai'
 import { Icon } from '@chakra-ui/react'
+import miscLang from '../pages/assets/misc.json'
+import Content from './content'
 
 export const Title = ({ children }) => (
     <Box>
         <Link as={NextLink} href="/practice">
             <Icon as={AiFillFolderOpen}/>
             &nbsp;
-            Practices
+            {Content(miscLang, 'practice', 'content')}
         </Link>
         <span>
             &nbsp;

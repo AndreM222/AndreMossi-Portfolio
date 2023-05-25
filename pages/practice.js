@@ -2,6 +2,8 @@ import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
 import Section from '../components/section'
 import { PracticeGridItem } from '../components/grid-item'
 import Layout from '../components/layouts/article'
+import Content from '../components/content'
+import practiceLang from './assets/practice.json'
 
 import thumbHarvard from '../public/images/practices/Harvard.png'
 import thumbExtreme from '../public/images/practices/ExtremeNetworks.png'
@@ -12,7 +14,7 @@ const Practice = () => {
         <Layout title="Practices">
             <Container maxW="container.lg">
                 <Heading as="h3">
-                    Practices
+                    {Content(practiceLang, 'title', 'name')}
                 </Heading>
                 <Divider my={6}/>
 
@@ -23,8 +25,7 @@ const Practice = () => {
                             title="Harvard"
                             thumbnail={thumbHarvard}
                         >
-                            Online harvard class for introduction to computer
-                            science.
+                            {Content(practiceLang, 'harvard', 'description')}
                         </PracticeGridItem>
                     </Section>
                     <Section>
@@ -33,7 +34,7 @@ const Practice = () => {
                             title="Extreme Networks"
                             thumbnail={thumbExtreme}
                         >
-                            Practiced online for my networks class.
+                            {Content(practiceLang, 'extreme-networks', 'description')}
                         </PracticeGridItem>
                     </Section>
                     <Section>
@@ -42,7 +43,7 @@ const Practice = () => {
                             title="Github"
                             thumbnail={thumbGithub}
                         >
-                            Projects for practice and fun.
+                            {Content(practiceLang, 'github', 'description')}
                         </PracticeGridItem>
                     </Section>
                 </SimpleGrid>

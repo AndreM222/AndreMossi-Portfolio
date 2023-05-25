@@ -1,6 +1,7 @@
 import Logo from './logo'
 import NextLink from 'next/link'
 import { forwardRef } from 'react'
+import LanguageButton from './language-switch-button'
 import {
     Container,
     Box,
@@ -17,8 +18,10 @@ import {
     Button,
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { MdDocumentScanner } from 'react-icons/md'
 import ThemeToggleButton from './theme-toggle-button'
+import miscLang from '../pages/assets/misc.json'
+import Content from './content'
+import { MdDocumentScanner } from 'react-icons/md'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
     const active = path === href
@@ -80,23 +83,23 @@ const Navbar = (props) => {
                         justifyContent="right"
                     >
                         <LinkItem href="/" path={path}>
-                            About
+                            {Content(miscLang, 'category', 'about')}
                         </LinkItem>
 
                         <LinkItem href="/practice" path={path}>
-                            Practice
+                            {Content(miscLang, 'category', 'practice')}
                         </LinkItem>
                         <LinkItem href="/other" path={path}>
-                            Others
+                            {Content(miscLang, 'category', 'others')}
                         </LinkItem>
                     </Stack>
 
                     <Link
                         style={{ textDecoration: 'none' }}
                         target="_blank"
-                        href="/AndreCV.pdf"
-                        display={{ base: "none", md: "inline-block" }}
-                        >
+                        href={Content(miscLang, 'category', 'link-resume')}
+                        display={{ base: 'none', md: 'inline-block' }}
+                    >
                         <Button
                             colorScheme="cyan"
                             align="right"
@@ -104,11 +107,11 @@ const Navbar = (props) => {
                             alignItems="center"
                             rightIcon={<MdDocumentScanner />}
                         >
-                            Resume
+                            {Content(miscLang, 'category', 'resume')}
                         </Button>
-
                     </Link>
                     <Box pl={2} align="right">
+                        <LanguageButton path={path} />
                         <ThemeToggleButton />
                         <Box
                             ml={2}
@@ -123,20 +126,36 @@ const Navbar = (props) => {
                                 />
                                 <MenuList>
                                     <MenuItem as={MenuLink} href="/">
-                                        About
+                            {Content(miscLang, 'category', 'about')}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/practice">
-                                        Practice
+                                        {Content(
+                                            miscLang,
+                                            'category',
+                                            'practice'
+                                        )}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/other">
-                                        Others
+                                        {Content(
+                                            miscLang,
+                                            'category',
+                                            'others'
+                                        )}
                                     </MenuItem>
                                     <MenuItem
                                         as={MenuLink}
-                                        href="AndreCV.pdf"
+                                        href={Content(
+                                            miscLang,
+                                            'category',
+                                            'link-resume'
+                                        )}
                                         target="_blank"
                                     >
-                                        Resume
+                                        {Content(
+                                            miscLang,
+                                            'category',
+                                            'resume'
+                                        )}
                                     </MenuItem>
                                 </MenuList>
                             </Menu>

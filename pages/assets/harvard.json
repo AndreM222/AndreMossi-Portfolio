@@ -1,0 +1,26 @@
+{
+    "description": [
+        {
+            "locale": "en-US",
+            "content": "I decided to take a online Havard class in order to increase my current knowledge regarding Computer Science. I wanted to strive to do more and this online class taught me many things I did not learn or have yet to do. This experience had shown me how wide the world of Computer Science is and I am excited to embark upon this path."
+        },
+        {
+            "locale": "es-ES",
+            "content": "Yo decidí tomar una clase en línea de Harvard con el deseo de incrementar mi conocimiento sobre programación. Yo anhelaba por más conocimiento y esta clase me enseno muchas cosas del cual no se me había ensenado o tenía que más adelante. Esta experiencia me enseno lo amplio que el mundo de la programación es y estoy ansioso por embarcar en este camino."
+        }
+    ],
+    "category": [
+        {
+            "locale": "en-US",
+            "type": "Type",
+            "type-description": "Education",
+            "content": "Content"
+        },
+        {
+            "locale": "es-ES",
+            "type": "Tipo",
+            "type-description": "Educación",
+            "content": "Contenido"
+        }
+    ]
+}

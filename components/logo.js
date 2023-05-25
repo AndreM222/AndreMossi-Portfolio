@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Text, useColorModeValue } from '@chakra-ui/react'
 import styled from '@emotion/styled'
+import Content from './content'
+import miscLang from '../pages/assets/misc.json'
 
 const LogoBox = styled.span`
     font-weight: bold;
@@ -34,7 +36,7 @@ const Logo = () => {
                     fontWeight="bold"
                     ml={3}
                 >
-                    André Mossi
+                    { Content(miscLang, 'title', 'name') }
                 </Text>
             </LogoBox>
         </Link>

@@ -1,0 +1,42 @@
+{
+    "title": [
+        {
+            "locale": "en-US",
+            "name": "Practices"
+        },
+        {
+            "locale": "es-ES",
+            "name": "Practicas"
+        }
+    ],
+    "harvard": [
+        {
+            "locale": "en-US",
+            "description": "Online harvard class for introduction to Computer Science"
+        },
+        {
+            "locale": "es-ES",
+            "description": "Clase en línea de Harvard introducción a Computer Science"
+        }
+    ],
+    "extreme-networks": [
+        {
+            "locale": "en-US",
+            "description": "Completed Extreme Networks class from the university"
+        },
+        {
+            "locale": "es-ES",
+            "description": "Complete la clase de Extreme Networks en la universidad"
+        }
+    ],
+    "github": [
+        {
+            "locale": "en-US",
+            "description": "Projects for practice and fun"
+        },
+        {
+            "locale": "es-ES",
+            "description": "Proyectos para practica y diversión"
+        }
+    ]
+}
