@@ -23,10 +23,10 @@ const LanguageButton = ({ path }) => {
                 colorScheme={useColorModeValue('purple', 'pink')}
             />
             <MenuList>
-                <MenuItem as={MenuLink} href={path} locale={'en-US'}>
+                <MenuItem as={MenuLink} href={path} locale={'en'}>
                     English
                 </MenuItem>
-                <MenuItem as={MenuLink} href={path} locale={'es-ES'}>
+                <MenuItem as={MenuLink} href={path} locale={'es'}>
                     Español
                 </MenuItem>
             </MenuList>

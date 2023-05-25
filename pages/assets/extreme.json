@@ -1,24 +1,24 @@
 {
     "description": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "content": "It's a class which focus on the introduction to network management and how it is structured. The class I had in my unviersity its content came from Extreme-Networks."
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "content": "Es una clase el cual se enfoca en la introducción de manejo de redes y como está estructurado. La clase que obtuve en mi universidad el contenido provenía de Extreme-Networks."
         }
     ],
     "category": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "type": "Type",
             "type-description": "Education",
             "content": "Content",
             "content-description": "Introduction to networks"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "type": "Tipo",
             "type-description": "Educación",
             "content": "Contenido",

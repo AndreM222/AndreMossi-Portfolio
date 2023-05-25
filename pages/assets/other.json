@@ -1,41 +1,41 @@
 {
     "title": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "name": "Others"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "name": "Otros"
         }
     ],
     "description": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "content": "Was awarded in my school for the best computer project by developing my first ever videogame using Unreal Engine. After this experience I knew that programming was the path I wanted to walk. Walking from there, I started learning more and joining clubs related to my career, I was able to win a second competition in my school developing a second small survival game. In the same year I was nominated as the president of the computer club. At my school for the seniors there is a final test which measures your level of understanding of computers, the one who obtains the highest grade and greater than 90% can obtain a medal. I was the one with the highest grade, being 100%."
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "content": "Fui premiado en mi escuela por el mejor proyecto de computación por desarrollar mi primer videojuego usando Unreal Engine. Después de esta experiencia supe que programar era el camino que deseaba caminar. Caminando desde ese punto, empecé a aprender más y me uní a clubs relacionados a mi carrera, logré ganar una segunda competencia en mi escuela desarrollando un segundo un pequeño juego de supervivencia. En el mismo año fui nominado como el presidente del club de computación. Rn mi escuela para los seniors hay un examen el cual mide tu nivel de entendimiento sobre computación, el que obtenga la nota más alta y mayor de 90% obtiene una medalla. Yo fui el que obtuvo la nota más alta siendo 100%."
         }
     ],
     "editor": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "description": "Currently my main editor is Neovim, but I am also familiar with other editors like VSCode, InteliJ, and Visual Studio. I started my journey towards Neovim since I was told that it was the most powerful tool to program but was too complicated to learn. I love to take over challenges and learn new things, so I decided to take over the challenge."
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "description": "De momento mi editor principal es Neovim, pero también estoy familiarizado con otros editores como VSCode, InteliJ, y Visual Studio. Empecé mi aventura en Neovim desde que fui notificado que era la herramienta más poderosa para programar, pero también lo complicado de aprender. A mí me encanta tomar retos e incrementar mi conocimiento entonces decidí tomar el reto."
         }
     ],
     "thumbnail": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "description": "My dotfiles setup on Windows"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "description": "Mis ajustes dotfile para Windows"
         }
     ]

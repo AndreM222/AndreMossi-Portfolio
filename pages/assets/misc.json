@@ -1,17 +1,17 @@
 {
     "title": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "name": "Andre Mossi"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "name": "André Mossi"
         }
     ],
     "category": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "about": "About",
             "practice": "Practice",
             "others": "Others",
@@ -19,7 +19,7 @@
             "link-resume": "/AndreCV-EN.pdf"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "about": "Sobre",
             "practice": "Practica",
             "others": "Otros",
@@ -29,31 +29,31 @@
     ],
     "button": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "content": "More"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "content": "Mas"
         }
     ],
     "footer": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "connect": "Connect"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "connect": "Conectar"
         }
     ],
     "practice": [
         {
-            "locale": "en-US",
+            "locale": "en",
             "content": "Practices"
         },
         {
-            "locale": "es-ES",
+            "locale": "es",
             "content": "Practicas"
         }
     ]
