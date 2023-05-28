@@ -7,24 +7,22 @@
         {
             "locale": "es",
             "content": "Es una clase el cual se enfoca en la introducción de manejo de redes y como está estructurado. La clase que obtuve en mi universidad el contenido provenía de Extreme-Networks."
-        },
-        {
-            "locale": "ja",
-            "content": "これは、ネットワーク管理の概要とその構造に焦点を当てたクラスです。私が大学で受けた授業の内容は、Extreme-Networksから来ています。"
         }
     ],
-    "info": [
+    "category": [
         {
             "locale": "en",
-            "content": "Introduction to networks"
+            "type": "Type",
+            "type-description": "Education",
+            "content": "Content",
+            "content-description": "Introduction to networks"
         },
         {
             "locale": "es",
-            "content": "Introduccion a redes"
-        },
-        {
-            "locale": "ja",
-            "content": "ネットワーク　前書き"
+            "type": "Tipo",
+            "type-description": "Educación",
+            "content": "Contenido",
+            "content-description": "Introduccion a redes"
         }
     ]
 }

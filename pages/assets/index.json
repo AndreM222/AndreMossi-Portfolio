@@ -9,11 +9,6 @@
             "locale": "es",
             "content": "\"Eres el mejor de todos nosotros. Estás en tu camino, Sólo sigue adelante.\"",
             "author": "- Spider-Man: Cruzando el Multiverso"
-        },
-        {
-            "locale": "ja",
-            "content": "\"君は最強だ。君はまだ道の途中。ただ進み続けろ。\"",
-            "author": "- スパイダーマン スパイダーバース"
         }
     ],
     "card": [
@@ -26,53 +21,42 @@
             "locale": "es",
             "work": "Programador | Artista | Diseñador",
             "type": "Desarrollador Full-Stack"
-        },
-        {
-            "locale": "ja",
-            "work": "プログラマー | アーティスト | デザイナー",
-            "type": "フルスタック 開発者"
         }
     ],
     "about": [
         {
             "locale": "en",
+            "title": "About",
             "content": "I am currently a Student at Gannon University studying Computer Science. I was inspired to start this journey since I was in highschool after watching a video regarding programming. At that moment I knew that this was the path which I yearn to walk, no matter what challenges might step in my way."
         },
         {
             "locale": "es",
+            "title": "Sobre",
             "content": "En el presente soy un estudiante de Gannon University en la carrera de Computer Science. Mi inspiración para empezar mi aventura proviene de un video el cual se presentó en mi escuela sobre la programación de videojuegos, En ese momento supe este era el camino que anhelaba caminar, sin importar que retos se presenten en mi camino."
-        },
-        {
-            "locale": "ja",
-            "content": "現在、私はGannon大学でコンピュータサイエンスを学んでいる学生です。プログラミングに関するビデオを見た後、高校生だった頃からこの旅を始めることにインスピレーションを受けました。その瞬間、私はどんな挑戦が私の前に現れようとも、この道を歩みたいと強く思いました。"
         }
     ],
     "practice": [
         {
             "locale": "en",
+            "title": "Practice",
             "content": "Besides the tasks given in class, I decided to obtain more experiene by doing my own projects. I have taken some online classes which two of them have given me certificates while the others where just practice. Besides classes I tried to adventure myself by making a sorting algorithm for excel files, some websites to improve my abilities not just as back-end but also front-end, etc. I love exploring new languages and taking up new challenges."
         },
         {
             "locale": "es",
+            "title": "Practica",
             "content": "Además, tareas dadas en clase, Yo decidí obtener más experiencia desarrollando mis propios proyectos. Tome algunas clases en línea el cual dos de ellos me cedieron certificados mientras las otras solo fueron prácticas. Además, decidí aventurarme al crear un algoritmo de clasificación para archivos Excel, algunas páginas web para mejorar mis habilidades no solo como back-end pero también como un front-end, etc. A mí me encanta explorar nuevos lenguajes y tomar nuevos retos."
-        },
-        {
-            "locale": "ja",
-            "content": "クラスで与えられたタスク以外に、自分自身のプロジェクトを行うことでより多くの経験を得ることに決めました。いくつかのオンラインクラスを受講し、そのうち2つは証明書を授与され、他のものは練習だけでした。授業以外にも、エクセルファイルのソートアルゴリズム、バックエンドだけでなくフロントエンドとしても能力を向上させるためのウェブサイトなど、自分自身を冒険することを試みました。新しい言語を探求し、新しい挑戦に取り組むことが大好きです。"
         }
     ],
     "others": [
         {
             "locale": "en",
+            "title": "Others",
             "content": "My main editor is Neovim but, I also have experience using Visual Studio, VSCode, and InteliJ. I started using Neovim because I had heard that it was very powerful but too complicated to learn, I am the type of person who enjoys challenges and took on the challenge of learning it. The language I enjoy programming the most is C++ but I am also familiar with other languages and love learning more."
         },
         {
             "locale": "es",
+            "title": "Otros",
             "content": "Mi editor principal es Neovim, pero también tengo experiencia usando Visual Studio, VSCode, y InteliJ. Empecé usando Neovim porque escuche que era bastante complicado, pero también difícil de aprender, yo soy el tipo de persona que le gusta tomar retos y decidí tomar el reto de aprenderlo. El lenguaje el cual disfruto más programar es C++ pero también estoy familiarizado con otros lenguajes e idolatro aprender más."
-        },
-        {
-            "locale": "ja",
-            "content": "私のメインエディタはNeovimですが、Visual Studio、VSCode、InteliJも使用した経験があります。Neovimを使用し始めたのは、非常に強力だが学ぶのが難しすぎると聞いたからです。私は挑戦を楽しむタイプの人間であり、それを学ぶという挑戦に取り組みました。私が最もプログラミングを楽しむ言語はC++ですが、他の言語にも精通しており、より多くのことを学ぶことが好きです。"
         }
     ],
     "timeline": [
@@ -95,16 +79,6 @@
             "fourth": "Segundo premio escolar, Desarrollo de Software",
             "fifth-time": "2022 Al Presente",
             "fifth": "Estudiante en Gannon University"
-        },
-        {
-            "locale": "ja",
-            "title": "タイムライン",
-            "first": "ホンジュラス, テグシガルパ 生まれ",
-            "second": "学校賞, ソフトーク 開発",
-            "third": "学校の コンプーターの 会長",
-            "fourth": "二回目 学校賞, ソフトーク 開発",
-            "fifth-time": "2022 カラ 現在まで",
-            "fifth": "ガンオン大学の 学生"
         }
     ]
 }

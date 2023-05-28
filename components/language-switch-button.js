@@ -29,9 +29,6 @@ const LanguageButton = ({ path }) => {
                 <MenuItem as={MenuLink} href={path} locale={'es'}>
                     Español
                 </MenuItem>
-                <MenuItem as={MenuLink} href={path} locale={'ja'}>
-                    日本語
-                </MenuItem>
             </MenuList>
         </Menu>
     )
