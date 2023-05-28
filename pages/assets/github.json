@@ -7,22 +7,24 @@
         {
             "locale": "es",
             "content": "Durante mi tiempo libre trato de dedicarle tiempo a mejorar mi conocimiento trabajando en algunos pequeños proyectos. Algunos proyectos son decentes mientras otros no serán lo más optimo, pero algo que es concreto es que mi crecimiento puede demostrarse en todos mis proyectos en los que he trabajado de momento. Siendo Javafx con la primera vez que trabaje con GUI usando Java, mi algoritmo de clasificación el cual fue programado en C++, etc."
+        },
+        {
+            "locale": "ja",
+            "content": "余暇時間に、いくつかの小さなプロジェクトに取り組むことで、自分の知識を向上させるように努めました。いくつかのプロジェクトはまあまあで、他のものは最適ではないかもしれませんが、確かなことは、これまでに取り組んだすべてのプロジェクトで私の成長が見られるということです。Javaを使用したGUIの初めての作業であるJavafx、C++でプログラムされたソートアルゴリズムなどがあります。"
         }
     ],
-    "category": [
+    "info": [
         {
             "locale": "en",
-            "type": "Type",
-            "type-description": "Education",
-            "content": "Content",
-            "content-description": "Introduction to networks",
-            "link-description": "My Github"
+            "link": "My Github"
         },
         {
             "locale": "es",
-            "type": "Tipo",
-            "type-description": "Educación",
-            "link-description": "Mi Github"
+            "link": "Mi Github"
+        },
+        {
+            "locale": "ja",
+            "link": "わたしの ギットハブ"
         }
     ],
     "date": [
@@ -33,6 +35,10 @@
         {
             "locale": "es",
             "content": "Presente"
+        },
+        {
+            "locale": "ja",
+            "content": "現在"
         }
     ]
 }

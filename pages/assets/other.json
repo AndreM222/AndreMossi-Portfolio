@@ -1,14 +1,4 @@
 {
-    "title": [
-        {
-            "locale": "en",
-            "name": "Others"
-        },
-        {
-            "locale": "es",
-            "name": "Otros"
-        }
-    ],
     "description": [
         {
             "locale": "en",
@@ -17,26 +7,44 @@
         {
             "locale": "es",
             "content": "Fui premiado en mi escuela por el mejor proyecto de computación por desarrollar mi primer videojuego usando Unreal Engine. Después de esta experiencia supe que programar era el camino que deseaba caminar. Caminando desde ese punto, empecé a aprender más y me uní a clubs relacionados a mi carrera, logré ganar una segunda competencia en mi escuela desarrollando un segundo un pequeño juego de supervivencia. En el mismo año fui nominado como el presidente del club de computación. Rn mi escuela para los seniors hay un examen el cual mide tu nivel de entendimiento sobre computación, el que obtenga la nota más alta y mayor de 90% obtiene una medalla. Yo fui el que obtuvo la nota más alta siendo 100%."
+        },
+        {
+            "locale": "ja",
+            "content": "Unreal Engineを使用して初めてのビデオゲームを開発し、最高のコンピュータプロジェクトで学校で表彰されました。この経験を通じて、プログラミングが私が歩みたい道であることを知りました。そこから歩み始め、自分のキャリアに関連するクラブに参加して学び、2番目の小さなサバイバルゲームを開発して学校で2回目のコンペティションに勝つことができました。同じ年に、コンピュータクラブの会長に指名されました。私の学校では、シニア向けにコンピュータの理解度を測定する最終テストがあります。最高得点を取得し、90％以上の得点を取得した人はメダルを受け取ることができます。私は最高得点者であり、100％でした。"
         }
     ],
     "editor": [
         {
             "locale": "en",
+            "title": "Editor",
             "description": "Currently my main editor is Neovim, but I am also familiar with other editors like VSCode, InteliJ, and Visual Studio. I started my journey towards Neovim since I was told that it was the most powerful tool to program but was too complicated to learn. I love to take over challenges and learn new things, so I decided to take over the challenge."
         },
         {
             "locale": "es",
+            "title": "Editor",
             "description": "De momento mi editor principal es Neovim, pero también estoy familiarizado con otros editores como VSCode, InteliJ, y Visual Studio. Empecé mi aventura en Neovim desde que fui notificado que era la herramienta más poderosa para programar, pero también lo complicado de aprender. A mí me encanta tomar retos e incrementar mi conocimiento entonces decidí tomar el reto."
+        },
+        {
+            "locale": "ja",
+            "title": "エディタ",
+            "description": "現在私の主要なエディタはNeovimですが、VSCode、InteliJ、Visual Studioなどの他のエディタにも精通しています。Neovimでプログラミングを行うための最も強力なツールであることが通知されたため、Neovimでの冒険を始めましたが、学ぶのが"
         }
     ],
     "thumbnail": [
         {
             "locale": "en",
+            "title": "Windows Dotfiles",
             "description": "My dotfiles setup on Windows"
         },
         {
             "locale": "es",
+            "title": "Windows Dotfiles",
             "description": "Mis ajustes dotfile para Windows"
+        },
+        {
+            "locale": "ja",
+            "title": "ウィンドウス　ドットファイル",
+            "description": "わたしの　ドットファイル セットアップ　のために ウィンドウス"
         }
     ]
 }

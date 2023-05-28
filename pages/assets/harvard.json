@@ -7,20 +7,10 @@
         {
             "locale": "es",
             "content": "Yo decidí tomar una clase en línea de Harvard con el deseo de incrementar mi conocimiento sobre programación. Yo anhelaba por más conocimiento y esta clase me enseno muchas cosas del cual no se me había ensenado o tenía que más adelante. Esta experiencia me enseno lo amplio que el mundo de la programación es y estoy ansioso por embarcar en este camino."
-        }
-    ],
-    "category": [
-        {
-            "locale": "en",
-            "type": "Type",
-            "type-description": "Education",
-            "content": "Content"
         },
         {
-            "locale": "es",
-            "type": "Tipo",
-            "type-description": "Educación",
-            "content": "Contenido"
+            "locale": "ja",
+            "content": "私は、コンピュータサイエンスに関する現在の知識を増やすために、オンラインのハーバードクラスを受講することに決めました。もっと努力しようと思い、このオンラインクラスは、私がまだ学んでいないことややらなければならないことを多く教えてくれました。この経験は、コンピュータサイエンスの世界がどれだけ広いかを私に示し、この道に乗り出すことを楽しみにしています。"
         }
     ]
 }

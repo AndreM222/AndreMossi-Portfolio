@@ -83,7 +83,7 @@ const Page = () => {
                 </Box>
                 <Section delay={0.1}>
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'about', 'title')}
+                        {Content(miscLang, 'category', 'about')}
                     </Heading>
                     <Paragraph>
                         {Content(indexLang, 'about', 'content')}
@@ -92,7 +92,7 @@ const Page = () => {
 
                 <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'practice', 'title')}
+                        {Content(miscLang, 'category', 'practice')}
                     </Heading>
                     <Paragraph>
                         {Content(indexLang, 'practice', 'content')}
@@ -111,7 +111,7 @@ const Page = () => {
 
                 <Section delay={0.3}>
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'others', 'title')}
+                        {Content(miscLang, 'category', 'others')}
                     </Heading>
                     <Paragraph>
                         {Content(indexLang, 'others', 'content')}
