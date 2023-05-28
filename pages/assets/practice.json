@@ -1,14 +1,4 @@
 {
-    "title": [
-        {
-            "locale": "en",
-            "name": "Practices"
-        },
-        {
-            "locale": "es",
-            "name": "Practicas"
-        }
-    ],
     "harvard": [
         {
             "locale": "en",
@@ -17,6 +7,10 @@
         {
             "locale": "es",
             "description": "Clase en línea de Harvard introducción a Computer Science"
+        },
+        {
+            "locale": "ja",
+            "description": "オンライン ハーバード クラス ために 前書き コンプーター　科学"
         }
     ],
     "extreme-networks": [
@@ -27,6 +21,10 @@
         {
             "locale": "es",
             "description": "Complete la clase de Extreme Networks en la universidad"
+        },
+        {
+            "locale": "ja",
+            "description": "完了した エクストリーム　ネットワークス クラス　で　大学"
         }
     ],
     "github": [
@@ -37,6 +35,10 @@
         {
             "locale": "es",
             "description": "Proyectos para practica y diversión"
+        },
+        {
+            "locale": "ja",
+            "description": "プロジェクト のために 練習 と 興"
         }
     ]
 }
