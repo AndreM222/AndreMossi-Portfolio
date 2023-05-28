@@ -7,10 +7,6 @@
         {
             "locale": "es",
             "name": "André Mossi"
-        },
-        {
-            "locale": "ja",
-            "name": "アンドレ モッシ"
         }
     ],
     "category": [
@@ -29,14 +25,6 @@
             "others": "Otros",
             "resume": "Curriculum",
             "link-resume": "/AndreCV-ES.pdf"
-        },
-        {
-            "locale": "ja",
-            "about": "について",
-            "practice": "練習",
-            "others": "その他",
-            "resume": "履歴書",
-            "link-resume": "/AndreCV-JA.pdf"
         }
     ],
     "button": [
@@ -47,10 +35,6 @@
         {
             "locale": "es",
             "content": "Mas"
-        },
-        {
-            "locale": "ja",
-            "content": "詳細"
         }
     ],
     "footer": [
@@ -61,10 +45,16 @@
         {
             "locale": "es",
             "connect": "Conectar"
+        }
+    ],
+    "practice": [
+        {
+            "locale": "en",
+            "content": "Practices"
         },
         {
-            "locale": "ja",
-            "connect": "コネクト"
+            "locale": "es",
+            "content": "Practicas"
         }
     ]
 }

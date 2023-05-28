@@ -11,7 +11,7 @@ export const Title = ({ children }) => (
         <Link as={NextLink} href="/practice">
             <Icon as={AiFillFolderOpen}/>
             &nbsp;
-            {Content(miscLang, 'category', 'practice')}
+            {Content(miscLang, 'practice', 'content')}
         </Link>
         <span>
             &nbsp;
