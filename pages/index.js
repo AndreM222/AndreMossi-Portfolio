@@ -148,11 +148,15 @@ const Page = () => {
                         <TimeYear>2020</TimeYear>
                         {Content(indexLang, 'timeline', 'fourth')}
                     </TimeBox>
+                    <TimeBox>
+                        <TimeYear>2023</TimeYear>
+                        {Content(indexLang, 'timeline', 'fifth')}
+                    </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>
-                            {Content(indexLang, 'timeline', 'fifth-time')}
+                            {Content(indexLang, 'timeline', 'sixth-time')}
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'fifth')}
+                        {Content(indexLang, 'timeline', 'sixth')}
                     </TimeBox>
                 </TimeSection>
             </Container>

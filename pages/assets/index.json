@@ -61,9 +61,9 @@
             "second": "High school award, Software Development",
             "third": "President of the high school computer club",
             "fourth": "Second high school award, Software Development",
-            "fifth-time": "2022 To Present",
-            "fifth": "Student at Gannon University",
-            "Six": "Intern at Dinant"
+            "fifth": "Internship as Full-Stack Developer at Dinant",
+            "sixth-time": "2022 To Present",
+            "sixth": "Student at Gannon University"
         },
         {
             "locale": "es",
@@ -72,9 +72,9 @@
             "second": "Premio escolar, Desarrollo de Software",
             "third": "Presidente escolar del club de computación",
             "fourth": "Segundo premio escolar, Desarrollo de Software",
-            "fifth-time": "2022 Al Presente",
-            "fifth": "Estudiante en Gannon University",
-            "Six": "Pasantia en Dinant"
+            "fifth": "Pasantia como Full-Stack Developer en Dinant",
+            "sixth-time": "2022 Al Presente",
+            "sixth": "Estudiante en Gannon University"
         }
     ]
 }
