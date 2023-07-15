@@ -83,7 +83,7 @@ const Page = () => {
                 </Box>
                 <Section delay={0.1}>
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'about', 'title')}
+                        {Content(miscLang, 'category', 'about')}
                     </Heading>
                     <Paragraph>
                         {Content(indexLang, 'about', 'content')}
@@ -92,15 +92,15 @@ const Page = () => {
 
                 <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'practice', 'title')}
+                        {Content(miscLang, 'category', 'experience')}
                     </Heading>
                     <Paragraph>
-                        {Content(indexLang, 'practice', 'content')}
+                        {Content(indexLang, 'experience', 'content')}
                     </Paragraph>
                     <Box align="center" my={4}>
                         <Button
                             as={NextLink}
-                            href="/practice"
+                            href="/experience"
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
@@ -111,7 +111,7 @@ const Page = () => {
 
                 <Section delay={0.3}>
                     <Heading as="h3" variant="section-title">
-                        {Content(indexLang, 'others', 'title')}
+                        {Content(miscLang, 'category', 'others')}
                     </Heading>
                     <Paragraph>
                         {Content(indexLang, 'others', 'content')}
@@ -149,7 +149,9 @@ const Page = () => {
                         {Content(indexLang, 'timeline', 'fourth')}
                     </TimeBox>
                     <TimeBox last={true}>
-                        <TimeYear>{Content(indexLang, 'timeline', 'fifth-time')}</TimeYear>
+                        <TimeYear>
+                            {Content(indexLang, 'timeline', 'fifth-time')}
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'fifth')}
                     </TimeBox>
                 </TimeSection>

@@ -8,10 +8,10 @@ import Content from './content'
 
 export const Title = ({ children }) => (
     <Box>
-        <Link as={NextLink} href="/practice">
-            <Icon as={AiFillFolderOpen}/>
+        <Link as={NextLink} href="/experience">
+            <Icon as={AiFillFolderOpen} />
             &nbsp;
-            {Content(miscLang, 'practice', 'content')}
+            {Content(miscLang, 'category', 'experience')}
         </Link>
         <span>
             &nbsp;

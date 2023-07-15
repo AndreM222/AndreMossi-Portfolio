@@ -4,19 +4,15 @@
             "locale": "en",
             "harvard": "Harvard",
             "extreme": "Extreme Networks",
-            "github": "Github"
+            "github": "GitHub",
+            "dinant": "Dinant"
         },
         {
             "locale": "es",
             "harvard": "Harvard",
             "extreme": "Extreme Networks",
-            "github": "Github"
-        },
-        {
-            "locale": "ja",
-            "harvard": "ハーバード",
-            "extreme": "エクストリーム ネットワークス",
-            "github": "ギットハブ"
+            "github": "GitHub",
+            "dinant": "Dinant"
         }
     ],
     "info": [
@@ -24,6 +20,7 @@
             "locale": "en",
             "type": "Type",
             "type-education": "Education",
+            "type-internship": "Internship",
             "link": "Link",
             "content": "Content"
         },
@@ -31,15 +28,9 @@
             "locale": "es",
             "type": "Tipo",
             "type-education": "Educación",
+            "type-internship": "Pasantia",
             "link": "Enlace",
             "content": "Contenido"
-        },
-        {
-            "locale": "ja",
-            "type": "種類",
-            "type-education": "教育",
-            "link": "リンク",
-            "content": "中身"
         }
     ]
 }

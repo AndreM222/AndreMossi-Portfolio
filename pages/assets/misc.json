@@ -13,7 +13,7 @@
         {
             "locale": "en",
             "about": "About",
-            "practice": "Practice",
+            "experience": "Experience",
             "others": "Others",
             "resume": "Resume",
             "link-resume": "/AndreCV-EN.pdf"
@@ -21,7 +21,7 @@
         {
             "locale": "es",
             "about": "Sobre",
-            "practice": "Practica",
+            "experience": "Experiencia",
             "others": "Otros",
             "resume": "Curriculum",
             "link-resume": "/AndreCV-ES.pdf"
@@ -45,16 +45,6 @@
         {
             "locale": "es",
             "connect": "Conectar"
-        }
-    ],
-    "practice": [
-        {
-            "locale": "en",
-            "content": "Practices"
-        },
-        {
-            "locale": "es",
-            "content": "Practicas"
         }
     ]
 }

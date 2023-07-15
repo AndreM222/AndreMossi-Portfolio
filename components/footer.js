@@ -12,6 +12,7 @@ import {
     Icon,
     Link,
     Box,
+    SimpleGrid,
     useColorModeValue,
 } from '@chakra-ui/react'
 import UpToggle from './up-toggle'
@@ -29,8 +30,8 @@ const Footer = () => {
             <Heading as="h3" variant="section-title">
                 {Content(miscLang, 'footer', 'connect')}
             </Heading>
-            <Box display="flex" justifyContent="space-between" pb={3}>
-                <Box>
+            <Box display="flex" justifyContent="space-between">
+                <SimpleGrid columns={[1, 2, 3, 6]}>
                     <Link href="https://github.com/AndreM222" target="_blank">
                         <Button
                             variant="ghost"
@@ -97,7 +98,7 @@ const Footer = () => {
                             Andre Mossi
                         </Button>
                     </Link>
-                </Box>
+                </SimpleGrid>
                 <UpToggle />
             </Box>
         </Box>

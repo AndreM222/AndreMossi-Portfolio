@@ -86,8 +86,8 @@ const Navbar = (props) => {
                             {Content(miscLang, 'category', 'about')}
                         </LinkItem>
 
-                        <LinkItem href="/practice" path={path}>
-                            {Content(miscLang, 'category', 'practice')}
+                        <LinkItem href="/experience" path={path}>
+                            {Content(miscLang, 'category', 'experience')}
                         </LinkItem>
                         <LinkItem href="/other" path={path}>
                             {Content(miscLang, 'category', 'others')}
@@ -128,11 +128,11 @@ const Navbar = (props) => {
                                     <MenuItem as={MenuLink} href="/">
                             {Content(miscLang, 'category', 'about')}
                                     </MenuItem>
-                                    <MenuItem as={MenuLink} href="/practice">
+                                    <MenuItem as={MenuLink} href="/experience">
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'practice'
+                                            'experience'
                                         )}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/other">

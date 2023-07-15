@@ -21,11 +21,11 @@ export const GridItem = ({ children, href, title, thumbnail }) => (
     </Box>
 )
 
-export const PracticeGridItem = ({ children, id, title, thumbnail }) => (
+export const ExperienceGridItem = ({ children, id, title, thumbnail }) => (
     <Box w="100%" textAlign="center">
         <LinkBox
             as={NextLink}
-            href={`/practices/${id}`}
+            href={`/experiences/${id}`}
             scroll={false}
             cursor="pointer"
         >
@@ -35,7 +35,7 @@ export const PracticeGridItem = ({ children, id, title, thumbnail }) => (
                 className="grid-item-thumbnail"
                 placeholder="blur"
             />
-            <LinkOverlay as="div" href={`/practices/${id}`}>
+            <LinkOverlay as="div" href={`/experiences/${id}`}>
                 <Text mt={2} fontSize={20}>
                     {title}
                 </Text>

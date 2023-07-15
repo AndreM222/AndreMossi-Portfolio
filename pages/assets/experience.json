@@ -1,18 +1,8 @@
 {
-    "title": [
-        {
-            "locale": "en",
-            "name": "Practices"
-        },
-        {
-            "locale": "es",
-            "name": "Practicas"
-        }
-    ],
     "harvard": [
         {
             "locale": "en",
-            "description": "Online harvard class for introduction to Computer Science"
+            "description": "Online Harvard class for introduction to Computer Science"
         },
         {
             "locale": "es",
@@ -37,6 +27,28 @@
         {
             "locale": "es",
             "description": "Proyectos para practica y diversión"
+        }
+    ],
+    "dinant": [
+        {
+            "locale": "en",
+            "description": "Worldwide manufacture and exportation company"
+        },
+        {
+            "locale": "es",
+            "description": "Compania de manufactura y exportaciones globales"
+        }
+    ],
+    "category": [
+        {
+            "locale": "en",
+            "internship": "Internship",
+            "practice": "Practice"
+        },
+        {
+            "locale": "es",
+            "internship": "Pasantia",
+            "practice": "Practica"
         }
     ]
 }

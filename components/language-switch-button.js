@@ -4,7 +4,7 @@ import {
     Menu,
     MenuItem,
     MenuList,
-    MenuButton
+    MenuButton,
 } from '@chakra-ui/react'
 import { TfiWorld } from 'react-icons/tfi'
 import { forwardRef } from 'react'
