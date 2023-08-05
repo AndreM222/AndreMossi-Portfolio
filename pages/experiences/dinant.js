@@ -16,7 +16,7 @@ const Extreme = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'extreme'),
+                Content(contentLang, 'title', 'dinant'),
             ].join(' ')}
         >
             <Container>
