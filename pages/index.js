@@ -34,6 +34,7 @@ const Page = () => {
                         p={3}
                         mb={10}
                         align="center"
+                        css={{ backdropFilter: 'blur(10px)' }}
                     >
                         {Content(indexLang, 'quote', 'content')}
                         <p>{Content(indexLang, 'quote', 'author')}</p>

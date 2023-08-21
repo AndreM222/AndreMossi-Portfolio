@@ -54,7 +54,7 @@ const Navbar = (props) => {
             as="nav"
             w="100%"
             bg={useColorModeValue('#ffffff40', '#32324780')}
-            style={{ backdropFilter: 'blur(10px)' }}
+            css={{ backdropFilter: 'blur(10px)' }}
             zIndex={1}
             {...props}
         >
@@ -126,20 +126,20 @@ const Navbar = (props) => {
                                 />
                                 <MenuList>
                                     <MenuItem as={MenuLink} href="/">
-                            {Content(miscLang, 'category', 'about')}
+                                        {Content(miscLang, 'category', 'about')}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/experience">
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'experience'
+                                            'experience',
                                         )}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/other">
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'others'
+                                            'others',
                                         )}
                                     </MenuItem>
                                     <MenuItem
@@ -147,14 +147,14 @@ const Navbar = (props) => {
                                         href={Content(
                                             miscLang,
                                             'category',
-                                            'link-resume'
+                                            'link-resume',
                                         )}
                                         target="_blank"
                                     >
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'resume'
+                                            'resume',
                                         )}
                                     </MenuItem>
                                 </MenuList>

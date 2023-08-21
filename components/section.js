@@ -25,6 +25,7 @@ const Section = ({
         transition={{ duration: 0.8, delay }}
         mb={6}
         maxW={{ lg: maxW }}
+        css={{ backdropFilter: 'blur(10px)' }}
     >
         {children}
     </StyledDiv>

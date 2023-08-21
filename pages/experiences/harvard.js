@@ -8,7 +8,7 @@ import harvardLang from '../assets/harvard.json'
 import contentLang from '../assets/experience-content.json'
 import miscLang from '../assets/misc.json'
 
-const Experience = () => {
+const Harvard = () => {
     return (
         <Layout
             title={[
@@ -43,4 +43,4 @@ const Experience = () => {
     )
 }
 
-export default Experience
+export default Harvard

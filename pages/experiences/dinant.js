@@ -8,7 +8,7 @@ import dinantLang from '../assets/dinant.json'
 import contentLang from '../assets/experience-content.json'
 import miscLang from '../assets/misc.json'
 
-const Extreme = () => {
+const Dinant = () => {
     return (
         <Layout
             title={[
@@ -21,7 +21,7 @@ const Extreme = () => {
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'extreme')}{' '}
+                    {Content(contentLang, 'title', 'dinant')}{' '}
                     <Badge>2023</Badge>
                 </Title>
                 <Paragraph>
@@ -44,4 +44,4 @@ const Extreme = () => {
     )
 }
 
-export default Extreme
+export default Dinant
