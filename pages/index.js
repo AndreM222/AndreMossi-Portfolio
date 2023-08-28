@@ -13,7 +13,6 @@ import NextLink from 'next/link'
 import { TimeBox, TimeYear } from '../components/timeline'
 import TimeSection from '../components/time-section'
 import Layout from '../components/layouts/article'
-import { motion } from 'framer-motion'
 import Content from '../components/content'
 import indexLang from './assets/index.json'
 import miscLang from './assets/misc.json'
@@ -29,7 +28,7 @@ const Page = () => {
                         borderRadius="lg"
                         bg={useColorModeValue(
                             'whiteAlpha.500',
-                            'whiteAlpha.200'
+                            'whiteAlpha.200',
                         )}
                         p={3}
                         mb={10}
@@ -59,26 +58,16 @@ const Page = () => {
                             ml={{ md: 6 }}
                             align="center"
                         >
-                            <motion.div
-                                initial={{ scale: 0, rotate: 180 }}
-                                animate={{ rotate: 0, scale: 1 }}
-                                transition={{
-                                    type: 'spring',
-                                    stiffness: 260,
-                                    damping: 20,
-                                }}
-                            >
-                                <Image
-                                    borderColor="whiteAlpha.800"
-                                    borderWidth={2}
-                                    borderStyle="solid"
-                                    maxWidth="100px"
-                                    display="inline-block"
-                                    borderRadius="full"
-                                    src="/images/PortfolioPic.png"
-                                    alt="Profile Image"
-                                />
-                            </motion.div>
+                            <Image
+                                borderColor="whiteAlpha.800"
+                                borderWidth={2}
+                                borderStyle="solid"
+                                maxWidth="100px"
+                                display="inline-block"
+                                borderRadius="full"
+                                src="/images/PortfolioPic.png"
+                                alt="Profile Image"
+                            />
                         </Box>
                     </Box>
                 </Box>
