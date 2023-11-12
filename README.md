@@ -2,8 +2,8 @@
 
 Link: [`https://andremossi.vercel.app/`](https://andremossi.vercel.app/)
 
-<img src="doc/WebPic.png" />
-</hr>
+<img src="doc/WebPic_1.png" />
+<img src="doc/WebPic_2.png" />
 
 <h2>Tools ⚒️</h2>
 
@@ -18,6 +18,7 @@ Link: [`https://andremossi.vercel.app/`](https://andremossi.vercel.app/)
 Currently I have the capability of speaking fluently two languages being English and Spanish.
 In order to showcase my ability I had decided to add translation option settings.
 The website as of now supports the following languages:
+<img src="doc/WebPic.png" />
 
 - English
 - Spanish
