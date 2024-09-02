@@ -57,24 +57,28 @@
         {
             "locale": "en",
             "title": "Timeline",
+            "time-ToPresent": "To Present",
+            "time-Present": "Present",
             "first": "Born in Honduras, Tegucigalpa",
             "second": "High school award, Software Development",
             "third": "President of the high school computer club",
             "fourth": "Second high school award, Software Development",
             "fifth": "Internship as Full-Stack Developer at Dinant",
-            "sixth-time": "2022 To Present",
-            "sixth": "Student at Gannon University"
+            "sixth": "Student at Gannon University",
+            "seventh": "AI Research Assistant"
         },
         {
             "locale": "es",
             "title": "Línea de Tiempo",
+            "time-ToPresent": "Al Presente",
+            "time-Present": "Presente",
             "first": "Nací en Honduras, Tegucigalpa",
             "second": "Premio escolar, Desarrollo de Software",
             "third": "Presidente escolar del club de computación",
             "fourth": "Segundo premio escolar, Desarrollo de Software",
             "fifth": "Pasantia como Full-Stack Developer en Dinant",
-            "sixth-time": "2022 Al Presente",
-            "sixth": "Estudiante en Gannon University"
+            "sixth": "Estudiante en Gannon University",
+            "seventh": "Assistente, Estudio de Intelligencia Artificial"
         }
     ]
 }

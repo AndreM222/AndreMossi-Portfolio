@@ -142,11 +142,17 @@ const Page = () => {
                         <TimeYear>2023</TimeYear>
                         {Content(indexLang, 'timeline', 'fifth')}
                     </TimeBox>
-                    <TimeBox last={true}>
+                    <TimeBox last={false}>
                         <TimeYear>
-                            {Content(indexLang, 'timeline', 'sixth-time')}
+                            2022 {Content(indexLang, 'timeline', 'time-ToPresent')}
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'sixth')}
+                    </TimeBox>
+                    <TimeBox last={true}>
+                        <TimeYear>
+                            {Content(indexLang, 'timeline', 'time-Present')}
+                        </TimeYear>
+                        {Content(indexLang, 'timeline', 'seventh')}
                     </TimeBox>
                 </TimeSection>
             </Container>

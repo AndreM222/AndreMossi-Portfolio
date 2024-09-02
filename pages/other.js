@@ -21,12 +21,15 @@ const Other = () => {
                 <Heading as="h3">
                     {Content(miscLang, 'category', 'others')}
                 </Heading>{' '}
+
                 <Divider my={6} />
-                <Section delay={0.1}>
+
+                <Section delay={0.1} align='left'>
                     <Paragraph>
                         {Content(othersLang, 'description', 'content')}
                     </Paragraph>
                 </Section>
+
                 <Section delay={0.2}>
                     <Heading as="h3" variant="section-title">
                         {Content(othersLang, 'editor', 'title')}
@@ -35,6 +38,7 @@ const Other = () => {
                         {Content(othersLang, 'editor', 'description')}
                     </Paragraph>
                 </Section>
+
                 <Section delay={0.3}>
                     <GridItem
                         href="https://github.com/AndreM222/Windows-Dotfiles"
