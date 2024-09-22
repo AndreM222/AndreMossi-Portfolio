@@ -5,14 +5,16 @@
             "harvard": "Harvard",
             "extreme": "Extreme Networks",
             "github": "GitHub",
-            "dinant": "Dinant"
+            "dinant": "Dinant",
+            "ai-sandbox": "AI-Sandbox"
         },
         {
             "locale": "es",
             "harvard": "Harvard",
             "extreme": "Extreme Networks",
             "github": "GitHub",
-            "dinant": "Dinant"
+            "dinant": "Dinant",
+            "ai-sandbox": "AI-Sandbox"
         }
     ],
     "info": [
@@ -21,6 +23,7 @@
             "type": "Type",
             "type-education": "Education",
             "type-internship": "Internship",
+            "type-research": "Research",
             "link": "Link",
             "content": "Content"
         },
@@ -29,6 +32,7 @@
             "type": "Tipo",
             "type-education": "Educación",
             "type-internship": "Pasantia",
+            "type-research": "Investigacion",
             "link": "Enlace",
             "content": "Contenido"
         }

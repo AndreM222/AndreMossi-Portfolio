@@ -9,6 +9,7 @@
             "name": "André Mossi"
         }
     ],
+
     "category": [
         {
             "locale": "en",
@@ -27,6 +28,7 @@
             "link-resume": "/AndreCV-ES.pdf"
         }
     ],
+
     "button": [
         {
             "locale": "en",
@@ -37,6 +39,7 @@
             "content": "Mas"
         }
     ],
+
     "footer": [
         {
             "locale": "en",

@@ -9,6 +9,7 @@
             "description": "Clase en línea de Harvard introducción a Computer Science"
         }
     ],
+
     "extreme-networks": [
         {
             "locale": "en",
@@ -19,6 +20,7 @@
             "description": "Complete la clase de Extreme Networks en la universidad"
         }
     ],
+
     "github": [
         {
             "locale": "en",
@@ -29,6 +31,7 @@
             "description": "Proyectos para practica y diversión"
         }
     ],
+
     "dinant": [
         {
             "locale": "en",
@@ -39,16 +42,30 @@
             "description": "Compania de manufactura y exportaciones globales"
         }
     ],
+
+    "ai-sandbox": [
+        {
+            "locale": "en",
+            "description": "AI-Sandbox to study behavior or organisms"
+        },
+        {
+            "locale": "es",
+            "description": "Un AI-Sandbox para estudiar el comportamiento de organismos"
+        }
+    ],
+
     "category": [
         {
             "locale": "en",
             "internship": "Internship",
-            "practice": "Practice"
+            "practice": "Practice",
+            "research": "Research"
         },
         {
             "locale": "es",
             "internship": "Pasantia",
-            "practice": "Practica"
+            "practice": "Practica",
+            "research": "Investigacion"
         }
     ]
 }

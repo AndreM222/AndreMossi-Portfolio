@@ -1,0 +1,23 @@
+{
+    "description": [
+        {
+            "locale": "en",
+            "content": "During my time as a student in Gannon University, I decided to work beside a teacher in a research. This research was the AI-Sandbox together with professor Rahman. The sandbox was a simulation of organisms to emphisize the natural selection under environment constrains. For this project, the survival requirement is of that of a game of tag. The organisms will be divided into two groups, the seekers and runners. the seekers or hiders who survive they share their information with a new generation. The goal is to understand the behavior of reinforcment learning through the change of genomes."
+        },
+        {
+            "locale": "es",
+            "content": "Durante mi tiempo como estudiante en Gannon University, decidi trabajar junto a un professor and una investigacion. Esta investigacion era el AI-Sandbox con el profesor Rahman. El sandbox es una simulacion de orgaismos para enfatisar la seleccion natural bajo limitaciones naturales. Para este projecto, el requierimiento se superviviencia era el juego de las traes. Los organismos se dividen en dos grupos, los buscadores y los ocultadores. Los buscadores o ocultadores que sobreviven comparten su informcion por generaciones. El proposito es el de entender el comportamiento por aprendicaje por refuerzo por el cambio de genomas"
+        }
+    ],
+
+    "info": [
+        {
+            "locale": "en",
+            "content": "Full-Stack Development, Python, Cuda, Pytorch"
+        },
+        {
+            "locale": "es",
+            "content": "Full-Stack Development, Python, Cuda, Pytorch"
+        }
+    ]
+}

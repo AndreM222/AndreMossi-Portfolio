@@ -12,6 +12,7 @@ import thumbHarvard from '../public/images/experiences/Harvard.png'
 import thumbExtreme from '../public/images/experiences/ExtremeNetworks.png'
 import thumbGithub from '../public/images/experiences/GitBanner.png'
 import thumbDinant from '../public/images/experiences/Dinant.png'
+import thumbAISandbox from '../public/images/experiences/AI-Sandbox.png'
 
 const Experience = () => {
     return (
@@ -27,9 +28,11 @@ const Experience = () => {
                     {Content(miscLang, 'category', 'experience')}
                 </Heading>
                 <Divider my={6} />
+
                 <Heading as="h2" fontSize={25} my={6}>
                     {Content(experienceLang, 'category', 'internship')}
                 </Heading>
+
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
                     <Section>
                         <ExperienceGridItem
@@ -41,6 +44,23 @@ const Experience = () => {
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>
+
+                <Heading as="h2" fontSize={25} my={6}>
+                    {Content(experienceLang, 'category', 'research')}
+                </Heading>
+
+                <SimpleGrid columns={[1, 1, 3]} gap={6}>
+                    <Section>
+                        <ExperienceGridItem
+                            id="ai-sandbox"
+                            title={Content(contentLang, 'title', 'ai-sandbox')}
+                            thumbnail={thumbAISandbox}
+                        >
+                            {Content(experienceLang, 'ai-sandbox', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+                </SimpleGrid>
+
                 <Heading as="h2" fontSize={25} my={6}>
                     {Content(experienceLang, 'category', 'practice')}
                 </Heading>
@@ -55,6 +75,7 @@ const Experience = () => {
                             {Content(experienceLang, 'harvard', 'description')}
                         </ExperienceGridItem>
                     </Section>
+
                     <Section>
                         <ExperienceGridItem
                             id="extreme"
@@ -68,6 +89,7 @@ const Experience = () => {
                             )}
                         </ExperienceGridItem>
                     </Section>
+
                     <Section>
                         <ExperienceGridItem
                             id="github"

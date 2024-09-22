@@ -1,14 +1,14 @@
-import { Container, Badge, List, ListItem } from '@chakra-ui/react'
-import { Title, Meta } from '../../components/experience'
-import Paragraph from '../../components/paragraph'
-import Layout from '../../components/layouts/article'
-import Content from '../../components/content'
+import { Container, Badge, List, ListItem } from "@chakra-ui/react";
+import { Title, Meta } from "../../components/experience";
+import Paragraph from "../../components/paragraph";
+import Layout from "../../components/layouts/article";
+import Content from "../../components/content";
 
-import dinantLang from '../assets/dinant.json'
+import sandboxLang from '../assets/ai-sandbox.json'
 import contentLang from '../assets/experience-content.json'
 import miscLang from '../assets/misc.json'
 
-const Dinant = () => {
+const Sandbox = () => {
     return (
         <Layout
             title={[
@@ -16,30 +16,30 @@ const Dinant = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'dinant'),
+                Content(contentLang, 'title', 'ai-sandbox'),
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'dinant')}{' '}
-                    <Badge>2023</Badge>
+                    {Content(contentLang, 'title', 'ai-sandbox')}{' '}
+                    <Badge>Present</Badge>
                 </Title>
 
                 <Paragraph>
-                    {Content(dinantLang, 'description', 'content')}
+                    {Content(sandboxLang, 'description', 'content')}
                 </Paragraph>
 
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
-                            {Content(contentLang, 'info', 'type-internship')}
+                            {Content(contentLang, 'info', 'type-research')}
                         </span>
                     </ListItem>
 
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
-                        <span>{Content(dinantLang, 'info', 'content')}</span>
+                        <span>{Content(sandboxLang, 'info', 'content')}</span>
                     </ListItem>
                 </List>
             </Container>
@@ -47,4 +47,4 @@ const Dinant = () => {
     )
 }
 
-export default Dinant
+export default Sandbox
