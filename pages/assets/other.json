@@ -1,11 +1,13 @@
 {
-    "description": [
+    "beginning": [
         {
             "locale": "en",
+            "title": "The Beginning",
             "content": "Was awarded in my school for the best computer project by developing my first ever video game using Unreal Engine. After this experience I knew that programming was the path I wanted to walk. Walking from there, I started learning more and joining clubs related to my career, I was able to win a second competition in my school developing a second small survival game. In the same year I was nominated as the president of the computer club. At my school for the seniors there is a final test which measures your level of understanding of computers, the one who obtains the highest grade and greater than 90% can obtain a medal. I was the one with the highest grade, being 100%."
         },
         {
             "locale": "es",
+            "title": "El Comienzo",
             "content": "Fui premiado en mi escuela por el mejor proyecto de computación por desarrollar mi primer videojuego usando Unreal Engine. Después de esta experiencia supe que programar era el camino que deseaba caminar. Caminando desde ese punto, empecé a aprender más y me uní a clubs relacionados a mi carrera, logré ganar una segunda competencia en mi escuela desarrollando un segundo un pequeño juego de supervivencia. En el mismo año fui nominado como el presidente del club de computación. Rn mi escuela para los seniors hay un examen el cual mide tu nivel de entendimiento sobre computación, el que obtenga la nota más alta y mayor de 90% obtiene una medalla. Yo fui el que obtuvo la nota más alta siendo 100%."
         }
     ],
@@ -21,7 +23,7 @@
             "description": "De momento mi editor principal es Neovim, pero también estoy familiarizado con otros editores como VSCode, InteliJ, y Visual Studio. Empecé mi aventura en Neovim desde que fui notificado que era la herramienta más poderosa para programar, pero también lo complicado de aprender. A mí me encanta tomar retos e incrementar mi conocimiento entonces decidí tomar el reto."
         }
     ],
-    "thumbnail": [
+    "thumbnailEditor": [
         {
             "locale": "en",
             "title": "Windows Dotfiles",
@@ -31,6 +33,30 @@
             "locale": "es",
             "title": "Windows Dotfiles",
             "description": "Mis ajustes dotfile para Windows"
+        }
+    ],
+    "culture": [
+        {
+            "locale": "en",
+            "title": "Culture Learning",
+            "content": "As I grew up, I was lucky to be able to travel and get to know many cultures. this travels helped me to keep an open mind towards people and as well grow up as a good citizen. One of the most fun and mind opening experiences was my visit to Japan. During one of my breaks I made the choice of visiting Japan to spend some time with my girlfriends family and friends. During that time I was lucky to have a chance of volunteering in a restaurant named Yakiniku Byakutan. Working besides native japanese was a unforgetable experience. I admired their professionalism, friendship, and commitement to giving the best service."
+        },
+        {
+            "locale": "es",
+            "title": "Aprendizaje Cultural",
+            "content": "A medida que crecí, tuve la suerte de poder viajar y conocer muchas culturas. Estos viajes me ayudaron a mantener una mente abierta hacia las personas y también a crecer como un buen ciudadano. Una de las experiencias más divertidas y reveladoras fue mi visita a Japón. Durante una de mis vacaciones, tomé la decisión de visitar Japón para pasar un tiempo con la familia y amigos de mi novia. Durante ese tiempo, tuve la suerte de tener la oportunidad de ser voluntario en un restaurante llamado Yakiniku Byakutan. Trabajar junto a japoneses nativos fue una experiencia inolvidable. Admiré su profesionalismo, amistad y compromiso para brindar el mejor servicio."
+        }
+    ],
+    "thumbnailCulture": [
+        {
+            "locale": "en",
+            "title": "Yakiniku Byakutan",
+            "description": "The incredible people I spent with during my volunteering job"
+        },
+        {
+            "locale": "es",
+            "title": "Yakiniku Byakutan",
+            "description": "Las increibles personas con las que comparti momentos en el voluntariado"
         }
     ]
 }
