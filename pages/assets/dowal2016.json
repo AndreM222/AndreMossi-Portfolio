@@ -1,0 +1,22 @@
+{
+    "description": [
+        {
+            "locale": "en",
+            "content": "This was a competition held in my freshman year of highschool, 2016. The competition was the technology fair, meant for students from my school to have experience developing technology of various types. For my project I adventured myself to develop a multiplayer first person shooter game which ended up being a sensation among the students. I was given the diploma for winning the competition against students from various years."
+        },
+        {
+            "locale": "es",
+            "content": "Esta era una competencia que se llevo acabo en mi primer año de secundaria, 2016. Esta competencia era una feria technologica, dada con el proposito que los estudiantes de mi escuela obtendrian experiencia desarrollando differentes tipos de projectos. Para mi projecto, yo desarrolle un videojuego de disparos en primera persona multijugador el cual fue la sensasion entre los estudiantes. Fui otorgado el diploma por ganar la competencia contra estudiantes de varios años."
+        }
+    ],
+    "info": [
+        {
+            "locale": "en",
+            "content": "Unreal Engine, C++"
+        },
+        {
+            "locale": "es",
+            "content": "Unreal Engine, C++"
+        }
+    ]
+}

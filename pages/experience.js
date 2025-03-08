@@ -8,11 +8,13 @@ import experienceLang from './assets/experience.json'
 import miscLang from './assets/misc.json'
 import contentLang from './assets/experience-content.json'
 
-import thumbHarvard from '../public/images/experiences/Harvard.png'
-import thumbExtreme from '../public/images/experiences/ExtremeNetworks.png'
-import thumbGithub from '../public/images/experiences/GitBanner.png'
-import thumbDinant from '../public/images/experiences/Dinant.png'
-import thumbAISandbox from '../public/images/experiences/AI-Sandbox.png'
+import thumbHarvard from '/public/images/experiences/Banners/Harvard-Banner.png'
+import thumbExtreme from '/public/images/experiences/Banners/ExtremeNetworks-Banner.png'
+import thumbGithub from '/public/images/experiences/Banners/Git-Banner.png'
+import thumbDinant from '/public/images/experiences/Banners/Dinant-Banner.png'
+import thumbAISandbox from '/public/images/experiences/Banners/AI-Sandbox-Banner.png'
+import thumbDowal2016 from '/public/images/experiences/Banners/Dowal-2016p-Banner.png'
+import thumbDowal2020 from '/public/images/experiences/Banners/Dowal-2020p-Banner.png'
 
 const Experience = () => {
     return (
@@ -20,13 +22,11 @@ const Experience = () => {
             title={[
                 Content(miscLang, 'title', 'name'),
                 '-',
-                Content(miscLang, 'category', 'experience'),
+                Content(miscLang, 'category', 'experience')
             ].join(' ')}
         >
             <Container maxW="container.lg">
-                <Heading as="h3">
-                    {Content(miscLang, 'category', 'experience')}
-                </Heading>
+                <Heading as="h3">{Content(miscLang, 'category', 'experience')}</Heading>
                 <Divider my={6} />
 
                 <Heading as="h2" fontSize={25} my={6}>
@@ -62,6 +62,32 @@ const Experience = () => {
                 </SimpleGrid>
 
                 <Heading as="h2" fontSize={25} my={6}>
+                    {Content(experienceLang, 'category', 'awards')}
+                </Heading>
+
+                <SimpleGrid columns={[1, 1, 3]} gap={6}>
+                    <Section>
+                        <ExperienceGridItem
+                            id="dowal2020"
+                            title={Content(contentLang, 'title', 'dowal-2020')}
+                            thumbnail={thumbDowal2020}
+                        >
+                            {Content(experienceLang, 'dowal-competition', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+
+                    <Section>
+                        <ExperienceGridItem
+                            id="dowal2016"
+                            title={Content(contentLang, 'title', 'dowal-2016')}
+                            thumbnail={thumbDowal2016}
+                        >
+                            {Content(experienceLang, 'dowal-competition', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+                </SimpleGrid>
+
+                <Heading as="h2" fontSize={25} my={6}>
                     {Content(experienceLang, 'category', 'practice')}
                 </Heading>
 
@@ -82,11 +108,7 @@ const Experience = () => {
                             title={Content(contentLang, 'title', 'extreme')}
                             thumbnail={thumbExtreme}
                         >
-                            {Content(
-                                experienceLang,
-                                'extreme-networks',
-                                'description'
-                            )}
+                            {Content(experienceLang, 'extreme-networks', 'description')}
                         </ExperienceGridItem>
                     </Section>
 

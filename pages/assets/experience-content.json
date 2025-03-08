@@ -3,6 +3,8 @@
         {
             "locale": "en",
             "harvard": "Harvard",
+            "dowal-2020": "Dowal 2020",
+            "dowal-2016": "Dowal 2016",
             "extreme": "Extreme Networks",
             "github": "GitHub",
             "dinant": "Dinant",
@@ -11,6 +13,8 @@
         {
             "locale": "es",
             "harvard": "Harvard",
+            "dowal-2020": "Dowal 2020",
+            "dowal-2016": "Dowal 2016",
             "extreme": "Extreme Networks",
             "github": "GitHub",
             "dinant": "Dinant",
@@ -25,7 +29,8 @@
             "type-internship": "Internship",
             "type-research": "Research",
             "link": "Link",
-            "content": "Content"
+            "content": "Content",
+            "award": "Award"
         },
         {
             "locale": "es",
@@ -34,6 +39,7 @@
             "type-internship": "Pasantia",
             "type-research": "Investigacion",
             "link": "Enlace",
+            "award": "Premio",
             "content": "Contenido"
         }
     ]

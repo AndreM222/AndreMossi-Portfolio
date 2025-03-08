@@ -6,18 +6,22 @@
         },
         {
             "locale": "es",
-            "content": "Durante mi tiempo como estudiante en Gannon University, decidi trabajar junto a un professor and una investigacion. Esta investigacion era el AI-Sandbox con el profesor Rahman. El sandbox es una simulacion de orgaismos para enfatisar la seleccion natural bajo limitaciones naturales. Para este projecto, el requierimiento se superviviencia era el juego de las traes. Los organismos se dividen en dos grupos, los buscadores y los ocultadores. Los buscadores o ocultadores que sobreviven comparten su informcion por generaciones. El proposito es el de entender el comportamiento por aprendicaje por refuerzo por el cambio de genomas"
+            "content": "Durante mi tiempo como estudiante en Gannon University, decidi trabajar junto a un professor and una investigacion. Esta investigacion era el AI-Sandbox con el profesor Rahman. El sandbox es una simulacion de orgaismos para enfatisar la seleccion natural bajo limitaciones naturales. Para este projecto, el requierimiento se superviviencia era el juego de las traes. Los organismos se dividen en dos grupos, los buscadores y los ocultadores. Los buscadores o ocultadores que sobreviven comparten su informcion por generaciones. El proposito es el de entender el comportamiento por aprendicaje por refuerzo por el cambio de genomas."
         }
     ],
 
     "info": [
         {
             "locale": "en",
-            "content": "Full-Stack Development, C++, Unreal-Engine, Cuda, Pytorch"
+            "content": "Full-Stack Development, C++, Unreal-Engine, Cuda, Pytorch",
+            "world": "World Generator",
+            "entity": "AI Entity"
         },
         {
             "locale": "es",
-            "content": "Full-Stack Development, C++, Unreal-Engine, Cuda, Pytorch"
+            "content": "Full-Stack Development, C++, Unreal-Engine, Cuda, Pytorch",
+            "world": "Generador de Mundo",
+            "entity": "IA Entidad"
         }
     ]
 }

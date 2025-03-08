@@ -1,8 +1,9 @@
-import { Container, Badge, List, ListItem } from "@chakra-ui/react";
-import { Title, Meta } from "../../components/experience";
+import { Container, Badge, List, ListItem, Link } from "@chakra-ui/react";
+import { Title, Meta, ThumbImage } from "../../components/experience";
 import Paragraph from "../../components/paragraph";
 import Layout from "../../components/layouts/article";
 import Content from "../../components/content";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 import sandboxLang from '../assets/ai-sandbox.json'
 import contentLang from '../assets/experience-content.json'
@@ -41,7 +42,23 @@ const Sandbox = () => {
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <span>{Content(sandboxLang, 'info', 'content')}</span>
                     </ListItem>
+
+                    <ListItem>
+                        <Meta>{Content(contentLang, 'info', 'link')}</Meta>
+                        <Link href="https://github.com/AndreM222/Procedural-Generator">
+                            {Content(sandboxLang, 'info', 'world')}
+                            <ExternalLinkIcon ml={2} />
+                        </Link>
+                        {', '}
+                        <Link href="https://github.com/AndreM222/AI-Entities">
+                            {Content(sandboxLang, 'info', 'entity')}
+                            <ExternalLinkIcon ml={2} />
+                        </Link>
+                    </ListItem>
                 </List>
+
+                <ThumbImage src="/images/experiences/ActionPreview.png" />
+                <ThumbImage src="/images/experiences/ProceduralPreviewPic.png" />
             </Container>
         </Layout>
     )

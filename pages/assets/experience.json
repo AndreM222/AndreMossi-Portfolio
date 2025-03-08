@@ -10,6 +10,17 @@
         }
     ],
 
+    "dowal-competition": [
+        {
+            "locale": "en",
+            "description": "Technology fair hold on Dowal School"
+        },
+        {
+            "locale": "es",
+            "description": "Feria technologica llevada a cabo en Dowal School"
+        }
+    ],
+
     "extreme-networks": [
         {
             "locale": "en",
@@ -59,12 +70,13 @@
             "locale": "en",
             "internship": "Internship",
             "practice": "Practice",
+            "awards": "Awards",
             "research": "Research"
         },
         {
             "locale": "es",
             "internship": "Pasantia",
-            "practice": "Practica",
+            "awards": "Premios",
             "research": "Investigacion"
         }
     ]
