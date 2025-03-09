@@ -39,7 +39,7 @@ const Extreme = () => {
                         <span>{Content(extremeLang, 'info', 'content')}</span>
                     </ListItem>
                 </List>
-                <ThumbImage src="/images/experiences/Extreme-Certificate.png" />
+                <ThumbImage src="/images/experiences/Extreme-Certificate.png" alt="Extreme Certificate" />
             </Container>
         </Layout>
     )

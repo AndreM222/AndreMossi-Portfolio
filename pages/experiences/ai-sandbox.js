@@ -57,8 +57,8 @@ const Sandbox = () => {
                     </ListItem>
                 </List>
 
-                <ThumbImage src="/images/experiences/ActionPreview.png" />
-                <ThumbImage src="/images/experiences/ProceduralPreviewPic.png" />
+                <ThumbImage src="/images/experiences/ActionPreview.png" alt="Actions Preview" />
+                <ThumbImage src="/images/experiences/ProceduralPreviewPic.png" alt="World Generator Preview" />
             </Container>
         </Layout>
     )
