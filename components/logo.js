@@ -10,31 +10,31 @@ const LogoBox = styled.span`
     font-size: 18px;
     display: inline-flex;
     align-items: center;
-    height: 30px;
+    height: 20px;
     line-height: 20px;
     padding: 10px;
+    gap: 9px;
 
     > img {
         transition: 100ms ease;
     }
 
     &:hover img {
-        transform: rotate(15deg);
+        transform: rotate(15deg) scale(1.2);
     }
 `
 
 const Logo = () => {
-    const logoPrintImg = `/images/LogoNav.png`
+    const logoPrintImg = `/images/LogoNav.svg`
 
     return (
         <Link href="/">
             <LogoBox>
-                <Image src={logoPrintImg} width={20} height={20} alt="logo" />
+                <Image src={logoPrintImg} width={20} height={20} alt="logo"/>
                 <Text
                     color={useColorModeValue('gray.800', 'whiteAlpha.900')}
                     fontFamily="M PLUS Rounded 1c"
                     fontWeight="bold"
-                    ml={3}
                 >
                     { Content(miscLang, 'title', 'name') }
                 </Text>
