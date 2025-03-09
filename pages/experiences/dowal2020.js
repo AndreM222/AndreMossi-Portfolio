@@ -39,7 +39,7 @@ const Extreme = () => {
                         <span>{Content(dowalLang, 'info', 'content')}</span>
                     </ListItem>
                 </List>
-                <ThumbImage src="/images/experiences/dowal-2020p.png" />
+                <ThumbImage src="/images/experiences/dowal-2020p-certificate.png" />
             </Container>
         </Layout>
     )
