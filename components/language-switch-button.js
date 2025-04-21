@@ -7,7 +7,7 @@ import {
     MenuButton
 } from '@chakra-ui/react'
 import { TfiWorld } from 'react-icons/tfi'
-import { forwardRef } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -22,7 +22,30 @@ const languageNames = {
 }
 
 const LanguageButton = ({ path }) => {
-    const { locales } = useRouter()
+    const { locales, locale, push, asPath } = useRouter()
+
+    const [language, setLanguage] = useState(() => {
+        if (
+            typeof localStorage != 'undefined' &&
+            localStorage.getItem('language')
+        ) {
+            return localStorage.getItem('language')
+        }
+
+        return locale
+    })
+
+    const setLocale = language => {
+        localStorage.setItem('language', language)
+        setLanguage(language)
+    }
+
+    useEffect(() => {
+        if (locale !== language) {
+            push(path, asPath, { locale: language })
+        }
+    }, [language])
+
     return (
         <Menu>
             <MenuButton
@@ -32,9 +55,15 @@ const LanguageButton = ({ path }) => {
                 colorScheme={useColorModeValue('purple', 'pink')}
             />
             <MenuList>
-                {locales.map(locale => (
-                    <MenuItem as={MenuLink} href={path} locale={locale} key={locale}>
-                        {languageNames[locale]}
+                {locales.map(language => (
+                    <MenuItem
+                        as={MenuLink}
+                        href={path}
+                        locale={language}
+                        key={language}
+                        onClick={() => setLocale(language)}
+                    >
+                        {languageNames[language]}
                     </MenuItem>
                 ))}
             </MenuList>
