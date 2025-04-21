@@ -70,20 +70,20 @@ const StatsMenu = () => {
     }, [])
 
     return (
-        <SimpleGrid columns={3} mb={3} gap={2}>
-            <StatItem
-                loading={loading}
-                icon={<FaStar />}
-                category="stars"
-                value={stats?.totalStars}
-                delay={0.5}
-            />
-
+        <SimpleGrid columns={[1, 3]} mb={3} gap={2}>
             <StatItem
                 loading={loading}
                 icon={<FaBook />}
                 category="repositories"
                 value={stats?.totalRepos}
+                delay={0.5}
+            />
+
+            <StatItem
+                loading={loading}
+                icon={<FaStar />}
+                category="stars"
+                value={stats?.totalStars}
                 delay={0.2}
             />
 
