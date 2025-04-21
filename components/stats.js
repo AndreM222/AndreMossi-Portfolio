@@ -9,6 +9,7 @@ import {
     useColorModeValue
 } from '@chakra-ui/react'
 import { fetchStats } from './API'
+import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
 import CountUp from 'react-countup'
@@ -23,7 +24,7 @@ const StyledDiv = chakra(motion.div, {
     }
 })
 
-const StatItem = ({ loading, icon, category, value, delay = 0 }) => (
+const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     <StyledDiv
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -42,6 +43,8 @@ const StatItem = ({ loading, icon, category, value, delay = 0 }) => (
             rounded="lg"
             justifyContent="center"
             alignItems="center"
+            as={NextLink}
+            href={href}
         >
             {icon}
             <span>{Content(experienceLang, 'category', category.toLowerCase())}</span>
@@ -75,6 +78,7 @@ const StatsMenu = () => {
                 loading={loading}
                 icon={<FaBook />}
                 category="repositories"
+                href="https://github.com/AndreM222?tab=repositories"
                 value={stats?.totalRepos}
                 delay={0.5}
             />
@@ -83,6 +87,7 @@ const StatsMenu = () => {
                 loading={loading}
                 icon={<FaStar />}
                 category="stars"
+                href="https://github.com/AndreM222"
                 value={stats?.totalStars}
                 delay={0.2}
             />
@@ -91,6 +96,7 @@ const StatsMenu = () => {
                 loading={loading}
                 icon={<FaTrophy />}
                 category="awards"
+                href="/experience"
                 value={stats?.totalAwards}
                 delay={0.5}
             />
