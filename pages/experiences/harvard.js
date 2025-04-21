@@ -3,6 +3,8 @@ import { Title, ThumbImage, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import Content from '../../components/content'
+import ExperienceList from '../../components/experienceList'
+import DateSetup from '../../components/dateSetup'
 
 import harvardLang from '../assets/harvard.json'
 import contentLang from '../assets/experience-content.json'
@@ -16,25 +18,25 @@ const Harvard = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'harvard'),
+                Content(contentLang, 'title', 'harvard')
             ].join(' ')}
         >
             <Container>
                 <Title>
                     {Content(contentLang, 'title', 'harvard')}{' '}
-                    <Badge>2022</Badge>
+                    <Badge>
+                        <DateSetup date="2022" />{' '}
+                    </Badge>
                 </Title>
                 <P>{Content(harvardLang, 'description', 'content')}</P>
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>
-                            {Content(contentLang, 'info', 'type-education')}
-                        </span>
+                        <span>{Content(contentLang, 'info', 'type-education')}</span>
                     </ListItem>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
-                        <span>C, Python, Javascript, CSS, Html, SQL</span>
+                        <ExperienceList list="C, Python, Javascript, CSS, Html, SQL" />
                     </ListItem>
                 </List>
                 <ThumbImage src="/images/experiences/CS50x.png" alt="Harvard" />

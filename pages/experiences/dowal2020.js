@@ -3,6 +3,8 @@ import { Title, ThumbImage, Meta } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import Content from '../../components/content'
+import ExperienceList from '../../components/experienceList'
+import DateSetup from '../../components/dateSetup'
 
 import dowalLang from '../assets/dowal2020.json'
 import contentLang from '../assets/experience-content.json'
@@ -16,30 +18,31 @@ const Extreme = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'dowal-2020'),
+                Content(contentLang, 'title', 'dowal-2020')
             ].join(' ')}
         >
             <Container>
                 <Title>
                     {Content(contentLang, 'title', 'dowal-2020')}{' '}
-                    <Badge>2022</Badge>
+                    <Badge>
+                        <DateSetup date="2020" />
+                    </Badge>
                 </Title>
-                <Paragraph>
-                    {Content(dowalLang, 'description', 'content')}
-                </Paragraph>
+                <Paragraph>{Content(dowalLang, 'description', 'content')}</Paragraph>
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>
-                            {Content(contentLang, 'info', 'award')}
-                        </span>
+                        <span>{Content(contentLang, 'info', 'award')}</span>
                     </ListItem>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
-                        <span>{Content(dowalLang, 'info', 'content')}</span>
+                        <ExperienceList list="Unreal Engine, Blueprints" />
                     </ListItem>
                 </List>
-                <ThumbImage src="/images/experiences/Dowal-2020p-Certificate.png" alt="Dowal 2020" />
+                <ThumbImage
+                    src="/images/experiences/Dowal-2020p-Certificate.png"
+                    alt="Dowal 2020"
+                />
             </Container>
         </Layout>
     )

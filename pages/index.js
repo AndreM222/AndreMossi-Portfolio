@@ -4,7 +4,7 @@ import {
     Box,
     Heading,
     Image,
-    useColorModeValue,
+    useColorModeValue
 } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
@@ -16,6 +16,8 @@ import Layout from '../components/layouts/article'
 import Content from '../components/content'
 import indexLang from './assets/index.json'
 import miscLang from './assets/misc.json'
+import DateSetup from '../components/dateSetup'
+import StatsMenu from '../components/stats'
 
 const Page = () => {
     return (
@@ -26,25 +28,28 @@ const Page = () => {
                         boxShadow="lg"
                         maxW="container.md"
                         borderRadius="lg"
-                        bg={useColorModeValue(
-                            'whiteAlpha.500',
-                            'whiteAlpha.200',
-                        )}
+                        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
                         p={3}
                         mb={10}
                         align="center"
                         css={{ backdropFilter: 'blur(10px)' }}
                     >
                         {Content(indexLang, 'quote', 'content')}
-                        <p>{Content(indexLang, 'quote', 'author')}</p>
+                        <Box display="inline-flex" alignItems="center">
+                            <Box
+                                width="20px"
+                                height="4px"
+                                borderRadius="lg"
+                                mr={2}
+                                bg={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
+                            />{' '}
+                            {Content(indexLang, 'quote', 'author')}
+                        </Box>
                     </Box>
 
-                    <Box
-                        display={{ md: 'flex' }}
-                        maxW="container.md"
-                        my="auto"
-                        mb={10}
-                    >
+                    <StatsMenu />
+
+                    <Box display={{ md: 'flex' }} maxW="container.md" my="auto" mb={10}>
                         <Box flexGrow={1}>
                             <Heading as="h2" variant="page-title">
                                 {Content(miscLang, 'title', 'name')}
@@ -75,18 +80,14 @@ const Page = () => {
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'about')}
                     </Heading>
-                    <Paragraph>
-                        {Content(indexLang, 'about', 'content')}
-                    </Paragraph>
+                    <Paragraph>{Content(indexLang, 'about', 'content')}</Paragraph>
                 </Section>
 
                 <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'experience')}
                     </Heading>
-                    <Paragraph>
-                        {Content(indexLang, 'experience', 'content')}
-                    </Paragraph>
+                    <Paragraph>{Content(indexLang, 'experience', 'content')}</Paragraph>
                     <Box align="center" my={4}>
                         <Button
                             as={NextLink}
@@ -103,9 +104,7 @@ const Page = () => {
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'others')}
                     </Heading>
-                    <Paragraph>
-                        {Content(indexLang, 'others', 'content')}
-                    </Paragraph>
+                    <Paragraph>{Content(indexLang, 'others', 'content')}</Paragraph>
                     <Box align="center" my={4}>
                         <Button
                             as={NextLink}
@@ -123,34 +122,44 @@ const Page = () => {
                         {Content(indexLang, 'timeline', 'title')}
                     </Heading>
                     <TimeBox>
-                        <TimeYear>2002</TimeYear>
+                        <TimeYear>
+                            <DateSetup date="2002" />
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'first')}
                     </TimeBox>
                     <TimeBox>
-                        <TimeYear>2016</TimeYear>
+                        <TimeYear>
+                            <DateSetup date="2016" />
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'second')}
                     </TimeBox>
                     <TimeBox>
-                        <TimeYear>2019</TimeYear>
+                        <TimeYear>
+                            <DateSetup date="2019" />
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'third')}
                     </TimeBox>
                     <TimeBox>
-                        <TimeYear>2020</TimeYear>
+                        <TimeYear>
+                            <DateSetup date="2020" />
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'fourth')}
                     </TimeBox>
                     <TimeBox>
-                        <TimeYear>2023</TimeYear>
+                        <TimeYear>
+                            <DateSetup date="2023" />
+                        </TimeYear>
                         {Content(indexLang, 'timeline', 'fifth')}
                     </TimeBox>
                     <TimeBox last={false}>
                         <TimeYear>
-                            2022 {Content(indexLang, 'timeline', 'time-ToPresent')}
+                            <DateSetup date="2022 to present" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'sixth')}
                     </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>
-                            {Content(indexLang, 'timeline', 'time-Present')}
+                            <DateSetup date="present" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'seventh')}
                     </TimeBox>

@@ -3,6 +3,8 @@ import { Title, ThumbImage, Meta } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import Content from '../../components/content'
+import ExperienceList from '../../components/experienceList'
+import DateSetup from '../../components/dateSetup'
 
 import extremeLang from '../assets/extreme.json'
 import contentLang from '../assets/experience-content.json'
@@ -16,30 +18,31 @@ const Extreme = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'extreme'),
+                Content(contentLang, 'title', 'extreme')
             ].join(' ')}
         >
             <Container>
                 <Title>
                     {Content(contentLang, 'title', 'extreme')}{' '}
-                    <Badge>2022</Badge>
+                    <Badge>
+                        <DateSetup date="2022" />
+                    </Badge>
                 </Title>
-                <Paragraph>
-                    {Content(extremeLang, 'description', 'content')}
-                </Paragraph>
+                <Paragraph>{Content(extremeLang, 'description', 'content')}</Paragraph>
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>
-                            {Content(contentLang, 'info', 'type-education')}
-                        </span>
+                        <span>{Content(contentLang, 'info', 'type-education')}</span>
                     </ListItem>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
-                        <span>{Content(extremeLang, 'info', 'content')}</span>
+                        <ExperienceList list="introduction to networks" />
                     </ListItem>
                 </List>
-                <ThumbImage src="/images/experiences/Extreme-Certificate.png" alt="Extreme Certificate" />
+                <ThumbImage
+                    src="/images/experiences/Extreme-Certificate.png"
+                    alt="Extreme Certificate"
+                />
             </Container>
         </Layout>
     )

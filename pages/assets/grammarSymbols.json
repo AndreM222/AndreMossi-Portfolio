@@ -1,0 +1,16 @@
+{
+    "separator": [
+        {
+            "locale": "en",
+            "content": ", "
+        },
+        {
+            "locale": "ja",
+            "content": "、"
+        },
+        {
+            "locale": "es",
+            "content": ","
+        }
+    ]
+}

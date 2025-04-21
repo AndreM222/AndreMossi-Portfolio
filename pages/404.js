@@ -9,14 +9,16 @@ import {
     Image,
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import Content from '../components/content'
+import errorLang from './assets/404.json'
 
 const NotFound = () => {
     return (
         <Container>
             <Box display={{ md: 'flex' }} justifyContent="space-between">
                 <Box>
-                    <Heading as="h1">Not Found </Heading>
-                    <Text>The page you&apos;re looking for was not found.</Text>
+                    <Heading as="h1">{Content(errorLang, "title", "content")}</Heading>
+                    <Text>{Content(errorLang, "description", "content")}</Text>
                 </Box>
                 <Box
                     align="center"
@@ -38,7 +40,7 @@ const NotFound = () => {
                     colorScheme="orange"
                     rightIcon={<ChevronRightIcon />}
                 >
-                    Return Home
+                    {Content(errorLang, "return", "content")}
                 </Button>
             </Box>
         </Container>

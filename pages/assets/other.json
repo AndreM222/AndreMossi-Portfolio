@@ -6,6 +6,11 @@
             "content": "Was awarded in my school for the best computer project by developing my first ever video game using Unreal Engine. After this experience I knew that programming was the path I wanted to walk. Walking from there, I started learning more and joining clubs related to my career, I was able to win a second competition in my school developing a second small survival game. In the same year I was nominated as the president of the computer club. At my school for the seniors there is a final test which measures your level of understanding of computers, the one who obtains the highest grade and greater than 90% can obtain a medal. I was the one with the highest grade, being 100%."
         },
         {
+            "locale": "ja",
+            "title": "初め日",
+            "content": "学校のソフトウェアエンジビアイベントに行きましたとUnreal Engineを使った初めてのFPSゲームで賞はあります。イベント後プログラミングが好きですと新しい夢いです。毎日プログラミング勉強しましたかプロジェクト作りましたかコンピュータークラブに行きました。学校はソフトウェアテストと新しいソフトウェアエンジニアイベントはあります、そして学校の後は毎日テストを勉強しましたと新しいゲームを作りました、でもこのゲームはサバイバルゲームです。わたしのスコアは100％と私のテストとプロジェクト処して賞もらった。"
+        },
+        {
             "locale": "es",
             "title": "El Comienzo",
             "content": "Fui premiado en mi escuela por el mejor proyecto de computación por desarrollar mi primer videojuego usando Unreal Engine. Después de esta experiencia supe que programar era el camino que deseaba caminar. Caminando desde ese punto, empecé a aprender más y me uní a clubs relacionados a mi carrera, logré ganar una segunda competencia en mi escuela desarrollando un segundo un pequeño juego de supervivencia. En el mismo año fui nominado como el presidente del club de computación. Rn mi escuela para los seniors hay un examen el cual mide tu nivel de entendimiento sobre computación, el que obtenga la nota más alta y mayor de 90% obtiene una medalla. Yo fui el que obtuvo la nota más alta siendo 100%."
@@ -15,12 +20,17 @@
         {
             "locale": "en",
             "title": "Editor",
-            "description": "Currently my main editor is Neovim, but I am also familiar with other editors like VSCode, InteliJ, and Visual Studio. I started my journey towards Neovim since I was told that it was the most powerful tool to program but was too complicated to learn. I love to take over challenges and learn new things, so I decided to take over the challenge."
+            "description": "Currently my main editor is Neovim, but I am also familiar with other editors like VSCode, JetBrains, and Visual Studio. I started my journey towards Neovim since I was told that it was the most powerful tool to program but was too complicated to learn. I love to take over challenges and learn new things, so I decided to take over the challenge."
+        },
+        {
+            "locale": "ja",
+            "title": "エディター",
+            "description": "私のプログラミングエディターNeovim、でもVisualStudioとVSCodeとJetBrainsのIDEは時々を使います。Neovimは本当に早いと便利エディターでも初めて知ったは少しい大変。このエディターは色々ショトカーとあります、いつもプログラミングはゲームとして楽しいです。新しい物を弁っ強するが好きです、処してこのエディター使い始めました。"
         },
         {
             "locale": "es",
             "title": "Editor",
-            "description": "De momento mi editor principal es Neovim, pero también estoy familiarizado con otros editores como VSCode, InteliJ, y Visual Studio. Empecé mi aventura en Neovim desde que fui notificado que era la herramienta más poderosa para programar, pero también lo complicado de aprender. A mí me encanta tomar retos e incrementar mi conocimiento entonces decidí tomar el reto."
+            "description": "De momento mi editor principal es Neovim, pero también estoy familiarizado con otros editores como VSCode, JetBrains, y Visual Studio. Empecé mi aventura en Neovim desde que fui notificado que era la herramienta más poderosa para programar, pero también lo complicado de aprender. A mí me encanta tomar retos e incrementar mi conocimiento entonces decidí tomar el reto."
         }
     ],
     "thumbnailEditor": [
@@ -28,6 +38,11 @@
             "locale": "en",
             "title": "Windows Dotfiles",
             "description": "My dotfiles setup on Windows"
+        },
+        {
+            "locale": "ja",
+            "title": "Windowsドットファイル",
+            "description": "Windowsのドットファイル設定"
         },
         {
             "locale": "es",
@@ -42,6 +57,11 @@
             "content": "As I grew up, I was lucky to be able to travel and get to know many cultures. this travels helped me to keep an open mind towards people and as well grow up as a good citizen. One of the most fun and mind opening experiences was my visit to Japan. During one of my breaks I made the choice of visiting Japan to spend some time with my girlfriends family and friends. During that time I was lucky to have a chance of volunteering in a restaurant named Yakiniku Byakutan. Working besides native japanese was a unforgetable experience. I admired their professionalism, friendship, and commitement to giving the best service."
         },
         {
+            "locale": "ja",
+            "title": "色々人を勉強します",
+            "content": "沢山旅行しましたと色々な人会います。でも初めの日本旅行はもっと楽しかた。初め旅行しましたは2022年12月、彼女の家族と友達を会いますと日本語勉強しました。旅行で焼肉白炭でボランティア仕事しました。日本人のサービスは本当に最高ですと人たちはとても優しいです、私は嬉しいこのチャンスはありました。沢山新しい友達がでじゅたと日本の仕事学びました。後この旅行私の夢は日本の会社を仕事します。"
+        },
+        {
             "locale": "es",
             "title": "Aprendizaje Cultural",
             "content": "A medida que crecí, tuve la suerte de poder viajar y conocer muchas culturas. Estos viajes me ayudaron a mantener una mente abierta hacia las personas y también a crecer como un buen ciudadano. Una de las experiencias más divertidas y reveladoras fue mi visita a Japón. Durante una de mis vacaciones, tomé la decisión de visitar Japón para pasar un tiempo con la familia y amigos de mi novia. Durante ese tiempo, tuve la suerte de tener la oportunidad de ser voluntario en un restaurante llamado Yakiniku Byakutan. Trabajar junto a japoneses nativos fue una experiencia inolvidable. Admiré su profesionalismo, amistad y compromiso para brindar el mejor servicio."
@@ -52,6 +72,11 @@
             "locale": "en",
             "title": "Yakiniku Byakutan",
             "description": "The incredible people I spent with during my volunteering job"
+        },
+        {
+            "locale": "ja",
+            "title": "焼肉白炭",
+            "description": "私のすごいな同様たち"
         },
         {
             "locale": "es",

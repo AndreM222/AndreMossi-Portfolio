@@ -5,28 +5,12 @@
             "content": "During my spare time I tried to dedicate it towards improving my knowledge by working on some small project. Some projects are decent, and others might not be optimal, but something that is certain is that my growth can be seen in all the projects I have worked on so far. Being Javafx with the first time I worked with GUI using Java, my sorting algorithm that was programed with C++, etc."
         },
         {
+            "locale": "ja",
+            "content": "いつも私は暇、色々な新しいプロジェクトをつくりましたそして私のスキルを作ります。いいプロジェクトとださいプロジェクトを作りました、でもみんなは便利経験です。私の古いと新しいプロジェクトは私を作りました。みんなプロジェクトはベストプログラマーを作ります。"
+        },
+        {
             "locale": "es",
             "content": "Durante mi tiempo libre trato de dedicarle tiempo a mejorar mi conocimiento trabajando en algunos pequeños proyectos. Algunos proyectos son decentes mientras otros no serán lo más optimo, pero algo que es concreto es que mi crecimiento puede demostrarse en todos mis proyectos en los que he trabajado de momento. Siendo Javafx con la primera vez que trabaje con GUI usando Java, mi algoritmo de clasificación el cual fue programado en C++, etc."
-        }
-    ],
-    "info": [
-        {
-            "locale": "en",
-            "link": "My GitHub"
-        },
-        {
-            "locale": "es",
-            "link": "Mi GitHub"
-        }
-    ],
-    "date": [
-        {
-            "locale": "en",
-            "content": "Present"
-        },
-        {
-            "locale": "es",
-            "content": "Presente"
         }
     ]
 }

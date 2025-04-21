@@ -22,7 +22,6 @@ const Other = () => {
                 <Heading as="h3">
                     {Content(miscLang, 'category', 'others')}
                 </Heading>{' '}
-
                 <Divider my={6} />
 
                 <Section delay={0.1}>
@@ -42,6 +41,7 @@ const Other = () => {
                         {Content(othersLang, 'editor', 'description')}
                     </Paragraph>
                     <GridItem
+                        mt={4}
                         href="https://github.com/AndreM222/Windows-Dotfiles"
                         title={Content(othersLang, 'thumbnailEditor', 'title')}
                         thumbnail={thumbNvim}
@@ -58,6 +58,7 @@ const Other = () => {
                         {Content(othersLang, 'culture', 'content')}
                     </Paragraph>
                     <GridItem
+                        mt={4}
                         href="https://www.instagram.com/yakinikubyakutan/"
                         title={Content(othersLang, 'thumbnailCulture', 'title')}
                         thumbnail={thumbJapan}

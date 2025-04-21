@@ -5,18 +5,12 @@
             "content": "It's a class which focuses on the introduction to network management and how it is structured. The class I had in my university its content came from Extreme-Networks."
         },
         {
-            "locale": "es",
-            "content": "Es una clase el cual se enfoca en la introducción de manejo de redes y como está estructurado. La clase que obtuve en mi universidad el contenido provenía de Extreme-Networks."
-        }
-    ],
-    "info": [
-        {
-            "locale": "en",
-            "content": "Introduction to networks"
+            "locale": "ja",
+            "content": "この授業の証明書はネットワーク入門です。大学のネットワーク授業は証明書くれました。"
         },
         {
             "locale": "es",
-            "content": "Introduccion a redes"
+            "content": "Es una clase el cual se enfoca en la introducción de manejo de redes y como está estructurado. La clase que obtuve en mi universidad el contenido provenía de Extreme-Networks."
         }
     ]
 }

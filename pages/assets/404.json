@@ -1,0 +1,46 @@
+{
+    "title": [
+        {
+            "locale": "en",
+            "content": "Not Found"
+        },
+        {
+            "locale": "ja",
+            "content": "ありません"
+        },
+        {
+            "locale": "es",
+            "content": "No Se Encontro"
+        }
+    ],
+
+    "description": [
+        {
+            "locale": "en",
+            "content": "The page you're looking for was not found."
+        },
+        {
+            "locale": "ja",
+            "content": "このページはありません。"
+        },
+        {
+            "locale": "es",
+            "content": "La pagina que buscas no se encontro."
+        }
+    ],
+
+    "return": [
+        {
+            "locale": "en",
+            "content": "Return Home"
+        },
+        {
+            "locale": "ja",
+            "content": "ホームに行く"
+        },
+        {
+            "locale": "es",
+            "content": "Volver a Casa"
+        }
+    ]
+}

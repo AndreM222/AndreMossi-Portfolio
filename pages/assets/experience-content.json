@@ -11,6 +11,16 @@
             "ai-sandbox": "AI-Sandbox"
         },
         {
+            "locale": "ja",
+            "harvard": "ハーバード大学",
+            "dowal-2020": "Dowal学校、2020年",
+            "dowal-2016": "Dowal学校、2016年",
+            "extreme": "Extreme Networks",
+            "github": "GitHub",
+            "dinant": "Dinant",
+            "ai-sandbox": "AIーサンドボックス"
+        },
+        {
             "locale": "es",
             "harvard": "Harvard",
             "dowal-2020": "Dowal 2020",
@@ -31,6 +41,16 @@
             "link": "Link",
             "content": "Content",
             "award": "Award"
+        },
+        {
+            "locale": "ja",
+            "type": "どんな",
+            "type-education": "勉強",
+            "type-internship": "インターン",
+            "type-research": "研究",
+            "link": "リンク",
+            "content": "物",
+            "award": "賞"
         },
         {
             "locale": "es",

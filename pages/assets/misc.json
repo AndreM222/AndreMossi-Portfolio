@@ -5,6 +5,10 @@
             "name": "Andre Mossi"
         },
         {
+            "locale": "ja",
+            "name": "モッシ・アンドレ"
+        },
+        {
             "locale": "es",
             "name": "André Mossi"
         }
@@ -18,6 +22,14 @@
             "others": "Others",
             "resume": "Resume",
             "link-resume": "/AndreCV-EN.pdf"
+        },
+        {
+            "locale": "ja",
+            "about": "私は",
+            "experience": "プロジェクト",
+            "others": "ぞの他",
+            "resume": "履歴書",
+            "link-resume": ""
         },
         {
             "locale": "es",
@@ -35,6 +47,10 @@
             "content": "More"
         },
         {
+            "locale": "ja",
+            "content": "詳細"
+        },
+        {
             "locale": "es",
             "content": "Mas"
         }
@@ -44,6 +60,10 @@
         {
             "locale": "en",
             "connect": "Connect"
+        },
+        {
+            "locale": "ja",
+            "connect": "リンク"
         },
         {
             "locale": "es",

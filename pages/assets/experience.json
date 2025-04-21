@@ -5,6 +5,10 @@
             "description": "Online Harvard class for introduction to Computer Science"
         },
         {
+            "locale": "ja",
+            "description": "ハーバード大学のオンライン授業"
+        },
+        {
             "locale": "es",
             "description": "Clase en línea de Harvard introducción a Computer Science"
         }
@@ -14,6 +18,10 @@
         {
             "locale": "en",
             "description": "Technology fair hold on Dowal School"
+        },
+        {
+            "locale": "ja",
+            "description": "学校のソフトウェアエンジニアイベント"
         },
         {
             "locale": "es",
@@ -27,6 +35,10 @@
             "description": "Completed Extreme Networks class from the university"
         },
         {
+            "locale": "ja",
+            "description": "大学のExtreme Networks証明書"
+        },
+        {
             "locale": "es",
             "description": "Complete la clase de Extreme Networks en la universidad"
         }
@@ -36,6 +48,10 @@
         {
             "locale": "en",
             "description": "Projects for practice and fun"
+        },
+        {
+            "locale": "ja",
+            "description": "楽しいな沢山プロジェクト"
         },
         {
             "locale": "es",
@@ -49,6 +65,10 @@
             "description": "Worldwide manufacture and exportation company"
         },
         {
+            "locale": "ja",
+            "description": "大きいなラテン系の輸出会社"
+        },
+        {
             "locale": "es",
             "description": "Compania de manufactura y exportaciones globales"
         }
@@ -58,6 +78,10 @@
         {
             "locale": "en",
             "description": "AI-Sandbox to study behavior or organisms"
+        },
+        {
+            "locale": "ja",
+            "description": "AIの研究プロジェクト"
         },
         {
             "locale": "es",
@@ -71,13 +95,26 @@
             "internship": "Internship",
             "practice": "Practice",
             "awards": "Awards",
-            "research": "Research"
+            "research": "Research",
+            "repositories": "Respositories",
+            "stars": "Stars"
+        },
+        {
+            "locale": "ja",
+            "internship": "インターン",
+            "practice": "勉強",
+            "awards": "賞",
+            "research": "研究",
+            "repositories": "リポジトリ",
+            "stars": "スター"
         },
         {
             "locale": "es",
             "internship": "Pasantia",
             "awards": "Premios",
-            "research": "Investigacion"
+            "research": "Investigacion",
+            "repositories": "Repositorios",
+            "stars": "Estrellas"
         }
     ]
 }

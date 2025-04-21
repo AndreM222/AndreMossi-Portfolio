@@ -1,0 +1,108 @@
+{
+    "to": [
+        {
+            "locale": "en",
+            "content": " To "
+        },
+        {
+            "locale": "ja",
+            "content": "〜"
+        },
+        {
+            "locale": "es",
+            "content": " A "
+        }
+    ],
+    "space": [
+        {
+            "locale": "en",
+            "content": "true"
+        },
+        {
+            "locale": "ja",
+            "content": "false"
+        },
+        {
+            "locale": "es",
+            "content": "true"
+        }
+    ],
+    "time": [
+        {
+            "locale": "en",
+            "present": "Present",
+            "tomorrow": "Tomorrow"
+        },
+        {
+            "locale": "ja",
+            "present": "今時",
+            "tomorrow": "明日"
+        },
+        {
+            "locale": "es",
+            "present": "Presente",
+            "tomorrow": "Mañana"
+        }
+    ],
+    "months": [
+        {
+            "locale": "en",
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
+        },
+        {
+            "locale": "ja",
+            "january": "1",
+            "february": "2",
+            "march": "3",
+            "april": "4",
+            "may": "5",
+            "june": "6",
+            "july": "7",
+            "august": "8",
+            "september": "9",
+            "october": "10",
+            "november": "11",
+            "december": "12"
+        },
+        {
+            "locale": "es",
+            "january": "Enero",
+            "february": "Febrero",
+            "march": "Marzo",
+            "april": "Abril",
+            "may": "Mayo",
+            "june": "Junio",
+            "july": "Julio",
+            "august": "Agosto",
+            "september": "Septiembre",
+            "october": "Octubre",
+            "november": "Noviembre",
+            "december": "Diciembre"
+        }
+    ],
+    "endtrail": [
+        {
+            "locale": "en",
+            "year": "",
+            "month": "",
+            "day": ""
+        },
+        {
+            "locale": "ja",
+            "year": "年",
+            "month": "月",
+            "day": "日"
+        }
+    ]
+}

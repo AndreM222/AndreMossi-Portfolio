@@ -1,0 +1,30 @@
+{
+    "title": [
+        {
+            "locale": "en",
+            "my github": "My GitHub",
+            "world generator": "World Generator",
+            "ai entity": "AI Entity"
+        },
+        {
+            "locale": "ja",
+            "my github": "私のGitHub",
+            "world generator": "世界ゲネレーター",
+            "ai entity": "AIエンティティ"
+        },
+        {
+            "locale": "es",
+            "my github": "Mi GitHub",
+            "world generator": "Generador de Mundos",
+            "ai entity": "Entidades AI"
+        }
+    ],
+    "link": [
+        {
+            "locale": "en",
+            "my gitHub": "https://github.com/AndreM222",
+            "world generator": "https://github.com/AndreM222/Procedural-Generator",
+            "ai entity": "https://github.com/AndreM222/AI-Entities"
+        }
+    ]
+}
