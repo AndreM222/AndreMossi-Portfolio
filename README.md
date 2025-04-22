@@ -21,10 +21,11 @@ The website as of now supports the following languages:
 
 - English
 - Spanish
+- Japanese
 
 I used react internationalization to apply the ability of multiple languages and it gets the translation from json files which I created.
 
-__*I am striving to have native-like fluency in English. Feedback is appreciated.*__
+__*I am striving to have native-like fluency in English and Japanese. Feedback is appreciated.*__
 
 <h2>License 🪪</h2>
 
