@@ -99,8 +99,7 @@ const Footer = () => {
 
             <Box
                 color={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
-                justifyContent="center"
-                display={{ base: 'flex', sm: 'inline' }}
+                textAlign={{base: 'center', sm: 'left'}}
             >
                 &copy; <DateSetup date={`${today.getFullYear()}`} />{' '}
                 {Content(miscLang, 'title', 'name')}
