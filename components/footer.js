@@ -3,7 +3,7 @@ import {
     IoLogoGithub,
     IoLogoReddit,
     IoLogoLinkedin,
-    IoMail,
+    IoMail
 } from 'react-icons/io5'
 import { FaXTwitter } from 'react-icons/fa6'
 import {
@@ -13,11 +13,24 @@ import {
     Link,
     Box,
     SimpleGrid,
-    useColorModeValue,
+    useColorModeValue
 } from '@chakra-ui/react'
 import UpToggle from './up-toggle'
 import miscLang from '../pages/assets/misc.json'
 import Content from './content'
+import DateSetup from './dateSetup'
+
+const LinkButton = ({ target, href, icon, children, ...props }) => {
+    return (
+        <Link href={href} target={target}>
+            <Button variant="ghost" colorScheme="orange" leftIcon={icon} {...props}>
+                {children}
+            </Button>
+        </Link>
+    )
+}
+
+const today = new Date()
 
 const Footer = () => {
     return (
@@ -33,79 +46,64 @@ const Footer = () => {
 
             <Box display="flex" justifyContent="space-between">
                 <SimpleGrid columns={[1, 2, 3, 6]}>
-                    <Link href="https://github.com/AndreM222" target="_blank">
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={IoLogoGithub} />}
-                        >
-                            @andrem222
-                        </Button>
-                    </Link>
+                    <LinkButton
+                        href="https://github.com/AndreM222"
+                        target="_blank"
+                        icon={<Icon as={IoLogoGithub} />}
+                    >
+                        @andrem222
+                    </LinkButton>
 
-                    <Link
+                    <LinkButton
                         href="https://www.reddit.com/user/Temix222"
                         target="_blank"
+                        icon={<Icon as={IoLogoReddit} />}
                     >
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={IoLogoReddit} />}
-                        >
-                            @Temix222
-                        </Button>
-                    </Link>
+                        @Temix222
+                    </LinkButton>
 
-                    <Link
+                    <LinkButton
                         href="https://www.linkedin.com/in/andre-mossi-803765236/"
                         target="_blank"
+                        icon={<Icon as={IoLogoLinkedin} />}
                     >
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={IoLogoLinkedin} />}
-                        >
-                            Andre Mossi
-                        </Button>
-                    </Link>
+                        Andre Mossi
+                    </LinkButton>
 
-                    <Link
+                    <LinkButton
                         href="https://www.instagram.com/andremoxxi/"
                         target="_blank"
+                        icon={<Icon as={IoLogoInstagram} />}
                     >
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={IoLogoInstagram} />}
-                        >
-                            @andremoxxi
-                        </Button>
-                    </Link>
+                        @andremoxxi
+                    </LinkButton>
 
-                    <Link href="https://x.com/AndreMossi" target="_blank">
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={FaXTwitter} />}
-                        >
-                            @AndreMossi
-                        </Button>
-                    </Link>
+                    <LinkButton
+                        href="https://x.com/AndreMossi"
+                        target="_blank"
+                        icon={<Icon as={FaXTwitter} />}
+                    >
+                        @AndreMossi
+                    </LinkButton>
 
-                    <Link
+                    <LinkButton
                         href="mailto: mossiroberto0392@gmail.com"
                         target="_blank"
+                        icon={<Icon as={IoMail} />}
                     >
-                        <Button
-                            variant="ghost"
-                            colorScheme="orange"
-                            leftIcon={<Icon as={IoMail} />}
-                        >
-                            Andre Mossi
-                        </Button>
-                    </Link>
+                        Andre Mossi
+                    </LinkButton>
                 </SimpleGrid>
                 <UpToggle />
+            </Box>
+
+            <Box
+                color={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
+                justifyContent="center"
+                display={{ base: 'flex', sm: 'inline' }}
+            >
+                &copy; <DateSetup date={`${today.getFullYear()}`} />{' '}
+                {Content(miscLang, 'title', 'name')}
             </Box>
         </Box>
     )
