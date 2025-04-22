@@ -79,8 +79,6 @@
         {
             "locale": "en",
             "title": "Timeline",
-            "time-ToPresent": "To Present",
-            "time-Present": "Present",
             "first": "Born in Honduras, Tegucigalpa",
             "second": "High school award, Software Development",
             "third": "President of the high school computer club",
@@ -103,8 +101,6 @@
         {
             "locale": "es",
             "title": "Línea de Tiempo",
-            "time-ToPresent": "Al Presente",
-            "time-Present": "Presente",
             "first": "Nací en Honduras, Tegucigalpa",
             "second": "Premio escolar, Desarrollo de Software",
             "third": "Presidente escolar del club de computación",
