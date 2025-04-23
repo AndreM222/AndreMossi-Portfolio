@@ -1,7 +1,7 @@
 import Logo from './logo'
 import NextLink from 'next/link'
 import { forwardRef } from 'react'
-import LanguageButton from './language-switch-button'
+import LanguageButton from './Buttons/language-switch-button'
 import {
     Container,
     Box,
@@ -18,7 +18,7 @@ import {
     Button,
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import ThemeToggleButton from './theme-toggle-button'
+import ThemeToggleButton from './Buttons/theme-toggle-button'
 import miscLang from '../pages/assets/misc.json'
 import Content from './content'
 import { MdDocumentScanner } from 'react-icons/md'

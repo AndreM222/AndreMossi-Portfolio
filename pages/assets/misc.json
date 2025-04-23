@@ -21,7 +21,7 @@
             "experience": "Experience",
             "others": "Others",
             "resume": "Resume",
-            "link-resume": "/AndreCV-EN.pdf"
+            "link-resume": "/PDF/AndreCV-EN.pdf"
         },
         {
             "locale": "ja",
@@ -37,7 +37,7 @@
             "experience": "Experiencia",
             "others": "Otros",
             "resume": "Curriculum",
-            "link-resume": "/AndreCV-ES.pdf"
+            "link-resume": "/PDF/AndreCV-ES.pdf"
         }
     ],
 

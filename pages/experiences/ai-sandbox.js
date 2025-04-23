@@ -1,4 +1,4 @@
-import { Container, Badge, List, ListItem } from '@chakra-ui/react'
+import { Container, Badge, List, ListItem, Link } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -10,6 +10,7 @@ import DateSetup from '../../components/dateSetup'
 import sandboxLang from '../assets/ai-sandbox.json'
 import contentLang from '../assets/experience-content.json'
 import miscLang from '../assets/misc.json'
+import NavBTN from '../../components/Buttons/Navigation'
 
 const Sandbox = () => {
     return (
@@ -48,6 +49,8 @@ const Sandbox = () => {
                         <CitationList list="World Generator, AI Entity" />
                     </ListItem>
                 </List>
+
+                <NavBTN as={Link} href="/PDF/AI-Sandbox.pdf" target="_blank" />
 
                 <ThumbImage
                     src="/images/experiences/ActionPreview.png"

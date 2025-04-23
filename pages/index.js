@@ -1,5 +1,4 @@
 import {
-    Button,
     Container,
     Box,
     Heading,
@@ -8,8 +7,6 @@ import {
 } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
-import { ChevronRightIcon } from '@chakra-ui/icons'
-import NextLink from 'next/link'
 import { TimeBox, TimeYear } from '../components/timeline'
 import TimeSection from '../components/time-section'
 import Layout from '../components/layouts/article'
@@ -18,6 +15,7 @@ import indexLang from './assets/index.json'
 import miscLang from './assets/misc.json'
 import DateSetup from '../components/dateSetup'
 import StatsMenu from '../components/stats'
+import NavBTN from '../components/Buttons/Navigation'
 
 const Page = () => {
     return (
@@ -88,16 +86,7 @@ const Page = () => {
                         {Content(miscLang, 'category', 'experience')}
                     </Heading>
                     <Paragraph>{Content(indexLang, 'experience', 'content')}</Paragraph>
-                    <Box align="center" my={4}>
-                        <Button
-                            as={NextLink}
-                            href="/experience"
-                            rightIcon={<ChevronRightIcon />}
-                            colorScheme="orange"
-                        >
-                            {Content(miscLang, 'button', 'content')}
-                        </Button>
-                    </Box>
+                    <NavBTN href="/experience" />
                 </Section>
 
                 <Section delay={0.3}>
@@ -105,16 +94,7 @@ const Page = () => {
                         {Content(miscLang, 'category', 'others')}
                     </Heading>
                     <Paragraph>{Content(indexLang, 'others', 'content')}</Paragraph>
-                    <Box align="center" my={4}>
-                        <Button
-                            as={NextLink}
-                            href="/other"
-                            rightIcon={<ChevronRightIcon />}
-                            colorScheme="orange"
-                        >
-                            {Content(miscLang, 'button', 'content')}
-                        </Button>
-                    </Box>
+                    <NavBTN href="/other" />
                 </Section>
 
                 <TimeSection delay={0.4}>

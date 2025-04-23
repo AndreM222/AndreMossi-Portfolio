@@ -15,7 +15,7 @@ import {
     SimpleGrid,
     useColorModeValue
 } from '@chakra-ui/react'
-import UpToggle from './up-toggle'
+import UpToggle from './Buttons/up-toggle'
 import miscLang from '../pages/assets/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
