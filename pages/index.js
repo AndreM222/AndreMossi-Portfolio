@@ -131,7 +131,7 @@ const Page = () => {
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'fifth')}
                     </TimeBox>
-                    <TimeBox last={false}>
+                    <TimeBox>
                         <TimeYear>
                             <DateSetup date="2022 to present" />
                         </TimeYear>
