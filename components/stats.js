@@ -8,7 +8,7 @@ import {
     Skeleton,
     useColorModeValue
 } from '@chakra-ui/react'
-import { fetchStats } from './API'
+import { fetchStats } from '../api/gitAPI'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
@@ -16,7 +16,7 @@ import CountUp from 'react-countup'
 import { motion } from 'framer-motion'
 import Content from '../components/content'
 
-import experienceLang from '../pages/assets/experience.json'
+import experienceLang from '../locales/pages/experience.json'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {

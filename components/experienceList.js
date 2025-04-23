@@ -1,7 +1,7 @@
 import Content from './content'
 
-import experienceLang from '../pages/assets/experienceList.json'
-import symbolLang from '../pages/assets/grammarSymbols.json'
+import experienceLang from '../locales/experienceList.json'
+import symbolLang from '../locales/grammarSymbols.json'
 
 const ExperienceList = ({ list }) => {
     const items = list.split(',')

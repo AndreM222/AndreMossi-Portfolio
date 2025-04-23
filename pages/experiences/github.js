@@ -6,9 +6,9 @@ import Content from '../../components/content'
 import CitationList from '../../components/citationList'
 import DateSetup from '../../components/dateSetup'
 
-import githubLang from '../assets/github.json'
-import contentLang from '../assets/experience-content.json'
-import miscLang from '../assets/misc.json'
+import githubLang from '../../locales/pages/experiences/github.json'
+import contentLang from '../../locales/experience-content.json'
+import miscLang from '../../locales/misc.json'
 
 const Github = () => {
     return (

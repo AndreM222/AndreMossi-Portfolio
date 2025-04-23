@@ -6,9 +6,9 @@ import Content from '../../components/content'
 import ExperienceList from '../../components/experienceList'
 import DateSetup from '../../components/dateSetup'
 
-import extremeLang from '../assets/extreme.json'
-import contentLang from '../assets/experience-content.json'
-import miscLang from '../assets/misc.json'
+import extremeLang from '../../locales/pages/experiences/extreme.json'
+import contentLang from '../../locales/experience-content.json'
+import miscLang from '../../locales/misc.json'
 
 const Extreme = () => {
     return (

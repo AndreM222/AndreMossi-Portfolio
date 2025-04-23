@@ -2,7 +2,7 @@ import { Box, Button } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import NextLink from 'next/link'
 import Content from '../content'
-import miscLang from '../../pages/assets/misc.json'
+import miscLang from '../../locales/misc.json'
 
 const NavBTN = ({ href, ...props }) => {
     return (

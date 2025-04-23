@@ -16,7 +16,7 @@ import {
     useColorModeValue
 } from '@chakra-ui/react'
 import UpToggle from './Buttons/up-toggle'
-import miscLang from '../pages/assets/misc.json'
+import miscLang from '../locales/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
 

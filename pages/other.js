@@ -6,8 +6,8 @@ import Paragraph from '../components/paragraph'
 import thumbNvim from '../public/images/others/Terminal-Preview.png'
 import thumbJapan from '../public/images/others/Japan-Byakutan.png'
 import Content from '../components/content'
-import othersLang from './assets/other.json'
-import miscLang from './assets/misc.json'
+import othersLang from '../locales/pages/other.json'
+import miscLang from '../locales/misc.json'
 
 const Other = () => {
     return (

@@ -7,7 +7,7 @@ const CharModel = dynamic(() => import('../character'), {
 })
 import Footer from '../footer'
 import Content from '../content'
-import miscLang from '../../pages/assets/misc.json'
+import miscLang from '../../locales/misc.json'
 
 const Main = ({ children, router }) => {
     return (

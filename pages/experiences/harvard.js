@@ -6,9 +6,9 @@ import Content from '../../components/content'
 import ExperienceList from '../../components/experienceList'
 import DateSetup from '../../components/dateSetup'
 
-import harvardLang from '../assets/harvard.json'
-import contentLang from '../assets/experience-content.json'
-import miscLang from '../assets/misc.json'
+import harvardLang from '../../locales/pages/experiences/harvard.json'
+import contentLang from '../../locales/experience-content.json'
+import miscLang from '../../locales/misc.json'
 
 const Harvard = () => {
     return (

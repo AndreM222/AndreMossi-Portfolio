@@ -6,9 +6,9 @@ import Content from '../../components/content'
 import ExperienceList from '../../components/experienceList'
 import DateSetup from '../../components/dateSetup'
 
-import dinantLang from '../assets/dinant.json'
-import contentLang from '../assets/experience-content.json'
-import miscLang from '../assets/misc.json'
+import dinantLang from '../../locales/pages/experiences/dinant.json'
+import contentLang from '../../locales/experience-content.json'
+import miscLang from '../../locales/misc.json'
 
 const Dinant = () => {
     return (

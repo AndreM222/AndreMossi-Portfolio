@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
-import miscLang from '../pages/assets/misc.json'
+import miscLang from '../locales/misc.json'
 import Content from './content'
 import { MdDocumentScanner } from 'react-icons/md'
 

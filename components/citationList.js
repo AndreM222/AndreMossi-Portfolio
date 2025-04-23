@@ -2,8 +2,8 @@ import Content from './content'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Link } from '@chakra-ui/react'
 
-import citationLang from '../pages/assets/citationsList.json'
-import symbolLang from '../pages/assets/grammarSymbols.json'
+import citationLang from '../locales/citationsList.json'
+import symbolLang from '../locales/grammarSymbols.json'
 
 const CitationList = ({ list }) => {
     const items = list.split(',')

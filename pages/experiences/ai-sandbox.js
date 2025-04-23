@@ -7,9 +7,9 @@ import ExperienceList from '../../components/experienceList'
 import CitationList from '../../components/citationList'
 import DateSetup from '../../components/dateSetup'
 
-import sandboxLang from '../assets/ai-sandbox.json'
-import contentLang from '../assets/experience-content.json'
-import miscLang from '../assets/misc.json'
+import sandboxLang from '../../locales/pages/experiences/ai-sandbox.json'
+import contentLang from '../../locales/experience-content.json'
+import miscLang from '../../locales/misc.json'
 import NavBTN from '../../components/Buttons/Navigation'
 
 const Sandbox = () => {

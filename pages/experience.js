@@ -4,9 +4,9 @@ import { ExperienceGridItem } from '../components/grid-item'
 import Layout from '../components/layouts/article'
 import Content from '../components/content'
 
-import experienceLang from './assets/experience.json'
-import miscLang from './assets/misc.json'
-import contentLang from './assets/experience-content.json'
+import experienceLang from '../locales/pages/experience.json'
+import miscLang from '../locales/misc.json'
+import contentLang from '../locales/experience-content.json'
 
 import thumbHarvard from '/public/images/experiences/Banners/Harvard-Banner.png'
 import thumbExtreme from '/public/images/experiences/Banners/ExtremeNetworks-Banner.png'

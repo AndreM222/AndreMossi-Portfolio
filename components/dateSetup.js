@@ -1,7 +1,7 @@
 import Content from './content'
 
-import dateSymbolLang from '../pages/assets/dateSymbols.json'
-import grammarSymbolLang from '../pages/assets/grammarSymbols.json'
+import dateSymbolLang from '../locales/dateSymbols.json'
+import grammarSymbolLang from '../locales/grammarSymbols.json'
 
 const itemSetup = ({ date }) => {
     const items = date.toLowerCase().split(' ')

@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import Content from '../components/content'
-import errorLang from './assets/404.json'
+import errorLang from '../locales/pages/404.json'
 
 const NotFound = () => {
     return (
