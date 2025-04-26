@@ -62,6 +62,8 @@ const Main = ({ children, router }) => {
             >
                 {isOpen && locale === "ja" ? (
                     <Alert
+                        backdropFilter="auto"
+                        backdropBlur="10px"
                         status="warning"
                         variant="left-accent"
                         position="fixed"
