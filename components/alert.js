@@ -22,6 +22,7 @@ const AlertNotification = ({
     statement = true,
     type,
     children,
+    delay,
     ...props
 }) => {
     const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true })
@@ -31,17 +32,18 @@ const AlertNotification = ({
             <StyledDiv
                 position="fixed"
                 right={{ base: '0', lg: '50%' }}
+                    rounded="lg"
                 top="1/2"
                 zIndex="50"
                 w={{ base: 'full', sm: 'fit-content' }}
                 initial={{ x: -100, opacity: 0, backdropFilter: 'blur(0px)' }}
                 animate={{ x: 0, opacity: 1, backdropFilter: 'blur(10px)' }}
                 m={3}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: delay }}
             >
                 <Alert
-                    backdropFilter="auto"
                     rounded="lg"
+                    backdropFilter="auto"
                     status={type}
                     variant="left-accent"
                     {...props}

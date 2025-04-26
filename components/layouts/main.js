@@ -55,6 +55,7 @@ const Main = ({ children, router }) => {
                     statement={locale === 'ja'}
                     type="warning"
                     title="翻訳"
+                    delay={0.6}
                 >
                     このWebサイトは一人で翻訳しました。日本語を10ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
                 </AlertNotification>

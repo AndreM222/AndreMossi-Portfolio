@@ -12,7 +12,7 @@ const TimeSection = ({ children, delay = 0 }) => (
         align="center"
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={({ duration: 0.8 }, delay)}
+        transition={{ duration: 0.8, delay: delay}}
         mb={6}
         fontSize={20}
     >
