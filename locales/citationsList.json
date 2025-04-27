@@ -4,19 +4,21 @@
             "locale": "en",
             "my github": "My GitHub",
             "world generator": "World Generator",
-            "ai entity": "AI Entity"
+            "ai entity": "AI Entity",
+            "asee published research": "ASEE Research Website"
         },
         {
             "locale": "ja",
             "my github": "私のGitHub",
             "world generator": "世界ゲネレーター",
-            "ai entity": "AIエンティティ"
+            "ai entity": "AIエンティティ",
+            "asee published research": "ASEE研究Webサイト"
         },
         {
             "locale": "es",
             "my github": "Mi GitHub",
             "world generator": "Generador de Mundos",
-            "ai entity": "Entidades AI"
+            "asee published research": "ASEE Pagina de Investigacion"
         }
     ],
     "link": [
@@ -24,7 +26,8 @@
             "locale": "en",
             "my github": "https://github.com/AndreM222",
             "world generator": "https://github.com/AndreM222/Procedural-Generator",
-            "ai entity": "https://github.com/AndreM222/AI-Entities"
+            "ai entity": "https://github.com/AndreM222/AI-Entities",
+            "asee published research": "https://peer.asee.org/tag-ai-sandbox"
         }
     ]
 }
