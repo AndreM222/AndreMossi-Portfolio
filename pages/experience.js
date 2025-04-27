@@ -50,7 +50,7 @@ const Experience = () => {
                 </Heading>
 
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
-                    <Section>
+                    <Section delay={0.1}>
                         <ExperienceGridItem
                             id="ai-sandbox"
                             title={Content(contentLang, 'title', 'ai-sandbox')}
@@ -66,7 +66,7 @@ const Experience = () => {
                 </Heading>
 
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
-                    <Section>
+                    <Section delay={0.2}>
                         <ExperienceGridItem
                             id="dowal2020"
                             title={Content(contentLang, 'title', 'dowal-2020')}
@@ -76,7 +76,7 @@ const Experience = () => {
                         </ExperienceGridItem>
                     </Section>
 
-                    <Section>
+                    <Section delay={0.2}>
                         <ExperienceGridItem
                             id="dowal2016"
                             title={Content(contentLang, 'title', 'dowal-2016')}
@@ -92,7 +92,7 @@ const Experience = () => {
                 </Heading>
 
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
-                    <Section>
+                    <Section delay={0.3}>
                         <ExperienceGridItem
                             id="harvard"
                             title={Content(contentLang, 'title', 'harvard')}
@@ -102,7 +102,7 @@ const Experience = () => {
                         </ExperienceGridItem>
                     </Section>
 
-                    <Section>
+                    <Section delay={0.3}>
                         <ExperienceGridItem
                             id="extreme"
                             title={Content(contentLang, 'title', 'extreme')}
@@ -112,7 +112,7 @@ const Experience = () => {
                         </ExperienceGridItem>
                     </Section>
 
-                    <Section>
+                    <Section delay={0.3}>
                         <ExperienceGridItem
                             id="github"
                             title={Content(contentLang, 'title', 'github')}

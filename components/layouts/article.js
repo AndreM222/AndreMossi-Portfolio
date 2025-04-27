@@ -10,7 +10,7 @@ const variants = {
 
 const Layout = ({ children, title }) => (
     <motion.article
-        intial="hidden"
+        initial="hidden"
         animate="enter"
         exit="exit"
         variants={variants}
