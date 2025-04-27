@@ -22,7 +22,7 @@ const Main = ({ children, router }) => {
     }
 
     const today = new Date()
-    const firstDay = new Date('2024-06-01')
+    const firstDay = new Date(2024, 5, 17)
 
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
