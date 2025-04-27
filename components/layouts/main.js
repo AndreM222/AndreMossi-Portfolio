@@ -14,6 +14,16 @@ import AlertNotification from '../alert'
 const Main = ({ children, router }) => {
     const { locale } = useRouter()
 
+    function getTotalMonths(startDate, endDate) {
+        return (
+            (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+                (endDate.getMonth() - startDate.getMonth())
+        )
+    }
+
+    const today = new Date()
+    const firstDay = new Date('2024-06-1')
+
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
@@ -57,7 +67,9 @@ const Main = ({ children, router }) => {
                     title="翻訳"
                     delay={0.6}
                 >
-                    このWebサイトは一人で翻訳しました。日本語を10ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
+                    このWebサイトは一人で翻訳しました。日本語を
+                    {getTotalMonths(firstDay, today)}
+                    ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
                 </AlertNotification>
                 <CharModel />
                 {children}
