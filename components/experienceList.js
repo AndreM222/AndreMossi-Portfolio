@@ -8,12 +8,18 @@ const ExperienceList = ({ list }) => {
 
     return (
         <span>
-            {items.map((item, index) =>
-                index === 0
-                    ? Content(experienceLang, 'info', item.toLowerCase().trim())
-                    : Content(symbolLang, 'separator', 'content') +
-                    Content(experienceLang, 'info', item.toLowerCase().trim())
-            )}
+            {items.map((item, index) => {
+                const translation = Content(
+                    experienceLang,
+                    'info',
+                    item.toLowerCase().trim()
+                )
+                if (translation) return (
+                    index === 0
+                        ? translation
+                        : Content(symbolLang, 'separator', 'content') + translation
+                )
+            })}
         </span>
     )
 }

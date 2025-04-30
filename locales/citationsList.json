@@ -5,6 +5,7 @@
             "my github": "My GitHub",
             "world generator": "World Generator",
             "ai entity": "AI Entity",
+            "tag ai sandbox": "Tag AI Sandbox",
             "asee published research": "ASEE Research Website",
             "sigma xi conference": "Sigma XI Conference"
         },
@@ -13,6 +14,7 @@
             "my github": "私のGitHub",
             "world generator": "世界ゲネレーター",
             "ai entity": "AIエンティティ",
+            "tag ai sandbox": "鬼ごっこAIサンドボックス",
             "asee published research": "ASEE研究Webサイト",
             "sigma xi conference": "Sigma XIイベント"
         },
@@ -20,6 +22,7 @@
             "locale": "es",
             "my github": "Mi GitHub",
             "world generator": "Generador de Mundos",
+            "tag ai sandbox": "Sandbox de AI Jugando Las Traes",
             "asee published research": "ASEE Pagina de Investigacion",
             "sigma xi conference": "Conferencia En Sigma XI"
         }
@@ -30,6 +33,7 @@
             "my github": "https://github.com/AndreM222",
             "world generator": "https://github.com/AndreM222/Procedural-Generator",
             "ai entity": "https://github.com/AndreM222/AI-Entities",
+            "tag ai sandbox": "https://github.com/AndreM222/Tag-AI-Sandbox",
             "asee published research": "https://peer.asee.org/tag-ai-sandbox",
             "sigma xi conference": "https://sites.psu.edu/behrendsigmaxi2025/2025/03/11/tag-ai-sandbox/"
         }

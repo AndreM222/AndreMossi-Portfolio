@@ -20,7 +20,8 @@
             "blueprints": "Blueprints",
             "blueprint": "Blueprints",
             "cuda": "Cuda",
-            "pytorch": "Pytorch"
+            "pytorch": "Pytorch",
+            "cmake": "CMake"
         },
         {
             "locale": "ja",
@@ -42,7 +43,8 @@
             "blueprints": "ブループリント",
             "blueprint": "ブループリント",
             "cuda": "Cuda",
-            "pytorch": "Pytorch"
+            "pytorch": "Pytorch",
+            "cmake": "CMake"
         },
         {
             "locale": "es",
@@ -64,7 +66,8 @@
             "blueprints": "Blueprints",
             "blueprint": "Blueprints",
             "cuda": "Cuda",
-            "pytorch": "Pytorch"
+            "pytorch": "Pytorch",
+            "cmake": "CMake"
         }
     ]
 }
