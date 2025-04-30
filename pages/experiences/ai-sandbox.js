@@ -46,7 +46,7 @@ const Sandbox = () => {
 
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>
-                        <CitationList list="World Generator, AI Entity, ASEE Published Research" />
+                        <CitationList list="World Generator, AI Entity, ASEE Published Research, sigma xi conference" />
                     </ListItem>
                 </List>
 
