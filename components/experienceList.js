@@ -5,6 +5,8 @@ import symbolLang from '../locales/grammarSymbols.json'
 
 const ExperienceList = ({ list }) => {
     const items = list.split(',')
+    const hasSpace =
+        Content(symbolLang, 'space', 'content').toLowerCase() === 'true'
 
     return (
         <span>
@@ -14,11 +16,11 @@ const ExperienceList = ({ list }) => {
                     'info',
                     item.toLowerCase().trim()
                 )
-                if (translation) return (
-                    index === 0
+                if (translation)
+                    return index === 0
                         ? translation
-                        : Content(symbolLang, 'separator', 'content') + translation
-                )
+                        : Content(symbolLang, 'separator', 'content') +
+                        (hasSpace ? ' ' + translation : translation)
             })}
         </span>
     )

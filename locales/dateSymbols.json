@@ -13,20 +13,6 @@
             "content": " A "
         }
     ],
-    "space": [
-        {
-            "locale": "en",
-            "content": "true"
-        },
-        {
-            "locale": "ja",
-            "content": "false"
-        },
-        {
-            "locale": "es",
-            "content": "true"
-        }
-    ],
     "time": [
         {
             "locale": "en",

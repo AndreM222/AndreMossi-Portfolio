@@ -23,7 +23,8 @@ const CitationList = ({ list }) => {
                     </Link>
                 ) : (
                     <span key={index}>
-                        {Content(symbolLang, 'separator', 'content')}{' '}
+                        {Content(symbolLang, 'separator', 'content')}
+                        {Content(symbolLang, 'space', 'content') == 'true' ? ' ' : ''}
                         {
                             <Link
                                 href={Content(citationLang, 'link', item.toLowerCase().trim())}

@@ -31,7 +31,7 @@ const itemSetup = ({ date }) => {
             if (
                 index > 0 &&
                 currTime !== 'to' &&
-                Content(dateSymbolLang, 'space', 'content').toLowerCase() === 'true'
+                Content(grammarSymbolLang, 'space', 'content').toLowerCase() === 'true'
             )
                 return ' ' + translatedTime
 
