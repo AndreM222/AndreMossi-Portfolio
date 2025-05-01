@@ -27,7 +27,7 @@ const Sandbox = () => {
                 <Title>
                     {Content(contentLang, 'title', 'ai-sandbox')}{' '}
                     <Badge>
-                        <DateSetup date="2024 to present" />
+                        <DateSetup date="2024 to 2025" />
                     </Badge>
                 </Title>
 
@@ -52,6 +52,10 @@ const Sandbox = () => {
 
                 <NavBTN as={Link} href="/PDF/AI-Sandbox.pdf" target="_blank" />
 
+                <ThumbImage
+                    src="/images/experiences/TracingSense.png"
+                    alt="Actions Preview"
+                />
                 <ThumbImage
                     src="/images/experiences/ActionPreview.png"
                     alt="Actions Preview"
