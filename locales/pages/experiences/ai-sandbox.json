@@ -2,15 +2,29 @@
     "description": [
         {
             "locale": "en",
-            "content": "During my time as a student in Gannon University, I decided to work beside a teacher in a research. This research was the AI-Sandbox together with professor Sundaram. The sandbox was a simulation of organisms to emphisize the natural selection under environment constrains. For this project, the survival requirement is of that of a game of tag. The organisms will be divided into two groups, the seekers and runners. the seekers or hiders who survive they share their information with a new generation. The goal is to understand the behavior of reinforcment learning through the change of genomes."
+            "content": "During my time as a student in Gannon University, I decided to work beside a teacher in a research. This research was the AI-Sandbox together with professor Sundaram. The sandbox was a simulation of organisms to emphisize the natural selection under environment constrains. For this project, the survival requirement is of that of a game of tag. The organisms will be divided into two groups, the seekers and runners. the seekers or hiders who survive they share their information with a new generation. The goal is to understand the behavior of reinforcement learning through the change of genomes."
         },
         {
             "locale": "ja",
-            "content": "ギャノン大学の研究で仕事をしました。このAI研究はSundaram教授と仕事をしました。これは人シミュレートです。二つのチームがゲームを行うプログラムとなっています。GENOMEとNEATアルゴリズムを使いました。"
+            "content": "ギャノン大学でAIの研究をしていました。この研究はSundaram教授と一緒に仕事をしました。これは人シミュレートです。二つのチームがゲームを行うプログラムとなっています。このゲームは本当に有名で、名前は鬼ごっこです。GENOMEとNEATアルゴリズムを使いました。"
         },
         {
             "locale": "es",
             "content": "Durante mi tiempo como estudiante en Gannon University, decidi trabajar junto a un professor and una investigacion. Esta investigacion era el AI-Sandbox con el profesor Sundaram. El sandbox es una simulacion de orgaismos para enfatisar la seleccion natural bajo limitaciones naturales. Para este projecto, el requierimiento se superviviencia era el juego de las traes. Los organismos se dividen en dos grupos, los buscadores y los ocultadores. Los buscadores o ocultadores que sobreviven comparten su informcion por generaciones. El proposito es el de entender el comportamiento por aprendicaje por refuerzo por el cambio de genomas."
+        }
+    ],
+    "event": [
+        {
+            "locale": "en",
+            "content": "Because of my achievement in the project, I was accepted by the American Society for Engineering Education (ASEE) to publish it in their website. I was invited to go to the ASEE conference that was held in Marshall University to talk about my experience developing this project and my ideas. Soon after that I recieved a notification from Sigma XI that I was invited as well to their conference that was held in Penn State University. This was a really fun experience and I hope I was able to teach them something new."
+        },
+        {
+            "locale": "ja",
+            "content": "私のプロジェクトは成功しました、そしてASEEのWEBサイトに研究を掲載しました。Marshall大学でASEEイベントはあり、イベントで沢山の人が私の研究を見てくれました。その後Penn State大学でSigma XIのイベントはあり、私のプロジェクトは唯一のコンピュターサイエンスのプロジェクトでした。このプロジェクトは本当に面白かったです。"
+        },
+        {
+            "locale": "es",
+            "content": "Por mis logros en el projecto, fui acceptado por el \"American Society for Engineering\" (ASEE) para publicar my investigacion en su pagina. Fui invitado a la conferencia de ASEE que fue dada en Marshall University para hablar sobre mi experiencia trabajando en estre projecto y mis ideas. No mucho despues, recibi una notificacion de Sigma XI el cual era una invitacion para ir a su conferencia en Penn State University. Me diverti mucho y espero haberles otorgado nuevas ideas."
         }
     ]
 }

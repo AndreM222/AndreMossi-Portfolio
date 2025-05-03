@@ -33,6 +33,8 @@ const Sandbox = () => {
 
                 <Paragraph>{Content(sandboxLang, 'description', 'content')}</Paragraph>
 
+                <Paragraph>{Content(sandboxLang, 'event', 'content')}</Paragraph>
+
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
@@ -46,7 +48,7 @@ const Sandbox = () => {
 
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>
-                        <CitationList list="World Generator, AI Entity, ASEE Published Research, sigma xi conference, tag ai sandbox" />
+                        <CitationList list="AI Entity, World Generator, ASEE Published Research, sigma xi conference, tag ai sandbox" />
                     </ListItem>
                 </List>
 
