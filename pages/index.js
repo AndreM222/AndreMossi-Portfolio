@@ -105,43 +105,49 @@ const Page = () => {
                         <TimeYear>
                             <DateSetup date="2002" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'first')}
+                        {Content(indexLang, 'timeline', 'origin')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>
                             <DateSetup date="2016" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'second')}
+                        {Content(indexLang, 'timeline', 'first award')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>
                             <DateSetup date="2019" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'third')}
+                        {Content(indexLang, 'timeline', 'president club')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>
                             <DateSetup date="2020" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'fourth')}
+                        {Content(indexLang, 'timeline', 'second award')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>
                             <DateSetup date="2023" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'fifth')}
+                        {Content(indexLang, 'timeline', 'dinant intern')}
                     </TimeBox>
                     <TimeBox>
                         <TimeYear>
-                            <DateSetup date="2022 to present" />
+                            <DateSetup date="2024 to 2025" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'sixth')}
+                        {Content(indexLang, 'timeline', 'tag research')}
+                    </TimeBox>
+                    <TimeBox>
+                        <TimeYear>
+                            <DateSetup date="2025" />
+                        </TimeYear>
+                        {Content(indexLang, 'timeline', 'tag publication')}
                     </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>
-                            <DateSetup date="2024 to 2025" />
+                            <DateSetup date="2022 to present" />
                         </TimeYear>
-                        {Content(indexLang, 'timeline', 'seventh')}
+                        {Content(indexLang, 'timeline', 'bachelor')}
                     </TimeBox>
                 </TimeSection>
             </Container>
