@@ -45,10 +45,12 @@ const Sandbox = () => {
                     </ListItem>
                 </List>
 
-                <ThumbImage
-                    src="/images/experiences/TracingUI.png"
-                    alt="Actions Preview"
-                />
+                {
+                    // <ThumbImage
+                    //     src="/images/experiences/TracingUI.png"
+                    //     alt="Actions Preview"
+                    // />
+                }
             </Container>
         </Layout>
     )
