@@ -1,6 +1,6 @@
 import { Container, Badge, List, ListItem } from '@chakra-ui/react'
 import { Title, Meta } from '../../components/experience'
-// import { Title, Meta, ThumbImage } from '../../components/experience'
+import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
 import Content from '../../components/content'
@@ -46,12 +46,10 @@ const Sandbox = () => {
                     </ListItem>
                 </List>
 
-                {
-                    // <ThumbImage
-                    //     src="/images/experiences/TracingUI.png"
-                    //     alt="Actions Preview"
-                    // />
-                }
+                    <ThumbImage
+                        src="/images/experiences/TracingUI.png"
+                        alt="Actions Preview"
+                    />
             </Container>
         </Layout>
     )
