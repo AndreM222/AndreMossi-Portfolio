@@ -9,6 +9,7 @@ import miscLang from '../locales/misc.json'
 import contentLang from '../locales/experience-content.json'
 
 import thumbHarvard from '/public/images/experiences/Banners/Harvard-Banner.png'
+import thumbTraceability from '/public/images/experiences/Banners/Traceability-Banner.png'
 import thumbExtreme from '/public/images/experiences/Banners/ExtremeNetworks-Banner.png'
 import thumbGithub from '/public/images/experiences/Banners/Git-Banner.png'
 import thumbDinant from '/public/images/experiences/Banners/Dinant-Banner.png'
@@ -92,6 +93,16 @@ const Experience = () => {
                 </Heading>
 
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
+                    <Section delay={0.3}>
+                        <ExperienceGridItem
+                            id="traceability"
+                            title={Content(contentLang, 'title', 'traceability')}
+                            thumbnail={thumbTraceability}
+                        >
+                            {Content(experienceLang, 'traceability', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+
                     <Section delay={0.3}>
                         <ExperienceGridItem
                             id="harvard"

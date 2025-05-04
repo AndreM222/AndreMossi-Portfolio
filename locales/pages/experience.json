@@ -14,6 +14,21 @@
         }
     ],
 
+    "traceability": [
+        {
+            "locale": "en",
+            "description": "Used AI to detect objects in camera and show on website"
+        },
+        {
+            "locale": "ja",
+            "description": "AIは物を見るとWebサイトで見える"
+        },
+        {
+            "locale": "es",
+            "description": "Usamos AI para detectar objectos y mostrar en pagina web"
+        }
+    ],
+
     "dowal-competition": [
         {
             "locale": "en",

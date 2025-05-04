@@ -79,35 +79,38 @@
         {
             "locale": "en",
             "title": "Timeline",
-            "first": "Born in Honduras, Tegucigalpa",
-            "second": "High school award, Software Development",
-            "third": "President of the high school computer club",
-            "fourth": "Second high school award, Software Development",
-            "fifth": "Internship as Full-Stack Developer at Dinant",
-            "sixth": "Student at Gannon University",
-            "seventh": "AI Research Assistant"
+            "origin": "Born in Honduras, Tegucigalpa",
+            "first award": "High school award, Software Development",
+            "president club": "President of the high school computer club",
+            "second award": "Second high school award, Software Development",
+            "dinant intern": "Internship as Full-Stack Developer at Dinant",
+            "tag research": "AI Research Assistant",
+            "tag publication": "Published AI Research",
+            "bachelor": "Student at Gannon University"
         },
         {
             "locale": "ja",
             "title": "タイムライン",
-            "first": "ホンジュラス、テグシガルパ出身",
-            "second": "学内でソフトウェア賞受賞",
-            "third": "コンピュータクラブの会長就任",
-            "fourth": "学内でソフトウェア賞受賞",
-            "fifth": "Dinantでフルスタックエンジニアインターン勤務",
-            "sixth": "ギャノン大学進学",
-            "seventh": "AI研究助手として勤務"
+            "origin": "ホンジュラス、テグシガルパ出身",
+            "first award": "学内でソフトウェア賞受賞",
+            "president club": "コンピュータクラブの会長就任",
+            "second award": "学内でソフトウェア賞受賞",
+            "dinant intern": "Dinantでフルスタックエンジニアインターン勤務",
+            "tag research": "AI研究助手として勤務",
+            "tag publication": "AI研究を掲載しました",
+            "bachelor": "ギャノン大学進学"
         },
         {
             "locale": "es",
             "title": "Línea de Tiempo",
-            "first": "Nací en Honduras, Tegucigalpa",
-            "second": "Premio escolar, Desarrollo de Software",
-            "third": "Presidente escolar del club de computación",
-            "fourth": "Segundo premio escolar, Desarrollo de Software",
-            "fifth": "Pasantia como Full-Stack Developer en Dinant",
-            "sixth": "Estudiante en Gannon University",
-            "seventh": "Assistente, Estudio de Intelligencia Artificial"
+            "origin": "Nací en Honduras, Tegucigalpa",
+            "first award": "Premio escolar, Desarrollo de Software",
+            "president club": "Presidente escolar del club de computación",
+            "second award": "Segundo premio escolar, Desarrollo de Software",
+            "dinant intern": "Pasantia como Full-Stack Developer en Dinant",
+            "tag research": "Assistente, Estudio de Intelligencia Artificial",
+            "tag publication": "Papel de Intelligencia Artificial Publicado",
+            "bachelor": "Estudiante en Gannon University"
         }
     ]
 }
