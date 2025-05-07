@@ -10,6 +10,7 @@ import Content from '../content'
 import miscLang from '../../locales/misc.json'
 import { useRouter } from 'next/router'
 import AlertNotification from '../alert'
+import { Analytics } from '@vercel/analytics/react'
 
 const Main = ({ children, router }) => {
     const { locale } = useRouter()
@@ -71,6 +72,7 @@ const Main = ({ children, router }) => {
                     {getTotalMonths(firstDay, today)}
                     ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
                 </AlertNotification>
+                <Analytics />
                 <CharModel />
                 {children}
             </Container>
