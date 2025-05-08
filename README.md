@@ -27,6 +27,14 @@ I used react internationalization to apply the ability of multiple languages and
 
 __*I am striving to have native-like fluency in English and Japanese. Feedback is appreciated.*__
 
+<h2>Upcoming 💡</h2>
+
+- Animated Character
+- Upgrade All Packages
+- Render the PDF From Script Instead of Opening PDF
+- Improve Japanese Translations *(While I Study More)*
+- Random Quotes *(That I like)*
+
 <h2>License 🪪</h2>
 
 Anyone can use my website as a template or for learning purposes. As long
