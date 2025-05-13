@@ -43,12 +43,12 @@ const Sandbox = () => {
 
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
-                        <ExperienceList list="Full-Stack Development, C++, Unreal Engine, Cuda, CMake, blueprints, ai" />
+                        <ExperienceList list="Full-Stack Development, C++, Unreal Engine, Cuda, CMake, blueprints, ai, latex" />
                     </ListItem>
 
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>
-                        <CitationList list="AI Entity, World Generator, ASEE Published Research, sigma xi conference, tag ai sandbox" />
+                        <CitationList list="AI Entity, World Generator, ASEE Published Research, sigma xi conference, tag ai sandbox, latex of research" />
                     </ListItem>
                 </List>
 

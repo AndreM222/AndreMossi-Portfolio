@@ -7,7 +7,8 @@
             "ai entity": "AI Entity",
             "tag ai sandbox": "Tag AI Sandbox",
             "asee published research": "ASEE Research Website",
-            "sigma xi conference": "Sigma XI Conference"
+            "sigma xi conference": "Sigma XI Conference",
+            "latex of research": "LaTeX Code of Research"
         },
         {
             "locale": "ja",
@@ -16,7 +17,8 @@
             "ai entity": "AIエンティティ",
             "tag ai sandbox": "鬼ごっこAIサンドボックス",
             "asee published research": "ASEE研究Webサイト",
-            "sigma xi conference": "Sigma XIイベント"
+            "sigma xi conference": "Sigma XIイベント",
+            "latex of research": "研究のLaTeXコード"
         },
         {
             "locale": "es",
@@ -24,7 +26,8 @@
             "world generator": "Generador de Mundos",
             "tag ai sandbox": "Sandbox de AI Jugando Las Traes",
             "asee published research": "ASEE Pagina de Investigacion",
-            "sigma xi conference": "Conferencia En Sigma XI"
+            "sigma xi conference": "Conferencia En Sigma XI",
+            "latex of research": "Codigo LaTeX de la Investigacion"
         }
     ],
     "link": [
@@ -35,7 +38,8 @@
             "ai entity": "https://github.com/AndreM222/AI-Entities",
             "tag ai sandbox": "https://github.com/AndreM222/Tag-AI-Sandbox",
             "asee published research": "https://peer.asee.org/tag-ai-sandbox",
-            "sigma xi conference": "https://sites.psu.edu/behrendsigmaxi2025/2025/03/11/tag-ai-sandbox/"
+            "sigma xi conference": "https://sites.psu.edu/behrendsigmaxi2025/2025/03/11/tag-ai-sandbox/",
+            "latex of research": "https://github.com/AndreM222/Tag-AI-Research-Paper"
         }
     ]
 }
