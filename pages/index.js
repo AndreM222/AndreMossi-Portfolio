@@ -145,7 +145,7 @@ const Page = () => {
                     </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>
-                            <DateSetup date="2022 to present" />
+                            <DateSetup date="2022 to 2025" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'bachelor')}
                     </TimeBox>
