@@ -17,15 +17,15 @@
     "traceability": [
         {
             "locale": "en",
-            "description": "Used AI to detect objects in camera and show on website"
+            "description": "Used AI to detect objects in camera and show on web application"
         },
         {
             "locale": "ja",
-            "description": "AIは物を見るとWebサイトで見える"
+            "description": "AIは物を見るとWebアプリケーションで見える"
         },
         {
             "locale": "es",
-            "description": "Usamos AI para detectar objectos y mostrar en pagina web"
+            "description": "Usamos AI para detectar objectos y mostrar en un web application"
         }
     ],
 

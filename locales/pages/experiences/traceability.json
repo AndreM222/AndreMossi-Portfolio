@@ -2,15 +2,15 @@
     "description": [
         {
             "locale": "en",
-            "content": "In a team of three, we developed a traceability system that detects objects passing by. The idea was to make a machine that will detect pallets that pass through cameras which will trigger an event that contains all the images it captured and detections. Through this detections we can detect abomnormalities like damages and so on. After that is sent to a database in which through a website we access that and can visualize all the data."
+            "content": "In a team of three, we developed a traceability system that detects objects passing by. The idea was to make a machine that will detect pallets that pass through cameras which will trigger an event that contains all the images it captured and detections. Through this detections we can detect abomnormalities like damages and so on. After that is sent to a database in which through a web application we access that and can visualize all the data."
         },
         {
             "locale": "ja",
-            "content": "私のチームはトレーサビリティシステムを作りました。このシステムでは、パレットがカメラを通過したときに新しいイベントを作ります。イベントで取られた新しい写真はWebサイトで見ることができます。"
+            "content": "私のチームはトレーサビリティシステムを作りました。このシステムでは、パレットがカメラを通過したときに新しいイベントを作ります。イベントで取られた新しい写真はWebアプリケーションで見ることができます。"
         },
         {
             "locale": "es",
-            "content": "En mi equipo de tres, desarollamos un systema de trazibilidad que detecta objetos pasando enfrente de uan camara. La idea era que la maquina recolectaba detectiones de cajas de paqueteria y los guardaba en eventos. Con estos eventos podemos detectar abnormalidades en la transferencia de paquetes como daños. Despues es enviado a una base de datos el cual puedes acceder a travez de una pagina web para vizualisar los datos."
+            "content": "En mi equipo de tres, desarollamos un systema de trazibilidad que detecta objetos pasando enfrente de uan camara. La idea era que la maquina recolectaba detectiones de cajas de paqueteria y los guardaba en eventos. Con estos eventos podemos detectar abnormalidades en la transferencia de paquetes como daños. Despues es enviado a una base de datos el cual puedes acceder a travez de un web application para vizualisar los datos."
         }
     ]
 }
