@@ -26,5 +26,39 @@
             "locale": "es",
             "content": "true"
         }
+    ],
+    "qb-sentence": [
+        {
+            "locale": "en",
+            "start": "\"",
+            "end": "\""
+        },
+        {
+            "locale": "ja",
+            "start": "「",
+            "end": "」"
+        },
+        {
+            "locale": "es",
+            "start": "\"",
+            "end": "\""
+        }
+    ],
+    "qb-author": [
+        {
+            "locale": "en",
+            "start": "",
+            "end": ""
+        },
+        {
+            "locale": "ja",
+            "start": "『",
+            "end": "』"
+        },
+        {
+            "locale": "es",
+            "start": "",
+            "end": ""
+        }
     ]
 }

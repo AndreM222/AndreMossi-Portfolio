@@ -3,7 +3,6 @@ import {
     Box,
     Heading,
     Image,
-    useColorModeValue
 } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
@@ -16,38 +15,23 @@ import miscLang from '../locales/misc.json'
 import DateSetup from '../components/dateSetup'
 import StatsMenu from '../components/stats'
 import NavBTN from '../components/Buttons/Navigation'
+import QuoteCard from '../components/quoteCard'
 
 const Page = () => {
     return (
         <Layout>
             <Container maxW={{ base: 'container.md', lg: '100%' }}>
                 <Box maxW="container.md" m="auto">
-                    <Box
-                        boxShadow="lg"
-                        maxW="container.md"
-                        borderRadius="lg"
-                        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
-                        p={3}
-                        mb={10}
-                        align="center"
-                        css={{ backdropFilter: 'blur(10px)' }}
-                    >
-                        {Content(indexLang, 'quote', 'content')}
-                        <Box display="inline-flex" alignItems="center">
-                            <Box
-                                width="20px"
-                                height="4px"
-                                borderRadius="lg"
-                                mr={2}
-                                bg={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
-                            />{' '}
-                            {Content(indexLang, 'quote', 'author')}
-                        </Box>
-                    </Box>
+                    <QuoteCard />
 
                     <StatsMenu />
 
-                    <Box display={{ md: 'flex' }} maxW="container.md" my="auto" mb={10}>
+                    <Box
+                        display={{ md: 'flex' }}
+                        maxW="container.md"
+                        my="auto"
+                        mb={10}
+                    >
                         <Box flexGrow={1}>
                             <Heading as="h2" variant="page-title">
                                 {Content(miscLang, 'title', 'name')}
@@ -78,14 +62,18 @@ const Page = () => {
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'about')}
                     </Heading>
-                    <Paragraph>{Content(indexLang, 'about', 'content')}</Paragraph>
+                    <Paragraph>
+                        {Content(indexLang, 'about', 'content')}
+                    </Paragraph>
                 </Section>
 
                 <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'experience')}
                     </Heading>
-                    <Paragraph>{Content(indexLang, 'experience', 'content')}</Paragraph>
+                    <Paragraph>
+                        {Content(indexLang, 'experience', 'content')}
+                    </Paragraph>
                     <NavBTN href="/experience" />
                 </Section>
 
@@ -93,7 +81,9 @@ const Page = () => {
                     <Heading as="h3" variant="section-title">
                         {Content(miscLang, 'category', 'others')}
                     </Heading>
-                    <Paragraph>{Content(indexLang, 'others', 'content')}</Paragraph>
+                    <Paragraph>
+                        {Content(indexLang, 'others', 'content')}
+                    </Paragraph>
                     <NavBTN href="/other" />
                 </Section>
 
@@ -101,12 +91,6 @@ const Page = () => {
                     <Heading as="h2" fontSize="2xl" variant="section-title">
                         {Content(indexLang, 'timeline', 'title')}
                     </Heading>
-                    <TimeBox>
-                        <TimeYear>
-                            <DateSetup date="2002" />
-                        </TimeYear>
-                        {Content(indexLang, 'timeline', 'origin')}
-                    </TimeBox>
                     <TimeBox>
                         <TimeYear>
                             <DateSetup date="2016" />
@@ -145,7 +129,7 @@ const Page = () => {
                     </TimeBox>
                     <TimeBox last={true}>
                         <TimeYear>
-                            <DateSetup date="2022 to 2025" />
+                            <DateSetup date="2025" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'bachelor')}
                     </TimeBox>

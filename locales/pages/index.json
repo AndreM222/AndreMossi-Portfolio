@@ -36,15 +36,15 @@
     "about": [
         {
             "locale": "en",
-            "content": "I am a Computer Science student at Gannon University. I was inspired to start this journey since I was in high school after watching a video regarding programming. At that moment I knew that this was the path which I yearn to walk, no matter what challenges might step in my way."
+            "content": "I studied Computer Science at Gannon University. I was inspired to start this journey since I was in high school after watching a video regarding programming. At that moment I knew that this was the path which I yearn to walk, no matter what challenges might step in my way."
         },
         {
             "locale": "ja",
-            "content": "私はギャノン大学でコンピュターサイエンスを専攻しています。学校ではプログラミングの動画を見たり、プロジェクトを立ち上げたりしています。初めてのプロジェクトは楽しかったです。そして、より多くのプログラミングの勉強とプロジェクトを進めれるように精進しています。"
+            "content": "私はギャノン大学でコンピュターサイエンスを専攻していました。学校ではプログラミングの動画を見たり、プロジェクトを立ち上げたりしています。初めてのプロジェクトは楽しかったです。そして、より多くのプログラミングの勉強とプロジェクトを進めれるように精進しています。"
         },
         {
             "locale": "es",
-            "content": "Un estudiante de Computer Science en Gannon University. Mi inspiración para empezar mi aventura proviene de un video el cual se presentó en mi escuela sobre la programación de videojuegos, En ese momento supe este era el camino que anhelaba caminar, sin importar que retos se presenten en mi camino."
+            "content": "Estudie Computer Science en Gannon University. Mi inspiración para empezar mi aventura proviene de un video el cual se presentó en mi escuela sobre la programación de videojuegos, En ese momento supe este era el camino que anhelaba caminar, sin importar que retos se presenten en mi camino."
         }
     ],
     "experience": [
@@ -79,19 +79,17 @@
         {
             "locale": "en",
             "title": "Timeline",
-            "origin": "Born in Honduras, Tegucigalpa",
             "first award": "High school award, Software Development",
             "president club": "President of the high school computer club",
             "second award": "Second high school award, Software Development",
             "dinant intern": "Internship as Full-Stack Developer at Dinant",
             "tag research": "AI Research Assistant",
             "tag publication": "Published AI Research",
-            "bachelor": "Student at Gannon University"
+            "bachelor": "Graduated from Gannon University"
         },
         {
             "locale": "ja",
             "title": "タイムライン",
-            "origin": "ホンジュラス、テグシガルパ出身",
             "first award": "学内でソフトウェア賞受賞",
             "president club": "コンピュータクラブの会長就任",
             "second award": "学内でソフトウェア賞受賞",
@@ -103,14 +101,13 @@
         {
             "locale": "es",
             "title": "Línea de Tiempo",
-            "origin": "Nací en Honduras, Tegucigalpa",
             "first award": "Premio escolar, Desarrollo de Software",
             "president club": "Presidente escolar del club de computación",
             "second award": "Segundo premio escolar, Desarrollo de Software",
             "dinant intern": "Pasantia como Full-Stack Developer en Dinant",
             "tag research": "Assistente, Estudio de Intelligencia Artificial",
             "tag publication": "Papel de Intelligencia Artificial Publicado",
-            "bachelor": "Estudiante en Gannon University"
+            "bachelor": "Graduado en Gannon University"
         }
     ]
 }

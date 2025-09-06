@@ -69,7 +69,7 @@ const Main = ({ children, router }) => {
                     delay={0.6}
                 >
                     このWebサイトは一人で翻訳しました。日本語を
-                    {getTotalMonths(firstDay, today)}
+                    {getTotalMonths(firstDay, today) - 4}
                     ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
                 </AlertNotification>
                 <Analytics />

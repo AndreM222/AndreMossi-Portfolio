@@ -1,0 +1,87 @@
+{
+    "SMASV-OnYourWay": [
+        {
+            "locale": "en",
+            "content": "You're the best of all of us. You're on your way. Just keep going.",
+            "author": "Spider-Man: Into the Spider-Verse"
+        },
+        {
+            "locale": "ja",
+            "content": "君は僕たちの中で一番だ。自分の道を進んでる。そのまま進み続けろ。",
+            "author": "スパイダーマン：スパイダーバース"
+        },
+        {
+            "locale": "es",
+            "content": "Eres el mejor de todos nosotros. Estás en tu camino, Sólo sigue adelante.",
+            "author": "Spider-Man: Un nuevo universo"
+        }
+    ],
+    "F1-Strategy": [
+        {
+            "locale": "en",
+            "content": "Hope is not a strategy. Create your own breaks.",
+            "author": "F1"
+        },
+        {
+            "locale": "ja",
+            "content": "希望は戦略ではない。運は自分で作る。",
+            "author": "F1"
+        },
+        {
+            "locale": "es",
+            "content": "La esperanza no es una estrategia. Crea tus propias oportunidades.",
+            "author": "F1"
+        }
+    ],
+    "F1-Irregularity": [
+        {
+            "locale": "en",
+            "content": "Sometimes when you lose, you win.",
+            "author": "F1"
+        },
+        {
+            "locale": "ja",
+            "content": "敗れることで、勝つこともある。",
+            "author": "F1"
+        },
+        {
+            "locale": "es",
+            "content": "A veces, cuando pierdes, ganas.",
+            "author": "F1"
+        }
+    ],
+    "F1-Money": [
+        {
+            "locale": "en",
+            "content": "It's not about the money.\n ~ So what is it about?",
+            "author": "F1"
+        },
+        {
+            "locale": "ja",
+            "content": "問題はお金じゃない。\n〜じゃあ、一体何なんだ？",
+            "author": "F1"
+        },
+        {
+            "locale": "es",
+            "content": "No se trata del dinero.\n ~ Entonces, ¿de qué se trata?”",
+            "author": "F1"
+        }
+    ],
+    "KFP-Better": [
+        {
+            "locale": "en",
+            "content": "If you only do what you can do, you'll never be better than what you are.",
+            "author": "Kung Fu Panda"
+        },
+        {
+            "locale": "ja",
+            "content": "できることだけをやっていたら、自分より上にはなれない。",
+            "author": "カンフー・パンダ"
+        },
+        {
+            "locale": "es",
+            "content": "Si solo haces lo que sabes hacer, nunca llegarás a ser mejor de lo que eres.",
+            "author": "Kung Fu Panda"
+        }
+    ]
+}
