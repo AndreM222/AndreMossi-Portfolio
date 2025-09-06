@@ -3,19 +3,18 @@
 import { Box, useColorModeValue } from '@chakra-ui/react'
 import Content from './content'
 import quoteLang from '../locales/quotesList.json'
-import { useEffect, useState } from 'react'
 import symbolLang from '../locales/grammarSymbols.json'
 
-const QuoteCard = () => {
-    const [randQuote, setRandQuote] = useState(null)
+const groupNames = Object.keys(quoteLang)
 
-    useEffect(() => {
-        const groupNames = Object.keys(quoteLang)
-        const random = groupNames[Math.floor(Math.random() * groupNames.length)]
-        setRandQuote(random)
-    }, [])
+export const quoteLength = () => {
+    return groupNames.length
+}
 
-    if (!randQuote) return null
+export const QuoteCard = ({ quoteNum }) => {
+    if (!quoteNum) quoteNum = 0
+
+    const quoteId = groupNames[quoteNum]
 
     return (
         <Box
@@ -31,7 +30,7 @@ const QuoteCard = () => {
         >
             <p style={{ whiteSpace: 'pre-line' }}>
                 {Content(symbolLang, 'qb-sentence', 'start')}
-                {Content(quoteLang, randQuote, 'content')}
+                {Content(quoteLang, quoteId, 'content')}
                 {Content(symbolLang, 'qb-sentence', 'end')}
             </p>
             <Box
@@ -47,11 +46,9 @@ const QuoteCard = () => {
                     bg={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
                 />
                 {Content(symbolLang, 'qb-author', 'start')}
-                {Content(quoteLang, randQuote, 'author')}
+                {Content(quoteLang, quoteId, 'author')}
                 {Content(symbolLang, 'qb-author', 'end')}
             </Box>
         </Box>
     )
 }
-
-export default QuoteCard

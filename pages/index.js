@@ -1,9 +1,4 @@
-import {
-    Container,
-    Box,
-    Heading,
-    Image,
-} from '@chakra-ui/react'
+import { Container, Box, Heading, Image } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
 import { TimeBox, TimeYear } from '../components/timeline'
@@ -15,14 +10,22 @@ import miscLang from '../locales/misc.json'
 import DateSetup from '../components/dateSetup'
 import StatsMenu from '../components/stats'
 import NavBTN from '../components/Buttons/Navigation'
-import QuoteCard from '../components/quoteCard'
+import { QuoteCard, quoteLength } from '../components/quoteCard'
+import { useState, useEffect } from 'react'
 
 const Page = () => {
+    const [idQuote, setIdQuote] = useState(null)
+
+    useEffect(() => {
+        const random = Math.floor(Math.random() * quoteLength())
+        setIdQuote(random)
+    }, [])
+
     return (
         <Layout>
             <Container maxW={{ base: 'container.md', lg: '100%' }}>
                 <Box maxW="container.md" m="auto">
-                    <QuoteCard />
+                    <QuoteCard quoteNum={idQuote} />
 
                     <StatsMenu />
 
