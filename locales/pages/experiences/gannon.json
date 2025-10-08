@@ -1,0 +1,16 @@
+{
+    "description": [
+        {
+            "locale": "en",
+            "content": "I graduared at Gannon University and obtained my Bachelors of Computer Science. Through this journey, I learned about numerous languages, concepts, and divions found within a company as a programmer. I took this journey in order to broad my thinking process when solving problems and be a better programmer."
+        },
+        {
+            "locale": "ja",
+            "content": "ぎゃノン大学でを受講しました。本授業は私のスキル向上に大きく貢献しました。新しいアルゴリズムとプログラミング言語を学ぶことができました。"
+        },
+        {
+            "locale": "es",
+            "content": "Me gradua en Gannon University y obtuve mi Bachilerato en Sciencias de Computacion.  A traves de esta aventura, yo aprendi una variedad de lenguajes, conceptos, y divisones que se encuentran en una compania como un programmador. I tome este camino con el deseo de expandir mi processo en resolver problemas para volverme un mejor programador."
+        }
+    ]
+}

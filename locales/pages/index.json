@@ -7,8 +7,8 @@
         },
         {
             "locale": "ja",
-            "content": "「君は僕たちの中で一番だ。自分の道を進んでる。そのまま進み続けろ。」",
-            "author": "『スパイダーマン：アクロス・ザ・スパイダーバース』"
+            "content": "君は僕たちの中で一番だ。自分の道を進んでる。そのまま進み続けろ。",
+            "author": "スパイダーマン：アクロス・ザ・スパイダーバース"
         },
         {
             "locale": "es",
@@ -85,7 +85,8 @@
             "dinant intern": "Internship as Full-Stack Developer at Dinant",
             "tag research": "AI Research Assistant",
             "tag publication": "Published AI Research",
-            "bachelor": "Graduated from Gannon University"
+            "bachelor": "Graduated from Gannon University",
+            "isi-language-school": "Studying in ISI Japanese Language School"
         },
         {
             "locale": "ja",
@@ -96,7 +97,8 @@
             "dinant intern": "Dinantでフルスタックエンジニアインターン勤務",
             "tag research": "AI研究助手として勤務",
             "tag publication": "AI研究を掲載しました",
-            "bachelor": "ギャノン大学進学"
+            "bachelor": "ギャノン大学進学",
+            "isi-language-school": "ISI日本語学校で勉強する"
         },
         {
             "locale": "es",
@@ -107,7 +109,8 @@
             "dinant intern": "Pasantia como Full-Stack Developer en Dinant",
             "tag research": "Assistente, Estudio de Intelligencia Artificial",
             "tag publication": "Papel de Intelligencia Artificial Publicado",
-            "bachelor": "Graduado en Gannon University"
+            "bachelor": "Graduado en Gannon University",
+            "isi-language-school": "Estudiando en ISI Japanese Language School"
         }
     ]
 }

@@ -7,6 +7,7 @@ import ExperienceList from '../../components/experienceList'
 import DateSetup from '../../components/dateSetup'
 
 import harvardLang from '../../locales/pages/experiences/harvard.json'
+import experienceLang from '../../locales/pages/experience.json'
 import contentLang from '../../locales/experience-content.json'
 import miscLang from '../../locales/misc.json'
 
@@ -18,21 +19,23 @@ const Harvard = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'harvard')
+                Content(experienceLang, 'harvard', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'harvard')}{' '}
+                    {Content(experienceLang, 'harvard', 'title')}{' '}
                     <Badge>
-                        <DateSetup date="2022" />{' '}
+                        <DateSetup date="2022" />
                     </Badge>
                 </Title>
                 <P>{Content(harvardLang, 'description', 'content')}</P>
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>{Content(contentLang, 'info', 'type-education')}</span>
+                        <span>
+                            {Content(contentLang, 'info', 'type-education')}
+                        </span>
                     </ListItem>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>

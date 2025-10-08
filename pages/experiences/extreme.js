@@ -8,6 +8,7 @@ import DateSetup from '../../components/dateSetup'
 
 import extremeLang from '../../locales/pages/experiences/extreme.json'
 import contentLang from '../../locales/experience-content.json'
+import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 
 const Extreme = () => {
@@ -18,12 +19,12 @@ const Extreme = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'extreme')
+                Content(experienceLang, 'extreme-networks', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'extreme')}{' '}
+                    {Content(experienceLang, 'extreme-networks', 'title')}{' '}
                     <Badge>
                         <DateSetup date="2022" />
                     </Badge>

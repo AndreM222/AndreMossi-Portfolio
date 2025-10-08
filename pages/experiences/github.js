@@ -8,6 +8,7 @@ import DateSetup from '../../components/dateSetup'
 
 import githubLang from '../../locales/pages/experiences/github.json'
 import contentLang from '../../locales/experience-content.json'
+import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 
 const Github = () => {
@@ -18,12 +19,12 @@ const Github = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'github')
+                Content(experienceLang, 'github', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'github')}{' '}
+                    {Content(experienceLang, 'github', 'title')}{' '}
                     <Badge>
                         <DateSetup date="present" />
                     </Badge>
@@ -32,7 +33,9 @@ const Github = () => {
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>{Content(contentLang, 'info', 'type-education')}</span>
+                        <span>
+                            {Content(contentLang, 'info', 'type-education')}
+                        </span>
                     </ListItem>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>

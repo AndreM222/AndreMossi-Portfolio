@@ -2,51 +2,98 @@
     "harvard": [
         {
             "locale": "en",
+            "title": "Harvard",
+            "img-url": "/images/experiences/Banners/Harvard-Banner.png",
             "description": "Online Harvard class for introduction to Computer Science"
         },
         {
             "locale": "ja",
+            "title": "ハーバード大学",
             "description": "ハーバード大学のオンライン授業"
         },
         {
             "locale": "es",
+            "title": "Harvard",
             "description": "Clase en línea de Harvard introducción a Computer Science"
         }
     ],
-
+    "gannon": [
+        {
+            "locale": "en",
+            "title": "Gannon",
+            "img-url": "/images/experiences/Banners/Gannon-Banner.png",
+            "description": "Bachelors degree in Computer Science"
+        },
+        {
+            "locale": "ja",
+            "title": "ぎゃノン大学",
+            "description": "コンピューターサイエンスの学士号"
+        },
+        {
+            "locale": "es",
+            "title": "Gannon",
+            "description": "Bachilerato en Sciencia de Computacion"
+        }
+    ],
     "traceability": [
         {
             "locale": "en",
+            "title": "Traceability System",
+            "img-url": "/images/experiences/Banners/Traceability-Banner.png",
             "description": "Used AI to detect objects in camera and show on web application"
         },
         {
             "locale": "ja",
+            "title": "トレーサビリティシステム",
             "description": "AIは物を見るとWebアプリケーションで見える"
         },
         {
             "locale": "es",
+            "title": "Systema de Trazabilidad",
             "description": "Usamos AI para detectar objectos y mostrar en un web application"
         }
     ],
-
-    "dowal-competition": [
+    "dowal-competition-2016": [
         {
             "locale": "en",
+            "title": "Dowal 2016",
+            "img-url": "/images/experiences/Banners/Dowal-2016p-Banner.png",
             "description": "Technology fair hold on Dowal School"
         },
         {
             "locale": "ja",
+            "title": "Dowal学校、2016年",
             "description": "学内のソフトウェアエンジニアイベント"
         },
         {
             "locale": "es",
+            "title": "Dowal 2016",
             "description": "Feria technologica llevada a cabo en Dowal School"
         }
     ],
-
+    "dowal-competition-2020": [
+        {
+            "locale": "en",
+            "title": "Dowal 2020",
+            "img-url": "/images/experiences/Banners/Dowal-2020p-Banner.png",
+            "description": "Technology fair hold on Dowal School"
+        },
+        {
+            "locale": "ja",
+            "title": "Dowal学校、2020年",
+            "description": "学内のソフトウェアエンジニアイベント"
+        },
+        {
+            "locale": "es",
+            "title": "Dowal 2020",
+            "description": "Feria technologica llevada a cabo en Dowal School"
+        }
+    ],
     "extreme-networks": [
         {
             "locale": "en",
+            "title": "Extreme Networks",
+            "img-url": "/images/experiences/Banners/ExtremeNetworks-Banner.png",
             "description": "Completed Extreme Networks class from the university"
         },
         {
@@ -55,13 +102,15 @@
         },
         {
             "locale": "es",
+            "title": "Extreme Networks",
             "description": "Complete la clase de Extreme Networks en la universidad"
         }
     ],
-
     "github": [
         {
             "locale": "en",
+            "title": "GitHub",
+            "img-url": "/images/experiences/Banners/Git-Banner.png",
             "description": "Projects for practice and fun"
         },
         {
@@ -70,40 +119,46 @@
         },
         {
             "locale": "es",
+            "title": "GitHub",
             "description": "Proyectos para practica y diversión"
         }
     ],
-
     "dinant": [
         {
             "locale": "en",
+            "title": "Dinant",
+            "img-url": "/images/experiences/Banners/Dinant-Banner.png",
             "description": "Worldwide manufacture and exportation company"
         },
         {
             "locale": "ja",
+            "title": "Dinant",
             "description": "ラテン系の輸出大企業"
         },
         {
             "locale": "es",
+            "title": "Dinant",
             "description": "Compania de manufactura y exportaciones globales"
         }
     ],
-
     "ai-sandbox": [
         {
             "locale": "en",
+            "title": "Tag AI Sandbox",
+            "img-url": "/images/experiences/Banners/AI-Sandbox-Banner.png",
             "description": "AI-Sandbox to study behavior or organisms"
         },
         {
             "locale": "ja",
+            "title": "AI鬼ごっこサンドボックス",
             "description": "AI研究プロジェクト"
         },
         {
             "locale": "es",
+            "title": "AI Jugando Las Traes",
             "description": "Un AI-Sandbox para estudiar el comportamiento de organismos"
         }
     ],
-
     "category": [
         {
             "locale": "en",

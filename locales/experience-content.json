@@ -1,39 +1,4 @@
 {
-    "title": [
-        {
-            "locale": "en",
-            "harvard": "Harvard",
-            "dowal-2020": "Dowal 2020",
-            "dowal-2016": "Dowal 2016",
-            "extreme": "Extreme Networks",
-            "github": "GitHub",
-            "dinant": "Dinant",
-            "ai-sandbox": "Tag AI Sandbox",
-            "traceability": "Traceability System"
-        },
-        {
-            "locale": "ja",
-            "harvard": "ハーバード大学",
-            "dowal-2020": "Dowal学校、2020年",
-            "dowal-2016": "Dowal学校、2016年",
-            "extreme": "Extreme Networks",
-            "github": "GitHub",
-            "dinant": "Dinant",
-            "ai-sandbox": "AI鬼ごっこサンドボックス",
-            "traceability": "トレーサビリティシステム"
-        },
-        {
-            "locale": "es",
-            "harvard": "Harvard",
-            "dowal-2020": "Dowal 2020",
-            "dowal-2016": "Dowal 2016",
-            "extreme": "Extreme Networks",
-            "github": "GitHub",
-            "dinant": "Dinant",
-            "ai-sandbox": "AI Jugando Las Traes",
-            "traceability": "Systema de Trazabilidad"
-        }
-    ],
     "info": [
         {
             "locale": "en",

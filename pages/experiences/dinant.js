@@ -8,6 +8,7 @@ import DateSetup from '../../components/dateSetup'
 
 import dinantLang from '../../locales/pages/experiences/dinant.json'
 import contentLang from '../../locales/experience-content.json'
+import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 
 const Dinant = () => {
@@ -18,23 +19,27 @@ const Dinant = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'dinant')
+                Content(experienceLang, 'dinant', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'dinant')}{' '}
+                    {Content(experienceLang, 'dinant', 'title')}{' '}
                     <Badge>
                         <DateSetup date="2023" />
                     </Badge>
                 </Title>
 
-                <Paragraph>{Content(dinantLang, 'description', 'content')}</Paragraph>
+                <Paragraph>
+                    {Content(dinantLang, 'description', 'content')}
+                </Paragraph>
 
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>{Content(contentLang, 'info', 'type-internship')}</span>
+                        <span>
+                            {Content(contentLang, 'info', 'type-internship')}
+                        </span>
                     </ListItem>
 
                     <ListItem>

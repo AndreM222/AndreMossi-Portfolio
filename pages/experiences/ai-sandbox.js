@@ -9,6 +9,7 @@ import DateSetup from '../../components/dateSetup'
 
 import sandboxLang from '../../locales/pages/experiences/ai-sandbox.json'
 import contentLang from '../../locales/experience-content.json'
+import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 import NavBTN from '../../components/Buttons/Navigation'
 
@@ -20,12 +21,12 @@ const Sandbox = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'ai-sandbox')
+                Content(experienceLang, 'ai-sandbox', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'ai-sandbox')}{' '}
+                    {Content(experienceLang, 'ai-sandbox', 'title')}{' '}
                     <Badge>
                         <DateSetup date="2024 to 2025" />
                     </Badge>

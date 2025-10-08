@@ -8,6 +8,7 @@ import DateSetup from '../../components/dateSetup'
 
 import traceabilityLang from '../../locales/pages/experiences/traceability.json'
 import contentLang from '../../locales/experience-content.json'
+import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 
 const Sandbox = () => {
@@ -18,12 +19,12 @@ const Sandbox = () => {
                 '-',
                 Content(miscLang, 'category', 'experience'),
                 ':',
-                Content(contentLang, 'title', 'ai-sandbox')
+                Content(experienceLang, 'traceability', 'title')
             ].join(' ')}
         >
             <Container>
                 <Title>
-                    {Content(contentLang, 'title', 'traceability')}{' '}
+                    {Content(experienceLang, 'traceability', 'title')}{' '}
                     <Badge>
                         <DateSetup date="2024 to 2025" />
                     </Badge>

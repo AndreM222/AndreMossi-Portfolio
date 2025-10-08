@@ -130,11 +130,17 @@ const Page = () => {
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'tag publication')}
                     </TimeBox>
-                    <TimeBox last={true}>
+                    <TimeBox>
                         <TimeYear>
                             <DateSetup date="2025" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'bachelor')}
+                    </TimeBox>
+                    <TimeBox last={true}>
+                        <TimeYear>
+                            <DateSetup date="2025 to present" />
+                        </TimeYear>
+                        {Content(indexLang, 'timeline', 'isi-language-school')}
                     </TimeBox>
                 </TimeSection>
             </Container>
