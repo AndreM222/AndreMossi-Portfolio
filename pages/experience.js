@@ -6,7 +6,6 @@ import Content from '../components/content'
 
 import experienceLang from '../locales/pages/experience.json'
 import miscLang from '../locales/misc.json'
-import contentLang from '../locales/experience-content.json'
 
 const Experience = () => {
     return (
