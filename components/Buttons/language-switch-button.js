@@ -1,3 +1,5 @@
+"use client"
+
 import {
     IconButton,
     useColorModeValue,
@@ -24,16 +26,14 @@ const languageNames = {
 const LanguageButton = ({ path }) => {
     const { locales, locale, push, asPath } = useRouter()
 
-    const [language, setLanguage] = useState(() => {
-        if (
-            typeof localStorage != 'undefined' &&
-            localStorage.getItem('language')
-        ) {
-            return localStorage.getItem('language')
-        }
+    const [language, setLanguage] = useState(locale)
 
-        return locale
-    })
+    useEffect(() => {
+        const saved = localStorage.getItem('language')
+        if(saved && saved !== language) {
+            setLanguage(saved)
+        }
+    }, [])
 
     const setLocale = language => {
         localStorage.setItem('language', language)
