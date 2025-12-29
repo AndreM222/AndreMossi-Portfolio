@@ -1,5 +1,4 @@
 import {
-    IoLogoInstagram,
     IoLogoGithub,
     IoLogoReddit,
     IoLogoLinkedin,
@@ -68,14 +67,6 @@ const Footer = () => {
                         icon={<Icon as={IoLogoLinkedin} />}
                     >
                         Andre Mossi
-                    </LinkButton>
-
-                    <LinkButton
-                        href="https://www.instagram.com/andremoxxi/"
-                        target="_blank"
-                        icon={<Icon as={IoLogoInstagram} />}
-                    >
-                        @andremoxxi
                     </LinkButton>
 
                     <LinkButton
