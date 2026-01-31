@@ -53,7 +53,7 @@ const Sandbox = () => {
                     </ListItem>
                 </List>
 
-                <NavBTN as={Link} href="/PDF/AI-Sandbox.pdf" target="_blank" />
+                <NavBTN as={Link} href={Content(sandboxLang, 'paper', 'url')} target="_blank" />
 
                 <ThumbImage
                     src="/images/experiences/TracingSense.png"

@@ -26,5 +26,19 @@
             "locale": "es",
             "content": "Por mis logros en el projecto, fui acceptado por el \"American Society for Engineering\" (ASEE) para publicar my investigacion en su pagina. Fui invitado a la conferencia de ASEE que fue dada en Marshall University para hablar sobre mi experiencia trabajando en estre projecto y mis ideas. No mucho despues, recibi una notificacion de Sigma XI el cual era una invitacion para ir a su conferencia en Penn State University. Me diverti mucho y espero haberles otorgado nuevas ideas."
         }
+    ],
+    "paper": [
+        {
+            "locale": "en",
+            "url": "/PDF/AI-Sandbox-EN.pdf"
+        },
+        {
+            "locale": "ja",
+            "url": "/PDF/AI-Sandbox-JA.pdf"
+        },
+        {
+            "locale": "es",
+            "url": "/PDF/AI-Sandbox-ES.pdf"
+        }
     ]
 }
