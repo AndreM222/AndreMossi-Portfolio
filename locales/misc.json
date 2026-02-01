@@ -21,7 +21,7 @@
             "experience": "Experience",
             "others": "Others",
             "resume": "Resume",
-            "link-resume": "/PDF/AndreCV-EN.pdf"
+            "link-resume": "/PDF/MS-AndreCV-EN.pdf"
         },
         {
             "locale": "ja",
@@ -29,7 +29,7 @@
             "experience": "プロジェクト",
             "others": "その他",
             "resume": "職務経歴書",
-            "link-resume": "/PDF/shokumu_keireki_sho.pdf"
+            "link-resume": "/PDF/SKS-Andre-JP.pdf"
         },
         {
             "locale": "es",
@@ -37,7 +37,7 @@
             "experience": "Experiencia",
             "others": "Otros",
             "resume": "Curriculum",
-            "link-resume": "/PDF/AndreCV-ES.pdf"
+            "link-resume": "/PDF/MS-AndreCV-ES.pdf"
         }
     ],
 
