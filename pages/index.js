@@ -1,4 +1,4 @@
-import { Container, Box, Heading, Image } from '@chakra-ui/react'
+import { Container, Box, Heading, Image, SimpleGrid } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
 import { TimeBox, TimeYear } from '../components/timeline'
@@ -12,6 +12,7 @@ import StatsMenu from '../components/stats'
 import NavBTN from '../components/Buttons/Navigation'
 import { QuoteCard, quoteLength } from '../components/quoteCard'
 import { useState, useEffect } from 'react'
+import RecommendationCard from '../components/recommendationCard'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
@@ -90,7 +91,14 @@ const Page = () => {
                     <NavBTN href="/other" />
                 </Section>
 
-                <TimeSection delay={0.4}>
+                <Heading as="h2" fontSize="2xl" variant="section-title" justifySelf="center">
+                    {Content(miscLang, 'category', 'recommendations')}
+                </Heading>
+                <SimpleGrid columns={[1]} justifyItems="center">
+                    <RecommendationCard projectID="aiSandbox" delay={0.4}/>
+                </SimpleGrid>
+
+                <TimeSection delay={0.5}>
                     <Heading as="h2" fontSize="2xl" variant="section-title">
                         {Content(indexLang, 'timeline', 'title')}
                     </Heading>

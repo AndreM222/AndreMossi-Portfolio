@@ -2,7 +2,7 @@
     "separator": [
         {
             "locale": "en",
-            "content": ","
+            "content": ", "
         },
         {
             "locale": "ja",
@@ -10,7 +10,7 @@
         },
         {
             "locale": "es",
-            "content": ","
+            "content": ", "
         }
     ],
     "space": [

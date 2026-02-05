@@ -1,0 +1,27 @@
+{
+    "aiSandbox": [
+        {
+            "locale": "en",
+            "id": "ai-sandbox",
+            "image": "GannonLogo.png",
+            "company": "Gannon University",
+            "date": "2025-02-20",
+            "title": "AI Research",
+            "author": "Dr. Sundaram Ramakrishnan",
+            "description": "Roberto A. Mossi Milla is one of the most outstanding undergraduate students in the Computer and Information Science (CIS) program at Gannon University. Roberto is a diligent and conscientious worker who, in addition to excellence in course work, has been actively and proactively engaged in project activities which significantly benefit faculty-led research projects. I strongly recommend him to the internship and technical positions based on the following attributes.",
+            "phone": "+18148717623",
+            "mail": "sundaram001@gannon.edu"
+        },
+        {
+            "locale": "ja",
+            "company": "ギャノン大学",
+            "title": "AI研究",
+            "author": "ラマクリシュナん・スンダラム教授"
+        },
+        {
+            "locale": "es",
+            "company": "Gannon University",
+            "title": "Investigacion IA"
+        }
+    ]
+}

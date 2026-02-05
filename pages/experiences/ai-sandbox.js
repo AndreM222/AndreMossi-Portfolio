@@ -1,4 +1,4 @@
-import { Container, Badge, List, ListItem, Link } from '@chakra-ui/react'
+import { Container, Badge, List, ListItem, Link, Box } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -12,6 +12,7 @@ import contentLang from '../../locales/experience-content.json'
 import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 import NavBTN from '../../components/Buttons/Navigation'
+import RecommendationCard from '../../components/recommendationCard'
 
 const Sandbox = () => {
     return (
@@ -67,6 +68,10 @@ const Sandbox = () => {
                     src="/images/experiences/ProceduralPreviewPic.png"
                     alt="World Generator Preview"
                 />
+
+                <Box justifyItems="center">
+                    <RecommendationCard projectID="aiSandbox"/>
+                </Box>
             </Container>
         </Layout>
     )

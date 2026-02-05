@@ -19,7 +19,7 @@ const itemSetup = ({ date }) => {
                 if (!Content(dateSymbolLang, 'months', currTime)) {
                     translatedTime +=
                         translatedTime.length < 4
-                            ? Content(dateSymbolLang, 'endtrail', 'date')
+                            ? Content(dateSymbolLang, 'endtrail', 'day')
                             : Content(dateSymbolLang, 'endtrail', 'year')
                 } else {
                     translatedTime = translatedTime.concat(
@@ -31,7 +31,8 @@ const itemSetup = ({ date }) => {
             if (
                 index > 0 &&
                 currTime !== 'to' &&
-                Content(grammarSymbolLang, 'space', 'content').toLowerCase() === 'true'
+                Content(grammarSymbolLang, 'space', 'content').toLowerCase() ===
+                'true'
             )
                 return ' ' + translatedTime
 
@@ -53,6 +54,47 @@ const spaceSetup = ({ date }) => {
                 itemSetup({ date: currTime })
         })
         .join('')
+}
+
+const applyFormat = (format, values) => {
+    let i = 0
+    return format.replace(/%s/g, () => values[i++] ?? '')
+}
+
+export const getDateFormat = date => {
+    const monthKeys = [
+        'january',
+        'february',
+        'march',
+        'april',
+        'may',
+        'june',
+        'july',
+        'august',
+        'september',
+        'october',
+        'november',
+        'december'
+    ]
+
+    if (!date) return ''
+
+    // Expecting YYYY-MM-DD
+    const parts = date.split('-')
+    if (parts.length !== 3) return date
+
+    const [year, monthStr, dayStr] = parts
+    const monthIndex = parseInt(monthStr, 10) - 1
+
+    if (monthIndex < 0 || monthIndex > 11) return date
+
+    const month = monthKeys[monthIndex]
+    const day = parseInt(dayStr, 10)
+
+    // Output format expected by DateSetup
+    const format = Content(dateSymbolLang, 'format', 'content')
+
+    return applyFormat(format, [month, day, year])
 }
 
 const DateSetup = ({ date }) => {

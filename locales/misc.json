@@ -6,7 +6,7 @@
         },
         {
             "locale": "ja",
-            "name": "望士　安翔礼"
+            "name": "望士・安翔礼"
         },
         {
             "locale": "es",
@@ -21,6 +21,7 @@
             "experience": "Experience",
             "others": "Others",
             "resume": "Resume",
+            "recommendations": "Recommendations",
             "link-resume": "/PDF/MS-AndreCV-EN.pdf"
         },
         {
@@ -29,6 +30,7 @@
             "experience": "プロジェクト",
             "others": "その他",
             "resume": "職務経歴書",
+            "recommendations": "推薦文",
             "link-resume": "/PDF/SKS-Andre-JP.pdf"
         },
         {
@@ -37,6 +39,7 @@
             "experience": "Experiencia",
             "others": "Otros",
             "resume": "Curriculum",
+            "recommendations": "Recomendaciones",
             "link-resume": "/PDF/MS-AndreCV-ES.pdf"
         }
     ],
@@ -53,6 +56,21 @@
         {
             "locale": "es",
             "content": "Mas"
+        }
+    ],
+
+    "letter": [
+        {
+            "locale": "en",
+            "content": "View Letter"
+        },
+        {
+            "locale": "ja",
+            "content": "手紙を見る"
+        },
+        {
+            "locale": "es",
+            "content": "Ver Carta"
         }
     ],
 

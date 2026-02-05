@@ -90,5 +90,15 @@
             "month": "月",
             "day": "日"
         }
+    ],
+    "format": [
+        {
+            "locale": "en",
+            "content": "%s %s, %s"
+        },
+        {
+            "locale": "ja",
+            "content": "%s %s %s"
+        }
     ]
 }
