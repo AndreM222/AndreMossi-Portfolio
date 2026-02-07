@@ -10,7 +10,6 @@ import dinantLang from '../../locales/pages/experiences/dinant.json'
 import contentLang from '../../locales/experience-content.json'
 import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
-import RecommendationCard from '../../components/recommendationCard'
 
 const Dinant = () => {
     return (
@@ -47,10 +46,6 @@ const Dinant = () => {
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="Full-Stack Development, Data Transformation, Oracle Database, HTML, CSS, JavaScript, SQL, Data Entry, Data Analysis, Data Modeling" />
                     </ListItem>
-
-                    <Box justifyItems="center">
-                        <RecommendationCard projectID="dinant" />
-                    </Box>
                 </List>
             </Container>
         </Layout>

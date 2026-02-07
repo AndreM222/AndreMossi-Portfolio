@@ -9,7 +9,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 
 const RecommendationSection = ({ delay = 0 }) => {
-    const recommendationsID = ['aiSandbox' ]
+    const recommendationsID = ['aiSandbox']
 
     return (
         <Box>
