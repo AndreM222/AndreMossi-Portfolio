@@ -30,7 +30,7 @@ const StyledDiv = chakra(motion.div, {
     }
 })
 
-const RecommendationCard = ({ projectID, delay = 0 }) => {
+const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
     const projectContent = {
         id: Content(letterLang, projectID, 'id'),
         image: Content(letterLang, projectID, 'image'),
@@ -44,12 +44,12 @@ const RecommendationCard = ({ projectID, delay = 0 }) => {
     }
 
     return (
-        <StyledDiv
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: delay }}
-        >
-            <Box maxW="400px">
+        <Box maxW="400px" minW="100%" {...props}>
+            <StyledDiv
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: delay }}
+            >
                 <Box position="relative">
                     <Box
                         p={1}
@@ -59,7 +59,7 @@ const RecommendationCard = ({ projectID, delay = 0 }) => {
                         alignSelf="anchor-center"
                         my="auto"
                         bg={useColorModeValue(
-                            'blackAlpha.50',
+                            'whiteAlpha.700',
                             'blackAlpha.500'
                         )}
                         borderColor={useColorModeValue(
@@ -89,13 +89,18 @@ const RecommendationCard = ({ projectID, delay = 0 }) => {
                 </Box>
                 <Box
                     display="grid"
+                    gridTemplateRows="auto auto auto 1fr auto auto"
                     boxShadow="lg"
                     gap={2}
-                    bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+                    bg={useColorModeValue(
+                        'color-mix(in srgb, white 50%, #f1ece8)',
+                        'color-mix(in srgb, white 8%, #101015)'
+                    )}
                     borderRadius="lg"
                     p={3}
                     pt={6}
                     mt={-6}
+                    height={520}
                 >
                     <Box justifySelf="center">
                         <b>{projectContent.author}</b>
@@ -168,8 +173,8 @@ const RecommendationCard = ({ projectID, delay = 0 }) => {
                         </Button>
                     </SimpleGrid>
                 </Box>
-            </Box>
-        </StyledDiv>
+            </StyledDiv>
+        </Box>
     )
 }
 

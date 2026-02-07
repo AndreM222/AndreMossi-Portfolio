@@ -94,11 +94,11 @@
     "format": [
         {
             "locale": "en",
-            "content": "%s %s, %s"
+            "content": "%month% %day%, %year%"
         },
         {
             "locale": "ja",
-            "content": "%s %s %s"
+            "content": "%year% %month% %day%"
         }
     ]
 }

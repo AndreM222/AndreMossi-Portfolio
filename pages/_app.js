@@ -3,6 +3,7 @@ import Layout from '../components/layouts/main'
 import theme from '../lib/theme'
 import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
+import '../lib/sweeper.css'
 
 function Website({ Component, pageProps, router }) {
     return (

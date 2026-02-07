@@ -23,5 +23,28 @@
             "company": "Gannon University",
             "title": "Investigacion IA"
         }
+    ],
+    "dinant": [
+        {
+            "locale": "en",
+            "id": "dinant",
+            "image": "DinantLogo.png",
+            "company": "Dinant",
+            "date": "2026-02-04",
+            "title": "Full-Stack Engineer",
+            "author": "Rigoberto Funes",
+            "description": "Roberto A. Mossi Milla is one of the most outstanding undergraduate students in the Computer and Information Science (CIS) program at Gannon University. I strongly recommend him to the internship and technical positions based on the following attributes.",
+            "phone": "+50422753370",
+            "mail": "rigoberto.funes@dinant.com"
+        },
+        {
+            "locale": "ja",
+            "title": "ソフトウェアエンジニア",
+            "author": "リゴベルト・フネス"
+        },
+        {
+            "locale": "es",
+            "title": "Ingenieria De Software"
+        }
     ]
 }

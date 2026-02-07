@@ -57,8 +57,7 @@ const spaceSetup = ({ date }) => {
 }
 
 const applyFormat = (format, values) => {
-    let i = 0
-    return format.replace(/%s/g, () => values[i++] ?? '')
+    return format.replace(/%(\w+)%/g, (_, key) => values[key] ?? '')
 }
 
 export const getDateFormat = date => {
@@ -79,7 +78,6 @@ export const getDateFormat = date => {
 
     if (!date) return ''
 
-    // Expecting YYYY-MM-DD
     const parts = date.split('-')
     if (parts.length !== 3) return date
 
@@ -88,13 +86,13 @@ export const getDateFormat = date => {
 
     if (monthIndex < 0 || monthIndex > 11) return date
 
-    const month = monthKeys[monthIndex]
-    const day = parseInt(dayStr, 10)
-
-    // Output format expected by DateSetup
     const format = Content(dateSymbolLang, 'format', 'content')
 
-    return applyFormat(format, [month, day, year])
+    return applyFormat(format, {
+        year: year,
+        month: monthKeys[monthIndex],
+        day: parseInt(dayStr, 10)
+    })
 }
 
 const DateSetup = ({ date }) => {

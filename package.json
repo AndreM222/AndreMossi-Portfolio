@@ -25,6 +25,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "swiper": "^12.1.0",
     "three": "^0.154.0"
   },
   "devDependencies": {
