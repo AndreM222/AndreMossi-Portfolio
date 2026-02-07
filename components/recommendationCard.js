@@ -44,7 +44,11 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
     }
 
     return (
-        <Box maxW="400px" minW="100%" {...props}>
+        <Box
+            w="100%"
+            maxW={{ base: "92vw", sm: "380px", md: "400px" }}
+            mx="auto"
+            {...props}>
             <StyledDiv
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -81,8 +85,8 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             'blackAlpha.700',
                             'whiteAlpha.300'
                         )}
-                        maxW="15%"
-                        ml={-100}
+                        ml="-100px"
+                        maxW={{ base: "60px", md: "15%" }}
                         margin="auto"
                         src={'/images/recommendation/' + projectContent.image}
                     />
@@ -100,7 +104,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                     p={3}
                     pt={6}
                     mt={-6}
-                    height={520}
+                    minH="520px"inH={{ base: "auto", md: "520px" }}
                 >
                     <Box justifySelf="center">
                         <b>{projectContent.author}</b>

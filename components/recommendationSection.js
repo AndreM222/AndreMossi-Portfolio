@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { Box, SimpleGrid } from '@chakra-ui/react'
 import RecommendationCard from '../components/recommendationCard'
@@ -39,7 +39,8 @@ const RecommendationSection = ({ delay = 0 }) => {
                     navigation={true}
                     slidesPerView="auto"
                     fadeEffect={{ crossFade: true }}
-                    spaceBetween={30}
+                    spaceBetween={16}
+                    alignItems="stretch"
                     cardsEffect={{
                         slideShadows: false
                     }}
@@ -47,7 +48,6 @@ const RecommendationSection = ({ delay = 0 }) => {
                     {recommendationsID.map(id => {
                         return (
                             <SwiperSlide
-                                style={{ width: '420px' }}
                                 key={id + '_card'}
                             >
                                 <RecommendationCard
