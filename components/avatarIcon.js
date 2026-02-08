@@ -8,23 +8,15 @@ const AvatarIcon = () => {
     const videoRef = useRef(null)
 
     useEffect(() => {
-        const resumeVideo = () => {
-            const video = videoRef.current
-            if (!video) return
-
-            if (video.paused) {
-                video.currentTime = video.currentTime || 0
-                video.play().catch(() => {})
+        const handleVisibility = () => {
+            if (document.visibilityState === 'visible') {
+                videoRef.current?.play().catch(() => { })
             }
         }
 
-        document.addEventListener('visibilitychange', resumeVideo)
-        window.addEventListener('pageshow', resumeVideo)
-
-        return () => {
-            document.removeEventListener('visibilitychange', resumeVideo)
-            window.removeEventListener('pageshow', resumeVideo)
-        }
+        document.addEventListener('visibilitychange', handleVisibility)
+        return () =>
+            document.removeEventListener('visibilitychange', handleVisibility)
     }, [])
 
     return (
