@@ -71,7 +71,8 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             'whiteAlpha.300'
                         )}
                         borderWidth={2}
-                        ml={-5}
+                        top={2}
+                        left={-4}
                         borderRadius="lg"
                     >
                         {projectContent.company}
@@ -85,7 +86,6 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             'blackAlpha.700',
                             'whiteAlpha.300'
                         )}
-                        ml="-100px"
                         maxW={{ base: "60px", md: "15%" }}
                         margin="auto"
                         src={'/images/recommendation/' + projectContent.image}
