@@ -1,4 +1,4 @@
-import { Container, Box, Heading, Image } from '@chakra-ui/react'
+import { Container, Box, Heading } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
 import { TimeBox, TimeYear } from '../components/timeline'
@@ -13,6 +13,7 @@ import NavBTN from '../components/Buttons/Navigation'
 import { QuoteCard, quoteLength } from '../components/quoteCard'
 import { useState, useEffect } from 'react'
 import RecommendationSection from '../components/recommendationSection'
+import AvatarIcon from '../components/avatarIcon'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
@@ -49,16 +50,7 @@ const Page = () => {
                             ml={{ md: 6 }}
                             align="center"
                         >
-                            <Image
-                                borderColor="whiteAlpha.800"
-                                borderWidth={2}
-                                borderStyle="solid"
-                                maxWidth="100px"
-                                display="inline-block"
-                                borderRadius="full"
-                                src="/images/PortfolioPic.png"
-                                alt="Profile Image"
-                            />
+                            <AvatarIcon />
                         </Box>
                     </Box>
                 </Box>
