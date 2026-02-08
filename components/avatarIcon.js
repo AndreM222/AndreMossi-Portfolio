@@ -5,18 +5,25 @@ import { Box, Image } from '@chakra-ui/react'
 
 const AvatarIcon = () => {
     const [loaded, setLoaded] = useState(false)
+    const [paused, setPaused] = useState(false)
     const videoRef = useRef(null)
 
     useEffect(() => {
         const handleVisibility = () => {
             if (document.visibilityState === 'visible') {
-                videoRef.current?.play().catch(() => { })
+                videoRef.current?.play().catch(() => {})
             }
         }
 
         document.addEventListener('visibilitychange', handleVisibility)
         return () =>
             document.removeEventListener('visibilitychange', handleVisibility)
+    }, [])
+
+    useEffect(() => {
+        const resume = () => videoRef.current?.play().catch(() => {})
+        window.addEventListener('touchstart', resume, { once: true })
+        return () => window.removeEventListener('touchstart', resume)
     }, [])
 
     return (
@@ -39,7 +46,7 @@ const AvatarIcon = () => {
                 w="100%"
                 h="100%"
                 objectFit="cover"
-                opacity={loaded ? 0 : 1}
+                opacity={loaded && !paused ? 0 : 1}
                 transition="opacity 0.4s"
             />
 
@@ -51,6 +58,8 @@ const AvatarIcon = () => {
                 muted
                 playsInline
                 preload="metadata"
+                onPause={() => setPaused(true)}
+                onPlay={() => setPaused(false)}
                 onCanPlay={() => setLoaded(true)}
                 style={{
                     width: '100%',
