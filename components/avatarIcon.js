@@ -24,7 +24,8 @@ const AvatarIcon = () => {
             borderColor="whiteAlpha.800"
             borderWidth={2}
             borderStyle="solid"
-            maxW="100px"
+            w="100px"
+            h="100px"
             borderRadius="full"
             overflow="hidden"
             position="relative"
@@ -49,7 +50,7 @@ const AvatarIcon = () => {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onCanPlay={() => setLoaded(true)}
                 style={{
                     width: '100%',
