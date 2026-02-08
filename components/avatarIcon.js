@@ -1,10 +1,23 @@
-"use client"
+'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Box, Image } from '@chakra-ui/react'
 
 const AvatarIcon = () => {
     const [loaded, setLoaded] = useState(false)
+    const videoRef = useRef(null)
+
+    useEffect(() => {
+        const handleVisibility = () => {
+            if (document.visibilityState === 'visible') {
+                videoRef.current?.play().catch(() => { })
+            }
+        }
+
+        document.addEventListener('visibilitychange', handleVisibility)
+        return () =>
+            document.removeEventListener('visibilitychange', handleVisibility)
+    }, [])
 
     return (
         <Box
@@ -30,13 +43,13 @@ const AvatarIcon = () => {
             />
 
             <video
+                ref={videoRef}
                 src="/images/HPFX_ProfilePic.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="auto"
-                onLoadedMetadata={() => setLoaded(true)}
                 onCanPlay={() => setLoaded(true)}
                 style={{
                     width: '100%',
