@@ -56,7 +56,6 @@ const AvatarIcon = () => {
                 h="100%"
                 objectFit="cover"
                 opacity={loaded && playing ? 0 : 1}
-                transition="opacity 0.4s"
             />
 
             <video
