@@ -56,6 +56,7 @@ const AvatarIcon = () => {
                 h="100%"
                 objectFit="cover"
                 opacity={loaded && playing ? 0 : 1}
+                transition="opacity 0.5s ease"
             />
 
             <video
@@ -70,7 +71,9 @@ const AvatarIcon = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover'
+                    objectFit: 'cover',
+                    opacity: loaded && playing ? 1 : 0,
+                    transition: 'opacity 0.6s ease'
                 }}
             />
         </Box>
