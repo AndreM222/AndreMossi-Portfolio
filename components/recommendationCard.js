@@ -46,9 +46,10 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
     return (
         <Box
             w="100%"
-            maxW={{ base: "92vw", sm: "380px", md: "400px" }}
+            maxW={{ base: '92vw', sm: '380px', md: '400px' }}
             mx="auto"
-            {...props}>
+            {...props}
+        >
             <StyledDiv
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -62,10 +63,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         zIndex={1}
                         alignSelf="anchor-center"
                         my="auto"
-                        bg={useColorModeValue(
-                            'whiteAlpha.700',
-                            'blackAlpha.500'
-                        )}
+                        bg={useColorModeValue('white', 'black')}
                         borderColor={useColorModeValue(
                             'blackAlpha.700',
                             'whiteAlpha.300'
@@ -86,7 +84,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             'blackAlpha.700',
                             'whiteAlpha.300'
                         )}
-                        maxW={{ base: "60px", md: "15%" }}
+                        maxW={{ base: '60px', md: '15%' }}
                         margin="auto"
                         src={'/images/recommendation/' + projectContent.image}
                     />
@@ -104,7 +102,8 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                     p={3}
                     pt={6}
                     mt={-6}
-                    minH="520px"inH={{ base: "auto", md: "520px" }}
+                    minH="520px"
+                    inH={{ base: 'auto', md: '520px' }}
                 >
                     <Box justifySelf="center">
                         <b>{projectContent.author}</b>
