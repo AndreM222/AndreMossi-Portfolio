@@ -103,7 +103,6 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                     pt={6}
                     mt={-6}
                     minH="520px"
-                    inH={{ base: 'auto', md: '520px' }}
                 >
                     <Box justifySelf="center">
                         <b>{projectContent.author}</b>
