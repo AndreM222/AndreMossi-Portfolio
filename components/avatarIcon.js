@@ -4,47 +4,24 @@ import { useEffect, useRef, useState } from 'react'
 import { Box, Image } from '@chakra-ui/react'
 
 const AvatarIcon = () => {
-    const [loaded, setLoaded] = useState(false)
     const [playing, setPlaying] = useState(false)
     const videoRef = useRef(null)
 
     useEffect(() => {
-        const handleVisibility = () => {
+        const resume = () => {
             videoRef.current?.play().catch(() => { })
         }
 
-        document.addEventListener('visibilitychange', handleVisibility)
-        return () =>
-            document.removeEventListener('visibilitychange', handleVisibility)
-    }, [])
+        document.addEventListener('visibilitychange', resume)
+        window.addEventListener('focus', resume)
+        window.addEventListener('touchstart', resume)
 
-    useEffect(() => {
-        const resume = () => videoRef.current?.play().catch(() => { })
-        window.addEventListener('touchstart', resume, { once: true })
-        return () => window.removeEventListener('touchstart', resume)
-    }, [])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const video = videoRef.current
-            if (!video) return
-
-            setPlaying(!video.paused && !video.ended && video.readyState > 2)
-        }, 500)
-
-        return () => clearInterval(interval)
-    }, [])
-
-    useEffect(() => {
-        const video = videoRef.current
-        if (!video) return
-
-        if (loaded) {
-            video.currentTime = 0
-            video.play().catch(() => {})
-            setPlaying(true)
+        return () => {
+            document.removeEventListener('visibilitychange', resume)
+            window.removeEventListener('focus', resume)
+            window.removeEventListener('touchstart', resume)
         }
-    }, [loaded])
+    }, [])
 
     return (
         <Box
@@ -66,7 +43,8 @@ const AvatarIcon = () => {
                 w="100%"
                 h="100%"
                 objectFit="cover"
-                opacity={loaded && playing ? 0 : 1}
+                opacity={playing ? 0 : 1}
+                transition="opacity 0.3s"
             />
 
             <video
@@ -77,7 +55,8 @@ const AvatarIcon = () => {
                 muted
                 playsInline
                 preload="metadata"
-                onCanPlay={() => setLoaded(true)}
+                onPlay={() => setPlaying(true)}
+                onPause={() => setPlaying(false)}
                 style={{
                     width: '100%',
                     height: '100%',
