@@ -17,7 +17,6 @@ import Layout from '../../components/layouts/article'
 import Content from '../../components/content'
 import CitationList from '../../components/citationList'
 import DateSetup from '../../components/dateSetup'
-import { fetchTopRepos, fetchStats } from '../../api/gitAPI'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaBook, FaStar } from 'react-icons/fa'
@@ -76,15 +75,9 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
     return (
         <Box
             w="full"
-            bg={useColorModeValue(
-                'whiteAlpha.500',
-                'whiteAlpha.200'
-            )}
+            bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
             borderStyle="solid"
-            borderColor={useColorModeValue(
-                'blackAlpha.800',
-                'whiteAlpha.500'
-            )}
+            borderColor={useColorModeValue('blackAlpha.800', 'whiteAlpha.500')}
             boxShadow="lg"
             borderWidth={2}
             display="grid"
@@ -106,10 +99,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                 <Heading
                     display={data.language ? '' : 'none'}
                     fontSize="10px"
-                    bg={useColorModeValue(
-                        'whiteAlpha.500',
-                        'whiteAlpha.200'
-                    )}
+                    bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
                     borderStyle="solid"
                     borderWidth={2}
                     borderColor={useColorModeValue(
@@ -135,69 +125,32 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                 flexWrap="wrap"
                 rowGap={0}
             >
-                <Box
-                    display="inline-flex"
-                    alignItems="center"
-                    gap={1}
-                >
+                <Box display="inline-flex" alignItems="center" gap={1}>
                     <FaStar />
-                    <span>
-                        {Content(
-                            experienceLang,
-                            'category',
-                            'stars'
-                        )}
-                        :
-                    </span>
+                    <span>{Content(experienceLang, 'category', 'stars')}:</span>
                     {loading ? (
                         <Skeleton h={5} w={20} rounded="lg" />
                     ) : (
-                        <CountUp
-                            start={0}
-                            end={data.stars || 0}
-                        />
+                        <CountUp start={0} end={data.stars || 0} />
                     )}
                 </Box>
-                <Box
-                    display="inline-flex"
-                    alignItems="center"
-                    gap={1}
-                >
+                <Box display="inline-flex" alignItems="center" gap={1}>
                     <FaCodeFork />
-                    <span>
-                        {Content(
-                            experienceLang,
-                            'category',
-                            'forks'
-                        )}
-                        :
-                    </span>
+                    <span>{Content(experienceLang, 'category', 'forks')}:</span>
                     {loading ? (
                         <Skeleton h={5} w={20} rounded="lg" />
                     ) : (
-                        <CountUp
-                            start={0}
-                            end={data.forks || 0}
-                        />
+                        <CountUp start={0} end={data.forks || 0} />
                     )}
                 </Box>
                 <Box
-                    display={
-                        data.licence === 'None'
-                            ? 'none'
-                            : 'inline-flex'
-                    }
+                    display={data.licence === 'None' ? 'none' : 'inline-flex'}
                     alignItems="center"
                     gap={1}
                 >
                     <TbLicense />
                     <span>
-                        {Content(
-                            experienceLang,
-                            'category',
-                            'license'
-                        )}
-                        :
+                        {Content(experienceLang, 'category', 'license')}:
                     </span>
                     {loading ? (
                         <Skeleton h={5} w={20} rounded="lg" />
@@ -221,12 +174,13 @@ const Github = () => {
     const [stats, setStats] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    const [topRepos, seTopRepos] = useState(null)
+    const [topRepos, setTopRepos] = useState(null)
     const [loadingTops, setLoadingTops] = useState(true)
 
     useEffect(() => {
         setLoading(true)
-        fetchStats()
+        fetch('/api/github/stats')
+            .then(res => res.json())
             .then(item => {
                 setStats(item)
                 setLoading(false)
@@ -236,12 +190,13 @@ const Github = () => {
 
     useEffect(() => {
         setLoadingTops(true)
-        fetchTopRepos()
-            .then(item => {
-                seTopRepos(item)
+        fetch('/api/github/top-repos')
+            .then(res => res.json())
+            .then(data => {
+                setTopRepos(data)
                 setLoadingTops(false)
             })
-            .catch(error => console.log(error))
+            .catch(err => console.log(err))
     }, [])
 
     return (
@@ -314,7 +269,13 @@ const Github = () => {
                 >
                     <Box display="grid" gap={2}>
                         {topRepos?.map(item => {
-                            return <TopRepoSecton key={item.name} loading={loadingTops} data={item} />
+                            return (
+                                <TopRepoSecton
+                                    key={item.name}
+                                    loading={loadingTops}
+                                    data={item}
+                                />
+                            )
                         })}
                     </Box>
                 </StyledDiv>

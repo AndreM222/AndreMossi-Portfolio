@@ -9,12 +9,12 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 
 const RecommendationSection = ({ delay = 0 }) => {
-    const recommendationsID = ['aiSandbox']
+    const recommendationsID = ['aiSandbox', 'dinant']
 
     return (
         <Box>
             <SimpleGrid
-                columns={1}
+                columns={2}
                 justifySelf="center"
                 gap={3}
                 display={{ lg: 'grid', base: 'none' }}
@@ -40,7 +40,6 @@ const RecommendationSection = ({ delay = 0 }) => {
                     slidesPerView="auto"
                     fadeEffect={{ crossFade: true }}
                     spaceBetween={16}
-                    alignItems="stretch"
                     cardsEffect={{
                         slideShadows: false
                     }}

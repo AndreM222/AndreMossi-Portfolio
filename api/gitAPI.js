@@ -6,7 +6,7 @@ const gitApi = axios.create({
 
 export const fetchAPI = async (page, per_page, extraParams = {}) => {
     let { data } = await gitApi.get("repos", {
-        headers: { Authorization: process.env.NEXT_PUBLIC_GITHUB_TOKEN },
+        headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
         params: { per_page: per_page, page: page, ...extraParams }
     })
 
@@ -52,7 +52,7 @@ export const fetchTopRepos = async () => {
             "https://api.github.com/search/repositories",
             {
                 headers: {
-                    Authorization: process.env.NEXT_PUBLIC_GITHUB_TOKEN
+                    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
                 },
                 params: {
                     q: "user:AndreM222 fork:false",

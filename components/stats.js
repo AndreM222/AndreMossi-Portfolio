@@ -8,7 +8,6 @@ import {
     Skeleton,
     useColorModeValue
 } from '@chakra-ui/react'
-import { fetchStats } from '../api/gitAPI'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
@@ -47,12 +46,14 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
             href={href}
         >
             {icon}
-            <span>{Content(experienceLang, 'category', category.toLowerCase())}</span>
+            <span>
+                {Content(experienceLang, 'category', category.toLowerCase())}
+            </span>
             {loading ? (
                 <Skeleton h={5} w={20} rounded="lg" />
             ) : (
-                    <CountUp start={0} end={value || 0} />
-                )}
+                <CountUp start={0} end={value || 0} />
+            )}
         </Box>
     </StyledDiv>
 )
@@ -64,7 +65,8 @@ const StatsMenu = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetchStats()
+        fetch('/api/github/stats')
+            .then(res => res.json())
             .then(item => {
                 setStats(item)
                 setLoading(false)
