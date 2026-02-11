@@ -98,6 +98,7 @@ const TopRepoSecton = ({ delay = 0 }) => {
                 {stats?.map(item => {
                     return (
                         <Box
+                            key={item.name}
                             w="full"
                             bg={useColorModeValue(
                                 'whiteAlpha.500',
