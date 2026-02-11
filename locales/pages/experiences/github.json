@@ -12,5 +12,19 @@
             "locale": "es",
             "content": "Durante mi tiempo libre trato de dedicarle tiempo a mejorar mi conocimiento trabajando en algunos pequeños proyectos. Algunos proyectos son decentes mientras otros no serán lo más optimo, pero algo que es concreto es que mi crecimiento puede demostrarse en todos mis proyectos en los que he trabajado de momento. Siendo Javafx con la primera vez que trabaje con GUI usando Java, mi algoritmo de clasificación el cual fue programado en C++, etc."
         }
+    ],
+    "topRepos": [
+        {
+            "locale": "en",
+            "title": "Top Repositories"
+        },
+        {
+            "locale": "ja",
+            "title": "主要リポジトリ"
+        },
+        {
+            "locale": "es",
+            "title": "Repositorios Principales"
+        }
     ]
 }

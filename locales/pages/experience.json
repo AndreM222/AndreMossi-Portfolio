@@ -167,7 +167,9 @@
             "awards": "Awards",
             "research": "Research",
             "repositories": "Respositories",
-            "stars": "Stars"
+            "stars": "Stars",
+            "forks": "Forks",
+            "license": "License"
         },
         {
             "locale": "ja",
@@ -176,7 +178,9 @@
             "awards": "賞",
             "research": "研究",
             "repositories": "リポジトリ",
-            "stars": "スター"
+            "stars": "スター",
+            "forks": "フォーク",
+            "license": "ライセンス"
         },
         {
             "locale": "es",
@@ -184,7 +188,8 @@
             "awards": "Premios",
             "research": "Investigacion",
             "repositories": "Repositorios",
-            "stars": "Estrellas"
+            "stars": "Estrellas",
+            "license": "Licensia"
         }
     ]
 }
