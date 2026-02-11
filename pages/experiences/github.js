@@ -72,182 +72,157 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     </StyledDiv>
 )
 
-const TopRepoSecton = ({ delay = 0 }) => {
-    const [stats, setStats] = useState(null)
-
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setLoading(false)
-        setLoading(true)
-        fetchTopRepos()
-            .then(item => {
-                setStats(item)
-                setLoading(false)
-            })
-            .catch(error => console.log(error))
-    }, [])
-
+const TopRepoSecton = ({ loading, data, ...props }) => {
     return (
-        <StyledDiv
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: delay }}
+        <Box
+            w="full"
+            bg={useColorModeValue(
+                'whiteAlpha.500',
+                'whiteAlpha.200'
+            )}
+            borderStyle="solid"
+            borderColor={useColorModeValue(
+                'blackAlpha.800',
+                'whiteAlpha.500'
+            )}
+            boxShadow="lg"
+            borderWidth={2}
+            display="grid"
+            rounded="lg"
+            p={2}
+            alignItems="center"
+            as={NextLink}
+            href={data.url}
+            {...props}
         >
-            <Box display="grid" gap={2}>
-                {stats?.map(item => {
-                    return (
-                        <Box
-                            key={item.name}
-                            w="full"
-                            bg={useColorModeValue(
-                                'whiteAlpha.500',
-                                'whiteAlpha.200'
-                            )}
-                            borderStyle="solid"
-                            borderColor={useColorModeValue(
-                                'blackAlpha.800',
-                                'whiteAlpha.500'
-                            )}
-                            boxShadow="lg"
-                            borderWidth={2}
-                            display="grid"
-                            rounded="lg"
-                            p={2}
-                            alignItems="center"
-                            as={NextLink}
-                            href={item.url}
-                        >
-                            <Box
-                                display="inline-flex"
-                                alignItems="center"
-                                justifyContent="space-between"
-                            >
-                                <Heading size="md" variant="repo-title">
-                                    {item.name}
-                                </Heading>
-                                <Heading
-                                    display={item.language ? '' : 'none'}
-                                    fontSize="10px"
-                                    bg={useColorModeValue(
-                                        'whiteAlpha.500',
-                                        'whiteAlpha.200'
-                                    )}
-                                    borderStyle="solid"
-                                    borderWidth={2}
-                                    borderColor={useColorModeValue(
-                                        'blackAlpha.800',
-                                        'whiteAlpha.500'
-                                    )}
-                                    p={1}
-                                    borderRadius={5}
-                                    w="fit-content"
-                                >
-                                    {loading ? (
-                                        <Skeleton h={5} w={20} rounded="lg" />
-                                    ) : (
-                                        item.language
-                                    )}
-                                </Heading>
-                            </Box>
-
-                            <Box
-                                display="flex"
-                                gap={3}
-                                fontSize="sm"
-                                flexWrap="wrap"
-                                rowGap={0}
-                            >
-                                <Box
-                                    display="inline-flex"
-                                    alignItems="center"
-                                    gap={1}
-                                >
-                                    <FaStar />
-                                    <span>
-                                        {Content(
-                                            experienceLang,
-                                            'category',
-                                            'stars'
-                                        )}
-                                        :
-                                    </span>
-                                    {loading ? (
-                                        <Skeleton h={5} w={20} rounded="lg" />
-                                    ) : (
-                                        <CountUp
-                                            start={0}
-                                            end={item.stars || 0}
-                                        />
-                                    )}
-                                </Box>
-                                <Box
-                                    display="inline-flex"
-                                    alignItems="center"
-                                    gap={1}
-                                >
-                                    <FaCodeFork />
-                                    <span>
-                                        {Content(
-                                            experienceLang,
-                                            'category',
-                                            'forks'
-                                        )}
-                                        :
-                                    </span>
-                                    {loading ? (
-                                        <Skeleton h={5} w={20} rounded="lg" />
-                                    ) : (
-                                        <CountUp
-                                            start={0}
-                                            end={item.forks || 0}
-                                        />
-                                    )}
-                                </Box>
-                                <Box
-                                    display={
-                                        item.licence === 'None'
-                                            ? 'none'
-                                            : 'inline-flex'
-                                    }
-                                    alignItems="center"
-                                    gap={1}
-                                >
-                                    <TbLicense />
-                                    <span>
-                                        {Content(
-                                            experienceLang,
-                                            'category',
-                                            'license'
-                                        )}
-                                        :
-                                    </span>
-                                    {loading ? (
-                                        <Skeleton h={5} w={20} rounded="lg" />
-                                    ) : (
-                                        item.licence
-                                    )}
-                                </Box>
-                            </Box>
-                            <Box alignItems="center" gap={1} mt={3}>
-                                {loading ? (
-                                    <Skeleton h={5} w={20} rounded="lg" />
-                                ) : (
-                                    item.description
-                                )}
-                            </Box>
-                        </Box>
-                    )
-                })}
+            <Box
+                display="inline-flex"
+                alignItems="center"
+                justifyContent="space-between"
+            >
+                <Heading size="md" variant="repo-title">
+                    {data.name}
+                </Heading>
+                <Heading
+                    display={data.language ? '' : 'none'}
+                    fontSize="10px"
+                    bg={useColorModeValue(
+                        'whiteAlpha.500',
+                        'whiteAlpha.200'
+                    )}
+                    borderStyle="solid"
+                    borderWidth={2}
+                    borderColor={useColorModeValue(
+                        'blackAlpha.800',
+                        'whiteAlpha.500'
+                    )}
+                    p={1}
+                    borderRadius={5}
+                    w="fit-content"
+                >
+                    {loading ? (
+                        <Skeleton h={5} w={20} rounded="lg" />
+                    ) : (
+                        data.language
+                    )}
+                </Heading>
             </Box>
-        </StyledDiv>
+
+            <Box
+                display="flex"
+                gap={3}
+                fontSize="sm"
+                flexWrap="wrap"
+                rowGap={0}
+            >
+                <Box
+                    display="inline-flex"
+                    alignItems="center"
+                    gap={1}
+                >
+                    <FaStar />
+                    <span>
+                        {Content(
+                            experienceLang,
+                            'category',
+                            'stars'
+                        )}
+                        :
+                    </span>
+                    {loading ? (
+                        <Skeleton h={5} w={20} rounded="lg" />
+                    ) : (
+                        <CountUp
+                            start={0}
+                            end={data.stars || 0}
+                        />
+                    )}
+                </Box>
+                <Box
+                    display="inline-flex"
+                    alignItems="center"
+                    gap={1}
+                >
+                    <FaCodeFork />
+                    <span>
+                        {Content(
+                            experienceLang,
+                            'category',
+                            'forks'
+                        )}
+                        :
+                    </span>
+                    {loading ? (
+                        <Skeleton h={5} w={20} rounded="lg" />
+                    ) : (
+                        <CountUp
+                            start={0}
+                            end={data.forks || 0}
+                        />
+                    )}
+                </Box>
+                <Box
+                    display={
+                        data.licence === 'None'
+                            ? 'none'
+                            : 'inline-flex'
+                    }
+                    alignItems="center"
+                    gap={1}
+                >
+                    <TbLicense />
+                    <span>
+                        {Content(
+                            experienceLang,
+                            'category',
+                            'license'
+                        )}
+                        :
+                    </span>
+                    {loading ? (
+                        <Skeleton h={5} w={20} rounded="lg" />
+                    ) : (
+                        data.licence
+                    )}
+                </Box>
+            </Box>
+            <Box alignItems="center" gap={1} mt={3}>
+                {loading ? (
+                    <Skeleton h={5} w={20} rounded="lg" />
+                ) : (
+                    data.description
+                )}
+            </Box>
+        </Box>
     )
 }
 
 const Github = () => {
     const [stats, setStats] = useState(null)
-
     const [loading, setLoading] = useState(true)
+
+    const [topRepos, seTopRepos] = useState(null)
+    const [loadingTops, setLoadingTops] = useState(true)
 
     useEffect(() => {
         setLoading(true)
@@ -255,6 +230,16 @@ const Github = () => {
             .then(item => {
                 setStats(item)
                 setLoading(false)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
+    useEffect(() => {
+        setLoadingTops(true)
+        fetchTopRepos()
+            .then(item => {
+                seTopRepos(item)
+                setLoadingTops(false)
             })
             .catch(error => console.log(error))
     }, [])
@@ -322,7 +307,17 @@ const Github = () => {
                 <Heading as="h2" fontSize="2xl" variant="section-title">
                     {Content(githubLang, 'topRepos', 'title')}
                 </Heading>
-                <TopRepoSecton />
+                <StyledDiv
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                    <Box display="grid" gap={2}>
+                        {topRepos?.map(item => {
+                            return <TopRepoSecton key={item.name} loading={loadingTops} data={item} />
+                        })}
+                    </Box>
+                </StyledDiv>
             </Container>
         </Layout>
     )
