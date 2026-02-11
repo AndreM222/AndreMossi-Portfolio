@@ -26,5 +26,19 @@
             "locale": "es",
             "title": "Repositorios Principales"
         }
+    ],
+    "pinRepos": [
+        {
+            "locale": "en",
+            "title": "Pinned Repositories"
+        },
+        {
+            "locale": "ja",
+            "title": ""
+        },
+        {
+            "locale": "es",
+            "title": "Repositorios Anclados"
+        }
     ]
 }

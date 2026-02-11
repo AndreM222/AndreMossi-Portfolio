@@ -97,7 +97,11 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                     {data.name}
                 </Heading>
                 <Heading
-                    display={data.language ? '' : 'none'}
+                    display={
+                        data.language && data.language !== 'Unknown'
+                            ? ''
+                            : 'none'
+                    }
                     fontSize="10px"
                     bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
                     borderStyle="solid"
@@ -177,6 +181,9 @@ const Github = () => {
     const [topRepos, setTopRepos] = useState(null)
     const [loadingTops, setLoadingTops] = useState(true)
 
+    const [pinRepos, setPinRepos] = useState(null)
+    const [loadingPin, setLoadingPin] = useState(true)
+
     useEffect(() => {
         setLoading(true)
         fetch('/api/github/stats')
@@ -195,6 +202,17 @@ const Github = () => {
             .then(data => {
                 setTopRepos(data)
                 setLoadingTops(false)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    useEffect(() => {
+        setLoadingPin(true)
+        fetch('/api/github/pin-repos')
+            .then(res => res.json())
+            .then(data => {
+                setPinRepos(data)
+                setLoadingPin(false)
             })
             .catch(err => console.log(err))
     }, [])
@@ -273,6 +291,27 @@ const Github = () => {
                                 <TopRepoSecton
                                     key={item.name}
                                     loading={loadingTops}
+                                    data={item}
+                                />
+                            )
+                        })}
+                    </Box>
+                </StyledDiv>
+
+                <Heading as="h2" fontSize="2xl" variant="section-title">
+                    {Content(githubLang, 'pinRepos', 'title')}
+                </Heading>
+                <StyledDiv
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                    <Box display="grid" gap={2}>
+                        {pinRepos?.map(item => {
+                            return (
+                                <TopRepoSecton
+                                    key={item.name}
+                                    loading={loadingPin}
                                     data={item}
                                 />
                             )
