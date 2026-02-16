@@ -1,4 +1,11 @@
-import { Container, Badge, List, ListItem, Heading, Box } from '@chakra-ui/react'
+import {
+    Container,
+    Badge,
+    List,
+    ListItem,
+    Heading,
+    Box
+} from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -36,7 +43,17 @@ const Sandbox = () => {
                 </Paragraph>
 
                 <Box display="grid" gridRowGap={5}>
-                    <div>
+                    <Box
+                        display={
+                            Content(
+                                traceabilityLang,
+                                'EnginnerOwnerAndDecision',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
                         <Heading size="sm">
                             {Content(
                                 traceabilityLang,
@@ -53,9 +70,19 @@ const Sandbox = () => {
                                 <ListItem key={index}>{item}</ListItem>
                             ))}
                         </List>
-                    </div>
+                    </Box>
 
-                    <div>
+                    <Box
+                        display={
+                            Content(
+                                traceabilityLang,
+                                'OperationalBusinessImpact',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
                         <Heading size="sm">
                             {Content(
                                 traceabilityLang,
@@ -72,7 +99,7 @@ const Sandbox = () => {
                                 <ListItem key={index}>{item}</ListItem>
                             ))}
                         </List>
-                    </div>
+                    </Box>
                 </Box>
                 <List ml={4} my={4}>
                     <ListItem>

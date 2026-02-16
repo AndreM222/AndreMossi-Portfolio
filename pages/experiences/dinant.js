@@ -43,7 +43,17 @@ const Dinant = () => {
                 </Paragraph>
 
                 <Box display="grid" gridRowGap={5}>
-                    <div>
+                    <Box
+                        display={
+                            Content(
+                                dinantLang,
+                                'contractSystem',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
                         <Heading size="sm">
                             {Content(dinantLang, 'contractSystem', 'content')}
                         </Heading>
@@ -54,9 +64,19 @@ const Dinant = () => {
                                 )
                             )}
                         </List>
-                    </div>
+                    </Box>
 
-                    <div>
+                    <Box
+                        display={
+                            Content(
+                                dinantLang,
+                                'maintenancePlatform',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
                         <Heading size="sm">
                             {Content(
                                 dinantLang,
@@ -73,9 +93,19 @@ const Dinant = () => {
                                 <ListItem key={index}>{item}</ListItem>
                             ))}
                         </List>
-                    </div>
+                    </Box>
 
-                    <div>
+                    <Box
+                        display={
+                            Content(
+                                dinantLang,
+                                'ownershipImpact',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
                         <Heading size="sm">
                             {Content(dinantLang, 'ownershipImpact', 'content')}
                         </Heading>
@@ -88,7 +118,7 @@ const Dinant = () => {
                                 <ListItem key={index}>{item}</ListItem>
                             ))}
                         </List>
-                    </div>
+                    </Box>
                 </Box>
 
                 <List ml={4} my={4}>
