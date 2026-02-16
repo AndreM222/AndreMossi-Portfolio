@@ -2,7 +2,7 @@
     "description": [
         {
             "locale": "en",
-            "content": "I worked at Dinant that is a company that was established in Honduras, and is focused on the manufacturing, distribution, and marketing of worldwide known Latino products. I was given the role of a Full-Stack developer and received several tasks meant to reduce the amount of repetitive procedures by creating apps where they can input values with ease and run the process which used to take time, and now in less than a minute."
+            "content": "At Dinant, I worked as a Full-Stack Developer designing and deploying internal business systems to replace manual workflows and improve operational efficiency. I collaborated directly with stakeholders to gather requirements, present prototypes, and deliver production-ready applications used by employees and management."
         },
         {
             "locale": "ja",
@@ -11,6 +11,73 @@
         {
             "locale": "es",
             "content": "Trabaje en Dinant el cual es una compania que fue establesida en Honduras, y su enfoque es la manufactura, distribucion, y mercadeo de productos Latinos reconocidos mundialmente. Se me otorgo el rol de desarrollador Full-Stack y fui encargado varios projectos destinado a reducir procedimientos repetitivos al crear applicaciones donde pueden ingresar valores con facilidad y correr procesos que solian tomar tiempo, y ahora en menos de un minuto."
+        }
+    ],
+    "contractSystem": [
+        {
+            "locale": "en",
+            "content": "Contract Lifecycle and Device Management System",
+            "list": [
+                "Designed and implemented a web platform for managing device sales, rentals, repairs, and returns.",
+                "Built relational SQL databases to track device state, service eligibility, contracts, and client records across multiple regions.",
+                "Developed a multi-role interface including guest contract signing with digital signatures and administrative dashboards with filtering and reporting tools.",
+                "Implemented automated contract generation, email distribution, and print-ready documents.",
+                "Engineered repair workflows with damage reports, cost tracking, and technician daily logs for accountability."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": " ",
+            "list": []
+        },
+        {
+            "locale": "es",
+            "content": " ",
+            "list": []
+        }
+    ],
+    "maintenancePlatform": [
+        {
+            "locale": "en",
+            "content": "Factory Maintenance and Workflow Tracking Platform",
+            "list": [
+                "Developed a system for reporting machine failures, triggering maintenance workflows, and tracking repair progress across departments.",
+                "Implemented staged approval and notification flows connecting operators, supervisors, and repair technicians.",
+                "Built logging tools to automatically record repair activity, timestamps, and material usage.",
+                "Designed inventory tracking features that deducted used materials and generated procurement insights."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": " ",
+            "list": []
+        },
+        {
+            "locale": "es",
+            "content": " ",
+            "list": []
+        }
+    ],
+    "ownershipImpact": [
+        {
+            "locale": "en",
+            "content": "Ownership and Delivery",
+            "list": [
+                "Led system architecture, database design, and full implementation of both platforms.",
+                "Conducted client meetings, gathered requirements, presented progress demos, and incorporated feedback iteratively.",
+                "Deployed applications into production environments used by operational teams.",
+                "Received positive feedback from international users following on-site testing conducted by senior staff."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": " ",
+            "list": []
+        },
+        {
+            "locale": "es",
+            "content": " ",
+            "list": []
         }
     ]
 }

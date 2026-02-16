@@ -25,6 +25,17 @@
                 "Developed 100% of the web interface and contributed ~50% across backend, hardware integration, and AI deployment.",
                 "Implemented image deletion, detection editing, and retraining pipeline integration."
             ]
+        },
+        {
+            "locale": "ja",
+            "content": " ",
+            "list": [
+            ]
+        },
+        {
+            "locale": "es",
+            "content": " ",
+            "list": [ ]
         }
     ],
 
@@ -38,6 +49,16 @@
                 "Secured continued funding based on measurable progress and system validation.",
                 "Project continuation depended on performance delivery; failure to meet milestones would have resulted in termination."
             ]
+        },
+        {
+            "locale": "ja",
+            "content": " ",
+            "list": [ ]
+        },
+        {
+            "locale": "es",
+            "content": " ",
+            "list": [ ]
         }
     ]
 }

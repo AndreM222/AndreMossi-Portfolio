@@ -1,10 +1,4 @@
-import {
-    Container,
-    Badge,
-    List,
-    ListItem,
-    Heading
-} from '@chakra-ui/react'
+import { Container, Badge, List, ListItem, Heading, Box } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -41,28 +35,45 @@ const Sandbox = () => {
                     {Content(traceabilityLang, 'description', 'content')}
                 </Paragraph>
 
-                <Heading size="sm">
-                    {Content(traceabilityLang, 'EnginnerOwnerAndDecision', 'content')}
-                </Heading>
-                <List spacing={1} styleType="disc" ml={4}>
-                    {Content(traceabilityLang, 'EnginnerOwnerAndDecision', 'list')?.map(
-                        (item, index) => (
-                            <ListItem key={index}>{item}</ListItem>
-                        )
-                    )}
-                </List>
+                <Box display="grid" gridRowGap={5}>
+                    <div>
+                        <Heading size="sm">
+                            {Content(
+                                traceabilityLang,
+                                'EnginnerOwnerAndDecision',
+                                'content'
+                            )}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(
+                                traceabilityLang,
+                                'EnginnerOwnerAndDecision',
+                                'list'
+                            )?.map((item, index) => (
+                                <ListItem key={index}>{item}</ListItem>
+                            ))}
+                        </List>
+                    </div>
 
-                <Heading size="sm" mt={2}>
-                    {Content(traceabilityLang, 'OperationalBusinessImpact', 'content')}
-                </Heading>
-                <List spacing={1} styleType="disc" ml={4}>
-                    {Content(traceabilityLang, 'OperationalBusinessImpact', 'list')?.map(
-                        (item, index) => (
-                            <ListItem key={index}>{item}</ListItem>
-                        )
-                    )}
-                </List>
-
+                    <div>
+                        <Heading size="sm">
+                            {Content(
+                                traceabilityLang,
+                                'OperationalBusinessImpact',
+                                'content'
+                            )}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(
+                                traceabilityLang,
+                                'OperationalBusinessImpact',
+                                'list'
+                            )?.map((item, index) => (
+                                <ListItem key={index}>{item}</ListItem>
+                            ))}
+                        </List>
+                    </div>
+                </Box>
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>

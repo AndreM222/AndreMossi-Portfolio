@@ -1,4 +1,11 @@
-import { Container, Badge, List, ListItem, Box } from '@chakra-ui/react'
+import {
+    Container,
+    Badge,
+    List,
+    ListItem,
+    Box,
+    Heading
+} from '@chakra-ui/react'
 import { Title, Meta } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -34,6 +41,55 @@ const Dinant = () => {
                 <Paragraph>
                     {Content(dinantLang, 'description', 'content')}
                 </Paragraph>
+
+                <Box display="grid" gridRowGap={5}>
+                    <div>
+                        <Heading size="sm">
+                            {Content(dinantLang, 'contractSystem', 'content')}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(dinantLang, 'contractSystem', 'list')?.map(
+                                (item, index) => (
+                                    <ListItem key={index}>{item}</ListItem>
+                                )
+                            )}
+                        </List>
+                    </div>
+
+                    <div>
+                        <Heading size="sm">
+                            {Content(
+                                dinantLang,
+                                'maintenancePlatform',
+                                'content'
+                            )}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(
+                                dinantLang,
+                                'maintenancePlatform',
+                                'list'
+                            )?.map((item, index) => (
+                                <ListItem key={index}>{item}</ListItem>
+                            ))}
+                        </List>
+                    </div>
+
+                    <div>
+                        <Heading size="sm">
+                            {Content(dinantLang, 'ownershipImpact', 'content')}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(
+                                dinantLang,
+                                'ownershipImpact',
+                                'list'
+                            )?.map((item, index) => (
+                                <ListItem key={index}>{item}</ListItem>
+                            ))}
+                        </List>
+                    </div>
+                </Box>
 
                 <List ml={4} my={4}>
                     <ListItem>
