@@ -1,4 +1,4 @@
-import { Container, Badge, List, ListItem, Link, Box } from '@chakra-ui/react'
+import { Container, Badge, List, ListItem, Link, Box, Heading } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -36,6 +36,37 @@ const Sandbox = () => {
                 <Paragraph>{Content(sandboxLang, 'description', 'content')}</Paragraph>
 
                 <Paragraph>{Content(sandboxLang, 'event', 'content')}</Paragraph>
+
+                <Box display="grid" gridRowGap={5}>
+                    <Box
+                        display={
+                            Content(
+                                sandboxLang,
+                                'technicalDetails',
+                                'content'
+                            ) === ' '
+                                ? 'none'
+                                : ''
+                        }
+                    >
+                        <Heading size="sm">
+                            {Content(
+                                sandboxLang,
+                                'technicalDetails',
+                                'content'
+                            )}
+                        </Heading>
+                        <List spacing={1} styleType="disc" ml={4}>
+                            {Content(
+                                sandboxLang,
+                                'technicalDetails',
+                                'list'
+                            )?.map((item, index) => (
+                                <ListItem key={index}>{item}</ListItem>
+                            ))}
+                        </List>
+                    </Box>
+                </Box>
 
                 <List ml={4} my={4}>
                     <ListItem>

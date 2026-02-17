@@ -15,7 +15,7 @@ import {
     MenuButton,
     IconButton,
     useColorModeValue,
-    Button,
+    Button
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
@@ -45,7 +45,7 @@ const MenuLink = forwardRef((props, ref) => (
     <Link ref={ref} as={NextLink} {...props} />
 ))
 
-const Navbar = (props) => {
+const Navbar = props => {
     const { path } = props
 
     return (
@@ -132,14 +132,14 @@ const Navbar = (props) => {
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'experience',
+                                            'experience'
                                         )}
                                     </MenuItem>
                                     <MenuItem as={MenuLink} href="/other">
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'others',
+                                            'others'
                                         )}
                                     </MenuItem>
                                     <MenuItem
@@ -147,15 +147,17 @@ const Navbar = (props) => {
                                         href={Content(
                                             miscLang,
                                             'category',
-                                            'link-resume',
+                                            'link-resume'
                                         )}
                                         target="_blank"
+                                        justifyContent="space-between"
                                     >
                                         {Content(
                                             miscLang,
                                             'category',
-                                            'resume',
+                                            'resume'
                                         )}
+                                        <MdDocumentScanner />
                                     </MenuItem>
                                 </MenuList>
                             </Menu>
