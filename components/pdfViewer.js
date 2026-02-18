@@ -46,7 +46,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                 boxShadow="0 20px 60px rgba(0,0,0,0.5)"
             >
                 <ModalHeader
-                    pr={{sm: "60px", base: "0"}}
+                    pr={{ sm: '60px', base: '0' }}
                     pb={2}
                     borderBottom="1px solid"
                     borderColor="whiteAlpha.200"
@@ -91,7 +91,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                     </Flex>
                 </ModalHeader>
 
-                <ModalCloseButton />
+                <ModalCloseButton top="8px" right="8px" zIndex="10" />
 
                 <ModalBody p={0}>
                     {isMobile ? (
@@ -124,7 +124,7 @@ const DesktopPreview = ({ src, loaded, setLoaded }) => (
         )}
 
         <iframe
-            src={src}
+            src={`${src}#toolbar=0&navpanes=0&scrollbar=0`}
             width="100%"
             height="100%"
             style={{

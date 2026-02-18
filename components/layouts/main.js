@@ -15,16 +15,6 @@ import { Analytics } from '@vercel/analytics/react'
 const Main = ({ children, router }) => {
     const { locale } = useRouter()
 
-    function getTotalMonths(startDate, endDate) {
-        return (
-            (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-                (endDate.getMonth() - startDate.getMonth())
-        )
-    }
-
-    const today = new Date()
-    const firstDay = new Date(2024, 5, 17)
-
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
@@ -68,9 +58,7 @@ const Main = ({ children, router }) => {
                     title="翻訳"
                     delay={0.6}
                 >
-                    このWebサイトは一人で翻訳しました。日本語を
-                    {getTotalMonths(firstDay, today) - 4}
-                    ヶ月位一人で勉強しています、なので翻訳がちょっと変かもしれません。でも日本で働く事が私の夢なので、毎日勉強しています。
+                    このWebサイトは一人で翻訳しました。日本語勉強中、なので翻訳がちょっと変かもしれません。勉強中の間にこのウェブサイトの翻訳は上手になります。
                 </AlertNotification>
                 <Analytics />
                 <CharModel />
