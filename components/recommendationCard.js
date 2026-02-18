@@ -163,7 +163,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
-                            {Content(miscLang, 'button', 'content')}
+                            {Content(miscLang, 'moreBTN', 'content')}
                         </Button>
                         <PdfPreviewButton
                             title={projectContent.title}
@@ -171,7 +171,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
-                            {Content(miscLang, 'letter', 'content')}
+                            {Content(miscLang, 'letterBTN', 'content')}
                         </PdfPreviewButton>
                     </SimpleGrid>
                 </Box>

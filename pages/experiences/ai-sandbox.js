@@ -106,7 +106,7 @@ const Sandbox = () => {
                         rightIcon={<ChevronRightIcon />}
                         colorScheme="orange"
                     >
-                        {Content(miscLang, 'button', 'content')}
+                        {Content(miscLang, 'moreBTN', 'content')}
                     </PdfPreviewButton>
                 </Box>
 

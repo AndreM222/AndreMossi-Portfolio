@@ -14,7 +14,7 @@ const NavBTN = ({ href, ...props }) => {
                 colorScheme="orange"
                 {...props}
             >
-                {Content(miscLang, 'button', 'content')}
+                {Content(miscLang, 'moreBTN', 'content')}
             </Button>
         </Box>
     )

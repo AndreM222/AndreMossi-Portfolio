@@ -17,6 +17,9 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { ExternalLinkIcon, DownloadIcon } from '@chakra-ui/icons'
+import Content from './content'
+
+import miscLang from '../locales/misc.json'
 
 export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
     const [loaded, setLoaded] = useState(false)
@@ -42,17 +45,37 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                 borderColor="whiteAlpha.200"
                 boxShadow="0 20px 60px rgba(0,0,0,0.5)"
             >
-                <ModalHeader>
-                    <Flex justify="space-between" align="center">
-                        <Text fontWeight="bold">{title}</Text>
+                <ModalHeader
+                    pr={{sm: "60px", base: "0"}}
+                    pb={2}
+                    borderBottom="1px solid"
+                    borderColor="whiteAlpha.200"
+                >
+                    <Flex
+                        direction={{ base: 'column', md: 'row' }}
+                        align={{ base: 'center', md: 'center' }}
+                        justify={{ base: 'center', md: 'space-between' }}
+                        gap={3}
+                    >
+                        <Text
+                            fontWeight="bold"
+                            textAlign={{ base: 'center', md: 'left' }}
+                        >
+                            {title}
+                        </Text>
 
-                        <Flex gap={2} mr={10}>
+                        <Flex
+                            gap={2}
+                            justify={{ base: 'center', md: 'flex-end' }}
+                            width={{ base: '100%', md: 'auto' }}
+                            flexWrap="wrap"
+                        >
                             <Button
                                 size="sm"
                                 leftIcon={<ExternalLinkIcon />}
                                 onClick={() => window.open(src, '_blank')}
                             >
-                                Open
+                                {Content(miscLang, 'viewPDFBTN', 'content')}
                             </Button>
 
                             <Button
@@ -62,7 +85,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                                 href={src}
                                 download
                             >
-                                Download
+                                {Content(miscLang, 'downloadBTN', 'content')}
                             </Button>
                         </Flex>
                     </Flex>
@@ -128,7 +151,7 @@ const MobileFallback = ({ src }) => (
         </Text>
 
         <Button colorScheme="cyan" onClick={() => window.open(src, '_blank')}>
-            Open PDF
+            {Content(miscLang, 'viewPDFBTN', 'content')}
         </Button>
     </Flex>
 )

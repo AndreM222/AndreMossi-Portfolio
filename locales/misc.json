@@ -44,7 +44,7 @@
         }
     ],
 
-    "button": [
+    "moreBTN": [
         {
             "locale": "en",
             "content": "More"
@@ -59,7 +59,7 @@
         }
     ],
 
-    "letter": [
+    "letterBTN": [
         {
             "locale": "en",
             "content": "View Letter"
@@ -71,6 +71,36 @@
         {
             "locale": "es",
             "content": "Ver Carta"
+        }
+    ],
+
+    "viewPDFBTN": [
+        {
+            "locale": "en",
+            "content": "View PDF"
+        },
+        {
+            "locale": "ja",
+            "content": "PDFを見る"
+        },
+        {
+            "locale": "es",
+            "content": "View PDF"
+        }
+    ],
+
+    "downloadBTN": [
+        {
+            "locale": "en",
+            "content": "Download"
+        },
+        {
+            "locale": "ja",
+            "content": "ダウンロード"
+        },
+        {
+            "locale": "es",
+            "content": "Descargar"
         }
     ],
 
