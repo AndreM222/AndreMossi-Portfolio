@@ -13,7 +13,6 @@
             "name": "André Mossi"
         }
     ],
-
     "category": [
         {
             "locale": "en",
@@ -43,7 +42,6 @@
             "link-resume": "/PDF/MS-AndreCV-ES.pdf"
         }
     ],
-
     "moreBTN": [
         {
             "locale": "en",
@@ -58,7 +56,6 @@
             "content": "Mas"
         }
     ],
-
     "letterBTN": [
         {
             "locale": "en",
@@ -73,7 +70,6 @@
             "content": "Ver Carta"
         }
     ],
-
     "viewPDFBTN": [
         {
             "locale": "en",
@@ -88,7 +84,6 @@
             "content": "View PDF"
         }
     ],
-
     "downloadBTN": [
         {
             "locale": "en",
@@ -101,6 +96,20 @@
         {
             "locale": "es",
             "content": "Descargar"
+        }
+    ],
+    "previewPhoneWarn": [
+        {
+            "locale": "en",
+            "content": "Preview is limited on mobile"
+        },
+        {
+            "locale": "ja",
+            "content": "電話では見えない"
+        },
+        {
+            "locale": "es",
+            "content": "Prevista es limitado en telefono"
         }
     ],
 

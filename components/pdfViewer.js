@@ -147,7 +147,7 @@ const MobileFallback = ({ src }) => (
         gap={4}
     >
         <Text fontSize="lg" fontWeight="semibold">
-            Preview is limited on mobile
+            {Content(miscLang, 'previewPhoneWarn', 'content')}
         </Text>
 
         <Button colorScheme="cyan" onClick={() => window.open(src, '_blank')}>
