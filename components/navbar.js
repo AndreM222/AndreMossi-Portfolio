@@ -15,13 +15,14 @@ import {
     MenuButton,
     IconButton,
     useColorModeValue,
-    Button
+    useDisclosure
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
 import miscLang from '../locales/misc.json'
 import Content from './content'
 import { MdDocumentScanner } from 'react-icons/md'
+import { PdfPreviewButton, PdfPreviewMenuItem } from './pdfViewer'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
     const active = path === href
@@ -94,22 +95,20 @@ const Navbar = props => {
                         </LinkItem>
                     </Stack>
 
-                    <Link
-                        style={{ textDecoration: 'none' }}
-                        target="_blank"
-                        href={Content(miscLang, 'category', 'link-resume')}
-                        display={{ base: 'none', md: 'inline-block' }}
+                    <PdfPreviewButton
+                        title={Content(miscLang, 'category', 'resume')}
+                        src={Content(miscLang, 'category', 'link-resume')}
+                        colorScheme="cyan"
+                        rightIcon={<MdDocumentScanner />}
+                        align="right"
+                        alignItems="center"
+                        display={{
+                            base: 'none',
+                            md: 'flex'
+                        }}
                     >
-                        <Button
-                            colorScheme="cyan"
-                            align="right"
-                            display="flex"
-                            alignItems="center"
-                            rightIcon={<MdDocumentScanner />}
-                        >
-                            {Content(miscLang, 'category', 'resume')}
-                        </Button>
-                    </Link>
+                        {Content(miscLang, 'category', 'resume')}
+                    </PdfPreviewButton>
                     <Box pl={2} align="right">
                         <LanguageButton path={path} />
                         <ThemeToggleButton />
@@ -142,15 +141,19 @@ const Navbar = props => {
                                             'others'
                                         )}
                                     </MenuItem>
-                                    <MenuItem
-                                        as={MenuLink}
-                                        href={Content(
+
+                                    <PdfPreviewMenuItem
+                                        justifyContent="space-between"
+                                        title={Content(
+                                            miscLang,
+                                            'category',
+                                            'resume'
+                                        )}
+                                        src={Content(
                                             miscLang,
                                             'category',
                                             'link-resume'
                                         )}
-                                        target="_blank"
-                                        justifyContent="space-between"
                                     >
                                         {Content(
                                             miscLang,
@@ -158,7 +161,7 @@ const Navbar = props => {
                                             'resume'
                                         )}
                                         <MdDocumentScanner />
-                                    </MenuItem>
+                                    </PdfPreviewMenuItem>
                                 </MenuList>
                             </Menu>
                         </Box>
