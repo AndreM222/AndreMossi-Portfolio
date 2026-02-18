@@ -1,4 +1,11 @@
-import { Container, Badge, List, ListItem, Link, Box, Heading } from '@chakra-ui/react'
+import {
+    Container,
+    Badge,
+    List,
+    ListItem,
+    Box,
+    Heading
+} from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -11,8 +18,9 @@ import sandboxLang from '../../locales/pages/experiences/ai-sandbox.json'
 import contentLang from '../../locales/experience-content.json'
 import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
-import NavBTN from '../../components/Buttons/Navigation'
 import RecommendationCard from '../../components/recommendationCard'
+import { PdfPreviewButton } from '../../components/pdfViewer'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 const Sandbox = () => {
     return (
@@ -33,9 +41,13 @@ const Sandbox = () => {
                     </Badge>
                 </Title>
 
-                <Paragraph>{Content(sandboxLang, 'description', 'content')}</Paragraph>
+                <Paragraph>
+                    {Content(sandboxLang, 'description', 'content')}
+                </Paragraph>
 
-                <Paragraph>{Content(sandboxLang, 'event', 'content')}</Paragraph>
+                <Paragraph>
+                    {Content(sandboxLang, 'event', 'content')}
+                </Paragraph>
 
                 <Box display="grid" gridRowGap={5}>
                     <Box
@@ -71,7 +83,9 @@ const Sandbox = () => {
                 <List ml={4} my={4}>
                     <ListItem>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>{Content(contentLang, 'info', 'type-research')}</span>
+                        <span>
+                            {Content(contentLang, 'info', 'type-research')}
+                        </span>
                     </ListItem>
 
                     <ListItem>
@@ -85,7 +99,16 @@ const Sandbox = () => {
                     </ListItem>
                 </List>
 
-                <NavBTN as={Link} href={Content(sandboxLang, 'paper', 'url')} target="_blank" />
+                <Box align="center" my={4}>
+                    <PdfPreviewButton
+                        src={Content(sandboxLang, 'paper', 'url')}
+                        title={Content(experienceLang, 'ai-sandbox', 'title')}
+                        rightIcon={<ChevronRightIcon />}
+                        colorScheme="orange"
+                    >
+                        {Content(miscLang, 'button', 'content')}
+                    </PdfPreviewButton>
+                </Box>
 
                 <ThumbImage
                     src="/images/experiences/TracingSense.png"
@@ -101,7 +124,7 @@ const Sandbox = () => {
                 />
 
                 <Box justifyItems="center">
-                    <RecommendationCard projectID="aiSandbox"/>
+                    <RecommendationCard projectID="aiSandbox" />
                 </Box>
             </Container>
         </Layout>

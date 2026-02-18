@@ -5,7 +5,6 @@ import {
     Button,
     chakra,
     Image,
-    Link,
     shouldForwardProp,
     SimpleGrid,
     useColorModeValue
@@ -23,6 +22,7 @@ import { motion } from 'framer-motion'
 
 import miscLang from '../locales/misc.json'
 import letterLang from '../locales/recommendations.json'
+import { PdfPreviewButton } from './pdfViewer'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {
@@ -165,14 +165,14 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         >
                             {Content(miscLang, 'button', 'content')}
                         </Button>
-                        <Button
-                            as={Link}
-                            href={`/PDF/Recommendations/${projectContent.id}.pdf`}
+                        <PdfPreviewButton
+                            title={projectContent.title}
+                            src={`/PDF/Recommendations/${projectContent.id}.pdf`}
                             rightIcon={<ChevronRightIcon />}
                             colorScheme="orange"
                         >
                             {Content(miscLang, 'letter', 'content')}
-                        </Button>
+                        </PdfPreviewButton>
                     </SimpleGrid>
                 </Box>
             </StyledDiv>
