@@ -40,13 +40,23 @@
         },
         {
             "locale": "ja",
-            "content": " ",
-            "list": []
+            "content": "技術実装",
+            "list": [
+                "Unreal EngineおよびC++を用いてシミュレーション環境を開発。",
+                "強化学習および神経進化のパイプラインを実装。",
+                "プロシージャルな世界生成を用いたマルチエージェント環境を構築。",
+                "世代ごとのエージェント行動を分析し、学習パターンを評価。"
+            ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": []
+            "content": "Implementacion Tecnica",
+            "list": [
+                "Desarrole una simulacion ambiental usando Unreal Engine y C++.",
+                "Implemente aprendisaje reinforcado y pipelines neuroevolutivos.",
+                "Simule ambientes mutli-agentes con un generador de mundos.",
+                "Analize comportamientos de agentes a travez de feneraciones para evaluar patrones de aprendisaje."
+            ]
         }
     ],
     "paper": [
