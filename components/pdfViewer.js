@@ -46,14 +46,14 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                 boxShadow="0 20px 60px rgba(0,0,0,0.5)"
             >
                 <ModalHeader
-                    pr={{ sm: '60px', base: '0' }}
-                    pb={2}
                     borderBottom="1px solid"
                     borderColor="whiteAlpha.200"
                 >
                     <Flex
+                        m={2}
+                        mr={{ md: '50px', base: '2' }}
                         direction={{ base: 'column', md: 'row' }}
-                        align={{ base: 'center', md: 'center' }}
+                        align="center"
                         justify={{ base: 'center', md: 'space-between' }}
                         gap={3}
                     >
@@ -91,7 +91,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                     </Flex>
                 </ModalHeader>
 
-                <ModalCloseButton top="8px" right="8px" zIndex="10" />
+                <ModalCloseButton top="8px" right="16px" zIndex="10" />
 
                 <ModalBody p={0}>
                     {isMobile ? (
