@@ -27,13 +27,25 @@
         },
         {
             "locale": "ja",
-            "content": " ",
-            "list": []
+            "content": "契約ライフサイクルおよびデバイス管理システム",
+            "list": [
+                "デバイスの販売、レンタル、修理、返却を管理するWebプラットフォームを設計・実装。",
+                "複数地域におけるデバイスの状態、サービス適用可否、契約情報、顧客記録を追跡するリレーショナルSQLデータベースを構築。",
+                "デジタル署名によるゲスト契約締結機能および、フィルタリング・レポート機能を備えた管理者向けダッシュボードを含むマルチロールインターフェースを開発。",
+                "契約書の自動生成、メール配信、印刷対応ドキュメントの出力機能を実装。",
+                "損傷報告、コスト管理、技術者の日次ログ記録を含む修理ワークフローを設計し、業務の透明性と責任追跡を実現。"
+            ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": []
+            "content": "Sistema de Gestión del Ciclo de Vida de Contratos y Dispositivos",
+            "list": [
+                "Diseñé e implementé una plataforma web para gestionar ventas, alquileres, reparaciones y devoluciones de dispositivos.",
+                "Construí bases de datos relacionales SQL para rastrear el estado de los dispositivos, elegibilidad de servicio, contratos y registros de clientes en múltiples regiones.",
+                "Desarrollé una interfaz multi-rol que incluye firma digital de contratos para invitados y paneles administrativos con herramientas de filtrado y generación de reportes.",
+                "Implementé generación automática de contratos, distribución por correo electrónico y documentos listos para impresión.",
+                "Diseñé flujos de reparación con reportes de daños, seguimiento de costos y registros diarios de técnicos para garantizar trazabilidad y responsabilidad."
+            ]
         }
     ],
     "maintenancePlatform": [
@@ -49,13 +61,23 @@
         },
         {
             "locale": "ja",
-            "content": " ",
-            "list": []
+            "content": "工場保守およびワークフロー追跡プラットフォーム",
+            "list": [
+                "機械故障の報告、保守ワークフローの起動、部門横断での修理進捗追跡を行うシステムを開発。",
+                "オペレーター、監督者、修理技術者を連携させる段階的承認および通知フローを実装。",
+                "修理作業内容、タイムスタンプ、使用資材を自動記録するログ管理機能を構築。",
+                "使用資材の自動差し引きおよび調達分析を生成する在庫管理機能を設計。"
+            ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": []
+            "content": "Plataforma de Mantenimiento Industrial y Seguimiento de Flujos de Trabajo",
+            "list": [
+                "Desarrollé un sistema para reportar fallas de maquinaria, activar flujos de mantenimiento y monitorear el progreso de reparaciones entre departamentos.",
+                "Implementé flujos de aprobación y notificación por etapas que conectan operadores, supervisores y técnicos de reparación.",
+                "Construí herramientas de registro automático de actividades de reparación, marcas de tiempo y uso de materiales.",
+                "Diseñé funciones de control de inventario que descuentan materiales utilizados y generan análisis para compras y abastecimiento."
+            ]
         }
     ],
     "ownershipImpact": [
@@ -71,13 +93,23 @@
         },
         {
             "locale": "ja",
-            "content": " ",
-            "list": []
+            "content": "オーナーシップおよび成果",
+            "list": [
+                "両プラットフォームのシステムアーキテクチャ設計、データベース設計、および全面的な実装を主導。",
+                "顧客ミーティングの実施、要件定義、進捗デモの実施、フィードバックの反映を反復的に実行。",
+                "運用チームが使用する本番環境へアプリケーションを展開。",
+                "上級スタッフによる現地テスト後、海外ユーザーから高評価を獲得。"
+            ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": []
+            "content": "Responsabilidad y Entrega",
+            "list": [
+                "Lideré la arquitectura del sistema, el diseño de bases de datos y la implementación completa de ambas plataformas.",
+                "Realicé reuniones con clientes, levantamiento de requisitos, demostraciones de avance e incorporación iterativa de retroalimentación.",
+                "Desplegué las aplicaciones en entornos de producción utilizados por equipos operativos.",
+                "Recibí comentarios positivos de usuarios internacionales tras pruebas presenciales realizadas por personal senior."
+            ]
         }
     ]
 }

@@ -8,12 +8,9 @@ const CharModel = dynamic(() => import('../character'), {
 import Footer from '../footer'
 import Content from '../content'
 import miscLang from '../../locales/misc.json'
-import { useRouter } from 'next/router'
-import AlertNotification from '../alert'
 import { Analytics } from '@vercel/analytics/react'
 
 const Main = ({ children, router }) => {
-    const { locale } = useRouter()
 
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
@@ -52,14 +49,6 @@ const Main = ({ children, router }) => {
                 pt={14}
                 pb={8}
             >
-                <AlertNotification
-                    statement={locale === 'ja'}
-                    type="warning"
-                    title="翻訳"
-                    delay={0.6}
-                >
-                    このWebサイトは一人で翻訳しました。日本語勉強中、なので翻訳がちょっと変かもしれません。勉強中の間にこのウェブサイトの翻訳は上手になります。
-                </AlertNotification>
                 <Analytics />
                 <CharModel />
                 {children}

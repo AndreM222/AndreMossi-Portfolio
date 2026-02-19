@@ -6,14 +6,13 @@
         },
         {
             "locale": "ja",
-            "content": "大学生の時、三人のチームでトレーサビリティシステムを開発しました。会社では、破損したパレットがよく持ち込まれていましたが、社員が手作業でダメージを確認していたため、時間がかかり、ミスも多くありました。それで、このシステムではパレットの破損を自動で検出します。会社の中にはドアの隣に2台のカメラが設置されています。そして、カメラは動きを検知し、パレットを見つけると写真を撮ります。あとで、その写真はwebサイトにアップロードされ、破損が検出された場合、会社員にメールで通知されます。"
+            "content": "3人チームで、生産施設内におけるパレットの移動を自動検出・記録する産業向けトレーサビリティシステムを開発しました。従来のワークフローでは、破損したパレットを手作業で検査しており、遅延や人的ミスが発生していました。\n\n本システムでは、デュアルカメラを用いて動体を検知し、撮影画像および物体検出結果を含むイベントベースの記録を生成しました。これらのイベントは NVIDIA Jetson 上で動作する Ultralytics YOLO（過熱および計算性能の制約により Arduino から移行）によって処理され、TimescaleDB に保存されます。また、カスタムWebプラットフォームによりリアルタイム可視化およびシステム制御を実現しました。"
         },
         {
             "locale": "es",
-            "content": "En mi equipo de tres, desarollamos un systema de trazibilidad que detecta objetos pasando enfrente de uan camara. La idea era que la maquina recolectaba detectiones de cajas de paqueteria y los guardaba en eventos. Con estos eventos podemos detectar abnormalidades en la transferencia de paquetes como daños. Despues es enviado a una base de datos el cual puedes acceder a travez de un web application para vizualisar los datos."
+            "content": "En un equipo de tres personas, desarrollamos un sistema industrial de trazabilidad para detectar y registrar automáticamente el movimiento de pallets dentro de una planta de producción. El flujo de trabajo anterior dependía de la inspección manual de pallets dañados, lo que generaba retrasos y errores humanos.\n\nEl sistema utilizó cámaras duales para detectar movimiento y generar registros basados en eventos que incluían imágenes capturadas y detecciones de objetos. Estos eventos fueron procesados utilizando Ultralytics YOLO ejecutándose en NVIDIA Jetson (migrado desde Arduino debido a limitaciones térmicas y de rendimiento) y almacenados en TimescaleDB. Una plataforma web personalizada proporcionó visualización en tiempo real y control del sistema."
         }
     ],
-
     "EnginnerOwnerAndDecision": [
         {
             "locale": "en",
@@ -28,17 +27,27 @@
         },
         {
             "locale": "ja",
-            "content": " ",
+            "content": "技術的意思決定およびオーナーシップ",
             "list": [
+                "熱問題および性能制約を解決するため、ハードウェアを Arduino から NVIDIA Jetson へ移行。",
+                "安定したデプロイを実現するため、バックエンドサービスを Docker によりコンテナ化。",
+                "スケーラブルな保存および検索を可能にするイベントベースのデータベース設計を構築。",
+                "Webインターフェースを100%開発し、バックエンド、ハードウェア統合、AIデプロイ全体の約50%に貢献。",
+                "画像削除機能、検出結果の編集機能、および再学習パイプライン統合を実装。"
             ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": [ ]
+            "content": "Decisiones de Ingeniería y Responsabilidad Técnica",
+            "list": [
+                "Migré el hardware de Arduino a NVIDIA Jetson para resolver limitaciones térmicas y de rendimiento.",
+                "Contenericé los servicios backend utilizando Docker para garantizar despliegues confiables.",
+                "Diseñé un modelo de base de datos basado en eventos para almacenamiento y consulta escalables.",
+                "Desarrollé el 100% de la interfaz web y contribuí aproximadamente un 50% en backend, integración de hardware y despliegue de IA.",
+                "Implementé eliminación de imágenes, edición de detecciones e integración con el pipeline de reentrenamiento."
+            ]
         }
     ],
-
     "OperationalBusinessImpact": [
         {
             "locale": "en",
@@ -52,13 +61,23 @@
         },
         {
             "locale": "ja",
-            "content": " ",
-            "list": [ ]
+            "content": "運用およびビジネスへの影響",
+            "list": [
+                "隔週で進捗デモンストレーションを実施し、二次管理層へ報告。",
+                "プロジェクト中間および最終段階において、経営層へマイルストーンレビューを実施。",
+                "定量的な進捗およびシステム検証に基づき、継続的な資金確保に成功。",
+                "成果達成が継続条件であり、マイルストーン未達の場合はプロジェクト終了の可能性があった。"
+            ]
         },
         {
             "locale": "es",
-            "content": " ",
-            "list": [ ]
+            "content": "Impacto Operativo y Empresarial",
+            "list": [
+                "Realicé demostraciones de progreso quincenales ante gerencia secundaria.",
+                "Presenté revisiones de hitos a la dirección ejecutiva en fases intermedia y final del proyecto.",
+                "Aseguré financiamiento continuo basado en progreso medible y validación del sistema.",
+                "La continuidad del proyecto dependía del cumplimiento de objetivos; no alcanzar los hitos habría resultado en su cancelación."
+            ]
         }
     ]
 }
