@@ -28,9 +28,18 @@
             "about": "私について",
             "experience": "プロジェクト",
             "others": "その他",
-            "resume": "職務経歴書",
+            "resume": "履歴書CV",
             "recommendations": "推薦文",
-            "link-resume": "/PDF/SKS-Andre-JP.pdf"
+            "link-resume": [
+                {
+                    "name": "履歴書",
+                    "src": "/PDF/Rireki-Andre-JP.pdf"
+                },
+                {
+                    "name": "職務経歴書",
+                    "src": "/PDF/SKS-Andre-JP.pdf"
+                }
+            ]
         },
         {
             "locale": "es",
@@ -112,7 +121,6 @@
             "content": "Prevista es limitado en telefono"
         }
     ],
-
     "footer": [
         {
             "locale": "en",

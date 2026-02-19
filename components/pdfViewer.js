@@ -13,10 +13,13 @@ import {
     useBreakpointValue,
     Box,
     useDisclosure,
-    MenuItem
+    MenuItem,
+    Divider,
+    Icon
 } from '@chakra-ui/react'
-import { useState } from 'react'
-import { ExternalLinkIcon, DownloadIcon } from '@chakra-ui/icons'
+import { useEffect, useState } from 'react'
+import { ExternalLinkIcon, DownloadIcon, LockIcon } from '@chakra-ui/icons'
+import { IoDocumentText } from 'react-icons/io5'
 import Content from './content'
 
 import miscLang from '../locales/misc.json'
@@ -24,6 +27,13 @@ import miscLang from '../locales/misc.json'
 export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
     const [loaded, setLoaded] = useState(false)
     const isMobile = useBreakpointValue({ base: true, md: false })
+    const typeArray = Array.isArray(src)
+    const [currPDF, setPDF] = useState(typeArray ? src[0].src : src)
+
+    useEffect(() => {
+        setLoaded(false)
+        setPDF(typeArray ? src[0].src : src)
+    }, [src, typeArray])
 
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
 
@@ -34,6 +44,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
             onClose={onClose}
             isCentered
             motionPreset="scale"
+            blockScrollOnMount
         >
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
@@ -73,7 +84,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                             <Button
                                 size="sm"
                                 leftIcon={<ExternalLinkIcon />}
-                                onClick={() => window.open(src, '_blank')}
+                                onClick={() => window.open(currPDF, '_blank')}
                             >
                                 {Content(miscLang, 'viewPDFBTN', 'content')}
                             </Button>
@@ -82,23 +93,56 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                                 size="sm"
                                 leftIcon={<DownloadIcon />}
                                 as="a"
-                                href={src}
+                                href={currPDF}
                                 download
                             >
                                 {Content(miscLang, 'downloadBTN', 'content')}
                             </Button>
                         </Flex>
                     </Flex>
+                    <Box display={typeArray ? '' : 'none'}>
+                        <Divider />
+                        <Flex
+                            gap={2}
+                            mt={2}
+                            direction={{ base: 'column', sm: 'row' }}
+                            align="center"
+                        >
+                            {typeArray ? (
+                                src.map(currPDFInfo => (
+                                    <Button
+                                        disabled={currPDF === currPDFInfo.src}
+                                        key={currPDFInfo.name}
+                                        size="sm"
+                                        w="full"
+                                        leftIcon={<IoDocumentText />}
+                                        onClick={() => {
+                                            setLoaded(false)
+                                            setPDF(currPDFInfo.src)
+                                        }}
+                                    >
+                                        {currPDFInfo.name}
+                                    </Button>
+                                ))
+                            ) : (
+                                <div />
+                            )}
+                        </Flex>
+                    </Box>
                 </ModalHeader>
 
                 <ModalCloseButton top="8px" right="16px" zIndex="10" />
 
                 <ModalBody p={0}>
                     {isMobile ? (
-                        <MobileFallback src={src} />
+                        <MobileFallback
+                            src={currPDF}
+                            loaded={loaded}
+                            setLoaded={setLoaded}
+                        />
                     ) : (
                         <DesktopPreview
-                            src={src}
+                            src={currPDF}
                             loaded={loaded}
                             setLoaded={setLoaded}
                         />
@@ -137,22 +181,63 @@ const DesktopPreview = ({ src, loaded, setLoaded }) => (
     </Box>
 )
 
-const MobileFallback = ({ src }) => (
+const MobileFallback = ({ src, loaded, setLoaded }) => (
     <Flex
+        position="relative"
         direction="column"
         align="center"
         justify="center"
-        p={8}
-        textAlign="center"
-        gap={4}
+        height="75vh"
+        overflow="hidden"
     >
-        <Text fontSize="lg" fontWeight="semibold">
-            {Content(miscLang, 'previewPhoneWarn', 'content')}
-        </Text>
+        <iframe
+            src={`${src}#toolbar=0&navpanes=0&scrollbar=0&page=1`}
+            width="100%"
+            height="100%"
+            style={{
+                border: 'none',
+                filter: 'blur(4px) brightness(0.75)',
+                pointerEvents: 'none',
+                transform: 'scale(1.05)',
+                opacity: loaded ? 1 : 0,
+                transition: 'opacity 0.4s ease'
+            }}
+            onLoad={() => setLoaded(true)}
+        />
 
-        <Button colorScheme="cyan" onClick={() => window.open(src, '_blank')}>
-            {Content(miscLang, 'viewPDFBTN', 'content')}
-        </Button>
+        <Box
+            position="absolute"
+            inset="0"
+            backdropFilter="blur(2px)"
+            background="rgba(0, 0, 0, 0.35)"
+        />
+
+        <Flex
+            position="absolute"
+            direction="column"
+            align="center"
+            gap={4}
+            textAlign="center"
+            px={6}
+            opacity={loaded ? 1 : 0}
+            transition="opacity 0.4s ease"
+        >
+            <Icon as={LockIcon} boxSize={8} color="whiteAlpha.900" />
+
+            <Text fontSize="lg" fontWeight="semibold" color="white">
+                {Content(miscLang, 'previewPhoneWarn', 'content')}
+            </Text>
+
+            <Button
+                colorScheme="cyan"
+                size="md"
+                borderRadius="full"
+                px={8}
+                onClick={() => window.open(src, '_blank')}
+            >
+                {Content(miscLang, 'viewPDFBTN', 'content')}
+            </Button>
+        </Flex>
     </Flex>
 )
 
