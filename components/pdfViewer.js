@@ -49,7 +49,9 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
             <ModalContent
-                h={{ base: 'auto', md: '90vh' }}
+                display="flex"
+                flexDirection="column"
+                h={{ base: '85vh', md: '90vh' }}
                 bg={bgColor}
                 borderRadius="xl"
                 border="1px solid"
@@ -133,7 +135,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
 
                 <ModalCloseButton top="8px" right="16px" zIndex="10" />
 
-                <ModalBody p={0}>
+                <ModalBody p={0} flex="1" overflow="hidden">
                     {isMobile ? (
                         <MobileFallback
                             src={currPDF}
@@ -154,7 +156,7 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
 }
 
 const DesktopPreview = ({ src, loaded, setLoaded }) => (
-    <Box position="relative" h="100%">
+    <Box position="relative" h="100%" w="100%">
         {!loaded && (
             <Flex
                 position="absolute"
@@ -187,7 +189,7 @@ const MobileFallback = ({ src, loaded, setLoaded }) => (
         direction="column"
         align="center"
         justify="center"
-        height="75vh"
+        h="100%"
         overflow="hidden"
     >
         <iframe
