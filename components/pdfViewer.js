@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { ExternalLinkIcon, DownloadIcon, LockIcon } from '@chakra-ui/icons'
-import { IoDocumentText } from 'react-icons/io5'
 import Content from './content'
 
 import miscLang from '../locales/misc.json'
@@ -117,7 +116,6 @@ export const PdfPreviewModal = ({ isOpen, onClose, title, src }) => {
                                         key={currPDFInfo.name}
                                         size="sm"
                                         w="full"
-                                        leftIcon={<IoDocumentText />}
                                         onClick={() => {
                                             setLoaded(false)
                                             setPDF(currPDFInfo.src)
