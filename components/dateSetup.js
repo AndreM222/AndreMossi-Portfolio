@@ -96,6 +96,8 @@ export const getDateFormat = date => {
 }
 
 const DateSetup = ({ date }) => {
+    if (!date) return <div/>
+
     const groups = date.toLowerCase().split(',')
 
     return (
