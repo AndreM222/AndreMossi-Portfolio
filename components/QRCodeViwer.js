@@ -18,9 +18,19 @@ import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
 import AvatarIcon from './avatarIcon'
 import Content from './content'
+import { useEffect, useState } from 'react'
+
+const MotionBox = motion(Box)
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+    const [isFloating, setIsFloating] = useState(true)
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsFloating(true)
+        }
+    }, [isOpen])
 
     return (
         <Modal
@@ -52,14 +62,30 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             justifyContent="center"
                             position="relative"
                         >
-                            <Box
+                            <MotionBox
                                 position="absolute"
                                 left="0"
                                 top="20%"
                                 bottom="20%"
                                 width="4px"
-                                bgGradient="linear(to-b, #a98f63, transparent)"
                                 borderRadius="full"
+                                background="linear-gradient(180deg, transparent, #a98f63, transparent)"
+                                backgroundSize="100% 200%"
+                                animate={{
+                                    backgroundPosition: [
+                                        '0% 0%',
+                                        '0% 100%',
+                                        '0% 0%'
+                                    ],
+                                    boxShadow: isFloating
+                                        ? '0 0 0px rgba(169,143,99,0)'
+                                        : '0 0 12px rgba(169,143,99,0.6)'
+                                }}
+                                transition={{
+                                    duration: 10,
+                                    repeat: Infinity,
+                                    ease: 'easeInOut'
+                                }}
                             />
 
                             <AvatarIcon />
@@ -89,23 +115,38 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             bgGradient="radial(circle at center, rgba(169,143,99,0.15), transparent 70%)"
                         >
                             <motion.div
-                                animate={{ y: [0, -8, 0] }}
-                                transition={{
-                                    repeat: Infinity,
-                                    duration: 4
-                                }}
+                                onClick={() => setIsFloating(prev => !prev)}
+                                animate={
+                                    isFloating
+                                        ? { y: [0, -8, 0], scale: 1 }
+                                        : { y: 0, scale: 0.98 }
+                                }
+                                transition={
+                                    isFloating
+                                        ? {
+                                            repeat: Infinity,
+                                            duration: 4,
+                                            ease: 'easeInOut'
+                                        }
+                                        : { duration: 0.3 }
+                                }
+                                style={{ cursor: 'pointer' }}
                             >
                                 <Box
                                     p={8}
                                     borderRadius="2xl"
                                     backdropFilter="blur(10px)"
                                     bg="whiteAlpha.50"
-                                    boxShadow="0 0 40px rgba(169,143,99,0.25)"
-                                    transition="all 0.3s ease"
+                                    boxShadow={
+                                        isFloating
+                                            ? '0 0 40px rgba(169,143,99,0.25)'
+                                            : '0 0 80px rgba(169,143,99,0.6)'
+                                    }
+                                    transition="all 0.4s ease"
                                     _hover={{
                                         transform: 'scale(1.05)',
                                         boxShadow:
-                                            '0 0 60px rgba(169,143,99,0.5)'
+                                            '0 0 100px rgba(169,143,99,0.7)'
                                     }}
                                 >
                                     <QRCodeCanvas
