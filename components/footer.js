@@ -100,7 +100,7 @@ const Footer = () => {
                         Andre Mossi
                     </LinkButton>
 
-                    <QRButton icon={<Icon as={IoCard} />}>QR Code</QRButton>
+                    <QRButton icon={<Icon as={IoCard} />}>{Content(miscLang, "qrCodeBTN", "content")}</QRButton>
                 </SimpleGrid>
                 <UpToggle />
             </Box>

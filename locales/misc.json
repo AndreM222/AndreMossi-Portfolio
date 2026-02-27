@@ -107,6 +107,20 @@
             "content": "Descargar"
         }
     ],
+    "qrCodeBTN": [
+        {
+            "locale": "en",
+            "content": "QR Code"
+        },
+        {
+            "locale": "ja",
+            "content": "QRのコード"
+        },
+        {
+            "locale": "es",
+            "content": "Codigo QR"
+        }
+    ],
     "previewPhoneWarn": [
         {
             "locale": "en",
