@@ -88,23 +88,24 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             p={12}
                             bgGradient="radial(circle at center, rgba(169,143,99,0.15), transparent 70%)"
                         >
-                            <Box
-                                p={8}
-                                borderRadius="2xl"
-                                backdropFilter="blur(10px)"
-                                bg="whiteAlpha.50"
-                                boxShadow="0 0 40px rgba(169,143,99,0.25)"
-                                transition="all 0.3s ease"
-                                _hover={{
-                                    transform: 'scale(1.05)',
-                                    boxShadow: '0 0 60px rgba(169,143,99,0.5)'
+                            <motion.div
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 4
                                 }}
                             >
-                                <motion.div
-                                    animate={{ y: [0, -8, 0] }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 4
+                                <Box
+                                    p={8}
+                                    borderRadius="2xl"
+                                    backdropFilter="blur(10px)"
+                                    bg="whiteAlpha.50"
+                                    boxShadow="0 0 40px rgba(169,143,99,0.25)"
+                                    transition="all 0.3s ease"
+                                    _hover={{
+                                        transform: 'scale(1.05)',
+                                        boxShadow:
+                                            '0 0 60px rgba(169,143,99,0.5)'
                                     }}
                                 >
                                     <QRCodeCanvas
@@ -114,8 +115,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                         fgColor="#a98f63"
                                         level="H"
                                     />
-                                </motion.div>
-                            </Box>
+                                </Box>
+                            </motion.div>
                         </Flex>
                     </Flex>
                 </ModalBody>
@@ -135,7 +136,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const QRCodeButton = ({children, ...props }) => {
+export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
