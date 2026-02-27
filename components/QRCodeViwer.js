@@ -24,7 +24,33 @@ const MotionBox = motion(Box)
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+
+    const modalBorderColor = useColorModeValue(
+        'blackAlpha.200',
+        'whiteAlpha.200'
+    )
+    const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+
+    const closeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
+    const closeHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
+
+    const rightGradient = useColorModeValue(
+        'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+        'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
+    )
+
     const [isFloating, setIsFloating] = useState(true)
+
+    const lightupShadow = useColorModeValue(
+        isFloating
+            ? '0 0 10px 2px rgba(169,143,99,0.35)'
+            : '0 0 40px 12px rgba(169,143,99,0.9)',
+        isFloating
+            ? '0 0 8px 2px rgba(169,143,99,0.15)'
+            : '0 0 40px 12px rgba(169,143,99,0.7)'
+    )
+
+    const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
 
     useEffect(() => {
         if (isOpen) {
@@ -47,7 +73,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                 bg={bgColor}
                 borderRadius="2xl"
                 border="1px solid"
-                borderColor="whiteAlpha.200"
+                borderColor={modalBorderColor}
             >
                 <ModalBody p={0}>
                     <Flex
@@ -74,9 +100,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 initial={false}
                                 animate={{
                                     backgroundPosition: ['0% 0%', '0% 200%'],
-                                    boxShadow: isFloating
-                                        ? '0 0 8px 2px rgba(169,143,99,0.15)'
-                                        : '0 0 40px 12px rgba(169,143,99,0.7)'
+                                    boxShadow: lightupShadow
                                 }}
                                 transition={{
                                     backgroundPosition: {
@@ -114,10 +138,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                     mt={1}
                                     mb={2}
                                     h="1px"
-                                    bg={useColorModeValue(
-                                        'blackAlpha.200',
-                                        'whiteAlpha.200'
-                                    )}
+                                    bg={dividerColor}
                                     w="40%"
                                 />
 
@@ -145,12 +166,12 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             align="center"
                             justify="center"
                             p={12}
-                            bgGradient="radial(circle at center, rgba(169,143,99,0.15), transparent 70%)"
+                            bgGradient={rightGradient}
                         >
                             <motion.div
                                 onClick={() => setIsFloating(prev => !prev)}
                                 animate={
-                                    isFloating ? { y: [0, -8, 0] } : { y: 0 } // no forced snap because animation will complete cycle
+                                    isFloating ? { y: [0, -8, 0] } : { y: 0 }
                                 }
                                 transition={
                                     isFloating
@@ -170,12 +191,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                     p={8}
                                     borderRadius="2xl"
                                     backdropFilter="blur(10px)"
-                                    bg="whiteAlpha.50"
-                                    boxShadow={
-                                        isFloating
-                                            ? '0 0 40px rgba(169,143,99,0.25)'
-                                            : '0 0 80px rgba(169,143,99,0.6)'
-                                    }
+                                    bg={qrBg}
+                                    boxShadow={lightupShadow}
                                     transition="all 0.6s ease-in-out"
                                     _hover={{
                                         '@media (hover: hover)': {
@@ -197,14 +214,15 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         </Flex>
                     </Flex>
                 </ModalBody>
+
                 <ModalCloseButton
                     top="16px"
                     right="16px"
                     borderRadius="full"
                     backdropFilter="blur(6px)"
-                    bg="whiteAlpha.100"
+                    bg={closeBg}
                     _hover={{
-                        bg: 'whiteAlpha.300',
+                        bg: closeHoverBg,
                         color: '#a98f63'
                     }}
                 />
