@@ -105,8 +105,38 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 {Content(indexLang, 'card', 'type')}
                             </Box>
 
-                            <Box mt={6} fontSize="sm" opacity={0.5}>
-                                andremossi.vercel.app
+                            <Box mt={6} fontSize="sm" opacity={0.75}>
+                                <Box letterSpacing="wide">
+                                    andremossi.vercel.app
+                                </Box>
+
+                                <Box
+                                    mt={1}
+                                    mb={2}
+                                    h="1px"
+                                    bg={useColorModeValue(
+                                        'blackAlpha.200',
+                                        'whiteAlpha.200'
+                                    )}
+                                    w="40%"
+                                />
+
+                                <Flex direction="column">
+                                    <Box
+                                        as="a"
+                                        href="mailto:mossiroberto0392@gmail.com"
+                                    >
+                                        mossiroberto0392@gmail.com
+                                    </Box>
+
+                                    <Box
+                                        as="a"
+                                        href="tel:+18147901591"
+                                        opacity={0.7}
+                                    >
+                                        +1 (814) 790-1591
+                                    </Box>
+                                </Flex>
                             </Box>
                         </Box>
 
