@@ -120,9 +120,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             <motion.div
                                 onClick={() => setIsFloating(prev => !prev)}
                                 animate={
-                                    isFloating
-                                        ? { y: [0, -8, 0], scale: 1 }
-                                        : { y: 0, scale: 0.98 }
+                                    isFloating ? { y: [0, -8, 0] } : { y: 0 } // no forced snap because animation will complete cycle
                                 }
                                 transition={
                                     isFloating
@@ -132,9 +130,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                             ease: 'easeInOut'
                                         }
                                         : {
-                                            type: 'spring',
-                                            stiffness: 120,
-                                            damping: 15
+                                            duration: 0.4,
+                                            ease: 'easeOut'
                                         }
                                 }
                                 style={{ cursor: 'pointer' }}

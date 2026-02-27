@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, useColorModeValue } from '@chakra-ui/react'
 
 const AvatarIcon = () => {
     const [playing, setPlaying] = useState(false)
@@ -25,7 +25,7 @@ const AvatarIcon = () => {
 
     return (
         <Box
-            borderColor="whiteAlpha.800"
+            borderColor={useColorModeValue('blackAlpha.700', 'whiteAlpha.800')}
             borderWidth={2}
             borderStyle="solid"
             w="100px"
