@@ -135,7 +135,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const QRCodeButton = ({ title, src, children, ...props }) => {
+export const QRCodeButton = ({children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
