@@ -119,7 +119,11 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
 
-                            <Box mt={2} fontSize="lg" opacity={0.8}>
+                            <Box
+                                mt={2}
+                                fontSize={{ base: 'md', sm: 'lg' }}
+                                opacity={0.8}
+                            >
                                 {Content(indexLang, 'card', 'work')}
                             </Box>
 
