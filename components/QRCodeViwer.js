@@ -71,20 +71,23 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 borderRadius="full"
                                 background="linear-gradient(180deg, transparent, #a98f63, transparent)"
                                 backgroundSize="100% 200%"
+                                initial={false}
                                 animate={{
-                                    backgroundPosition: [
-                                        '0% 0%',
-                                        '0% 100%',
-                                        '0% 0%'
-                                    ],
+                                    backgroundPosition: ['0% 0%', '0% 200%'],
                                     boxShadow: isFloating
-                                        ? '0 0 0px rgba(169,143,99,0)'
-                                        : '0 0 12px rgba(169,143,99,0.6)'
+                                        ? '0 0 8px 2px rgba(169,143,99,0.15)'
+                                        : '0 0 40px 12px rgba(169,143,99,0.7)'
                                 }}
                                 transition={{
-                                    duration: 10,
-                                    repeat: Infinity,
-                                    ease: 'easeInOut'
+                                    backgroundPosition: {
+                                        duration: 6,
+                                        ease: 'linear',
+                                        repeat: Infinity
+                                    },
+                                    boxShadow: {
+                                        duration: 0.6,
+                                        ease: 'easeInOut'
+                                    }
                                 }}
                             />
 
@@ -128,7 +131,11 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                             duration: 4,
                                             ease: 'easeInOut'
                                         }
-                                        : { duration: 0.3 }
+                                        : {
+                                            type: 'spring',
+                                            stiffness: 120,
+                                            damping: 15
+                                        }
                                 }
                                 style={{ cursor: 'pointer' }}
                             >
@@ -142,11 +149,13 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                             ? '0 0 40px rgba(169,143,99,0.25)'
                                             : '0 0 80px rgba(169,143,99,0.6)'
                                     }
-                                    transition="all 0.4s ease"
+                                    transition="all 0.6s ease-in-out"
                                     _hover={{
-                                        transform: 'scale(1.05)',
-                                        boxShadow:
-                                            '0 0 100px rgba(169,143,99,0.7)'
+                                        '@media (hover: hover)': {
+                                            transform: 'scale(1.05)',
+                                            boxShadow:
+                                                '0 0 100px rgba(169,143,99,0.7)'
+                                        }
                                     }}
                                 >
                                     <QRCodeCanvas
