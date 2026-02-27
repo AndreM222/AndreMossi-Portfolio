@@ -55,6 +55,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (isOpen) {
             setIsFloating(true)
+        } else {
+            setIsFloating(false)
         }
     }, [isOpen])
 
@@ -107,10 +109,6 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                         duration: 6,
                                         ease: 'linear',
                                         repeat: Infinity
-                                    },
-                                    boxShadow: {
-                                        duration: 0.6,
-                                        ease: 'easeInOut'
                                     }
                                 }}
                             />
