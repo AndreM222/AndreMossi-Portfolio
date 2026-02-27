@@ -38,7 +38,12 @@ const LinkButton = ({ target, href, icon, children, ...props }) => {
 
 const QRButton = ({ icon, children, ...props }) => {
     return (
-        <QRCodeButton variant="ghost" colorScheme="orange" leftIcon={icon} {...props}>
+        <QRCodeButton
+            variant="ghost"
+            colorScheme="orange"
+            leftIcon={icon}
+            {...props}
+        >
             {children}
         </QRCodeButton>
     )
@@ -100,7 +105,9 @@ const Footer = () => {
                         Andre Mossi
                     </LinkButton>
 
-                    <QRButton icon={<Icon as={IoCard} />}>{Content(miscLang, "qrCodeBTN", "content")}</QRButton>
+                    <QRButton icon={<Icon as={IoCard} />}>
+                        {Content(miscLang, 'qrCodeBTN', 'content')}
+                    </QRButton>
                 </SimpleGrid>
                 <UpToggle />
             </Box>
