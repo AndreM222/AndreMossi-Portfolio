@@ -39,6 +39,7 @@ const LinkButton = ({ target, href, icon, children, ...props }) => {
 const QRButton = ({ icon, children, ...props }) => {
     return (
         <QRCodeButton
+            justifyContent="left"
             variant="ghost"
             colorScheme="orange"
             leftIcon={icon}
