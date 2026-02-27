@@ -2,7 +2,8 @@ import {
     IoLogoGithub,
     IoLogoReddit,
     IoLogoLinkedin,
-    IoMail
+    IoMail,
+    IoCard
 } from 'react-icons/io5'
 import { FaXTwitter } from 'react-icons/fa6'
 import {
@@ -18,14 +19,28 @@ import UpToggle from './Buttons/up-toggle'
 import miscLang from '../locales/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
+import { QRCodeButton } from './QRCodeViwer'
 
 const LinkButton = ({ target, href, icon, children, ...props }) => {
     return (
         <Link href={href} target={target}>
-            <Button variant="ghost" colorScheme="orange" leftIcon={icon} {...props}>
+            <Button
+                variant="ghost"
+                colorScheme="orange"
+                leftIcon={icon}
+                {...props}
+            >
                 {children}
             </Button>
         </Link>
+    )
+}
+
+const QRButton = ({ icon, children, ...props }) => {
+    return (
+        <QRCodeButton variant="ghost" colorScheme="orange" leftIcon={icon} {...props}>
+            {children}
+        </QRCodeButton>
     )
 }
 
@@ -84,13 +99,15 @@ const Footer = () => {
                     >
                         Andre Mossi
                     </LinkButton>
+
+                    <QRButton icon={<Icon as={IoCard} />}>QR Code</QRButton>
                 </SimpleGrid>
                 <UpToggle />
             </Box>
 
             <Box
                 color={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
-                textAlign={{base: 'center', sm: 'left'}}
+                textAlign={{ base: 'center', sm: 'left' }}
             >
                 &copy; <DateSetup date={`${today.getFullYear()}`} />{' '}
                 {Content(miscLang, 'title', 'name')}
