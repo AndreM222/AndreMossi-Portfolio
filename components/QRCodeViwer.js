@@ -35,8 +35,16 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     const closeHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
 
     const rightGradient = useColorModeValue(
-        'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
-        'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
+        {
+            base: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+            sm: 'radial(circle at center, rgba(169,143,99,0.25), transparent 50%)',
+            md: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+        },
+        {
+            base: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)',
+            sm: 'radial(circle at center, rgba(169,143,99,0.15), transparent 50%)',
+            md: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
+        }
     )
 
     const [isFloating, setIsFloating] = useState(true)
