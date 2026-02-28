@@ -241,7 +241,7 @@ export const BackCard = () => {
         <Flex
             direction={{ base: 'column', md: 'row' }}
             minH={{
-                base: '100vh',
+                base: 'unset',
                 md: '430px',
                 sm: '727px'
             }}
