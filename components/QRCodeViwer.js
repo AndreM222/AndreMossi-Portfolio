@@ -44,6 +44,9 @@ const useShareUrl = () => {
 export const QRCodeModal = ({ isOpen, onClose }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
     const { share: shareUrl, canShare } = useShareUrl()
+    const [isFlipped, setIsFlipped] = useState(false)
+
+    const flip = () => setIsFlipped(prev => !prev)
 
     const modalBorderColor = useColorModeValue(
         'blackAlpha.200',
@@ -92,6 +95,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (isOpen) {
             setIsFloating(true)
+            setIsFlipped(false)
         } else {
             setIsFloating(false)
         }
@@ -115,161 +119,299 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                 borderColor={modalBorderColor}
             >
                 <ModalBody p={0} maxH="100vh" overflowY="auto">
-                    <Flex
-                        direction={{ base: 'column', md: 'row' }}
-                        minH={{ base: 'unset', md: '400px' }}
-                        height="100%"
+                    <motion.div
+                        key={isFlipped ? 'back' : 'front'}
+                        initial={{ opacity: 0.8, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
                     >
-                        <Box
-                            flex="1"
-                            px={{ base: 6, md: 12 }}
-                            py={{ base: 8, md: 12 }}
-                            display="flex"
-                            flexDirection="column"
-                            position="relative"
-                        >
-                            <MotionBox
-                                position="absolute"
-                                left="0"
-                                top="20%"
-                                bottom="20%"
-                                width="4px"
-                                borderRadius="full"
-                                background="linear-gradient(180deg, transparent, #a98f63, transparent)"
-                                backgroundSize="100% 200%"
-                                initial={false}
-                                animate={{
-                                    backgroundPosition: ['0% 0%', '0% 200%'],
-                                    boxShadow: lightupShadow
-                                }}
-                                transition={{
-                                    backgroundPosition: {
-                                        duration: 6,
-                                        ease: 'linear',
-                                        repeat: Infinity
-                                    }
-                                }}
-                            />
-
-                            <AvatarIcon />
-                            <Heading mt={4} size="lg" letterSpacing="tight">
-                                {Content(miscLang, 'title', 'name')}
-                            </Heading>
-
-                            <Box mt={2} fontSize="lg" opacity={0.8}>
-                                {Content(indexLang, 'card', 'work')}
-                            </Box>
-
-                            <Box fontSize="sm" opacity={0.6}>
-                                {Content(indexLang, 'card', 'type')}
-                            </Box>
-
-                            <Box mt={6} fontSize="sm" opacity={0.75}>
-                                <Box
-                                    mt={6}
-                                    fontSize="sm"
-                                    opacity={0.75}
-                                    display="flex"
-                                    alignItems="center"
-                                    gap={2}
-                                >
-                                    <Box letterSpacing="wide">
-                                        andremossi.vercel.app
-                                    </Box>
-
-                                    {canShare && (
-                                        <Button
-                                            size="xs"
-                                            variant="ghost"
-                                            colorScheme="orange"
-                                            borderRadius="full"
-                                            onClick={() => shareUrl()}
-                                            aria-label="Share this card"
-                                        >
-                                            <IoIosShare />
-                                        </Button>
-                                    )}
-                                </Box>
-
-                                <Box
-                                    mt={1}
-                                    mb={2}
-                                    h="1px"
-                                    bg={dividerColor}
-                                    w="40%"
-                                />
-
-                                <Flex direction={'column'}>
-                                    <Box
-                                        as="a"
-                                        href="mailto:mossiroberto0392@gmail.com"
-                                    >
-                                        mossiroberto0392@gmail.com
-                                    </Box>
-
-                                    <Box
-                                        as="a"
-                                        href="tel:+18147901591"
-                                        opacity={0.7}
-                                    >
-                                        +1 (814) 790-1591
-                                    </Box>
-                                </Flex>
-                            </Box>
-                        </Box>
-
-                        <Flex
-                            flex="1"
-                            align="center"
-                            justify="center"
-                            p={{ base: 6, lg: 12 }}
-                            bgGradient={rightGradient}
-                        >
-                            <motion.div
-                                onClick={() => setIsFloating(prev => !prev)}
-                                animate={
-                                    isFloating ? { y: [0, -8, 0] } : { y: 0 }
-                                }
-                                transition={
-                                    isFloating
-                                        ? {
-                                            repeat: Infinity,
-                                            duration: 4,
-                                            ease: 'easeInOut'
-                                        }
-                                        : {
-                                            duration: 0.4,
-                                            ease: 'easeOut'
-                                        }
-                                }
-                                style={{ cursor: 'pointer' }}
+                        {!isFlipped ? (
+                            <Flex
+                                direction={{ base: 'column', md: 'row' }}
+                                minH={{ base: 'unset', md: '400px' }}
+                                height="100%"
                             >
                                 <Box
-                                    p={8}
-                                    borderRadius="2xl"
-                                    backdropFilter="blur(10px)"
-                                    bg={qrBg}
-                                    boxShadow={qrShadow}
-                                    transition="all 0.6s ease-in-out"
-                                    _hover={{
-                                        '@media (hover: hover)': {
-                                            transform: 'scale(1.05)',
-                                            boxShadow:
-                                                '0 0 100px rgba(169,143,99,0.7)'
-                                        }
-                                    }}
+                                    flex="1"
+                                    px={{ base: 6, md: 12 }}
+                                    py={{ base: 8, md: 12 }}
+                                    display="flex"
+                                    flexDirection="column"
+                                    position="relative"
                                 >
-                                    <QRCodeCanvas
-                                        value={url}
-                                        size={220}
-                                        bgColor="transparent"
-                                        fgColor="#a98f63"
-                                        level="H"
+                                    <MotionBox
+                                        position="absolute"
+                                        left="0"
+                                        top="20%"
+                                        bottom="20%"
+                                        width="4px"
+                                        borderRadius="full"
+                                        background="linear-gradient(180deg, transparent, #a98f63, transparent)"
+                                        backgroundSize="100% 200%"
+                                        initial={false}
+                                        animate={{
+                                            backgroundPosition: [
+                                                '0% 0%',
+                                                '0% 200%'
+                                            ],
+                                            boxShadow: lightupShadow
+                                        }}
+                                        transition={{
+                                            backgroundPosition: {
+                                                duration: 6,
+                                                ease: 'linear',
+                                                repeat: Infinity
+                                            }
+                                        }}
                                     />
+
+                                    <AvatarIcon />
+                                    <Heading
+                                        mt={4}
+                                        size="lg"
+                                        letterSpacing="tight"
+                                    >
+                                        {Content(miscLang, 'title', 'name')}
+                                    </Heading>
+
+                                    <Box mt={2} fontSize="lg" opacity={0.8}>
+                                        {Content(indexLang, 'card', 'work')}
+                                    </Box>
+
+                                    <Box fontSize="sm" opacity={0.6}>
+                                        {Content(indexLang, 'card', 'type')}
+                                    </Box>
+
+                                    <Box mt={6} fontSize="sm" opacity={0.75}>
+                                        <Box
+                                            mt={6}
+                                            fontSize="sm"
+                                            opacity={0.75}
+                                            display="flex"
+                                            alignItems="center"
+                                            gap={2}
+                                        >
+                                            <Box letterSpacing="wide">
+                                                andremossi.vercel.app
+                                            </Box>
+
+                                            {canShare && (
+                                                <Button
+                                                    size="xs"
+                                                    variant="ghost"
+                                                    colorScheme="orange"
+                                                    borderRadius="full"
+                                                    onClick={() => shareUrl()}
+                                                    aria-label="Share this card"
+                                                >
+                                                    <IoIosShare />
+                                                </Button>
+                                            )}
+                                        </Box>
+
+                                        <Box
+                                            mt={1}
+                                            mb={2}
+                                            h="1px"
+                                            bg={dividerColor}
+                                            w="40%"
+                                        />
+
+                                        <Flex direction={'column'}>
+                                            <Box
+                                                as="a"
+                                                href="mailto:mossiroberto0392@gmail.com"
+                                            >
+                                                mossiroberto0392@gmail.com
+                                            </Box>
+
+                                            <Box
+                                                as="a"
+                                                href="tel:+18147901591"
+                                                opacity={0.7}
+                                            >
+                                                +1 (814) 790-1591
+                                            </Box>
+                                        </Flex>
+                                    </Box>
                                 </Box>
-                            </motion.div>
-                        </Flex>
-                    </Flex>
+
+                                <Flex
+                                    flex="1"
+                                    align="center"
+                                    justify="center"
+                                    p={{ base: 6, lg: 12 }}
+                                    bgGradient={rightGradient}
+                                >
+                                    <motion.div
+                                        onClick={() =>
+                                            setIsFloating(prev => !prev)
+                                        }
+                                        animate={
+                                            isFloating
+                                                ? { y: [0, -8, 0] }
+                                                : { y: 0 }
+                                        }
+                                        transition={
+                                            isFloating
+                                                ? {
+                                                    repeat: Infinity,
+                                                    duration: 4,
+                                                    ease: 'easeInOut'
+                                                }
+                                                : {
+                                                    duration: 0.4,
+                                                    ease: 'easeOut'
+                                                }
+                                        }
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        <Box
+                                            p={8}
+                                            borderRadius="2xl"
+                                            backdropFilter="blur(10px)"
+                                            bg={qrBg}
+                                            boxShadow={qrShadow}
+                                            transition="all 0.6s ease-in-out"
+                                            _hover={{
+                                                '@media (hover: hover)': {
+                                                    transform: 'scale(1.05)',
+                                                    boxShadow:
+                                                        '0 0 100px rgba(169,143,99,0.7)'
+                                                }
+                                            }}
+                                        >
+                                            <QRCodeCanvas
+                                                value={url}
+                                                size={220}
+                                                bgColor="transparent"
+                                                fgColor="#a98f63"
+                                                level="H"
+                                            />
+                                        </Box>
+                                    </motion.div>
+                                </Flex>
+                            </Flex>
+                        ) : (
+                            <Flex
+                                direction={{ base: 'column', md: 'row' }}
+                                minH={{
+                                    base: 'unset',
+                                    md: '430px',
+                                    sm: '727px'
+                                }}
+                                height="100%"
+                            >
+                                <Box
+                                    flex="1"
+                                    px={{ base: 6, md: 12 }}
+                                    py={{ base: 8, md: 12 }}
+                                    display="flex"
+                                    flexDirection="column"
+                                    position="relative"
+                                >
+                                    <MotionBox
+                                        position="absolute"
+                                        left="0"
+                                        top="20%"
+                                        bottom="20%"
+                                        width="4px"
+                                        borderRadius="full"
+                                        background="linear-gradient(180deg, transparent, #a98f63, transparent)"
+                                        backgroundSize="100% 200%"
+                                        initial={false}
+                                        animate={{
+                                            backgroundPosition: [
+                                                '0% 0%',
+                                                '0% 200%'
+                                            ],
+                                            boxShadow: lightupShadow
+                                        }}
+                                        transition={{
+                                            backgroundPosition: {
+                                                duration: 6,
+                                                ease: 'linear',
+                                                repeat: Infinity
+                                            }
+                                        }}
+                                    />
+                                    <Flex
+                                        flex={1}
+                                        flexDirection="column"
+                                        align="center"
+                                        justify="center"
+                                        textAlign="center"
+                                        p={{ base: 6, md: 12 }}
+                                        width="full"
+                                    >
+                                        <motion.div
+                                            animate={{
+                                                textShadow: [
+                                                    '0 0 6px rgba(169,143,99,0.4)',
+                                                    '0 0 14px rgba(169,143,99,0.8)',
+                                                    '0 0 6px rgba(169,143,99,0.4)'
+                                                ]
+                                            }}
+                                            transition={{
+                                                duration: 3,
+                                                ease: 'easeInOut',
+                                                repeat: Infinity
+                                            }}
+                                        >
+                                            <Heading
+                                                mt={4}
+                                                size="xl"
+                                                letterSpacing="tight"
+                                                color="#a98f63"
+                                            >
+                                                {Content(
+                                                    miscLang,
+                                                    'title',
+                                                    'name'
+                                                )}
+                                            </Heading>
+                                        </motion.div>
+                                        <Box
+                                            h="1px"
+                                            bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
+                                            w="40%"
+                                            mx="auto"
+                                            mt={1}
+                                        />
+
+                                        <Box mt={2} fontSize="xl" opacity={0.8}>
+                                            {Content(indexLang, 'card', 'work')}
+                                        </Box>
+
+                                        <Box fontSize="md" opacity={0.6}>
+                                            {Content(indexLang, 'card', 'type')}
+                                        </Box>
+                                    </Flex>
+                                </Box>
+                            </Flex>
+                        )}
+                    </motion.div>
+                    <Box
+                        position="absolute"
+                        bottom="0"
+                        right="0"
+                        width="30px"
+                        height="30px"
+                        bg="#a98f63"
+                        roundedBottomRight="2xl"
+                        roundedTopLeft="2xl"
+                        boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
+                        onClick={flip}
+                        cursor="pointer"
+                        aria-label="Flip card"
+                        _hover={{
+                            bg: '#c9b78b'
+                        }}
+                        _active={{
+                            bg: '#967c4a',
+                            boxShadow: '0 0 8px rgba(0,0,0,0.5) inset'
+                        }}
+                    />
                 </ModalBody>
 
                 <ModalCloseButton
