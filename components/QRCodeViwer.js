@@ -17,13 +17,33 @@ import { motion } from 'framer-motion'
 import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
 import AvatarIcon from './avatarIcon'
+import { IoIosShare } from 'react-icons/io'
 import Content from './content'
 import { useEffect, useState } from 'react'
 
 const MotionBox = motion(Box)
+const url = 'https://andremossi.vercel.app'
+
+const useShareUrl = () => {
+    const canShare = typeof navigator !== 'undefined' && navigator.share
+
+    const share = async () => {
+        if (canShare) {
+            try {
+                await navigator.share({
+                    title: 'Andre Mossi · Portfolio',
+                    url
+                })
+            } catch (err) { }
+        }
+    }
+
+    return { share, canShare }
+}
 
 export const QRCodeModal = ({ isOpen, onClose }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+    const { share: shareUrl, canShare } = useShareUrl()
 
     const modalBorderColor = useColorModeValue(
         'blackAlpha.200',
@@ -38,7 +58,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
         {
             base: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
             xs: 'radial(circle at center, rgba(169,143,99,0.25), transparent 50%)',
-            md: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+            md: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)'
         },
         {
             base: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)',
@@ -132,7 +152,6 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             />
 
                             <AvatarIcon />
-
                             <Heading mt={4} size="lg" letterSpacing="tight">
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
@@ -146,8 +165,30 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             </Box>
 
                             <Box mt={6} fontSize="sm" opacity={0.75}>
-                                <Box letterSpacing="wide">
-                                    andremossi.vercel.app
+                                <Box
+                                    mt={6}
+                                    fontSize="sm"
+                                    opacity={0.75}
+                                    display="flex"
+                                    alignItems="center"
+                                    gap={2}
+                                >
+                                    <Box letterSpacing="wide">
+                                        andremossi.vercel.app
+                                    </Box>
+
+                                    {canShare && (
+                                        <Button
+                                            size="xs"
+                                            variant="ghost"
+                                            colorScheme="orange"
+                                            borderRadius="full"
+                                            onClick={() => shareUrl()}
+                                            aria-label="Share this card"
+                                        >
+                                            <IoIosShare />
+                                        </Button>
+                                    )}
                                 </Box>
 
                                 <Box
@@ -219,7 +260,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                     }}
                                 >
                                     <QRCodeCanvas
-                                        value="https://andremossi.vercel.app"
+                                        value={url}
                                         size={220}
                                         bgColor="transparent"
                                         fgColor="#a98f63"
