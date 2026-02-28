@@ -398,7 +398,6 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                 borderRadius="2xl"
                 border="1px solid"
                 borderColor={modalBorderColor}
-                h={{ base: '100vh', sm: 'auto' }}
             >
                 <ModalBody p={0} maxH="100vh" overflowY="auto">
                     <motion.div
