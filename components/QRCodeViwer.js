@@ -379,7 +379,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                             mt={1}
                                         />
 
-                                        <Box mt={2} fontSize="xl" opacity={0.8}>
+                                        <Box mt={2} fontSize="md" opacity={0.8}>
                                             {Content(indexLang, 'card', 'work')}
                                         </Box>
 
