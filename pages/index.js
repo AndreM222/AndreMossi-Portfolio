@@ -14,6 +14,7 @@ import { QuoteCard, quoteLength } from '../components/quoteCard'
 import { useState, useEffect } from 'react'
 import RecommendationSection from '../components/recommendationSection'
 import AvatarIcon from '../components/avatarIcon'
+import { QRCodeButton } from '../components/QRCodeViwer'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
@@ -50,7 +51,16 @@ const Page = () => {
                             ml={{ md: 6 }}
                             align="center"
                         >
-                            <AvatarIcon />
+                            <QRCodeButton
+                                variant="ghost"
+                                borderRadius="full"
+                                w="auto"
+                                h="auto"
+                                p={0}
+                                _hover={{ bg: 'transparent' }}
+                            >
+                                <AvatarIcon />
+                            </QRCodeButton>
                         </Box>
                     </Box>
                 </Box>
