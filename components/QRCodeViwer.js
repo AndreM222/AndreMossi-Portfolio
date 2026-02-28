@@ -235,7 +235,13 @@ export const BackCard = () => {
     )
 
     const name = Content(miscLang, 'title', 'name')
-    const letters = name.split('')
+    const nameLetters = name.split('')
+
+    const abilities = Content(indexLang, 'card', 'work')
+    const abilitiesLetters = abilities.split('')
+
+    const profession = Content(indexLang, 'card', 'type')
+    const professionLetters = profession.split('')
 
     return (
         <Flex
@@ -292,8 +298,14 @@ export const BackCard = () => {
                     justify={{ base: 'space-between', md: 'center' }}
                     p={{ base: 6, md: 12 }}
                     width="full"
+                    minW="40px"
                 >
-                    <Flex direction="column" align="center" justify="center">
+                    <Flex
+                        direction="row"
+                        align="flex-start"
+                        justify="center"
+                        gap={4}
+                    >
                         <motion.div
                             animate={{
                                 textShadow: [
@@ -324,7 +336,7 @@ export const BackCard = () => {
                                 display={{ base: 'flex', md: 'none' }}
                                 align="center"
                             >
-                                {letters.map((letter, index) => (
+                                {nameLetters.map((letter, index) => (
                                     <Box
                                         key={index}
                                         fontSize="2xl"
@@ -338,9 +350,48 @@ export const BackCard = () => {
                                 ))}
                             </Flex>
                         </motion.div>
+                        <Flex
+                            direction="column"
+                            display={{ base: 'flex', md: 'none' }}
+                            align="center"
+                        >
+                            {abilitiesLetters.map((letter, index) => (
+                                <Box key={index} fontSize="sm" opacity={0.8}>
+                                    {letter === ' ' ? (
+                                        ''
+                                    ) : letter === '｜' || letter === '|' ? (
+                                        <Box
+                                            h="1px"
+                                            bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
+                                            w="20px"
+                                            my={2}
+                                        />
+                                    ) : (
+                                        letter.toUpperCase()
+                                    )}
+                                </Box>
+                            ))}
+                        </Flex>
+                        <Flex
+                            direction="column"
+                            display={{ base: 'flex', md: 'none' }}
+                            align="center"
+                        >
+                            {professionLetters.map((letter, index) => (
+                                <Box key={index} fontSize="sm" opacity={0.6}>
+                                    {letter === ' '
+                                        ? '\u00A0'
+                                        : letter.toUpperCase()}
+                                </Box>
+                            ))}
+                        </Flex>
                     </Flex>
 
-                    <Flex direction="column" align="center">
+                    <Flex
+                        direction="column"
+                        align="center"
+                        display={{ base: 'none', md: 'flex' }}
+                    >
                         <Box
                             h="1px"
                             bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
