@@ -50,6 +50,15 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             : '0 0 40px 12px rgba(169,143,99,0.7)'
     )
 
+    const qrShadow = useColorModeValue(
+        isFloating
+            ? '0 0 16px 4px rgba(169,143,99,0.5)'
+            : '0 0 32px 8px rgba(169,143,99,0.7)',
+        isFloating
+            ? '0 0 12px 3px rgba(169,143,99,0.4)'
+            : '0 0 24px 7px rgba(169,143,99,0.6)'
+    )
+
     const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
 
     useEffect(() => {
@@ -62,7 +71,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 
     return (
         <Modal
-            size="4xl"
+            size={{ base: 'full', sm: '4xl' }}
             isOpen={isOpen}
             onClose={onClose}
             isCentered
@@ -77,17 +86,18 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                 border="1px solid"
                 borderColor={modalBorderColor}
             >
-                <ModalBody p={0}>
+                <ModalBody p={0} maxH="100vh" overflowY="auto">
                     <Flex
                         direction={{ base: 'column', md: 'row' }}
-                        minH="400px"
+                        minH={{ base: 'unset', md: '400px' }}
+                        height="100%"
                     >
                         <Box
                             flex="1"
-                            p={12}
+                            px={{ base: 6, md: 12 }}
+                            py={{ base: 8, md: 12 }}
                             display="flex"
                             flexDirection="column"
-                            justifyContent="center"
                             position="relative"
                         >
                             <MotionBox
@@ -119,11 +129,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
 
-                            <Box
-                                mt={2}
-                                fontSize={{ base: 'md', sm: 'lg' }}
-                                opacity={0.8}
-                            >
+                            <Box mt={2} fontSize="lg" opacity={0.8}>
                                 {Content(indexLang, 'card', 'work')}
                             </Box>
 
@@ -144,7 +150,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                     w="40%"
                                 />
 
-                                <Flex direction="column">
+                                <Flex direction={'column'}>
                                     <Box
                                         as="a"
                                         href="mailto:mossiroberto0392@gmail.com"
@@ -167,7 +173,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             flex="1"
                             align="center"
                             justify="center"
-                            p={12}
+                            p={{ base: 6, lg: 12 }}
                             bgGradient={rightGradient}
                         >
                             <motion.div
@@ -194,7 +200,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                     borderRadius="2xl"
                                     backdropFilter="blur(10px)"
                                     bg={qrBg}
-                                    boxShadow={lightupShadow}
+                                    boxShadow={qrShadow}
                                     transition="all 0.6s ease-in-out"
                                     _hover={{
                                         '@media (hover: hover)': {
