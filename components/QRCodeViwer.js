@@ -430,7 +430,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
             <ModalContent
-                h={{ base: '770px', sm: '725px', md: '430px' }}
+                h={{ base: '725px', md: '430px' }}
                 bg={bgColor}
                 borderRadius="2xl"
                 border="1px solid"
