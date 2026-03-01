@@ -247,9 +247,9 @@ export const BackCard = () => {
         <Flex
             direction={{ base: 'column', md: 'row' }}
             minH={{
-                base: 'unset',
-                md: '430px',
-                sm: '727px'
+                base: '725px',
+                sm: '727px',
+                md: '430px'
             }}
             height="100%"
         >
@@ -263,7 +263,7 @@ export const BackCard = () => {
             >
                 <MotionBox
                     position="absolute"
-                    left="0"
+                    right="0"
                     top="20%"
                     bottom="20%"
                     width="4px"
@@ -310,7 +310,7 @@ export const BackCard = () => {
                             animate={{
                                 textShadow: [
                                     '0 0 6px rgba(169,143,99,0.4)',
-                                    '0 0 14px rgba(169,143,99,0.8)',
+                                    '0 0 20px rgba(169,143,99,0.8)',
                                     '0 0 6px rgba(169,143,99,0.4)'
                                 ]
                             }}
@@ -391,6 +391,7 @@ export const BackCard = () => {
                         direction="column"
                         align="center"
                         display={{ base: 'none', md: 'flex' }}
+                        mt={2}
                     >
                         <Box
                             h="1px"
@@ -435,7 +436,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 
     return (
         <Modal
-            size={{ base: 'full', sm: '4xl' }}
+            size={{ base: 'unset', sm: '4xl' }}
             isOpen={isOpen}
             onClose={onClose}
             isCentered
@@ -466,12 +467,14 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                     <Box
                         position="absolute"
                         bottom="0"
-                        right="0"
+                        right={!isFlipped && "0"}
                         width="30px"
                         height="30px"
                         bg="#a98f63"
-                        roundedBottomRight="2xl"
-                        roundedTopLeft="2xl"
+                        roundedBottomLeft={isFlipped && "2xl"}
+                        roundedTopRight={isFlipped && "2xl"}
+                        roundedBottomRight={!isFlipped && "2xl"}
+                        roundedTopLeft={!isFlipped && "2xl"}
                         boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
                         onClick={flip}
                         cursor="pointer"
