@@ -100,15 +100,9 @@ export const FrontCard = ({ isOpen, ...props }) => {
         }
     }, [longPressTimer])
 
-    const handleQRPress = useCallback(event => {
+    const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
             setShowShareMenu(true)
-            if (
-                'vibrate' in navigator &&
-                typeof navigator.vibrate === 'function'
-            ) {
-                navigator.vibrate(30)
-            }
         }, 500)
 
         setLongPressTimer(timer)
