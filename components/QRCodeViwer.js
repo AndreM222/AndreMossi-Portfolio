@@ -460,6 +460,11 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 info.velocity.x < -velocityThreshold
                             ) {
                                 setIsFlipped(true)
+                            } else if (
+                                Math.abs(info.offset.y) > 120 ||
+                                Math.abs(info.velocity.y) > 800
+                            ) {
+                                onClose()
                             }
                         }}
                         animate={{
