@@ -439,13 +439,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
         >
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
-            <ModalContent
-                h={{ base: '725px', md: '430px' }}
-                bg={bgColor}
-                borderRadius="2xl"
-                border="1px solid"
-                borderColor={modalBorderColor}
-            >
+            <ModalContent h={{ base: '725px', md: '430px' }} bg="none">
                 <ModalBody p={0} h="100%" position="relative">
                     <motion.div
                         drag="x"
@@ -486,33 +480,38 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         whileTap={{ cursor: 'grabbing' }}
                         whileDrag={{ scale: 0.98 }}
                     >
-                        {' '}
-                        {!isFlipped ? (
-                            <FrontCard isOpen={isOpen} />
-                        ) : (
-                            <BackCard transform="rotateY(180deg)" />
-                        )}
+                        <Box
+                            bg={bgColor}
+                            borderRadius="2xl"
+                            border="1px solid"
+                            borderColor={modalBorderColor}
+                            h="full"
+                        >
+                            {!isFlipped ? (
+                                <FrontCard isOpen={isOpen} />
+                            ) : (
+                                <BackCard transform="rotateY(180deg)" />
+                            )}
+                        </Box>
+                        <Box
+                            position="absolute"
+                            bottom="0"
+                            right='0'
+                            width="30px"
+                            height="30px"
+                            bg="#a98f63"
+                            roundedBottomRight='2xl'
+                            roundedTopLeft='2xl'
+                            boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
+                            onClick={flip}
+                            cursor="pointer"
+                            aria-label="Flip card"
+                            _active={{
+                                bg: '#967c4a',
+                                boxShadow: '0 0 8px rgba(0,0,0,0.5) inset'
+                            }}
+                        />
                     </motion.div>
-                    <Box
-                        position="absolute"
-                        bottom="0"
-                        right={!isFlipped && '0'}
-                        width="30px"
-                        height="30px"
-                        bg="#a98f63"
-                        roundedBottomLeft={isFlipped && '2xl'}
-                        roundedTopRight={isFlipped && '2xl'}
-                        roundedBottomRight={!isFlipped && '2xl'}
-                        roundedTopLeft={!isFlipped && '2xl'}
-                        boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
-                        onClick={flip}
-                        cursor="pointer"
-                        aria-label="Flip card"
-                        _active={{
-                            bg: '#967c4a',
-                            boxShadow: '0 0 8px rgba(0,0,0,0.5) inset'
-                        }}
-                    />
                 </ModalBody>
 
                 <ModalCloseButton
