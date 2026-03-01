@@ -22,14 +22,17 @@ import { motion } from 'framer-motion'
 
 import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
-import AvatarIcon from './avatarIcon'
-import { IoIosGlobe, IoIosShare } from 'react-icons/io'
+import { IoIosGlobe, IoIosShare, IoLogoGithub } from 'react-icons/io'
 import Content from './content'
 import { useCallback, useEffect, useState } from 'react'
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
+const nfcUrl = webUrl + '/?entry=nfc'
+const gitUrl = 'https://github.com/AndreM222'
 const phoneNumber = '+18147901591'
 const emailAddress = 'mossiroberto0392@gmail.com'
 
@@ -41,7 +44,7 @@ const useShareUrl = () => {
             try {
                 await navigator.share({
                     title: 'Andre Mossi · Portfolio',
-                    url: webUrl
+                    url: nfcUrl
                 })
             } catch (err) { }
         }
@@ -55,7 +58,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
     const [isFloating, setIsFloating] = useState(true)
     const [showShareMenu, setShowShareMenu] = useState(false)
     const [longPressTimer, setLongPressTimer] = useState(null)
-    const [currentQRURL, setCurrentQRURL] = useState(webUrl)
+    const [currentQRURL, setCurrentQRURL] = useState(nfcUrl)
 
     const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
@@ -93,7 +96,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
     useEffect(() => {
         if (isOpen) {
             setIsFloating(true)
-            setCurrentQRURL(webUrl)
+            setCurrentQRURL(nfcUrl)
         }
     }, [isOpen])
 
@@ -156,10 +159,14 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     }}
                 />
 
-                <AvatarIcon />
-                <Heading mt={4} size="lg" letterSpacing="tight">
+                <Heading size="lg" letterSpacing="tight">
                     {Content(miscLang, 'title', 'name')}
                 </Heading>
+                {Content(miscLang, 'title', 'subname') && (
+                    <Box mt={-2} fontSize="lg" opacity={0.9}>
+                        {Content(miscLang, 'title', 'subname')}
+                    </Box>
+                )}
 
                 <Box mt={2} fontSize="lg" opacity={0.8}>
                     {Content(indexLang, 'card', 'work')}
@@ -199,12 +206,15 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     <Box mt={1} mb={2} h="1px" bg={dividerColor} w="40%" />
 
                     <Flex direction={'column'}>
+                        <Box as="a" href={gitUrl}>
+                            {gitUrl}
+                        </Box>
                         <Box as="a" href={'mailto:' + emailAddress}>
-                            mossiroberto0392@gmail.com
+                            {emailAddress}
                         </Box>
 
                         <Box as="a" href={'tel:' + phoneNumber} opacity={0.7}>
-                            +1 (814) 790-1591
+                            {phoneNumber}
                         </Box>
                     </Flex>
                 </Box>
@@ -306,7 +316,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                             title="Website"
                                             aria-label="Website QR"
                                             variant={
-                                                currentQRURL === webUrl
+                                                currentQRURL === nfcUrl
                                                     ? 'solid'
                                                     : 'ghost'
                                             }
@@ -315,9 +325,28 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                             h="40px"
                                             onClick={() => {
                                                 setShowShareMenu(false)
-                                                setCurrentQRURL(webUrl)
+                                                setCurrentQRURL(nfcUrl)
                                             }}
                                         />
+                                        <IconButton
+                                            icon={<IoLogoGithub />}
+                                            size="sm"
+                                            title="Website"
+                                            aria-label="Website QR"
+                                            variant={
+                                                currentQRURL === gitUrl
+                                                    ? 'solid'
+                                                    : 'ghost'
+                                            }
+                                            colorScheme="purple"
+                                            minW="40px"
+                                            h="40px"
+                                            onClick={() => {
+                                                setShowShareMenu(false)
+                                                setCurrentQRURL(gitUrl)
+                                            }}
+                                        />
+
                                         <IconButton
                                             icon={<EmailIcon />}
                                             size="sm"
@@ -690,6 +719,23 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 
 export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const searchParam = useSearchParams()
+    const entry = searchParam.get('entry')
+    const router = useRouter()
+
+    useEffect(() => {
+        if (entry === 'nfc') {
+            onOpen()
+
+            const url = new URL(window.location.href)
+            url.searchParams.delete('entry')
+
+            router.replace(url.pathname + url.search, undefined, {
+                shallow: true
+            })
+        }
+    }, [entry])
 
     return (
         <>
