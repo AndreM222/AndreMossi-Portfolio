@@ -79,21 +79,13 @@ export const FrontCard = ({ isOpen }) => {
     )
 
     useEffect(() => {
-        if (isOpen) {
-            setIsFloating(true)
-        } else {
-            setIsFloating(false)
-        }
+        if (isOpen) setIsFloating(true)
     }, [isOpen])
 
     const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
 
     return (
-        <Flex
-            direction={{ base: 'column', md: 'row' }}
-            minH={{ base: 'unset', md: '400px' }}
-            height="100%"
-        >
+        <Flex direction={{ base: 'column', md: 'row' }} height="100%">
             <Box
                 flex="1"
                 px={{ base: 6, md: 12 }}
@@ -244,11 +236,7 @@ export const BackCard = () => {
     const professionLetters = profession.split('')
 
     return (
-        <Flex
-            direction={{ base: 'column', md: 'row' }}
-            minH={{ base: 'unset', md: '400px' }}
-            height="100%"
-        >
+        <Flex direction={{ base: 'column', md: 'row' }} height="100%">
             <Box
                 flex="1"
                 px={{ base: 6, md: 12 }}
@@ -442,13 +430,13 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
             <ModalContent
-                h={{ base: '725px', md: '430px' }}
+                h={{ base: '770px', sm: '725px', md: '430px' }}
                 bg={bgColor}
                 borderRadius="2xl"
                 border="1px solid"
                 borderColor={modalBorderColor}
             >
-                <ModalBody p={0} h="100%">
+                <ModalBody p={0} h="100%" position="relative">
                     <motion.div
                         key={isFlipped ? 'back' : 'front'}
                         initial={{ opacity: 0.8, scale: 0.98 }}
