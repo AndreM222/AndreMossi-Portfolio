@@ -496,12 +496,12 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         <Box
                             position="absolute"
                             bottom="0"
-                            right='0'
+                            right="0"
                             width="30px"
                             height="30px"
                             bg="#a98f63"
-                            roundedBottomRight='2xl'
-                            roundedTopLeft='2xl'
+                            roundedBottomRight="2xl"
+                            roundedTopLeft="2xl"
                             boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
                             onClick={flip}
                             cursor="pointer"
@@ -513,18 +513,32 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         />
                     </motion.div>
                 </ModalBody>
-
-                <ModalCloseButton
+                <MotionBox
+                    position="absolute"
                     top="16px"
                     right="16px"
-                    borderRadius="full"
-                    backdropFilter="blur(6px)"
-                    bg={closeBg}
-                    _hover={{
-                        bg: closeHoverBg,
-                        color: '#a98f63'
+                    animate={{
+                        scale: isFlipped
+                            ? [1, 0.95, 1.1, 1]
+                            : [1, 1.05, 0.95, 1]
                     }}
-                />
+                    transition={{
+                        scale: {
+                            duration: 0.4,
+                            times: [0, 0.3, 0.6, 1],
+                            ease: ['easeOut', 'easeIn', 'easeOut', 'easeIn']
+                        }
+                    }}
+                >
+                    <ModalCloseButton
+                        borderRadius="full"
+                        backdropFilter="blur(6px)"
+                        bg={closeBg}
+                        _hover={{ bg: closeHoverBg, color: '#a98f63' }}
+                        position="relative"
+                        zIndex={10}
+                    />
+                </MotionBox>
             </ModalContent>
         </Modal>
     )
