@@ -262,7 +262,6 @@ export const FrontCard = ({ isOpen, ...props }) => {
                             closeOnBlur={true}
                             onClose={() => {
                                 setShowShareMenu(false)
-                                setCurrentQRURL(webUrl)
                             }}
                         >
                             <PopoverTrigger>
@@ -562,6 +561,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (isOpen) {
             setIsFlipped(false)
+            setCurrentQRURL(webUrl)
         }
     }, [isOpen])
 
