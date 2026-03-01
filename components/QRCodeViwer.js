@@ -9,7 +9,13 @@ import {
     Heading,
     Flex,
     Box,
-    ModalCloseButton
+    ModalCloseButton,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverBody,
+    PopoverCloseButton,
+    IconButton
 } from '@chakra-ui/react'
 import { QRCodeCanvas } from 'qrcode.react'
 import { motion } from 'framer-motion'
@@ -17,12 +23,15 @@ import { motion } from 'framer-motion'
 import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
 import AvatarIcon from './avatarIcon'
-import { IoIosShare } from 'react-icons/io'
+import { IoIosGlobe, IoIosShare } from 'react-icons/io'
 import Content from './content'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
 
 const MotionBox = motion(Box)
-const url = 'https://andremossi.vercel.app'
+const webUrl = 'https://andremossi.vercel.app'
+const phoneNumber = '+18147901591'
+const emailAddress = 'mossiroberto0392@gmail.com'
 
 const useShareUrl = () => {
     const canShare = typeof navigator !== 'undefined' && navigator.share
@@ -32,7 +41,7 @@ const useShareUrl = () => {
             try {
                 await navigator.share({
                     title: 'Andre Mossi · Portfolio',
-                    url
+                    url: webUrl
                 })
             } catch (err) { }
         }
@@ -44,6 +53,9 @@ const useShareUrl = () => {
 export const FrontCard = ({ isOpen, ...props }) => {
     const { share: shareUrl, canShare } = useShareUrl()
     const [isFloating, setIsFloating] = useState(true)
+    const [showShareMenu, setShowShareMenu] = useState(false)
+    const [longPressTimer, setLongPressTimer] = useState(null)
+    const [currentQRURL, setCurrentQRURL] = useState(webUrl)
 
     const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
@@ -81,6 +93,33 @@ export const FrontCard = ({ isOpen, ...props }) => {
     useEffect(() => {
         if (isOpen) setIsFloating(true)
     }, [isOpen])
+
+    useEffect(() => {
+        return () => {
+            if (longPressTimer) clearTimeout(longPressTimer)
+        }
+    }, [longPressTimer])
+
+    const handleQRPress = useCallback(event => {
+        const timer = setTimeout(() => {
+            setShowShareMenu(true)
+            if (
+                'vibrate' in navigator &&
+                typeof navigator.vibrate === 'function'
+            ) {
+                navigator.vibrate(30)
+            }
+        }, 500)
+
+        setLongPressTimer(timer)
+    }, [])
+
+    const handleQRRelease = useCallback(() => {
+        if (longPressTimer) {
+            clearTimeout(longPressTimer)
+            setLongPressTimer(null)
+        }
+    }, [longPressTimer])
 
     const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
 
@@ -163,11 +202,11 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     <Box mt={1} mb={2} h="1px" bg={dividerColor} w="40%" />
 
                     <Flex direction={'column'}>
-                        <Box as="a" href="mailto:mossiroberto0392@gmail.com">
+                        <Box as="a" href={'mailto:' + emailAddress}>
                             mossiroberto0392@gmail.com
                         </Box>
 
-                        <Box as="a" href="tel:+18147901591" opacity={0.7}>
+                        <Box as="a" href={'tel:' + phoneNumber} opacity={0.7}>
                             +1 (814) 790-1591
                         </Box>
                     </Flex>
@@ -182,6 +221,9 @@ export const FrontCard = ({ isOpen, ...props }) => {
                 bgGradient={rightGradient}
             >
                 <motion.div
+                    onPointerDown={handleQRPress}
+                    onPointerUp={handleQRRelease}
+                    onPointerLeave={handleQRRelease}
                     onClick={() => setIsFloating(prev => !prev)}
                     animate={isFloating ? { y: [0, -8, 0] } : { y: 0 }}
                     transition={
@@ -213,12 +255,118 @@ export const FrontCard = ({ isOpen, ...props }) => {
                         }}
                     >
                         <QRCodeCanvas
-                            value={url}
+                            value={currentQRURL}
                             size={220}
                             bgColor="transparent"
                             fgColor="#a98f63"
                             level="H"
                         />
+                        {showShareMenu && (
+                            <Popover
+                                isOpen={showShareMenu}
+                                placement="right"
+                                autoFocus={false}
+                                closeOnBlur={true}
+                                onClose={() => {
+                                    setShowShareMenu(false)
+                                    setCurrentQRURL(webUrl)
+                                }}
+                            >
+                                <PopoverTrigger>
+                                    <Box
+                                        position="absolute"
+                                        top={-7}
+                                        left="50%"
+                                        transform="translateX(-50%)"
+                                        w="1px"
+                                        h="1px"
+                                    />
+                                </PopoverTrigger>
+                                <PopoverContent
+                                    bg={qrBg}
+                                    backdropFilter="blur(20px)"
+                                    border="1px solid"
+                                    borderColor="whiteAlpha.300"
+                                    shadow="2xl"
+                                    borderRadius="xl"
+                                    p={2}
+                                    minW="0"
+                                    w="auto"
+                                    outline="none"
+                                >
+                                    <PopoverCloseButton
+                                        position="absolute"
+                                        top={-2}
+                                        right={-2}
+                                        size="sm"
+                                        borderRadius="full"
+                                        borderWidth={2}
+                                        bg={useColorModeValue('white', 'grey')}
+                                    />
+                                    <PopoverBody p={1}>
+                                        <Flex gap={1}>
+                                            <IconButton
+                                                icon={<IoIosGlobe />}
+                                                size="sm"
+                                                title="Website"
+                                                aria-label="Website QR"
+                                                variant={
+                                                    currentQRURL === webUrl
+                                                        ? 'solid'
+                                                        : 'ghost'
+                                                }
+                                                colorScheme="orange"
+                                                minW="40px"
+                                                h="40px"
+                                                onClick={() => {
+                                                    setShowShareMenu(false)
+                                                    setCurrentQRURL(webUrl)
+                                                }}
+                                            />
+                                            <IconButton
+                                                icon={<EmailIcon />}
+                                                size="sm"
+                                                title="Email"
+                                                aria-label="Email QR"
+                                                variant={
+                                                    currentQRURL ===
+                                                        emailAddress
+                                                        ? 'solid'
+                                                        : 'ghost'
+                                                }
+                                                colorScheme="blue"
+                                                minW="40px"
+                                                h="40px"
+                                                onClick={() => {
+                                                    setShowShareMenu(false)
+                                                    setCurrentQRURL(
+                                                        emailAddress
+                                                    )
+                                                }}
+                                            />
+                                            <IconButton
+                                                icon={<PhoneIcon />}
+                                                size="sm"
+                                                title="Phone"
+                                                aria-label="Phone QR"
+                                                variant={
+                                                    currentQRURL === phoneNumber
+                                                        ? 'solid'
+                                                        : 'ghost'
+                                                }
+                                                colorScheme="green"
+                                                minW="40px"
+                                                h="40px"
+                                                onClick={() => {
+                                                    setShowShareMenu(false)
+                                                    setCurrentQRURL(phoneNumber)
+                                                }}
+                                            />
+                                        </Flex>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Popover>
+                        )}
                     </Box>
                 </motion.div>
             </Flex>
