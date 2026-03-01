@@ -447,6 +447,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                 <ModalBody p={0} h="100%" position="relative">
                     <motion.div
                         drag="x"
+                        tabIndex={-1}
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={0.2}
                         onDragEnd={(event, info) => {
@@ -476,9 +477,9 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         }}
                         style={{
                             height: '100%',
-                            transformStyle: 'preserve-3d',
-                            perspective: 1200,
-                            cursor: 'grab'
+                            cursor: 'grab',
+                            WebkitTapHighlightColor: 'transparent',
+                            outline: 'none'
                         }}
                         whileTap={{ cursor: 'grabbing' }}
                         whileDrag={{ scale: 0.98 }}
