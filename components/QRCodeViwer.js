@@ -151,6 +151,8 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                 colorScheme="orange"
                                 borderRadius="full"
                                 onClick={() => shareUrl()}
+                                _focus={{ boxShadow: 'none' }}
+                                _focusVisible={{ boxShadow: 'none' }}
                                 aria-label="Share this card"
                             >
                                 <IoIosShare />
