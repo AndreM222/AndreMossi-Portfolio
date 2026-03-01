@@ -91,7 +91,10 @@ export const FrontCard = ({ isOpen, ...props }) => {
     )
 
     useEffect(() => {
-        if (isOpen) setIsFloating(true)
+        if (isOpen) {
+            setIsFloating(true)
+            setCurrentQRURL(webUrl)
+        }
     }, [isOpen])
 
     useEffect(() => {
@@ -561,7 +564,6 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (isOpen) {
             setIsFlipped(false)
-            setCurrentQRURL(webUrl)
         }
     }, [isOpen])
 
