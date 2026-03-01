@@ -41,7 +41,7 @@ const useShareUrl = () => {
     return { share, canShare }
 }
 
-export const FrontCard = ({ isOpen }) => {
+export const FrontCard = ({ isOpen, ...props }) => {
     const { share: shareUrl, canShare } = useShareUrl()
     const [isFloating, setIsFloating] = useState(true)
 
@@ -85,7 +85,11 @@ export const FrontCard = ({ isOpen }) => {
     const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
 
     return (
-        <Flex direction={{ base: 'column', md: 'row' }} height="100%">
+        <Flex
+            direction={{ base: 'column', md: 'row' }}
+            height="100%"
+            {...props}
+        >
             <Box
                 flex="1"
                 px={{ base: 6, md: 12 }}
@@ -220,7 +224,7 @@ export const FrontCard = ({ isOpen }) => {
     )
 }
 
-export const BackCard = () => {
+export const BackCard = ({ ...props }) => {
     const lightupShadow = useColorModeValue(
         '0 0 40px 12px rgba(169,143,99,0.9)',
         '0 0 40px 12px rgba(169,143,99,0.7)'
@@ -236,7 +240,11 @@ export const BackCard = () => {
     const professionLetters = profession.split('')
 
     return (
-        <Flex direction={{ base: 'column', md: 'row' }} height="100%">
+        <Flex
+            direction={{ base: 'column', md: 'row' }}
+            height="100%"
+            {...props}
+        >
             <Box
                 flex="1"
                 px={{ base: 6, md: 12 }}
@@ -438,15 +446,48 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             >
                 <ModalBody p={0} h="100%" position="relative">
                     <motion.div
-                        key={isFlipped ? 'back' : 'front'}
-                        initial={{ opacity: 0.8, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={0.2}
+                        onDragEnd={(event, info) => {
+                            const swipeThreshold = 80
+                            const velocityThreshold = 500
+
+                            if (
+                                info.offset.x > swipeThreshold ||
+                                info.velocity.x > velocityThreshold
+                            ) {
+                                setIsFlipped(false)
+                            } else if (
+                                info.offset.x < -swipeThreshold ||
+                                info.velocity.x < -velocityThreshold
+                            ) {
+                                setIsFlipped(true)
+                            }
+                        }}
+                        animate={{
+                            x: 0,
+                            rotateY: isFlipped ? 180 : 0
+                        }}
+                        transition={{
+                            type: 'tween',
+                            duration: 0.25,
+                            ease: 'easeOut'
+                        }}
+                        style={{
+                            height: '100%',
+                            transformStyle: 'preserve-3d',
+                            perspective: 1200,
+                            cursor: 'grab'
+                        }}
+                        whileTap={{ cursor: 'grabbing' }}
+                        whileDrag={{ scale: 0.98 }}
                     >
+                        {' '}
                         {!isFlipped ? (
                             <FrontCard isOpen={isOpen} />
                         ) : (
-                            <BackCard />
+                            <BackCard transform="rotateY(180deg)" />
                         )}
                     </motion.div>
                     <Box
