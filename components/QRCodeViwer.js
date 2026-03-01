@@ -257,7 +257,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                         />
                         <Popover
                             isOpen={showShareMenu}
-                            placement="right"
+                            placement="top"
                             autoFocus={false}
                             closeOnBlur={true}
                             onClose={() => {
@@ -268,7 +268,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                             <PopoverTrigger>
                                 <Box
                                     position="absolute"
-                                    top={-7}
+                                    top={0}
                                     left="50%"
                                     transform="translateX(-50%)"
                                     w="1px"
