@@ -246,11 +246,7 @@ export const BackCard = () => {
     return (
         <Flex
             direction={{ base: 'column', md: 'row' }}
-            minH={{
-                base: '725px',
-                sm: '727px',
-                md: '430px'
-            }}
+            minH={{ base: 'unset', md: '400px' }}
             height="100%"
         >
             <Box
@@ -436,7 +432,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 
     return (
         <Modal
-            size={{ base: 'unset', sm: '4xl' }}
+            size="4xl"
             isOpen={isOpen}
             onClose={onClose}
             isCentered
@@ -446,12 +442,13 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
 
             <ModalContent
+                h={{ base: '725px', md: '430px' }}
                 bg={bgColor}
                 borderRadius="2xl"
                 border="1px solid"
                 borderColor={modalBorderColor}
             >
-                <ModalBody p={0} maxH="100vh" overflowY="auto">
+                <ModalBody p={0} h="100%">
                     <motion.div
                         key={isFlipped ? 'back' : 'front'}
                         initial={{ opacity: 0.8, scale: 0.98 }}
@@ -467,14 +464,14 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                     <Box
                         position="absolute"
                         bottom="0"
-                        right={!isFlipped && "0"}
+                        right={!isFlipped && '0'}
                         width="30px"
                         height="30px"
                         bg="#a98f63"
-                        roundedBottomLeft={isFlipped && "2xl"}
-                        roundedTopRight={isFlipped && "2xl"}
-                        roundedBottomRight={!isFlipped && "2xl"}
-                        roundedTopLeft={!isFlipped && "2xl"}
+                        roundedBottomLeft={isFlipped && '2xl'}
+                        roundedTopRight={isFlipped && '2xl'}
+                        roundedBottomRight={!isFlipped && '2xl'}
+                        roundedTopLeft={!isFlipped && '2xl'}
                         boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
                         onClick={flip}
                         cursor="pointer"
