@@ -732,6 +732,7 @@ export const QRCodeButton = ({ children, ...props }) => {
         url.searchParams.delete('entry')
 
         router.replace(url.pathname + url.search)
+        entry = searchParam.get('entry')
     }, [entry])
 
     return (
