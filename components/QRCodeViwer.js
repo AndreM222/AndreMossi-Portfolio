@@ -107,24 +107,21 @@ export const FrontCard = ({ isOpen, ...props }) => {
         }
     }, [longPressTimer])
 
-useEffect(() => {
-    if (isOpen && nameText.length === 0) {
-        const settleTimer = setTimeout(() => {
+    useEffect(() => {
+        if (isOpen && nameText.length === 0) {
             let i = 0
-            const typeTimer = setInterval(() => {
+            const timer = setInterval(() => {
                 if (i < name.length) {
                     setNameText(prev => prev + name[i])
                     i++
                 } else {
-                    clearInterval(typeTimer)
+                    clearInterval(timer)
                 }
             }, 80)
-            return () => clearInterval(typeTimer)
-        }, 50)
 
-        return () => clearTimeout(settleTimer)
-    }
-}, [isOpen])
+            return () => clearInterval(timer)
+        }
+    }, [isOpen, name])
 
     const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
@@ -922,8 +919,15 @@ export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     useEffect(() => {
-        if (window.location.href.includes('entry=nfc') && !isOpen) {
-            window.history.replaceState({}, '', window.location.pathname)
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('entry') === 'nfc' && !isOpen) {
+            urlParams.delete('entry')
+            window.history.replaceState(
+                {},
+                '',
+                `${window.location.pathname}${urlParams.toString() ? `?${urlParams.toString()}` : ''}`
+            )
+
             onOpen()
         }
     }, [])
