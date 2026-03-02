@@ -462,9 +462,7 @@ export const BackCard = ({ ...props }) => {
         const interval = setInterval(() => {
             setBinaryGrid(prev =>
                 prev.map(row =>
-                    row.map((cell) =>
-                        Math.random() > 0.7 ? 1 - cell : cell
-                    )
+                    row.map(cell => (Math.random() > 0.7 ? 1 - cell : cell))
                 )
             )
         }, 150)
@@ -491,6 +489,8 @@ export const BackCard = ({ ...props }) => {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             sx={{
+                borderRadius: '2xl',
+                overflow: 'hidden',
                 background: isHovering
                     ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
                 rgba(169,143,99,0.2) 0%, transparent 60%)`
@@ -520,10 +520,8 @@ export const BackCard = ({ ...props }) => {
                         ? 'matrixRain 8s linear infinite, matrixGlow 3s ease-in-out infinite'
                         : 'none',
                     WebkitMask: isHovering
-                        ? `
-                    radial-gradient(circle 350px at var(--mouse-x) var(--mouse-y),
-                        transparent 0%, black 30%)
-                `
+                        ? `radial-gradient(circle 350px at var(--mouse-x) var(--mouse-y),
+        black 0%, black 20%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.3) 45%, transparent 65%)`
                         : 'none',
                     mask: isHovering
                         ? `
@@ -583,11 +581,18 @@ export const BackCard = ({ ...props }) => {
                 }}
                 style={{
                     WebkitMaskImage: isHovering
-                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y}, black 20%, transparent 60%)`
+                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y},
+            black 0%, black 15%, rgba(0,0,0,0.8) 30%,
+            rgba(0,0,0,0.3) 50%, transparent 70%)`
                         : 'none',
                     maskImage: isHovering
-                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y}, black 20%, transparent 60%)`
+                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y},
+            black 0%, black 15%, rgba(0,0,0,0.8) 30%,
+            rgba(0,0,0,0.3) 50%, transparent 70%)`
                         : 'none',
+                    WebkitMaskClip: 'border-box',
+                    maskClip: 'border-box',
+                    borderRadius: '2xl',
                     '--mouse-x': pos.x || '50%',
                     '--mouse-y': pos.y || '50%'
                 }}
