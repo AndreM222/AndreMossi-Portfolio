@@ -108,23 +108,21 @@ export const FrontCard = ({ isOpen, ...props }) => {
     }, [longPressTimer])
 
 useEffect(() => {
-    if (isOpen) {
-        setNameText('')
-        const timer = setTimeout(() => {
+    if (isOpen && nameText.length === 0) {
+        const settleTimer = setTimeout(() => {
             let i = 0
-            const typeInterval = setInterval(() => {
+            const typeTimer = setInterval(() => {
                 if (i < name.length) {
                     setNameText(prev => prev + name[i])
                     i++
                 } else {
-                    clearInterval(typeInterval)
+                    clearInterval(typeTimer)
                 }
             }, 80)
+            return () => clearInterval(typeTimer)
+        }, 50)
 
-            return () => clearInterval(typeInterval)
-        }, 100)
-
-        return () => clearTimeout(timer)
+        return () => clearTimeout(settleTimer)
     }
 }, [isOpen])
 
