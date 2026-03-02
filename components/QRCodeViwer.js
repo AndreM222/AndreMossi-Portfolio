@@ -24,7 +24,7 @@ import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
 import { IoIosGlobe, IoIosShare, IoLogoGithub } from 'react-icons/io'
 import Content from './content'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
 import { useSearchParams, useRouter } from 'next/navigation'
 
@@ -719,8 +719,8 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const searchParam = useSearchParams()
-    const entry = searchParam.get('entry')
+    const searchParams = useSearchParams()
+    const entry = useMemo(() => searchParams.get('entry'), [searchParams])
     const router = useRouter()
     const hasAutoOpened = useRef(false)
 
