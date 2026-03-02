@@ -445,12 +445,166 @@ export const BackCard = ({ ...props }) => {
     const profession = Content(indexLang, 'card', 'type')
     const professionLetters = profession.split('')
 
+    const [binaryGrid, setBinaryGrid] = useState([])
+
+    useEffect(() => {
+        const grid = Array(12)
+            .fill()
+            .map(() =>
+                Array(24)
+                    .fill()
+                    .map(() => (Math.random() > 0.5 ? 1 : 0))
+            )
+        setBinaryGrid(grid)
+    }, [])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBinaryGrid(prev =>
+                prev.map(row =>
+                    row.map((cell, colIdx) =>
+                        Math.random() > 0.7 ? 1 - cell : cell
+                    )
+                )
+            )
+        }, 150)
+
+        return () => clearInterval(interval)
+    }, [])
+
+    const [pos, setPos] = useState({ x: 0, y: 0 })
+    const [isHovering, setIsHovering] = useState(false)
+
     return (
         <Flex
             direction={{ base: 'column', md: 'row' }}
             height="100%"
+            position="relative"
+            overflow="hidden"
+            onMouseMove={e => {
+                const rect = e.currentTarget.getBoundingClientRect()
+                setPos({
+                    x: `${e.clientX - rect.left}px`,
+                    y: `${e.clientY - rect.top}px`
+                })
+            }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            sx={{
+                background: isHovering
+                    ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
+                rgba(169,143,99,0.2) 0%, transparent 60%)`
+                    : 'transparent',
+                '&::after': {
+                    position: 'absolute',
+                    inset: 0,
+                    pointerEvents: 'none',
+                    color: 'rgba(169,143,99,0.1)',
+                    fontFamily: 'monospace',
+                    fontSize: '12px',
+                    lineHeight: '1',
+                    opacity: isHovering ? 1 : 0,
+                    background: isHovering
+                        ? `
+                    linear-gradient(180deg, transparent 0%,
+                        rgba(0,0,0,0.3) 50%,
+                        transparent 100%),
+                    radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y),
+                        rgba(0,0,0,0.1) 0%, transparent 70%)
+                `
+                        : 'transparent',
+                    backgroundSize: '100% 200%',
+                    animation: isHovering
+                        ? 'matrixRain 8s linear infinite, matrixGlow 3s ease-in-out infinite'
+                        : 'none',
+                    WebkitMask: isHovering
+                        ? `
+                    radial-gradient(circle 350px at var(--mouse-x) var(--mouse-y),
+                        transparent 0%, black 30%)
+                `
+                        : 'none',
+                    mask: isHovering
+                        ? `
+                    radial-gradient(circle 350px at var(--mouse-x) var(--mouse-y),
+                        transparent 0%, black 30%)
+                `
+                        : 'none',
+                    transition: 'opacity 0.4s cubic-bezier(0.23, 1, 0.320, 1)'
+                },
+                '@keyframes matrixRain': {
+                    '0%': {
+                        backgroundPosition:
+                            '0% 0%, var(--mouse-x) var(--mouse-y)'
+                    },
+                    '100%': {
+                        backgroundPosition:
+                            '0% 100%, var(--mouse-x) var(--mouse-y)'
+                    }
+                },
+                '@keyframes matrixGlow': {
+                    '0%, 100%': { opacity: 0.3 },
+                    '50%': { opacity: 0.8 }
+                }
+            }}
+            style={{
+                '--mouse-x': pos.x || '50%',
+                '--mouse-y': pos.y || '50%'
+            }}
             {...props}
         >
+            <Box
+                position="absolute"
+                inset={0}
+                height="100%"
+                pointerEvents="auto"
+                zIndex={10}
+                opacity={0.55}
+                fontSize="12px"
+                lineHeight={1}
+                color="rgba(169,143,99,0.9)"
+                fontFamily="'Courier New', monospace"
+                onMouseMove={e => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    setPos({
+                        x: `${e.clientX - rect.left}px`,
+                        y: `${e.clientY - rect.top}px`
+                    })
+                }}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                sx={{
+                    background: isHovering
+                        ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
+                rgba(169,143,99,0.15) 0%, transparent 60%)`
+                        : 'transparent'
+                }}
+                style={{
+                    WebkitMaskImage: isHovering
+                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y}, black 20%, transparent 60%)`
+                        : 'none',
+                    maskImage: isHovering
+                        ? `radial-gradient(circle 300px at ${pos.x} ${pos.y}, black 20%, transparent 60%)`
+                        : 'none',
+                    '--mouse-x': pos.x || '50%',
+                    '--mouse-y': pos.y || '50%'
+                }}
+            >
+                {isHovering &&
+                    binaryGrid.map((row, rowIdx) => (
+                        <Box key={rowIdx} height="8.9%" display="flex">
+                            {row.map((cell, colIdx) => (
+                                <Box
+                                    key={colIdx}
+                                    flex="1"
+                                    textAlign="center"
+                                    pointerEvents="none"
+                                >
+                                    {cell}
+                                </Box>
+                            ))}
+                        </Box>
+                    ))}
+            </Box>
             <Box
                 flex="1"
                 px={{ base: 6, md: 12 }}
