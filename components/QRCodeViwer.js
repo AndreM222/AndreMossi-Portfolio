@@ -58,6 +58,9 @@ export const FrontCard = ({ isOpen, ...props }) => {
     const [longPressTimer, setLongPressTimer] = useState(null)
     const [currentQRURL, setCurrentQRURL] = useState(nfcUrl)
 
+    const [nameText, setNameText] = useState('')
+    const name = Content(miscLang, 'title', 'name')
+
     const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
     const rightGradient = useColorModeValue(
@@ -103,6 +106,22 @@ export const FrontCard = ({ isOpen, ...props }) => {
             if (longPressTimer) clearTimeout(longPressTimer)
         }
     }, [longPressTimer])
+
+    useEffect(() => {
+        if (isOpen && nameText.length === 0) {
+            let i = 0
+            const timer = setInterval(() => {
+                if (i < name.length) {
+                    setNameText(prev => prev + name[i])
+                    i++
+                } else {
+                    clearInterval(timer)
+                }
+            }, 80)
+
+            return () => clearInterval(timer)
+        }
+    }, [isOpen, name])
 
     const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
@@ -157,8 +176,27 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     }}
                 />
 
-                <Heading size="lg" letterSpacing="tight">
-                    {Content(miscLang, 'title', 'name')}
+                <Heading size="lg" letterSpacing="tight" overflow="hidden">
+                    {nameText}
+                    <motion.span
+                        style={{
+                            display: 'inline-block',
+                            marginLeft: '0.25rem',
+                            width: '2px',
+                            height: '1.4em',
+                            backgroundColor: '#a98f63',
+                            marginTop: '-0.25rem',
+                            marginBottom: '-0.25rem'
+                        }}
+                        animate={{
+                            opacity: [1, 0, 1]
+                        }}
+                        transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: 'linear'
+                        }}
+                    />
                 </Heading>
                 {Content(miscLang, 'title', 'subname') && (
                     <Box mt={-2} fontSize="lg" opacity={0.9}>
