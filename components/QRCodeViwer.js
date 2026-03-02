@@ -726,7 +726,7 @@ export const QRCodeButton = ({ children, ...props }) => {
     useEffect(() => {
         if (entry !== 'nfc') return
 
-        onOpen()
+        onOpen(true)
 
         const url = new URL(window.location.href)
         url.searchParams.delete('entry')
