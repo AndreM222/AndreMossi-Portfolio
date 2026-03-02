@@ -26,8 +26,7 @@ import { IoIosGlobe, IoIosShare, IoLogoGithub } from 'react-icons/io'
 import Content from './content'
 import { useCallback, useEffect, useState } from 'react'
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
-import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
@@ -725,7 +724,7 @@ export const QRCodeButton = ({ children, ...props }) => {
     const router = useRouter()
 
     useEffect(() => {
-        if (entry === 'nfc') {
+        if (entry === 'nfc' && !isOpen) {
             onOpen()
 
             const url = new URL(window.location.href)
