@@ -590,10 +590,14 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     const closeHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
 
     useEffect(() => {
-        if (isOpen) {
-            setIsFlipped(false)
+        if (entry === 'nfc' && !isOpen) {
+            onOpen()
+
+            const url = new URL(window.location.href)
+            url.searchParams.delete('entry')
+            router.replace(url.pathname + url.search)
         }
-    }, [isOpen])
+    }, [entry, isOpen, onOpen, router])
 
     return (
         <Modal
@@ -732,7 +736,6 @@ export const QRCodeButton = ({ children, ...props }) => {
 
             router.replace(url.pathname + url.search)
         }
-
     }, [entry])
 
     return (
