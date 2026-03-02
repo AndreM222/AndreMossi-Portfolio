@@ -919,15 +919,8 @@ export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search)
-        if (urlParams.get('entry') === 'nfc' && !isOpen) {
-            urlParams.delete('entry')
-            window.history.replaceState(
-                {},
-                '',
-                `${window.location.pathname}${urlParams.toString() ? `?${urlParams.toString()}` : ''}`
-            )
-
+        if (window.location.href.includes('entry=nfc') && !isOpen) {
+            window.history.replaceState({}, '', window.location.pathname)
             onOpen()
         }
     }, [])
