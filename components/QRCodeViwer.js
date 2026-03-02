@@ -107,21 +107,26 @@ export const FrontCard = ({ isOpen, ...props }) => {
         }
     }, [longPressTimer])
 
-    useEffect(() => {
-        if (isOpen && nameText.length === 0) {
+useEffect(() => {
+    if (isOpen) {
+        setNameText('')
+        const timer = setTimeout(() => {
             let i = 0
-            const timer = setInterval(() => {
+            const typeInterval = setInterval(() => {
                 if (i < name.length) {
                     setNameText(prev => prev + name[i])
                     i++
                 } else {
-                    clearInterval(timer)
+                    clearInterval(typeInterval)
                 }
             }, 80)
 
-            return () => clearInterval(timer)
-        }
-    }, [isOpen, name])
+            return () => clearInterval(typeInterval)
+        }, 100)
+
+        return () => clearTimeout(timer)
+    }
+}, [isOpen])
 
     const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
