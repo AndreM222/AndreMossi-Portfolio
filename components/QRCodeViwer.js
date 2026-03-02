@@ -207,7 +207,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
 
                     <Flex direction={'column'}>
                         <Box as="a" href={gitUrl}>
-                            {gitUrl}
+                            github.com/AndreM222
                         </Box>
                         <Box as="a" href={'mailto:' + emailAddress}>
                             {emailAddress}
