@@ -462,7 +462,7 @@ export const BackCard = ({ ...props }) => {
         const interval = setInterval(() => {
             setBinaryGrid(prev =>
                 prev.map(row =>
-                    row.map((cell, colIdx) =>
+                    row.map((cell) =>
                         Math.random() > 0.7 ? 1 - cell : cell
                     )
                 )
