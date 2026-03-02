@@ -367,8 +367,8 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                         <IconButton
                                             icon={<IoLogoGithub />}
                                             size="sm"
-                                            title="Website"
-                                            aria-label="Website QR"
+                                            title="GitHub"
+                                            aria-label="GitHub QR"
                                             variant={
                                                 currentQRURL === gitUrl
                                                     ? 'solid'
