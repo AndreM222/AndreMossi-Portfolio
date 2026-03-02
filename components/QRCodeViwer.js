@@ -719,21 +719,19 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
 export const QRCodeButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const searchParams = useSearchParams()
-    const entry = useMemo(() => searchParams.get('entry'), [searchParams])
-    const router = useRouter()
-    const hasAutoOpened = useRef(false)
-
     useEffect(() => {
-        if (entry === 'nfc' && !isOpen && !hasAutoOpened.current) {
-            hasAutoOpened.current = true
-            onOpen()
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('entry') === 'nfc' && !isOpen) {
+            urlParams.delete('entry')
+            window.history.replaceState(
+                {},
+                '',
+                `${window.location.pathname}${urlParams.toString() ? `?${urlParams.toString()}` : ''}`
+            )
 
-            const url = new URL(window.location.href)
-            url.searchParams.delete('entry')
-            router.replace(url.pathname + url.search, { scroll: false })
+            onOpen()
         }
-    }, [entry, isOpen, onOpen, router])
+    }, [])
 
     return (
         <>
