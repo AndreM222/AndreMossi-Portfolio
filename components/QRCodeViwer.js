@@ -451,7 +451,7 @@ export const BackCard = ({ ...props }) => {
         const grid = Array(12)
             .fill()
             .map(() =>
-                Array(24)
+                Array(21)
                     .fill()
                     .map(() => (Math.random() > 0.5 ? 1 : 0))
             )
@@ -495,7 +495,9 @@ export const BackCard = ({ ...props }) => {
                     ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
                 rgba(169,143,99,0.2) 0%, transparent 60%)`
                     : 'transparent',
+
                 '&::after': {
+                    content: '""',
                     position: 'absolute',
                     inset: 0,
                     pointerEvents: 'none',
@@ -531,6 +533,7 @@ export const BackCard = ({ ...props }) => {
                         : 'none',
                     transition: 'opacity 0.4s cubic-bezier(0.23, 1, 0.320, 1)'
                 },
+
                 '@keyframes matrixRain': {
                     '0%': {
                         backgroundPosition:
