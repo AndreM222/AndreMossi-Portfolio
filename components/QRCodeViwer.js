@@ -724,17 +724,15 @@ export const QRCodeButton = ({ children, ...props }) => {
     const router = useRouter()
 
     useEffect(() => {
-        if (entry === 'nfc' && !isOpen) {
-            onOpen()
+        if (entry !== 'nfc') return
 
-            const url = new URL(window.location.href)
-            url.searchParams.delete('entry')
+        onOpen()
 
-            router.replace(url.pathname + url.search, undefined, {
-                shallow: true
-            })
-        }
-    }, [entry])
+        const url = new URL(window.location.href)
+        url.searchParams.delete('entry')
+
+        router.replace(url.pathname + url.search)
+    }, [])
 
     return (
         <>
