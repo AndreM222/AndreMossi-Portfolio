@@ -24,9 +24,8 @@ import miscLang from '../locales/misc.json'
 import indexLang from '../locales/pages/index.json'
 import { IoIosGlobe, IoIosShare, IoLogoGithub } from 'react-icons/io'
 import Content from './content'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
-import { useSearchParams, useRouter } from 'next/navigation'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
