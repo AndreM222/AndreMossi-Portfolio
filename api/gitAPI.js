@@ -1,7 +1,12 @@
 import axios from 'axios'
 
 const gitUserApi = axios.create({
-    baseURL: 'https://api.github.com/users/AndreM222'
+    baseURL: 'https://api.github.com/users/AndreM222',
+    headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        'User-Agent': 'andre-portfolio', // ← REQUIRED
+        Accept: 'application/vnd.github.v3+json'
+    }
 })
 
 export const fetchAPI = async (page, per_page, extraParams = {}) => {
@@ -179,9 +184,11 @@ export const fetchRecentCommits = async (limit = 25) => {
 export const parseCommitForNews = commit => {
     const message = commit.commit.message
     const match = message.match(/^(\w+)(?:\(([^)]+)\))?: (.+)/i)
+    console.log('⚡ REGEX MATCH:', match)
 
     if (match) {
         const [, type, scope, summary] = match
+        console.log('✅ PARSED:', { type, scope, summary })
         return {
             id: commit.sha,
             type: type.toLowerCase(),
@@ -201,6 +208,8 @@ export const parseCommitForNews = commit => {
             goldGlow: type.toLowerCase() === 'feat',
             repo: commit.repo || 'unknown'
         }
+    } else {
+        console.log('❌ NO MATCH - using chore')
     }
 
     return {
