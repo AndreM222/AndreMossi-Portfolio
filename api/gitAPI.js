@@ -134,3 +134,108 @@ export const fetchPinRepos = async () => {
         return []
     }
 }
+
+export const fetchRecentCommits = async (limit = 25) => {
+    try {
+        const repos = await fetchAPI(1, 100)
+
+        const commits = await Promise.all(
+            repos.slice(0, 10).map(async repo => {
+                try {
+                    const { data } = await gitUserApi.get(
+                        `repos/${repo.name}/commits`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+                            },
+                            params: {
+                                per_page: 1,
+                                sort: 'created',
+                                direction: 'desc'
+                            }
+                        }
+                    )
+                    return { ...data[0], repo: repo.name }
+                } catch {
+                    return null
+                }
+            })
+        )
+
+        return commits
+            .filter(Boolean)
+            .sort(
+                (a, b) =>
+                    new Date(b.commit.author.date) -
+                    new Date(a.commit.author.date)
+            )
+            .slice(0, limit)
+    } catch (error) {
+        console.error('Fetch commits failed:', error)
+        return []
+    }
+}
+
+export const parseCommitForNews = commit => {
+    const message = commit.commit.message
+    const match = message.match(/^(\w+)(?:\(([^)]+)\))?: (.+)/i)
+
+    if (match) {
+        const [, type, scope, summary] = match
+        return {
+            id: commit.sha,
+            type: type.toLowerCase(),
+            category: getCategory(type.toLowerCase()),
+            date: new Date(commit.commit.author.date)
+                .toISOString()
+                .split('T')[0],
+            title: scope || type,
+            summary: summary,
+            description: commit.commit.message
+                .split('\n')
+                .slice(1)
+                .join('\n')
+                .trim(),
+            branch: commit.commit.committer.name,
+            commit: commit.sha.slice(-7),
+            goldGlow: type.toLowerCase() === 'feat',
+            repo: commit.repo || 'unknown'
+        }
+    }
+
+    return {
+        id: commit.sha,
+        type: 'chore',
+        category: 'developer',
+        date: new Date(commit.commit.author.date).toISOString().split('T')[0],
+        title: 'Update',
+        summary: commit.commit.message.split('\n')[0],
+        description: commit.commit.message,
+        branch: commit.commit.committer.name,
+        commit: commit.sha.slice(-7),
+        goldGlow: false,
+        repo: commit.repo
+    }
+}
+
+function getCategory(type) {
+    const mapping = {
+        feat: 'developer',
+        fix: 'developer',
+        perf: 'developer',
+        refactor: 'developer',
+        docs: 'developer',
+        style: 'developer',
+        chore: 'developer',
+        intern: 'experience',
+        research: 'experience',
+        awards: 'experience',
+        projects: 'experience',
+        timeline: 'general',
+        about: 'general',
+        'resume-en': 'resume',
+        'resume-es': 'resume',
+        'resume-jp': 'resume'
+    }
+    return mapping[type] || 'developer'
+}

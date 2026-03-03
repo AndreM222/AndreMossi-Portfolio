@@ -21,6 +21,7 @@ import miscLang from '../locales/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
 import { QRCodeButton } from './QRCodeViwer'
+import { NewsButton } from './notifSub'
 
 const LinkButton = ({ target, href, icon, children, ...props }) => {
     return (
@@ -109,12 +110,19 @@ const Footer = () => {
                         Andre Mossi
                     </LinkButton>
 
-                    <QRButton onOpen={onOpen} onClose={onClose} isOpen={isOpen} icon={<Icon as={IoCard} />}>
+                    <QRButton
+                        onOpen={onOpen}
+                        onClose={onClose}
+                        isOpen={isOpen}
+                        icon={<Icon as={IoCard} />}
+                    >
                         {Content(miscLang, 'qrCodeBTN', 'content')}
                     </QRButton>
                 </SimpleGrid>
+
                 <UpToggle />
             </Box>
+            <NewsButton my={2} />
 
             <Box
                 color={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
