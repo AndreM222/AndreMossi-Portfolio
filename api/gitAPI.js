@@ -1,12 +1,7 @@
 import axios from 'axios'
 
 const gitUserApi = axios.create({
-    baseURL: 'https://api.github.com/users/AndreM222',
-    headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        'User-Agent': 'andre-portfolio', // ← REQUIRED
-        Accept: 'application/vnd.github.v3+json'
-    }
+    baseURL: 'https://api.github.com/users/AndreM222'
 })
 
 export const fetchAPI = async (page, per_page, extraParams = {}) => {
