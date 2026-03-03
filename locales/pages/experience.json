@@ -38,18 +38,18 @@
     "traceability": [
         {
             "locale": "en",
-            "title": "Traceability System",
+            "title": "Computer Vision System",
             "img-url": "/images/experiences/Banners/Traceability-Banner.png",
             "description": "Used AI to detect objects in camera and show on web application"
         },
         {
             "locale": "ja",
-            "title": "トレーサビリティシステム",
+            "title": "コンピュータビジョンシステム",
             "description": "AIは物を見るとWebアプリケーションで見える"
         },
         {
             "locale": "es",
-            "title": "Systema de Trazabilidad",
+            "title": "Sistema de Visión Artificial",
             "description": "Usamos AI para detectar objectos y mostrar en un web application"
         }
     ],
@@ -163,8 +163,9 @@
         {
             "locale": "en",
             "internship": "Internship",
-            "practice": "Practice",
+            "projects": "Projects",
             "awards": "Awards",
+            "certificates": "Certificates",
             "research": "Research",
             "repositories": "Respositories",
             "stars": "Stars",
@@ -174,8 +175,9 @@
         {
             "locale": "ja",
             "internship": "インターン",
-            "practice": "勉強",
+            "projects": "プロジェクト",
             "awards": "賞",
+            "certificates": "証明書",
             "research": "研究",
             "repositories": "リポジトリ",
             "stars": "スター",
@@ -186,7 +188,9 @@
             "locale": "es",
             "internship": "Pasantia",
             "awards": "Premios",
+            "certificates": "Certificados",
             "research": "Investigacion",
+            "projects": "Projectos",
             "repositories": "Repositorios",
             "stars": "Estrellas",
             "license": "Licensia"

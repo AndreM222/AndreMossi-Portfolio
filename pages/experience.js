@@ -17,7 +17,9 @@ const Experience = () => {
             ].join(' ')}
         >
             <Container maxW="container.lg">
-                <Heading as="h3">{Content(miscLang, 'category', 'experience')}</Heading>
+                <Heading as="h3">
+                    {Content(miscLang, 'category', 'experience')}
+                </Heading>
                 <Divider my={6} />
 
                 <Heading as="h2" fontSize={25} my={6}>
@@ -29,7 +31,11 @@ const Experience = () => {
                         <ExperienceGridItem
                             id="dinant"
                             title={Content(experienceLang, 'dinant', 'title')}
-                            thumbnail={Content(experienceLang, 'dinant', 'img-url')}
+                            thumbnail={Content(
+                                experienceLang,
+                                'dinant',
+                                'img-url'
+                            )}
                         >
                             {Content(experienceLang, 'dinant', 'description')}
                         </ExperienceGridItem>
@@ -44,10 +50,22 @@ const Experience = () => {
                     <Section delay={0.1}>
                         <ExperienceGridItem
                             id="ai-sandbox"
-                            title={Content(experienceLang, 'ai-sandbox', 'title')}
-                            thumbnail={Content(experienceLang, 'ai-sandbox', 'img-url')}
+                            title={Content(
+                                experienceLang,
+                                'ai-sandbox',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'ai-sandbox',
+                                'img-url'
+                            )}
                         >
-                            {Content(experienceLang, 'ai-sandbox', 'description')}
+                            {Content(
+                                experienceLang,
+                                'ai-sandbox',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>
@@ -60,66 +78,72 @@ const Experience = () => {
                     <Section delay={0.2}>
                         <ExperienceGridItem
                             id="dowal2020"
-                            title={Content(experienceLang, 'dowal-competition-2020', 'title')}
-                            thumbnail={Content(experienceLang, 'dowal-competition-2020', 'img-url')}
+                            title={Content(
+                                experienceLang,
+                                'dowal-competition-2020',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'dowal-competition-2020',
+                                'img-url'
+                            )}
                         >
-                            {Content(experienceLang, 'dowal-competition-2020', 'description')}
+                            {Content(
+                                experienceLang,
+                                'dowal-competition-2020',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
 
                     <Section delay={0.2}>
                         <ExperienceGridItem
                             id="dowal2016"
-                            title={Content(experienceLang, 'dowal-competition-2016', 'title')}
-                            thumbnail={Content(experienceLang, 'dowal-competition-2016', 'img-url')}
+                            title={Content(
+                                experienceLang,
+                                'dowal-competition-2016',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'dowal-competition-2016',
+                                'img-url'
+                            )}
                         >
-                            {Content(experienceLang, 'dowal-competition-2016', 'description')}
+                            {Content(
+                                experienceLang,
+                                'dowal-competition-2016',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>
 
                 <Heading as="h2" fontSize={25} my={6}>
-                    {Content(experienceLang, 'category', 'practice')}
+                    {Content(experienceLang, 'category', 'projects')}
                 </Heading>
 
                 <SimpleGrid columns={[1, 1, 3]} gap={6}>
                     <Section delay={0.3}>
                         <ExperienceGridItem
                             id="traceability"
-                            title={Content(experienceLang, 'traceability', 'title')}
-                            thumbnail={Content(experienceLang, 'traceability', 'img-url')}
+                            title={Content(
+                                experienceLang,
+                                'traceability',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'traceability',
+                                'img-url'
+                            )}
                         >
-                            {Content(experienceLang, 'traceability', 'description')}
-                        </ExperienceGridItem>
-                    </Section>
-
-                    <Section delay={0.3}>
-                        <ExperienceGridItem
-                            id="gannon"
-                            title={Content(experienceLang, 'gannon', 'title')}
-                            thumbnail={Content(experienceLang, 'gannon', 'img-url')}
-                        >
-                            {Content(experienceLang, 'gannon', 'description')}
-                        </ExperienceGridItem>
-                    </Section>
-
-                    <Section delay={0.3}>
-                        <ExperienceGridItem
-                            id="harvard"
-                            title={Content(experienceLang, 'harvard', 'title')}
-                            thumbnail={Content(experienceLang, 'harvard', 'img-url')}
-                        >
-                            {Content(experienceLang, 'harvard', 'description')}
-                        </ExperienceGridItem>
-                    </Section>
-
-                    <Section delay={0.3}>
-                        <ExperienceGridItem
-                            id="extreme"
-                            title={Content(experienceLang, 'extreme-networks', 'title')}
-                            thumbnail={Content(experienceLang, 'extreme-networks', 'img-url')}
-                        >
-                            {Content(experienceLang, 'extreme-networks', 'description')}
+                            {Content(
+                                experienceLang,
+                                'traceability',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
 
@@ -127,9 +151,69 @@ const Experience = () => {
                         <ExperienceGridItem
                             id="github"
                             title={Content(experienceLang, 'github', 'title')}
-                            thumbnail={Content(experienceLang, 'github', 'img-url')}
+                            thumbnail={Content(
+                                experienceLang,
+                                'github',
+                                'img-url'
+                            )}
                         >
                             {Content(experienceLang, 'github', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+                </SimpleGrid>
+
+                <Heading as="h2" fontSize={25} my={6}>
+                    {Content(experienceLang, 'category', 'certificates')}
+                </Heading>
+
+                <SimpleGrid columns={[1, 1, 3]} gap={6}>
+                    <Section delay={0.4}>
+                        <ExperienceGridItem
+                            id="gannon"
+                            title={Content(experienceLang, 'gannon', 'title')}
+                            thumbnail={Content(
+                                experienceLang,
+                                'gannon',
+                                'img-url'
+                            )}
+                        >
+                            {Content(experienceLang, 'gannon', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+
+                    <Section delay={0.4}>
+                        <ExperienceGridItem
+                            id="harvard"
+                            title={Content(experienceLang, 'harvard', 'title')}
+                            thumbnail={Content(
+                                experienceLang,
+                                'harvard',
+                                'img-url'
+                            )}
+                        >
+                            {Content(experienceLang, 'harvard', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+
+                    <Section delay={0.4}>
+                        <ExperienceGridItem
+                            id="extreme"
+                            title={Content(
+                                experienceLang,
+                                'extreme-networks',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'extreme-networks',
+                                'img-url'
+                            )}
+                        >
+                            {Content(
+                                experienceLang,
+                                'extreme-networks',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>
