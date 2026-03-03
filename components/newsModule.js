@@ -141,51 +141,53 @@ const NewsItem = ({ news }) => {
 
 const InterestSettings = ({ preference, setPreferences }) => {
     return (
-        <VStack spacing={6} p={8} align="stretch">
-            {interestTypes.map(section => (
-                <Box key={section.id}>
-                    <Flex align="center" gap={3} mb={4}>
-                        {section.icon}
-                        <Heading size="lg">{section.title}</Heading>
-                    </Flex>
-                    <Divider mb={4} />
-                    <Flex
-                        direction={{ base: 'column', md: 'row' }}
-                        gap={4}
-                        flexWrap="wrap"
-                    >
-                        {section.types.map(item => (
-                            <Flex
-                                key={item}
-                                align="center"
-                                gap={2}
-                                p={3}
-                                borderRadius="lg"
-                                bg="whiteAlpha.100"
-                                border="1px solid"
-                                borderColor="whiteAlpha.200"
-                            >
-                                <Text minW="100px">{item}</Text>
-                                <Switch
-                                    id={`${section.id}-${item}`}
-                                    colorScheme={section.color}
-                                    isChecked={preference[section.id][item]}
-                                    onChange={e =>
-                                        setPreferences(prev => ({
-                                            ...prev,
-                                            [section.id]: {
-                                                ...prev[section.id],
-                                                [item]: e.target.checked
-                                            }
-                                        }))
-                                    }
-                                />
-                            </Flex>
-                        ))}
-                    </Flex>
-                </Box>
-            ))}
-        </VStack>
+        <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
+            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+                {interestTypes.map(section => (
+                    <Box key={section.id}>
+                        <Flex align="center" gap={3} mb={4}>
+                            {section.icon}
+                            <Heading size="lg">{section.title}</Heading>
+                        </Flex>
+                        <Divider mb={4} />
+                        <Flex
+                            direction={{ base: 'column', md: 'row' }}
+                            gap={4}
+                            flexWrap="wrap"
+                        >
+                            {section.types.map(item => (
+                                <Flex
+                                    key={item}
+                                    align="center"
+                                    gap={2}
+                                    p={3}
+                                    borderRadius="lg"
+                                    bg="whiteAlpha.100"
+                                    border="1px solid"
+                                    borderColor="whiteAlpha.200"
+                                >
+                                    <Text minW="100px">{item}</Text>
+                                    <Switch
+                                        id={`${section.id}-${item}`}
+                                        colorScheme={section.color}
+                                        isChecked={preference[section.id][item]}
+                                        onChange={e =>
+                                            setPreferences(prev => ({
+                                                ...prev,
+                                                [section.id]: {
+                                                    ...prev[section.id],
+                                                    [item]: e.target.checked
+                                                }
+                                            }))
+                                        }
+                                    />
+                                </Flex>
+                            ))}
+                        </Flex>
+                    </Box>
+                ))}
+            </VStack>
+        </Box>
     )
 }
 
@@ -204,15 +206,19 @@ const NewsScreen = ({ preference }) => {
     })
 
     return (
-        <VStack p={8} spacing={6} align="stretch" overflowY="auto">
-            {filteredNews.length ? (
-                filteredNews.map(item => <NewsItem key={item.id} news={item} />)
-            ) : (
-                <Text textAlign="center" opacity={0.6}>
-                    No news matching your interests yet
-                </Text>
-            )}
-        </VStack>
+        <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
+            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+                {filteredNews.length ? (
+                    filteredNews.map(item => (
+                        <NewsItem key={item.id} news={item} />
+                    ))
+                ) : (
+                    <Text textAlign="center" opacity={0.6}>
+                        No news matching your interests yet
+                    </Text>
+                )}
+            </VStack>
+        </Box>
     )
 }
 
@@ -289,7 +295,6 @@ export const NewsModal = ({ isOpen, onClose }) => {
             onClose={onClose}
             isCentered
             motionPreset="scale"
-            blockScrollOnMount
         >
             <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
             <ModalContent
@@ -330,7 +335,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
 
                 <ModalCloseButton size="lg" borderRadius="full" />
 
-                <ModalBody p={0} flex="1" overflow="hidden">
+                <ModalBody p={0} flex="1" overflow="hidden" display="flex">
                     {interestOpen ? (
                         <InterestSettings
                             preference={preference}
