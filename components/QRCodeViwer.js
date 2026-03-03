@@ -50,6 +50,32 @@ const useShareUrl = () => {
     return { share, canShare }
 }
 
+const SetCurrentCharacter = ({ character }) => (
+    <p>
+        {character === ' ' ? (
+            '\u00A0'
+        ) : character === 'ー' ? (
+            '｜'
+        ) : character === '-' ? (
+            <Box
+                h="15px"
+                bg="linear-gradient(180deg, transparent, #a98f63, transparent)"
+                w="1px"
+                my={2}
+            />
+        ) : character === '｜' || character === '|' ? (
+            <Box
+                h="1px"
+                bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
+                w="20px"
+                my={2}
+            />
+        ) : (
+            character.toUpperCase()
+        )}
+    </p>
+)
+
 export const FrontCard = ({ isOpen, ...props }) => {
     const { share: shareUrl, canShare } = useShareUrl()
     const [isFloating, setIsFloating] = useState(true)
@@ -702,9 +728,9 @@ export const BackCard = ({ ...props }) => {
                                         fontWeight="bold"
                                         color="#a98f63"
                                     >
-                                        {letter === ' '
-                                            ? '\u00A0'
-                                            : letter.toUpperCase()}
+                                        <SetCurrentCharacter
+                                            character={letter}
+                                        />
                                     </Box>
                                 ))}
                             </Flex>
@@ -716,18 +742,7 @@ export const BackCard = ({ ...props }) => {
                         >
                             {abilitiesLetters.map((letter, index) => (
                                 <Box key={index} fontSize="sm" opacity={0.8}>
-                                    {letter === ' ' ? (
-                                        ''
-                                    ) : letter === '｜' || letter === '|' ? (
-                                        <Box
-                                            h="1px"
-                                            bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
-                                            w="20px"
-                                            my={2}
-                                        />
-                                    ) : (
-                                        letter.toUpperCase()
-                                    )}
+                                    <SetCurrentCharacter character={letter} />
                                 </Box>
                             ))}
                         </Flex>
@@ -738,9 +753,7 @@ export const BackCard = ({ ...props }) => {
                         >
                             {professionLetters.map((letter, index) => (
                                 <Box key={index} fontSize="sm" opacity={0.6}>
-                                    {letter === ' '
-                                        ? '\u00A0'
-                                        : letter.toUpperCase()}
+                                    <SetCurrentCharacter character={letter} />
                                 </Box>
                             ))}
                         </Flex>

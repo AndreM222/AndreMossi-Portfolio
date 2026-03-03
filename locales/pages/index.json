@@ -19,17 +19,17 @@
     "card": [
         {
             "locale": "en",
-            "work": "Programmer | Artist | Designer",
+            "work": "AI Engineer | Systems | ML",
             "type": "Full-Stack Developer"
         },
         {
             "locale": "ja",
-            "work": "プログラマー｜アーティスト｜デザイナー",
+            "work": "AIエンジニア｜システム｜機械学習",
             "type": "フルスタックエンジニア"
         },
         {
             "locale": "es",
-            "work": "Programador | Artista | Diseñador",
+            "work": "Ingeniero IA | Sistemas | ML",
             "type": "Desarrollador Full-Stack"
         }
     ],
