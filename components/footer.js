@@ -21,7 +21,7 @@ import miscLang from '../locales/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
 import { QRCodeButton } from './QRCodeViwer'
-import { NewsButton } from './notifSub'
+import { NewsButton } from './newsModule'
 
 const LinkButton = ({ target, href, icon, children, ...props }) => {
     return (

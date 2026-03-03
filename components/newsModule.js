@@ -345,7 +345,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const NewsButton = ({ title, src, children, ...props }) => {
+export const NewsButton = ({ title, src, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
