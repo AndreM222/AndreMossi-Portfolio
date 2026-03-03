@@ -13,7 +13,8 @@ import {
     Link,
     Box,
     SimpleGrid,
-    useColorModeValue
+    useColorModeValue,
+    useDisclosure
 } from '@chakra-ui/react'
 import UpToggle from './Buttons/up-toggle'
 import miscLang from '../locales/misc.json'
@@ -53,6 +54,8 @@ const QRButton = ({ icon, children, ...props }) => {
 const today = new Date()
 
 const Footer = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
         <Box
             bg={useColorModeValue('whiteAlpha.600', 'whiteAlpha.100')}
@@ -106,7 +109,7 @@ const Footer = () => {
                         Andre Mossi
                     </LinkButton>
 
-                    <QRButton icon={<Icon as={IoCard} />}>
+                    <QRButton onOpen={onOpen} onClose={onClose} isOpen={isOpen} icon={<Icon as={IoCard} />}>
                         {Content(miscLang, 'qrCodeBTN', 'content')}
                     </QRButton>
                 </SimpleGrid>

@@ -1,4 +1,4 @@
-import { Container, Box, Heading } from '@chakra-ui/react'
+import { Container, Box, Heading, useDisclosure } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
 import { TimeBox, TimeYear } from '../components/timeline'
@@ -15,14 +15,28 @@ import { useState, useEffect } from 'react'
 import RecommendationSection from '../components/recommendationSection'
 import AvatarIcon from '../components/avatarIcon'
 import { QRCodeButton } from '../components/QRCodeViwer'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const router = useRouter()
+    const searchParams = useSearchParams()
 
     useEffect(() => {
         const random = Math.floor(Math.random() * quoteLength())
         setIdQuote(random)
     }, [])
+
+    useEffect(() => {
+        if (searchParams.get('entry') === 'nfc' && !isOpen) {
+            const newUrl = new URL(window.location.href)
+            newUrl.searchParams.delete('entry')
+            router.replace(newUrl.toString())
+
+            onOpen()
+        }
+    }, [searchParams, isOpen, router, onOpen])
 
     return (
         <Layout>
@@ -52,6 +66,9 @@ const Page = () => {
                             align="center"
                         >
                             <QRCodeButton
+                                onOpen={onOpen}
+                                onClose={onClose}
+                                isOpen={isOpen}
                                 variant="ghost"
                                 borderRadius="full"
                                 w="auto"

@@ -5,7 +5,6 @@ import {
     ModalBody,
     Button,
     useColorModeValue,
-    useDisclosure,
     Heading,
     Flex,
     Box,
@@ -915,23 +914,13 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const QRCodeButton = ({ children, ...props }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search)
-        if (urlParams.get('entry') === 'nfc' && !isOpen) {
-            urlParams.delete('entry')
-            window.history.replaceState(
-                {},
-                '',
-                `${window.location.pathname}${urlParams.toString() ? `?${urlParams.toString()}` : ''}`
-            )
-
-            onOpen()
-        }
-    }, [])
-
+export const QRCodeButton = ({
+    isOpen,
+    onOpen,
+    onClose,
+    children,
+    ...props
+}) => {
     return (
         <>
             <Button onClick={onOpen} {...props}>
