@@ -47,7 +47,7 @@ const interestTypes = [
         title: 'General',
         color: 'teal',
         icon: <FaCog />,
-        types: ['Timeline', 'About', 'GitStars', 'New Repositories']
+        types: ['Timeline', 'About']
     },
     {
         id: 'experience',
@@ -340,25 +340,21 @@ const NewsScreen = ({ preference }) => {
 
     return (
         <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
-            {isLoading ? (
-                <VStack spacing={{ base: 4, md: 6 }} align="stretch">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <NewsSkeleton key={i} />
-                    ))}
-                </VStack>
-            ) : (
-                <VStack spacing={{ base: 4, md: 6 }} align="stretch">
-                    {filteredNews.length ? (
-                        filteredNews.map(item => (
-                            <NewsItem key={item.id} news={item} />
-                        ))
-                    ) : (
+            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+                {filteredNews.length
+                    ? filteredNews.map(item => (
+                        <NewsItem key={item.id} news={item} />
+                    ))
+                    : !isLoading && (
                         <Text textAlign="center" opacity={0.6}>
                             No news matching your interests yet
                         </Text>
                     )}
-                </VStack>
-            )}
+                {isLoading &&
+                    Array.from({ length: 5 }).map((_, i) => (
+                        <NewsSkeleton key={i} />
+                    ))}
+            </VStack>
         </Box>
     )
 }
@@ -375,9 +371,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const defaultSettings = {
         general: {
             Timeline: true,
-            About: true,
-            GitStars: true,
-            NewRepositories: true
+            About: true
         },
         experience: {
             Intern: true,
@@ -567,7 +561,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const NewsButton = ({ title, src, ...props }) => {
+export const NewsButton = ({ title, children, src, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -586,13 +580,12 @@ export const NewsButton = ({ title, src, ...props }) => {
         <>
             <Button
                 colorScheme="orange"
-                leftIcon={<FaNewspaper />}
                 align="right"
                 alignItems="center"
                 onClick={onOpen}
                 {...props}
             >
-                News
+                {children}
             </Button>
 
             <NewsModal
