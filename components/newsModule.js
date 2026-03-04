@@ -35,6 +35,9 @@ import { ExperienceGridItem } from './grid-item'
 import Content from './content'
 
 import experienceLang from '../locales/pages/experience.json'
+import { humanizeSummary, typeConfig } from './humanizeCommits'
+import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
 
 const MotionBox = motion(Box)
 
@@ -202,7 +205,7 @@ const NewsItem = ({ news }) => {
                 <HStack>
                     {categoryMeta.icon}
                     <Badge colorScheme={categoryMeta.color}>
-                        {news.type.toUpperCase()}
+                        {typeConfig[news.type].toUpperCase()}
                     </Badge>
                 </HStack>
                 <Text fontSize="sm" opacity={0.7}>
@@ -215,11 +218,11 @@ const NewsItem = ({ news }) => {
             </Heading>
 
             <Text fontSize="lg" mb={3} fontWeight="medium">
-                {news.summary}
+                {humanizeSummary(news.summary)}
             </Text>
 
             <Text opacity={0.8} lineHeight="1.6" mb={3}>
-                {news.description}
+                {humanizeSummary(news.description)}
             </Text>
 
             <Box justifySelf="center" mt={2}>
@@ -445,7 +448,6 @@ export const NewsModal = ({ isOpen, onClose }) => {
         const nextEnabled = !notificationsEnabled
 
         if (nextEnabled) {
-            // Request permission
             const permission = await Notification.requestPermission()
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
@@ -465,7 +467,6 @@ export const NewsModal = ({ isOpen, onClose }) => {
                 })
             }
         } else {
-            // Disable (no permission needed)
             setNotificationsEnabled(false)
             toast({
                 title: 'Notifications disabled',
@@ -568,6 +569,18 @@ export const NewsModal = ({ isOpen, onClose }) => {
 
 export const NewsButton = ({ title, src, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const router = useRouter()
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        if (searchParams.get('entry') === 'news' && !isOpen) {
+            const newUrl = new URL(window.location.href)
+            newUrl.searchParams.delete('entry')
+            router.replace(newUrl.toString())
+
+            onOpen()
+        }
+    }, [searchParams, isOpen, router, onOpen])
 
     return (
         <>

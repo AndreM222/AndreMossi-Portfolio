@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import { fetchRecentCommits, parseCommitForNews } from '../../../api/gitAPI'
 import webpush from 'web-push'
+import { humanizeSummary, typeConfig } from '../../../components/humanizeCommits'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -44,9 +45,10 @@ export async function POST() {
                 await webpush.sendNotification(
                     sub,
                     JSON.stringify({
-                        title: "New Update: " + newsItem.type,
-                        body: newsItem.summary,
-                        url: 'https://andremossi.vercel.app'
+                        title:
+                            typeConfig[newsItem.type] || 'Portfolio updated',
+                        body: humanizeSummary(newsItem.summary),
+                        url: 'https://andremossi.vercel.app/?entry=news'
                     })
                 )
                 console.log('Push sent successfully')
