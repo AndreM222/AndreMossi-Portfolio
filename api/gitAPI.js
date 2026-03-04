@@ -135,41 +135,35 @@ export const fetchPinRepos = async () => {
     }
 }
 
-export const fetchRecentCommits = async (limit = 25) => {
+export const fetchRecentCommits = async () => {
     try {
-        const repos = await fetchAPI(1, 100)
+        const { data } = await gitUserApi.get('/events')
 
-        const commits = await Promise.all(
-            repos.slice(0, 10).map(async repo => {
-                try {
-                    const { data } = await gitUserApi.get(
-                        `repos/${repo.name}/commits`,
-                        {
-                            headers: {
-                                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
-                            },
-                            params: {
-                                per_page: 1,
-                                sort: 'created',
-                                direction: 'desc'
-                            }
+        const commits = []
+
+        for (const event of data) {
+            if (event.type === 'PushEvent') {
+                const repoName = event.repo.name
+                const commitSha = event.payload.head
+
+                const commitRes = await axios.get(
+                    `https://api.github.com/repos/${repoName}/commits/${commitSha}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
                         }
-                    )
-                    return { ...data[0], repo: repo.name }
-                } catch {
-                    return null
-                }
-            })
-        )
+                    }
+                )
 
-        return commits
-            .filter(Boolean)
-            .sort(
-                (a, b) =>
-                    new Date(b.commit.author.date) -
-                    new Date(a.commit.author.date)
-            )
-            .slice(0, limit)
+                commits.push({
+                    repo: repoName,
+                    message: commitRes.data.commit.message,
+                    url: commitRes.data.html_url,
+                    date: commitRes.data.commit.author.date
+                })
+            }
+        }
+        return commits.slice(0, 5)
     } catch (error) {
         console.error('Fetch commits failed:', error)
         return []
@@ -177,69 +171,26 @@ export const fetchRecentCommits = async (limit = 25) => {
 }
 
 export const parseCommitForNews = commit => {
-    const message = commit.commit.message
-    const match = message.match(/^(\w+)(?:\(([^)]+)\))?: (.+)/i)
-    console.log('⚡ REGEX MATCH:', match)
+    if (!commit || !commit.message) return null
 
-    if (match) {
-        const [, type, scope, summary] = match
-        console.log('✅ PARSED:', { type, scope, summary })
-        return {
-            id: commit.sha,
-            type: type.toLowerCase(),
-            category: getCategory(type.toLowerCase()),
-            date: new Date(commit.commit.author.date)
-                .toISOString()
-                .split('T')[0],
-            title: scope || type,
-            summary: summary,
-            description: commit.commit.message
-                .split('\n')
-                .slice(1)
-                .join('\n')
-                .trim(),
-            branch: commit.commit.committer.name,
-            commit: commit.sha.slice(-7),
-            goldGlow: type.toLowerCase() === 'feat',
-            repo: commit.repo || 'unknown'
-        }
-    } else {
-        console.log('❌ NO MATCH - using chore')
-    }
+    const firstLine = commit.message.split('\n')[0]
+
+    const match = firstLine.match(/^(\w+)(?:\(([^)]+)\))?: (.+)/i)
+
+    const type = match ? match[1].toLowerCase() : 'chore'
+    const scope = match ? match[2] : null
+    const summary = match ? match[3] : firstLine
 
     return {
-        id: commit.sha,
-        type: 'chore',
+        id: commit.url,
+        type,
         category: 'developer',
-        date: new Date(commit.commit.author.date).toISOString().split('T')[0],
-        title: 'Update',
-        summary: commit.commit.message.split('\n')[0],
-        description: commit.commit.message,
-        branch: commit.commit.committer.name,
-        commit: commit.sha.slice(-7),
-        goldGlow: false,
+        date: commit.date.split('T')[0],
+        title: scope || type,
+        summary,
+        description: commit.message.split('\n').slice(1).join('\n').trim(),
+        branch: commit.repo,
+        commit: commit.url.slice(-7),
         repo: commit.repo
     }
-}
-
-function getCategory(type) {
-    const mapping = {
-        feat: 'developer',
-        fix: 'developer',
-        perf: 'developer',
-        refactor: 'developer',
-        docs: 'developer',
-        style: 'developer',
-        chore: 'developer',
-        intern: 'experience',
-        research: 'experience',
-        awards: 'experience',
-        projects: 'experience',
-        timeline: 'general',
-        about: 'general',
-        'resume-en': 'resume',
-        'resume-es': 'resume',
-        'resume-jp': 'resume'
-    }
-    return mapping[type] || 'developer'
 }

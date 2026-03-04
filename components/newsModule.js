@@ -16,7 +16,8 @@ import {
     Switch,
     VStack,
     HStack,
-    Badge
+    Badge,
+    Spinner
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { FaCode, FaNewspaper, FaSuitcase } from 'react-icons/fa6'
@@ -193,11 +194,23 @@ const InterestSettings = ({ preference, setPreferences }) => {
 
 const NewsScreen = ({ preference }) => {
     const [news, setNews] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch('/api/news')
-            .then(res => res.json())
-            .then(setNews)
+        const fetchNews = async () => {
+            try {
+                setIsLoading(true)
+                const res = await fetch('/api/news')
+                const data = await res.json()
+                setNews(data)
+            } catch (error) {
+                console.error('Failed to fetch news:', error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        fetchNews()
     }, [])
 
     const filteredNews = news.filter(item => {
@@ -207,17 +220,30 @@ const NewsScreen = ({ preference }) => {
 
     return (
         <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
-            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
-                {filteredNews.length ? (
-                    filteredNews.map(item => (
-                        <NewsItem key={item.id} news={item} />
-                    ))
-                ) : (
-                    <Text textAlign="center" opacity={0.6}>
-                        No news matching your interests yet
-                    </Text>
-                )}
-            </VStack>
+            {isLoading ? (
+                <Flex
+                    justify="center"
+                    align="center"
+                    h="100%"
+                    direction="column"
+                    gap={4}
+                >
+                    <Spinner size="xl" thickness="4px" speed="0.65s" />
+                    <Text opacity={0.6}>Loading latest updates...</Text>
+                </Flex>
+            ) : (
+                <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+                    {filteredNews.length ? (
+                        filteredNews.map(item => (
+                            <NewsItem key={item.id} news={item} />
+                        ))
+                    ) : (
+                        <Text textAlign="center" opacity={0.6}>
+                            No news matching your interests yet
+                        </Text>
+                    )}
+                </VStack>
+            )}
         </Box>
     )
 }
