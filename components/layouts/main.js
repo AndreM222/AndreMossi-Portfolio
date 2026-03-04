@@ -15,6 +15,7 @@ const Main = ({ children, router }) => {
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
+                <link rel="manifest" href="/manifest.json" />
                 <meta name="author" content="André Mossi" />
                 <meta property="og:title" content="André Mossi" />
                 <meta property="og:type" content="website" />

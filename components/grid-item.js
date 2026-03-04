@@ -22,13 +22,13 @@ export const GridItem = ({ children, href, title, thumbnail, ...props }) => (
     </Box>
 )
 
-export const ExperienceGridItem = ({ children, id, title, thumbnail }) => {
+export const ExperienceGridItem = ({ children, id, title, thumbnail, ...props }) => {
     const [loaded, setLoaded] = useState(false)
     const WIDTH = 720
     const HEIGHT = 400
 
     return (
-        <Box w="100%" textAlign="center">
+        <Box w="100%" textAlign="center" {...props}>
             <LinkBox
                 as={NextLink}
                 href={`/experiences/${id}`}

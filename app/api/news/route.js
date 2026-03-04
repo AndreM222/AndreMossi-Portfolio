@@ -1,22 +1,26 @@
 import { NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import { fetchRecentCommits, parseCommitForNews } from '../../../api/gitAPI'
+import webpush from 'web-push'
+
+webpush.setVapidDetails(
+    'mailto:admin@yourdomain.com',
+    process.env.VAPID_PUBLIC_KEY,
+    process.env.VAPID_PRIVATE_KEY
+)
 
 export async function GET() {
     try {
         const commits = await fetchRecentCommits(25)
-
-        const parsed = commits
-            .map(parseCommitForNews)
-            .filter(Boolean)
+        const parsed = commits.map(parseCommitForNews).filter(Boolean)
 
         return NextResponse.json(parsed, {
             headers: {
-                'Cache-Control': 's-maxage=1800, stale-while-revalidate=300'
+                'Cache-Control': 's-maxage=3600, stale-while-revalidate'
             }
         })
     } catch (error) {
-        console.error("ERROR:", error)
+        console.error(error)
         return NextResponse.json([], { status: 500 })
     }
 }
@@ -24,19 +28,33 @@ export async function GET() {
 export async function POST() {
     try {
         const commits = await fetchRecentCommits(1)
-        if (commits[0]) {
-            const newsItem = parseCommitForNews(commits[0])
+        if (!commits[0]) {
+            return NextResponse.json({ success: false })
+        }
 
-            if (newsItem) {
-                await kv.zadd('news', {
-                    score: Date.now(),
-                    member: JSON.stringify(newsItem)
-                })
-            }
+        const newsItem = parseCommitForNews(commits[0])
+        if (!newsItem) {
+            return NextResponse.json({ success: false })
+        }
 
-            const allNews = await kv.zrevrange('news', 0, 24)
-            if (allNews.length > 25) {
-                await kv.zremrangebyrank('news', 0, allNews.length - 26)
+        const subscribers = await kv.smembers('push_subscribers')
+
+        for (const sub of subscribers) {
+            try {
+                await webpush.sendNotification(
+                    sub,
+                    JSON.stringify({
+                        title: "New Update: " + newsItem.type,
+                        body: newsItem.summary,
+                        url: 'https://andremossi.vercel.app'
+                    })
+                )
+                console.log('Push sent successfully')
+            } catch (err) {
+                if (err.statusCode === 410 || err.statusCode === 404) {
+                    await kv.srem('push_subscribers', sub)
+                }
+                console.error('Push failed:', err)
             }
         }
 

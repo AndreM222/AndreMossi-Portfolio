@@ -3,8 +3,8 @@ import Content from './content'
 import dateSymbolLang from '../locales/dateSymbols.json'
 import grammarSymbolLang from '../locales/grammarSymbols.json'
 
-const itemSetup = ({ date }) => {
-    const items = date.toLowerCase().split(' ')
+const itemSetup = ({ date, sepFormat }) => {
+    const items = sepFormat === 'slash' ? date.toLowerCase().split('/') : date.toLowerCase().split(' ')
 
     return items
         .map((item, index) => {
@@ -41,7 +41,7 @@ const itemSetup = ({ date }) => {
         .join('')
 }
 
-const spaceSetup = ({ date }) => {
+const spaceSetup = ({ date, sepFormat }) => {
     const items = date.toLowerCase().split('to')
 
     return items
@@ -49,9 +49,9 @@ const spaceSetup = ({ date }) => {
             const currTime = item.trim()
 
             return index === 0
-                ? itemSetup({ date: currTime })
+                ? itemSetup({ date: currTime, sepFormat: sepFormat })
                 : Content(dateSymbolLang, 'to', 'content') +
-                itemSetup({ date: currTime })
+                itemSetup({ date: currTime, sepFormat: sepFormat })
         })
         .join('')
 }
@@ -60,7 +60,7 @@ const applyFormat = (format, values) => {
     return format.replace(/%(\w+)%/g, (_, key) => values[key] ?? '')
 }
 
-export const getDateFormat = date => {
+export const getDateFormat = (date, sepFormat) => {
     const monthKeys = [
         'january',
         'february',
@@ -86,16 +86,16 @@ export const getDateFormat = date => {
 
     if (monthIndex < 0 || monthIndex > 11) return date
 
-    const format = Content(dateSymbolLang, 'format', 'content')
+    const format = Content(dateSymbolLang, 'format', sepFormat || 'content')
 
     return applyFormat(format, {
         year: year,
-        month: monthKeys[monthIndex],
+        month: sepFormat === "slash" ? parseInt(monthStr, 10) : monthKeys[monthIndex],
         day: parseInt(dayStr, 10)
     })
 }
 
-const DateSetup = ({ date }) => {
+const DateSetup = ({ date, sepFormat }) => {
     if (!date) return <div/>
 
     const groups = date.toLowerCase().split(',')
@@ -106,9 +106,9 @@ const DateSetup = ({ date }) => {
                 const currTime = item.trim()
 
                 return index === 0
-                    ? spaceSetup({ date: currTime })
+                    ? spaceSetup({ date: currTime, sepFormat: sepFormat})
                     : Content(grammarSymbolLang, 'separator', 'content') +
-                    spaceSetup({ date: currTime })
+                    spaceSetup({ date: currTime, sepFormat: sepFormat })
             })}
         </span>
     )

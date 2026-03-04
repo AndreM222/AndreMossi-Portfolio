@@ -4,8 +4,15 @@ import theme from '../lib/theme'
 import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import '../lib/sweeper.css'
+import { useEffect } from 'react'
 
 function Website({ Component, pageProps, router }) {
+    useEffect(() => {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+        }
+    }, [])
+
     return (
         <ChakraProvider theme={theme}>
             <Fonts />

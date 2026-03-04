@@ -94,11 +94,13 @@
     "format": [
         {
             "locale": "en",
-            "content": "%month% %day%, %year%"
+            "content": "%month% %day%, %year%",
+            "slash": "%month%/%day%/%year%"
         },
         {
             "locale": "ja",
-            "content": "%year% %month% %day%"
+            "content": "%year% %month% %day%",
+            "slash": "%year%/%month%/%day%"
         }
     ]
 }
