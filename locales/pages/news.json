@@ -58,7 +58,7 @@
         {
             "locale": "en",
             "enabled": "Notifications enabled!",
-            "thanks": "Thanks for showing interest.",
+            "enabledDesc": "Thanks for showing interest.",
             "disabled": "Notifications disabled",
             "denied": "Permission denied",
             "deniedDesc": "Notifications require browser permission.",
@@ -67,7 +67,7 @@
         {
             "locale": "ja",
             "enabled": "通知を有効にしました！",
-            "thanks": "ご興味ありがとうございます。",
+            "enabledDesc": "ご興味ありがとうございます。",
             "disabled": "通知を無効にしました",
             "denied": "権限拒否",
             "deniedDesc": "通知にはブラウザの権限が必要です。",
@@ -75,7 +75,7 @@
         },
         {
             "locale": "es",
-            "enabled": "¡Notificaciones habilitadas!",
+            "enabledDesc": "¡Notificaciones habilitadas!",
             "thanks": "Gracias por tu interés.",
             "disabled": "Notificaciones desactivadas",
             "denied": "Permiso denegado",

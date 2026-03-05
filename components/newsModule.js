@@ -409,6 +409,8 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const [notificationsEnabled, setNotificationsEnabled] = useState(false)
 
     const toast = useToast()
+    const { locale, defaultLocale } = useRouter()
+
     const [interestOpen, setInterestOpen] = useState(false)
 
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
@@ -426,7 +428,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const handleNotificationsToggle = useCallback(async () => {
         if (!('Notification' in window)) {
             toast({
-                title: 'Notifications not supported',
+                title: Content(newsLang, 'notifications', 'denied', locale, defaultLocale),
                 status: 'warning',
                 duration: 3000
             })
@@ -467,16 +469,16 @@ export const NewsModal = ({ isOpen, onClose }) => {
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
                 toast({
-                    title: 'Notifications enabled!',
-                    description: 'Thanks for showing interest.',
+                    title: Content(newsLang, 'notifications', 'enabled', locale, defaultLocale),
+                    description: Content(newsLang, 'notifications', 'enabledDesc', locale, defaultLocale),
                     status: 'success',
                     duration: 3000
                 })
                 await subscribeUser()
             } else {
                 toast({
-                    title: 'Permission denied',
-                    description: 'Notifications require browser permission.',
+                    title: Content(newsLang, 'notifications', 'denied', locale, defaultLocale),
+                    description: Content(newsLang, 'notifications', 'deniedDesc', locale, defaultLocale),
                     status: 'warning',
                     duration: 4000
                 })
@@ -484,7 +486,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
         } else {
             setNotificationsEnabled(false)
             toast({
-                title: 'Notifications disabled',
+                title: Content(newsLang, 'notifications', 'disabled', locale, defaultLocale),
                 status: 'info',
                 duration: 2000
             })
