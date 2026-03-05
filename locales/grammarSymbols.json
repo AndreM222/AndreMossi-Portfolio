@@ -60,5 +60,19 @@
             "start": "",
             "end": ""
         }
+    ],
+    "and": [
+        {
+            "locale": "en",
+            "content": " and "
+        },
+        {
+            "locale": "ja",
+            "content": "と"
+        },
+        {
+            "locale": "es",
+            "content": " y "
+        }
     ]
 }

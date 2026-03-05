@@ -203,5 +203,19 @@
             "style": "Estilo",
             "chore": "Mantenimiento"
         }
+    ],
+    "notificationMSG": [
+        {
+            "locale": "en",
+            "content": "Updates Released"
+        },
+        {
+            "locale": "ja",
+            "content": "アップデートが公開されました"
+        },
+        {
+            "locale": "es",
+            "content": "Actualizaciones publicadas"
+        }
     ]
 }
