@@ -79,8 +79,63 @@ export async function POST(request) {
 
         const body = JSON.parse(rawBody)
 
-        // Only handle push events (for now)
-        if (event !== 'push' || !body.commits?.length) {
+        let newItems = []
+
+        /* ===========================
+           PUSH EVENT
+           =========================== */
+        if (event === 'push' && body.commits?.length) {
+            const commits = body.commits.map(commit => ({
+                repo: body.repository.name,
+                message: commit.message,
+                url: commit.url,
+                date: commit.timestamp
+            }))
+
+            const parsedCommits = commits
+                .map(parseCommitForNews)
+                .filter(item => item?.id)
+
+            newItems.push(...parsedCommits)
+        }
+
+        /* ===========================
+           STAR EVENT
+           =========================== */
+        if (event === 'star' && body.action === 'created') {
+            newItems.push({
+                id: `star-${body.repository.id}-${Date.now()}`,
+                type: 'stars',
+                category: 'general',
+                date: new Date().toISOString().split('T')[0],
+                title: body.repository.name,
+                summary: `New star on ${body.repository.name}`,
+                description: `${body.repository.name} received a new star.`,
+                branch: body.repository.name,
+                commit: null,
+                repo: body.repository.name
+            })
+        }
+
+        /* ===========================
+           NEW REPOSITORY EVENT
+           =========================== */
+        if (event === 'repository' && body.action === 'created') {
+            newItems.push({
+                id: `repo-${body.repository.id}`,
+                type: 'repository',
+                category: 'general',
+                date: body.repository.created_at.split('T')[0],
+                title: body.repository.name,
+                summary: `Created new repository ${body.repository.name}`,
+                description: body.repository.description || '',
+                branch: body.repository.name,
+                commit: null,
+                repo: body.repository.name
+            })
+        }
+
+        if (!newItems.length) {
             return NextResponse.json({ success: true, ignored: true })
         }
 
@@ -111,11 +166,10 @@ export async function POST(request) {
 
         const latestId = latest?.id || null
 
-        // Collect only NEW commits (UNCHANGED)
-        const newItems = []
-        for (const item of parsedCommits) {
-            if (item.id === latestId) break
-            newItems.push(item)
+        newItems = newItems.filter(item => item.id !== latestId)
+
+        if (!newItems.length) {
+            return NextResponse.json({ success: true, skipped: true })
         }
 
         if (!newItems.length) {
