@@ -159,9 +159,6 @@ const Footer = () => {
                             ? 'translateY(0) scale(1)'
                             : 'translateY(-20px) scale(0.95)',
                         opacity: isVisible ? 1 : 1,
-                        boxShadow: isVisible
-                            ? 'none'
-                            : '0 10px 30px rgba(249, 115, 22, 0.4)'
                     }}
                 >
                     {isVisible ? Content(newsLang, 'news-ui', 'newsButton') : <FaNewspaper />}

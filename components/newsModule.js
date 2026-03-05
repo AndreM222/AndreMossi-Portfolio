@@ -45,6 +45,7 @@ import {
 
 import experienceLang from '../locales/pages/experience.json'
 import newsLang from '../locales/pages/news.json'
+import NavContent from './translations/navigationContent'
 
 const MotionBox = motion(Box)
 
@@ -428,7 +429,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const handleNotificationsToggle = useCallback(async () => {
         if (!('Notification' in window)) {
             toast({
-                title: Content(newsLang, 'notifications', 'denied', locale, defaultLocale),
+                title: NavContent(newsLang, 'notifications', 'denied', locale, defaultLocale),
                 status: 'warning',
                 duration: 3000
             })
@@ -469,16 +470,16 @@ export const NewsModal = ({ isOpen, onClose }) => {
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
                 toast({
-                    title: Content(newsLang, 'notifications', 'enabled', locale, defaultLocale),
-                    description: Content(newsLang, 'notifications', 'enabledDesc', locale, defaultLocale),
+                    title: NavContent(newsLang, 'notifications', 'enabled', locale, defaultLocale),
+                    description: NavContent(newsLang, 'notifications', 'enabledDesc', locale, defaultLocale),
                     status: 'success',
                     duration: 3000
                 })
                 await subscribeUser()
             } else {
                 toast({
-                    title: Content(newsLang, 'notifications', 'denied', locale, defaultLocale),
-                    description: Content(newsLang, 'notifications', 'deniedDesc', locale, defaultLocale),
+                    title: NavContent(newsLang, 'notifications', 'denied', locale, defaultLocale),
+                    description: NavContent(newsLang, 'notifications', 'deniedDesc', locale, defaultLocale),
                     status: 'warning',
                     duration: 4000
                 })
@@ -486,7 +487,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
         } else {
             setNotificationsEnabled(false)
             toast({
-                title: Content(newsLang, 'notifications', 'disabled', locale, defaultLocale),
+                title: NavContent(newsLang, 'notifications', 'disabled', locale, defaultLocale),
                 status: 'info',
                 duration: 2000
             })

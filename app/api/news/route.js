@@ -5,6 +5,7 @@ import webpush from 'web-push'
 import { humanizeSummary } from '../../../components/humanizeCommits'
 
 import newsLang from '../../../locales/pages/news.json'
+import NavContent from '../../../components/translations/navigationContent'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -56,8 +57,11 @@ export async function POST() {
                     sub,
                     JSON.stringify({
                         title:
-                            newsLang['types'][newsItem.type] ||
-                            'Portfolio updated',
+                            NavContent(
+                                newsLang,
+                                'types',
+                                newsItem.type
+                            ) || 'Portfolio updated',
                         body: humanizeSummary(newsItem.summary),
                         url: 'https://andremossi.vercel.app/?entry=news'
                     })
