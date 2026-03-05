@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
-import { fetchRecentCommits, parseCommitForNews } from '../../../api/gitAPI'
+import { parseCommitForNews } from '../../../api/gitAPI'
+import crypto from 'crypto'
 import webpush from 'web-push'
 import { humanizeSummary } from '../../../components/humanizeCommits'
 import NavContent from '../../../components/translations/navigationContent'
@@ -40,22 +41,58 @@ export async function GET(request) {
 }
 
 /* ===========================
-   POST - Cron Trigger Only
+   POST - GitHub Webhook
    =========================== */
 export async function POST(request) {
     try {
-        const authHeader = request.headers.get('authorization')
-        if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        const signature = request.headers.get('x-hub-signature-256')
+        const event = request.headers.get('x-github-event')
+
+        if (!signature || !event) {
+            return NextResponse.json(
+                { error: 'Missing headers' },
+                { status: 400 }
+            )
         }
 
-        // Fetch multiple commits for batching
-        const commits = await fetchRecentCommits(10)
-        if (!commits?.length) {
-            return NextResponse.json({ success: false })
+        // Get raw body for verification
+        const rawBody = await request.text()
+
+        const expectedSignature =
+            'sha256=' +
+            crypto
+                .createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET)
+                .update(rawBody)
+                .digest('hex')
+
+        if (
+            !crypto.timingSafeEqual(
+                Buffer.from(signature),
+                Buffer.from(expectedSignature)
+            )
+        ) {
+            return NextResponse.json(
+                { error: 'Invalid signature' },
+                { status: 401 }
+            )
         }
 
-        // Parse commits once
+        const body = JSON.parse(rawBody)
+
+        // Only handle push events (for now)
+        if (event !== 'push' || !body.commits?.length) {
+            return NextResponse.json({ success: true, ignored: true })
+        }
+
+        // 🔁 Instead of fetchRecentCommits — use webhook payload
+        const commits = body.commits.map(commit => ({
+            repo: body.repository.name,
+            message: commit.message,
+            url: commit.url,
+            date: commit.timestamp
+        }))
+
+        // Parse commits (UNCHANGED)
         const parsedCommits = commits
             .map(parseCommitForNews)
             .filter(item => item?.id)
@@ -64,7 +101,7 @@ export async function POST(request) {
             return NextResponse.json({ success: false })
         }
 
-        // Get latest stored item
+        // Get latest stored item (UNCHANGED)
         const latestRaw = await kv.lindex('news_feed', 0)
         const latest = latestRaw
             ? typeof latestRaw === 'string'
@@ -74,7 +111,7 @@ export async function POST(request) {
 
         const latestId = latest?.id || null
 
-        // Collect only NEW commits (stop once we hit known id)
+        // Collect only NEW commits (UNCHANGED)
         const newItems = []
         for (const item of parsedCommits) {
             if (item.id === latestId) break
@@ -85,7 +122,7 @@ export async function POST(request) {
             return NextResponse.json({ success: true, skipped: true })
         }
 
-        // Insert oldest first so order stays correct
+        // Insert oldest first (UNCHANGED)
         for (const item of [...newItems].reverse()) {
             await kv.lpush('news_feed', {
                 ...item,
@@ -100,7 +137,7 @@ export async function POST(request) {
            =========================== */
 
         let title = ''
-        let body = ''
+        let bodyText = ''
 
         if (newItems.length === 1) {
             const single = newItems[0]
@@ -109,7 +146,7 @@ export async function POST(request) {
                 NavContent(newsLang, 'types', single.type) ||
                 NavContent(newsLang, 'types', 'feat')
 
-            body = humanizeSummary(single.summary)
+            bodyText = humanizeSummary(single.summary)
         } else {
             const counts = {}
 
@@ -123,19 +160,18 @@ export async function POST(request) {
             )
 
             const separator = NavContent(grammarLang, 'separator', 'content')
-
             const andWord = NavContent(grammarLang, 'and', 'content')
 
             if (parts.length === 1) {
-                body = parts[0]
+                bodyText = parts[0]
             } else {
-                body =
+                bodyText =
                     parts.slice(0, -1).join(separator) +
                     andWord +
                     parts[parts.length - 1]
             }
 
-            title = `${newItems.length} ${NavContent(newsLang, "notificationMSG", "content")}`
+            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
         }
 
         /* ===========================
@@ -151,7 +187,7 @@ export async function POST(request) {
                         sub,
                         JSON.stringify({
                             title,
-                            body,
+                            body: bodyText,
                             url: 'https://andremossi.vercel.app/?entry=news'
                         })
                     )

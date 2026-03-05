@@ -6,7 +6,7 @@ export const interestTypes = [
         id: 'general',
         color: 'teal',
         icon: <FaCog />,
-        types: ['feat', 'timeline', 'about']
+        types: ['feat', 'timeline', 'about', 'stars', 'repository']
     },
     {
         id: 'experience',
@@ -31,17 +31,19 @@ export const interestTypes = [
 export const defaultInterestsSettings = {
     general: {
         feat: true,
-        Timeline: true,
-        About: true
+        timeline: true,
+        about: true,
+        stars: true,
+        repository: true
     },
     experience: {
-        Intern: true,
-        Research: true,
-        Awards: true,
-        Projects: true,
-        Certifications: true
+        intern: true,
+        research: true,
+        awards: true,
+        projects: true,
+        certifications: true
     },
-    resume: { English: true, Spanish: true, Japanese: true },
+    resume: { english: true, spanish: true, japanese: true },
     developer: {
         fix: true,
         perf: true,
