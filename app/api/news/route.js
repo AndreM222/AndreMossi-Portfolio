@@ -2,10 +2,9 @@ import { NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import { fetchRecentCommits, parseCommitForNews } from '../../../api/gitAPI'
 import webpush from 'web-push'
-import {
-    humanizeSummary,
-    typeConfig
-} from '../../../components/humanizeCommits'
+import { humanizeSummary } from '../../../components/humanizeCommits'
+
+import newsLang from '../../../locales/pages/news.json'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -56,7 +55,9 @@ export async function POST() {
                 await webpush.sendNotification(
                     sub,
                     JSON.stringify({
-                        title: typeConfig[newsItem.type] || 'Portfolio updated',
+                        title:
+                            newsLang['types'][newsItem.type] ||
+                            'Portfolio updated',
                         body: humanizeSummary(newsItem.summary),
                         url: 'https://andremossi.vercel.app/?entry=news'
                     })

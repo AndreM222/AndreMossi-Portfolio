@@ -4,28 +4,24 @@ import { FaCog, FaFileAlt } from 'react-icons/fa'
 export const interestTypes = [
     {
         id: 'general',
-        title: 'General',
         color: 'teal',
         icon: <FaCog />,
-        types: ['feat', 'Timeline', 'About']
+        types: ['feat', 'timeline', 'about']
     },
     {
         id: 'experience',
-        title: 'Experience',
         color: 'cyan',
         icon: <FaSuitcase />,
-        types: ['Intern', 'Research', 'Awards', 'Projects', 'Certifications']
+        types: ['intern', 'research', 'awards', 'projects', 'certifications']
     },
     {
         id: 'resume',
-        title: 'Resume',
         color: 'orange',
         icon: <FaFileAlt />,
-        types: ['English', 'Spanish', 'Japanese']
+        types: ['english', 'spanish', 'japanese']
     },
     {
         id: 'developer',
-        title: 'Development',
         color: 'purple',
         icon: <FaCode />,
         types: ['fix', 'perf', 'refactor', 'docs', 'style', 'chore']

@@ -1,0 +1,207 @@
+{
+    "news-titles": [
+        {
+            "locale": "en",
+            "interests": "Interests",
+            "general": "General",
+            "experience": "Experience",
+            "resume": "Resume",
+            "developer": "Development",
+            "latestUpdates": "Latest Updates"
+        },
+        {
+            "locale": "ja",
+            "interests": "関心事",
+            "general": "一般",
+            "experience": "経験",
+            "resume": "履歴書",
+            "developer": "開発",
+            "latestUpdates": "最新アップデート"
+        },
+        {
+            "locale": "es",
+            "interests": "Intereses",
+            "general": "General",
+            "experience": "Experiencia",
+            "resume": "Currículum",
+            "developer": "Desarrollo",
+            "latestUpdates": "Últimas Actualizaciones"
+        }
+    ],
+    "news-ui": [
+        {
+            "locale": "en",
+            "noResults": "No news matching your interests yet",
+            "retry": "Retry",
+            "loadMore": "Load more news",
+            "failed": "Failed to load news",
+            "newsButton": "News"
+        },
+        {
+            "locale": "ja",
+            "noResults": "関心に合うニュースがまだありません",
+            "retry": "再試行",
+            "loadMore": "さらに読み込み",
+            "failed": "ニュースの読み込みに失敗しました",
+            "newsButton": "ニュース"
+        },
+        {
+            "locale": "es",
+            "noResults": "No hay noticias que coincidan con tus intereses aún",
+            "retry": "Reintentar",
+            "loadMore": "Cargar más noticias",
+            "failed": "Error al cargar noticias",
+            "newsButton": "Noticias"
+        }
+    ],
+    "notifications": [
+        {
+            "locale": "en",
+            "enabled": "Notifications enabled!",
+            "thanks": "Thanks for showing interest.",
+            "disabled": "Notifications disabled",
+            "denied": "Permission denied",
+            "deniedDesc": "Notifications require browser permission.",
+            "notSupported": "Notifications not supported"
+        },
+        {
+            "locale": "ja",
+            "enabled": "通知を有効にしました！",
+            "thanks": "ご興味ありがとうございます。",
+            "disabled": "通知を無効にしました",
+            "denied": "権限拒否",
+            "deniedDesc": "通知にはブラウザの権限が必要です。",
+            "notSupported": "通知はサポートされていません"
+        },
+        {
+            "locale": "es",
+            "enabled": "¡Notificaciones habilitadas!",
+            "thanks": "Gracias por tu interés.",
+            "disabled": "Notificaciones desactivadas",
+            "denied": "Permiso denegado",
+            "deniedDesc": "Las notificaciones requieren permiso del navegador.",
+            "notSupported": "Notificaciones no soportadas"
+        }
+    ],
+    "types": [
+        {
+            "locale": "en",
+            "feat": "Feature Update",
+            "fix": "Bug Fix",
+            "perf": "Performance Improvement",
+            "refactor": "Code Improvement",
+            "docs": "Documentation Update",
+            "style": "Style Update",
+            "chore": "Maintenance",
+            "intern": "Internship Update",
+            "research": "Research Update",
+            "awards": "New Achievement",
+            "projects": "Project Update",
+            "timeline": "Career Timeline Updated",
+            "about": "About Page Updated",
+            "resume-en": "Resume English Updated",
+            "resume-es": "Resume Spanish Updated",
+            "resume-jp": "Resume Japanese Updated"
+        },
+        {
+            "locale": "ja",
+            "feat": "新機能",
+            "fix": "バグ修正",
+            "perf": "性能向上",
+            "refactor": "コード改善",
+            "docs": "ドキュメント更新",
+            "style": "スタイル更新",
+            "chore": "メンテナンス",
+            "intern": "インターン更新",
+            "research": "研究更新",
+            "awards": "新受賞",
+            "projects": "プロジェクト更新",
+            "timeline": "キャリアタイムライン更新",
+            "about": "自己紹介更新",
+            "resume-en": "英語履歴書更新",
+            "resume-es": "スペイン語履歴書更新",
+            "resume-jp": "日本語履歴書更新"
+        },
+        {
+            "locale": "es",
+            "feat": "Nueva Característica",
+            "fix": "Corrección de Error",
+            "perf": "Mejora de Rendimiento",
+            "refactor": "Mejora de Código",
+            "docs": "Actualización de Documentación",
+            "style": "Actualización de Estilos",
+            "chore": "Mantenimiento",
+            "intern": "Actualización de Pasantía",
+            "research": "Actualización de Investigación",
+            "awards": "Nuevo Logro",
+            "projects": "Actualización de Proyecto",
+            "timeline": "Cronología Actualizada",
+            "about": "Acerca de Actualizado",
+            "resume-en": "Currículum Inglés Actualizado",
+            "resume-es": "Currículum Español Actualizado",
+            "resume-jp": "Currículum Japonés Actualizado"
+        }
+    ],
+    "switch-types": [
+        {
+            "locale": "en",
+            "feat": "Feat",
+            "timeline": "Timeline",
+            "about": "About",
+            "intern": "Intern",
+            "research": "Research",
+            "awards": "Awards",
+            "projects": "Projects",
+            "certifications": "Certifications",
+            "english": "English",
+            "spanish": "Spanish",
+            "japanese": "Japanese",
+            "fix": "Fix",
+            "perf": "Performance",
+            "refactor": "Refactor",
+            "docs": "Docs",
+            "style": "Style",
+            "chore": "Chore"
+        },
+        {
+            "locale": "ja",
+            "feat": "機能",
+            "timeline": "タイムライン",
+            "about": "自己紹介",
+            "intern": "インターン",
+            "research": "研究",
+            "awards": "受賞歴",
+            "projects": "プロジェクト",
+            "certifications": "証明書",
+            "english": "英語",
+            "spanish": "スペイン語",
+            "japanese": "日本語",
+            "fix": "修正",
+            "perf": "性能",
+            "refactor": "リファクタ",
+            "docs": "ドキュメント",
+            "style": "スタイル",
+            "chore": "メンテ"
+        },
+        {
+            "locale": "es",
+            "feat": "Feat",
+            "timeline": "Cronología",
+            "about": "Acerca de",
+            "intern": "Pasantía",
+            "research": "Investigación",
+            "awards": "Premios",
+            "projects": "Proyectos",
+            "certifications": "Certificados",
+            "english": "Inglés",
+            "spanish": "Español",
+            "japanese": "Japonés",
+            "fix": "Fix",
+            "perf": "Rendimiento",
+            "refactor": "Refactor",
+            "docs": "Documentos",
+            "style": "Estilo",
+            "chore": "Mantenimiento"
+        }
+    ]
+}

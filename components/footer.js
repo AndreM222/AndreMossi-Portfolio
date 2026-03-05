@@ -17,12 +17,14 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import UpToggle from './Buttons/up-toggle'
-import miscLang from '../locales/misc.json'
 import Content from './content'
 import DateSetup from './dateSetup'
 import { QRCodeButton } from './QRCodeViwer'
 import { NewsButton } from './newsModule'
 import { useEffect, useRef, useState } from 'react'
+
+import miscLang from '../locales/misc.json'
+import newsLang from '../locales/pages/news.json'
 
 const LinkButton = ({ target, href, icon, children, ...props }) => {
     return (
@@ -162,7 +164,7 @@ const Footer = () => {
                             : '0 10px 30px rgba(249, 115, 22, 0.4)'
                     }}
                 >
-                    {isVisible ? "News" : <FaNewspaper />}
+                    {isVisible ? Content(newsLang, 'news-ui', 'newsButton') : <FaNewspaper />}
                 </NewsButton>
             </Box>
 

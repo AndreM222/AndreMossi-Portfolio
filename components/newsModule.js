@@ -34,12 +34,17 @@ import { getDateFormat } from './dateSetup'
 import { ExperienceGridItem } from './grid-item'
 import Content from './content'
 
-import experienceLang from '../locales/pages/experience.json'
-import { humanizeSummary, typeConfig } from './humanizeCommits'
+import { humanizeSummary } from './humanizeCommits'
 import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
-import { defaultInterestsSettings as defaultInterestSettings, interestTypes } from '../api/newsAPI'
+import {
+    defaultInterestsSettings as defaultInterestSettings,
+    interestTypes
+} from '../api/newsAPI'
+
+import experienceLang from '../locales/pages/experience.json'
+import newsLang from '../locales/pages/news.json'
 
 const MotionBox = motion(Box)
 
@@ -177,7 +182,7 @@ const NewsItem = ({ news }) => {
                 <HStack>
                     {categoryMeta.icon}
                     <Badge colorScheme={categoryMeta.color}>
-                        {typeConfig[news.type].toUpperCase()}
+                        {Content(newsLang, 'types', news.type)}
                     </Badge>
                 </HStack>
                 <Text fontSize="sm" opacity={0.7}>
@@ -240,7 +245,9 @@ const InterestSettings = ({ preference, setPreferences }) => {
                     <Box key={section.id}>
                         <Flex align="center" gap={3} mb={4}>
                             {section.icon}
-                            <Heading size="lg">{section.title}</Heading>
+                            <Heading size="lg">
+                                {Content(newsLang, 'news-titles', section.id)}
+                            </Heading>
                         </Flex>
                         <Divider mb={4} />
                         <Flex
@@ -259,7 +266,13 @@ const InterestSettings = ({ preference, setPreferences }) => {
                                     border="1px solid"
                                     borderColor="whiteAlpha.200"
                                 >
-                                    <Text minW="100px">{item}</Text>
+                                    <Text minW="100px">
+                                        {Content(
+                                            newsLang,
+                                            'switch-types',
+                                            item
+                                        )}
+                                    </Text>
                                     <Switch
                                         id={`${section.id}-${item}`}
                                         colorScheme={section.color}
@@ -340,7 +353,7 @@ const NewsScreen = ({ preference }) => {
 
                 {error && (
                     <Text color="orange.400" textAlign="center">
-                        Failed to load news.{' '}
+                        {Content(newsLang, 'news-ui', 'failed')}
                         <Button
                             variant="link"
                             onClick={() =>
@@ -350,14 +363,14 @@ const NewsScreen = ({ preference }) => {
                             }
                             size="sm"
                         >
-                            Retry
+                            {Content(newsLang, 'news-ui', 'retry')}
                         </Button>
                     </Text>
                 )}
 
                 {!isLoading && !error && allNews.length === 0 && (
                     <Text textAlign="center" opacity={0.6}>
-                        No news matching your interests yet
+                        {Content(newsLang, 'news-ui', 'noResults')}
                     </Text>
                 )}
 
@@ -381,7 +394,7 @@ const NewsScreen = ({ preference }) => {
                                 colorScheme="orange"
                                 onClick={() => fetchNextPage()}
                             >
-                                Load more news
+                                {Content(newsLang, 'news-ui', 'loadMore')}
                             </Button>
                         )}
                     </Box>
@@ -547,7 +560,13 @@ export const NewsModal = ({ isOpen, onClose }) => {
 
                     <Flex direction="column" align="center" pt={12}>
                         <Heading zIndex={10}>
-                            {interestOpen ? 'Interests' : 'Latest Updates'}
+                            {interestOpen
+                                ? Content(newsLang, 'news-titles', 'interests')
+                                : Content(
+                                    newsLang,
+                                    'news-titles',
+                                    'latestUpdates'
+                                )}
                         </Heading>
                     </Flex>
                 </ModalHeader>
