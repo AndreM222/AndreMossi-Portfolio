@@ -2,7 +2,10 @@ import { NextResponse } from 'next/server'
 import { kv } from '@vercel/kv'
 import { fetchRecentCommits, parseCommitForNews } from '../../../api/gitAPI'
 import webpush from 'web-push'
-import { humanizeSummary, typeConfig } from '../../../components/humanizeCommits'
+import {
+    humanizeSummary,
+    typeConfig
+} from '../../../components/humanizeCommits'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -10,10 +13,18 @@ webpush.setVapidDetails(
     process.env.VAPID_PRIVATE_KEY
 )
 
-export async function GET() {
+export async function GET(request) {
     try {
-        const commits = await fetchRecentCommits(25)
-        const parsed = commits.map(parseCommitForNews).filter(Boolean)
+        const { searchParams } = new URL(request.url || '')
+        const page = parseInt(searchParams.get('page') || '1')
+        const limit = parseInt(searchParams.get('limit') || '25')
+        const offset = (page - 1) * limit
+
+        const commits = await fetchRecentCommits(100)
+        const parsed = commits
+            .map(parseCommitForNews)
+            .filter(Boolean)
+            .slice(offset, offset + limit)
 
         return NextResponse.json(parsed, {
             headers: {
@@ -45,8 +56,7 @@ export async function POST() {
                 await webpush.sendNotification(
                     sub,
                     JSON.stringify({
-                        title:
-                            typeConfig[newsItem.type] || 'Portfolio updated',
+                        title: typeConfig[newsItem.type] || 'Portfolio updated',
                         body: humanizeSummary(newsItem.summary),
                         url: 'https://andremossi.vercel.app/?entry=news'
                     })

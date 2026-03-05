@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { interestTypes } from './newsAPI'
 
 const gitUserApi = axios.create({
     baseURL: 'https://api.github.com/users/AndreM222'
@@ -180,11 +181,14 @@ export const parseCommitForNews = commit => {
     const type = match ? match[1].toLowerCase() : 'chore'
     const scope = match ? match[2] : null
     const summary = match ? match[3] : firstLine
+    const category = interestTypes.find(section =>
+        section.types.includes(type)
+    )?.id || 'developer'
 
     return {
         id: commit.url,
         type,
-        category: 'developer',
+        category: category,
         date: commit.date.split('T')[0],
         title: scope || type,
         summary,

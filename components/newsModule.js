@@ -22,9 +22,9 @@ import {
     useToast
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
-import { FaCode, FaNewspaper, FaSuitcase } from 'react-icons/fa6'
-import { FaCog, FaFileAlt, FaListAlt } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { FaNewspaper } from 'react-icons/fa6'
+import { FaListAlt } from 'react-icons/fa'
+import { motion, useInView } from 'framer-motion'
 import {
     IoGitBranchOutline,
     IoNotifications,
@@ -38,39 +38,10 @@ import experienceLang from '../locales/pages/experience.json'
 import { humanizeSummary, typeConfig } from './humanizeCommits'
 import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
+import { defaultInterestsSettings as defaultInterestSettings, interestTypes } from '../api/newsAPI'
 
 const MotionBox = motion(Box)
-
-const interestTypes = [
-    {
-        id: 'general',
-        title: 'General',
-        color: 'teal',
-        icon: <FaCog />,
-        types: ['Timeline', 'About']
-    },
-    {
-        id: 'experience',
-        title: 'Experience',
-        color: 'cyan',
-        icon: <FaSuitcase />,
-        types: ['Intern', 'Research', 'Awards', 'Projects', 'Certifications']
-    },
-    {
-        id: 'resume',
-        title: 'Resume',
-        color: 'orange',
-        icon: <FaFileAlt />,
-        types: ['English', 'Spanish', 'Japanese']
-    },
-    {
-        id: 'developer',
-        title: 'Development',
-        color: 'purple',
-        icon: <FaCode />,
-        types: ['feat', 'fix', 'perf', 'refactor', 'docs', 'style', 'chore']
-    }
-]
 
 const InterestButton = ({ isInterestsOpen, setInterestsOpen, ...props }) => {
     return (
@@ -112,7 +83,7 @@ const NotificationsButton = ({
 const getCategoryMeta = category =>
     interestTypes.find(t => t.id === category) ?? interestTypes[0]
 
-const NewsSkeleton = () => {
+const NewsSkeleton = ({ ...props }) => {
     const cardShadow = useColorModeValue(
         '0 10px 30px rgba(0,0,0,0.12)',
         '0 10px 30px rgba(0,0,0,0.6)'
@@ -126,7 +97,7 @@ const NewsSkeleton = () => {
             backdropFilter="blur(10px)"
             border="1px solid"
             borderColor="whiteAlpha.200"
-            mb={4}
+            mb={8}
             cursor="pointer"
             boxShadow={cardShadow}
             _hover={{
@@ -136,6 +107,7 @@ const NewsSkeleton = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
             whileHover={{ scale: 1.02 }}
+            {...props}
         >
             <Flex justify="space-between" align="center" mb={3}>
                 <HStack>
@@ -312,48 +284,108 @@ const InterestSettings = ({ preference, setPreferences }) => {
     )
 }
 
+const fetchNewsPage = async ({ pageParam = 1 }) => {
+    const res = await fetch(`/api/news?page=${pageParam}&limit=10`)
+    if (!res.ok) throw new Error('Failed to fetch news')
+    return res.json()
+}
+
 const NewsScreen = ({ preference }) => {
-    const [news, setNews] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const queryClient = useQueryClient()
+
+    const {
+        data,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+        isLoading,
+        error
+    } = useInfiniteQuery({
+        queryKey: ['news', preference],
+        queryFn: fetchNewsPage,
+        initialPageParam: 1,
+        getNextPageParam: (lastPage, pages) => {
+            return lastPage.length === 10 ? pages.length + 1 : undefined
+        },
+        select: data => ({
+            pages: data.pages.flatMap(page =>
+                page.filter(item => {
+                    const prefs = preference[item.category]
+                    return prefs?.[item.type]
+                })
+            ),
+            pageParams: data.pageParams
+        })
+    })
+
+    const { ref, inView } = useInView({
+        threshold: 0.1
+    })
 
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                setIsLoading(true)
-                const res = await fetch('/api/news')
-                const data = await res.json()
-                setNews(data)
-            } catch (error) {
-                console.error('Failed to fetch news:', error)
-            } finally {
-                setIsLoading(false)
-            }
+        if (inView && hasNextPage && !isFetchingNextPage) {
+            fetchNextPage()
         }
+    }, [inView, hasNextPage, fetchNextPage, isFetchingNextPage])
 
-        fetchNews()
-    }, [])
-
-    const filteredNews = news.filter(item => {
-        const prefs = preference[item.category]
-        return prefs?.[item.type]
-    })
+    const allNews = data?.pages || []
 
     return (
         <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
             <VStack spacing={{ base: 4, md: 6 }} align="stretch">
-                {filteredNews.length
-                    ? filteredNews.map(item => (
-                        <NewsItem key={item.id} news={item} />
-                    ))
-                    : !isLoading && (
-                        <Text textAlign="center" opacity={0.6}>
-                            No news matching your interests yet
-                        </Text>
-                    )}
                 {isLoading &&
                     Array.from({ length: 5 }).map((_, i) => (
-                        <NewsSkeleton key={i} />
+                        <NewsSkeleton key={`skeleton-${i}`} />
                     ))}
+
+                {error && (
+                    <Text color="orange.400" textAlign="center">
+                        Failed to load news.{' '}
+                        <Button
+                            variant="link"
+                            onClick={() =>
+                                queryClient.invalidateQueries({
+                                    queryKey: ['news']
+                                })
+                            }
+                            size="sm"
+                        >
+                            Retry
+                        </Button>
+                    </Text>
+                )}
+
+                {!isLoading && !error && allNews.length === 0 && (
+                    <Text textAlign="center" opacity={0.6}>
+                        No news matching your interests yet
+                    </Text>
+                )}
+
+                {!isLoading &&
+                    allNews.map((newsItem, idx) => (
+                        <NewsItem
+                            key={`${newsItem.id}-${idx}`}
+                            news={newsItem}
+                        />
+                    ))}
+
+                {hasNextPage && (
+                    <Box ref={ref} textAlign="center">
+                        {isFetchingNextPage ? (
+                            Array.from({ length: 5 }).map((_, i) => (
+                                <NewsSkeleton key={`skeleton-${i}`} />
+                            ))
+                        ) : (
+                            <Button
+                                variant="ghost"
+                                colorScheme="orange"
+                                onClick={() => fetchNextPage()}
+                            >
+                                Load more news
+                            </Button>
+                        )}
+                    </Box>
+                )}
             </VStack>
         </Box>
     )
@@ -367,30 +399,6 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const [interestOpen, setInterestOpen] = useState(false)
 
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
-
-    const defaultSettings = {
-        general: {
-            Timeline: true,
-            About: true
-        },
-        experience: {
-            Intern: true,
-            Research: true,
-            Awards: true,
-            Projects: true,
-            Certifications: true
-        },
-        resume: { English: true, Spanish: true, Japanese: true },
-        developer: {
-            feat: true,
-            fix: true,
-            perf: true,
-            refactor: true,
-            docs: true,
-            style: true,
-            chore: true
-        }
-    }
 
     useEffect(() => {
         if (typeof window !== 'undefined' && 'Notification' in window) {
@@ -471,13 +479,13 @@ export const NewsModal = ({ isOpen, onClose }) => {
     }, [notificationsEnabled, toast])
 
     const [preference, setPreferences] = useState(() => {
-        if (typeof window === 'undefined') return defaultSettings
+        if (typeof window === 'undefined') return defaultInterestSettings
 
         try {
             const saved = localStorage.getItem('andre_news_preferences')
-            return saved ? JSON.parse(saved) : defaultSettings
+            return saved ? JSON.parse(saved) : defaultInterestSettings
         } catch {
-            return defaultSettings
+            return defaultInterestSettings
         }
     })
 

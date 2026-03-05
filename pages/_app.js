@@ -5,6 +5,17 @@ import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import '../lib/sweeper.css'
 import { useEffect } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            gcTime: 10 * 60 * 1000,
+            refetchOnWindowFocus: false
+        }
+    }
+})
 
 function Website({ Component, pageProps, router }) {
     useEffect(() => {
@@ -16,11 +27,13 @@ function Website({ Component, pageProps, router }) {
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
-            <Layout router={router}>
-                <AnimatePresence mode="wait" initial={true}>
-                    <Component {...pageProps} key={router.route} />
-                </AnimatePresence>
-            </Layout>
+            <QueryClientProvider client={queryClient}>
+                <Layout router={router}>
+                    <AnimatePresence mode="wait" initial={true}>
+                        <Component {...pageProps} key={router.route} />
+                    </AnimatePresence>
+                </Layout>
+            </QueryClientProvider>
         </ChakraProvider>
     )
 }
