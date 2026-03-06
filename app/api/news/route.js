@@ -242,14 +242,14 @@ export async function POST(request) {
                     console.log("Parsed Sub - subscription: " + parsed.subscription)
                     console.log("Parsed Sub - locale: " + parsed.locale)
 
-                    await webpush.sendNotification(
-                        parsed.subscription,
-                        JSON.stringify({
-                            title,
-                            body: bodyText,
-                            url: 'https://andremossi.vercel.app/?entry=news'
-                        })
-                    )
+                    // await webpush.sendNotification(
+                    //     parsed.subscription,
+                    //     JSON.stringify({
+                    //         title,
+                    //         body: bodyText,
+                    //         url: 'https://andremossi.vercel.app/?entry=news'
+                    //     })
+                    // )
                 } catch (err) {
                     console.error('Push error:', err)
 
