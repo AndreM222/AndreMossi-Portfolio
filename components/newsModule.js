@@ -658,7 +658,7 @@ export const NewsButton = ({ children, ...props }) => {
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('news_unread', unreadNews)
+        if(unreadNews) localStorage.setItem('news_unread', unreadNews)
     }, [unreadNews])
 
     return (
@@ -679,6 +679,7 @@ export const NewsButton = ({ children, ...props }) => {
                 transition="all 0.3s ease"
                 onClick={() => {
                     setUnreadNews(0)
+                    localStorage.setItem('news_unread', 0)
                     onOpen()
                 }}
                 position="relative"
@@ -702,7 +703,7 @@ export const NewsButton = ({ children, ...props }) => {
                         boxShadow="0 0 10px red.500"
                         animation="pulse 1.5s infinite"
                     >
-                        {localStorage.getItem('news_unread')}
+                        {unreadNews}
                     </Box>
                 )}
             </Button>
