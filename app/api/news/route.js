@@ -234,6 +234,8 @@ export async function POST(request) {
 
         const subscribers = await kv.smembers('push_subscribers')
 
+        console.log('Subscribers:', subscribers)
+
         await Promise.allSettled(
             subscribers.map(async sub => {
                 const data = JSON.parse(sub)
