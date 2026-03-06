@@ -241,6 +241,8 @@ export async function POST(request) {
                     console.log("Parsed Sub: " + parsed)
                     console.log("Parsed Sub - subscription: " + parsed.subscription)
                     console.log("Parsed Sub - locale: " + parsed.locale)
+                    console.log("title: " + title)
+                    console.log("bodyText: " + bodyText)
 
                     // await webpush.sendNotification(
                     //     parsed.subscription,
