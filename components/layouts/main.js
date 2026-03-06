@@ -11,11 +11,15 @@ import miscLang from '../../locales/misc.json'
 import { Analytics } from '@vercel/analytics/react'
 
 const Main = ({ children, router }) => {
-
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
-                <link rel="manifest" href="/manifest.json" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta
+                    name="apple-mobile-web-app-status-bar-style"
+                    content="black-translucent"
+                />
+                <link rel="manifest" href="/api/manifest.webmanifest" />
                 <meta name="author" content="André Mossi" />
                 <meta property="og:title" content="André Mossi" />
                 <meta property="og:type" content="website" />
@@ -35,9 +39,16 @@ const Main = ({ children, router }) => {
                     name="twitter:image"
                     content="https://andremossi.vercel.app/Banner.png"
                 />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
                 <meta name="darkreader-lock" />
-                <link rel="shortcut icon" href="/favicon-web.ico" type="image/x-icon" />
+                <link
+                    rel="shortcut icon"
+                    href="/favicon-web.ico"
+                    type="image/x-icon"
+                />
                 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
                 <title>{Content(miscLang, 'title', 'name')}</title>
             </Head>
