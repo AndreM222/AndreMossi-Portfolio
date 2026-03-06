@@ -247,14 +247,14 @@ export async function POST(request) {
                     console.log("title: " + title)
                     console.log("bodyText: " + bodyText)
 
-                    // await webpush.sendNotification(
-                    //     parsed.subscription,
-                    //     JSON.stringify({
-                    //         title,
-                    //         body: bodyText,
-                    //         url: 'https://andremossi.vercel.app/?entry=news'
-                    //     })
-                    // )
+                    await webpush.sendNotification(
+                        sub.subscription,
+                        JSON.stringify({
+                            title,
+                            body: bodyText,
+                            url: 'https://andremossi.vercel.app/?entry=news'
+                        })
+                    )
                 } catch (err) {
                     console.error('Push error:', err)
 
