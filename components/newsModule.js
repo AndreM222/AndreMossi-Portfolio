@@ -634,81 +634,58 @@ export const NewsModal = ({ isOpen, onClose }) => {
 
 export const NewsButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [hasUnread, setHasUnread] = useState(false)
+    const [unreadNews, setUnreadNews] = useState(0)
 
     useEffect(() => {
-        const count = localStorage.getItem('news_unread_count')
-        setHasUnread(count > 0)
+        if (!('serviceWorker' in navigator)) return
 
-        console.log('Has Unread: ' + count)
-
-        if ('serviceWorker' in navigator) {
-            const handleMessage = event => {
-                console.log('📨 SW MSG:', event.data) // DEBUG
-                if (event.data?.type === 'UNREAD_NOTIFICATION') {
-                    const count = event.data.count || 1
-                    localStorage.setItem('news_unread_count', count.toString())
-                    setHasUnread(count > 0)
-                }
-            }
-
-            navigator.serviceWorker.addEventListener('message', handleMessage)
-
-            navigator.serviceWorker.controller?.addEventListener(
-                'message',
-                handleMessage
-            )
-
-            return () => {
-                navigator.serviceWorker.removeEventListener(
-                    'message',
-                    handleMessage
-                )
-                navigator.serviceWorker.controller?.removeEventListener(
-                    'message',
-                    handleMessage
-                )
+        const handler = event => {
+            if (event.data?.type === 'UNREAD_NOTIFICATION') {
+                setUnreadNews(prev => prev + event.data.count)
             }
         }
-    }, [])
 
-    const clearNotifications = useCallback(async () => {
-        localStorage.setItem('news_unread_count', '0') // ✅ Immediately clear
-        setHasUnread(false)
+        navigator.serviceWorker.addEventListener('message', handler)
 
-        if ('serviceWorker' in navigator) {
-            const registration = await navigator.serviceWorker.ready
-            const notifications = await registration.getNotifications({
-                tag: 'portfolio-news'
-            })
-            notifications.forEach(notif => notif.close())
+        return () => {
+            navigator.serviceWorker.removeEventListener('message', handler)
         }
     }, [])
 
     useEffect(() => {
-        if (isOpen) clearNotifications()
-    }, [isOpen, clearNotifications])
+        const stored = localStorage.getItem('news_unread')
+        if (stored) setUnreadNews(Number(stored))
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('news_unread', unreadNews)
+    }, [unreadNews])
 
     return (
         <Box position="relative">
             <Button
                 colorScheme="orange"
-                ring={hasUnread ? 3 : 0}
-                ringColor={hasUnread ? 'orange.400' : 'transparent'}
-                boxShadow={hasUnread ? '0 0 30px rgba(255, 165, 0, 0.6)' : 'md'}
+                ring={unreadNews ? 3 : 0}
+                ringColor={unreadNews ? 'orange.400' : 'transparent'}
+                boxShadow={
+                    unreadNews ? '0 0 30px rgba(255, 165, 0, 0.6)' : 'md'
+                }
                 _hover={{
-                    boxShadow: hasUnread
+                    boxShadow: unreadNews
                         ? '0 0 40px rgba(255, 165, 0, 0.8)'
                         : 'md',
                     transform: 'scale(1.05)'
                 }}
                 transition="all 0.3s ease"
-                onClick={onOpen}
+                onClick={() => {
+                    setUnreadNews(0)
+                    onOpen()
+                }}
                 position="relative"
                 {...props}
             >
                 {children}
-                {hasUnread && (
+                {unreadNews > 0 && (
                     <Box
                         position="absolute"
                         top="-1"
@@ -725,7 +702,7 @@ export const NewsButton = ({ children, ...props }) => {
                         boxShadow="0 0 10px red.500"
                         animation="pulse 1.5s infinite"
                     >
-                        {hasUnread && localStorage.getItem('news_unread_count')}
+                        {localStorage.getItem('news_unread')}
                     </Box>
                 )}
             </Button>

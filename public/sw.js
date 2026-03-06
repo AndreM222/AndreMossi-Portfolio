@@ -2,25 +2,29 @@ self.addEventListener('push', event => {
     const data = event.data.json()
 
     event.waitUntil(
-        Promise.all([
-            self.registration.showNotification(data.title, {
+        (async () => {
+            const allClients = await self.clients.matchAll({
+                type: 'window',
+                includeUncontrolled: true
+            })
+
+            await self.registration.showNotification(data.title, {
                 body: data.body,
                 icon: '/apple-touch-icon.png',
                 badge: '/apple-touch-icon.png',
-                vibrate: [100, 50, 100],
                 tag: 'portfolio-news',
-                data: { url: data.url }
-            }),
-
-            self.clients.matchAll().then(clients => {
-                clients.forEach(client => {
-                    client.postMessage({
-                        type: 'UNREAD_NOTIFICATION',
-                        count: 1
-                    })
-                })
+                data: {
+                    url: data.url
+                }
             })
-        ])
+
+            for (const client of allClients) {
+                client.postMessage({
+                    type: 'UNREAD_NOTIFICATION',
+                    count: 1
+                })
+            }
+        })()
     )
 })
 
