@@ -463,7 +463,6 @@ export const NewsModal = ({ isOpen, onClose }) => {
             })
 
             const userLocale = navigator.language.split('-')[0]
-            console.log('User Locale: ' + userLocale)
 
             await fetch('/api/subscribe', {
                 method: 'POST',

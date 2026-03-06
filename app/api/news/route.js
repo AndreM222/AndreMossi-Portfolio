@@ -190,18 +190,25 @@ export async function POST(request) {
            BUILD NOTIFICATION CONTENT
            =========================== */
 
-        let title = ''
-        let bodyText = ''
+        const buildNotificationTitle = (locale, newItems) => {
+            if (newItems.length === 1) {
+                const single = newItems[0]
 
-        if (newItems.length === 1) {
-            const single = newItems[0]
+                return (
+                    NavContent(newsLang, 'types', single.type, locale) ||
+                    NavContent(newsLang, 'types', 'feat', locale)
+                )
+            }
 
-            title =
-                NavContent(newsLang, 'types', single.type) ||
-                NavContent(newsLang, 'types', 'feat')
+            return `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content', locale)}`
+        }
 
-            bodyText = humanizeSummary(single.summary)
-        } else {
+        const buildNotificationBody = (locale, newItems) => {
+            if (newItems.length === 1) {
+                const single = newItems[0]
+                return humanizeSummary(single.summary)
+            }
+
             const counts = {}
 
             for (const item of newItems) {
@@ -210,22 +217,24 @@ export async function POST(request) {
 
             const parts = Object.entries(counts).map(
                 ([type, count]) =>
-                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
+                    `${count} ${NavContent(newsLang, 'switch-types', type, locale)}`
             )
 
-            const separator = NavContent(grammarLang, 'separator', 'content')
-            const andWord = NavContent(grammarLang, 'and', 'content')
+            const separator = NavContent(
+                grammarLang,
+                'separator',
+                'content',
+                locale
+            )
+            const andWord = NavContent(grammarLang, 'and', 'content', locale)
 
-            if (parts.length === 1) {
-                bodyText = parts[0]
-            } else {
-                bodyText =
-                    parts.slice(0, -1).join(separator) +
-                    andWord +
-                    parts[parts.length - 1]
-            }
+            if (parts.length === 1) return parts[0]
 
-            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
+            return (
+                parts.slice(0, -1).join(separator) +
+                andWord +
+                parts[parts.length - 1]
+            )
         }
 
         /* ===========================
@@ -237,15 +246,8 @@ export async function POST(request) {
         await Promise.allSettled(
             subscribers.map(async sub => {
                 try {
-                    console.log("Sub: " + sub)
-                    console.log("Sub - subscription: " + sub.subscription)
-                    console.log("Sub - locale: " + sub.locale)
-                    // const parsed = JSON.parse(sub)
-                    // console.log("Parsed Sub: " + parsed)
-                    // console.log("Parsed Sub - subscription: " + parsed.subscription)
-                    // console.log("Parsed Sub - locale: " + parsed.locale)
-                    console.log("title: " + title)
-                    console.log("bodyText: " + bodyText)
+                    const title = buildNotificationTitle(sub.locale, newItems)
+                    const bodyText = buildNotificationBody(sub.locale, newItems)
 
                     await webpush.sendNotification(
                         sub.subscription,
