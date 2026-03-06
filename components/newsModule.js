@@ -637,6 +637,10 @@ export const NewsButton = ({ children, ...props }) => {
     const [unreadNews, setUnreadNews] = useState(0)
 
     useEffect(() => {
+        if (!localStorage.getItem('news_unread')) {
+            localStorage.setItem('news_unread', 0)
+        }
+
         const update = () =>
             setUnreadNews(Number(localStorage.getItem('news_unread')) || 0)
 

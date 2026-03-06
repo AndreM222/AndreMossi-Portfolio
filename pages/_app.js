@@ -25,14 +25,24 @@ function Website({ Component, pageProps, router }) {
     }, [])
 
     useEffect(() => {
-        navigator.serviceWorker.onmessage = e => {
-            if (e.data?.type === 'news-unread') {
-                const next =
-                    (Number(localStorage.getItem('news_unread')) || 0) + 1
+        if (!('serviceWorker' in navigator)) return
+
+        const handler = event => {
+            if (event.data?.type === 'UNREAD_NOTIFICATION') {
+                const current = Number(localStorage.getItem('news_unread')) || 0
+
+                const next = current + event.data.count
+
                 localStorage.setItem('news_unread', next)
+
                 window.dispatchEvent(new Event('news-update'))
             }
         }
+
+        navigator.serviceWorker.addEventListener('message', handler)
+
+        return () =>
+            navigator.serviceWorker.removeEventListener('message', handler)
     }, [])
 
     return (

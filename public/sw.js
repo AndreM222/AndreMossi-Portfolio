@@ -17,7 +17,12 @@ self.addEventListener('push', event => {
                 type: 'window',
                 includeUncontrolled: true
             })
-            clients.forEach(c => c.postMessage({ type: 'news-unread' }))
+            clients.forEach(c =>
+                c.postMessage({
+                    type: 'UNREAD_NOTIFICATION',
+                    count: 1
+                })
+            )
         })()
     )
 })
