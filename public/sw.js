@@ -8,21 +8,21 @@ self.addEventListener('push', event => {
                 icon: '/apple-touch-icon.png',
                 badge: '/apple-touch-icon.png',
                 tag: 'portfolio-news',
-                data: {
-                    url: data.url
-                }
+                data: { url: data.url }
             })
 
-            const clients = await self.clients.matchAll({
+            const allClients = await clients.matchAll({
                 type: 'window',
                 includeUncontrolled: true
             })
-            clients.forEach(c =>
-                c.postMessage({
+
+            for (const client of allClients) {
+                console.log("PUSH RECEIVED")
+                client.postMessage({
                     type: 'UNREAD_NOTIFICATION',
                     count: 1
                 })
-            )
+            }
         })()
     )
 })
