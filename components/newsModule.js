@@ -34,9 +34,8 @@ import { getDateFormat } from './dateSetup'
 import { ExperienceGridItem } from './grid-item'
 import Content from './content'
 
-import { humanizeSummary } from './humanizeCommits'
+import { decorateSummary, humanizeSummary } from './humanizeCommits'
 import { useRouter } from 'next/router'
-import { useSearchParams } from 'next/navigation'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import {
     defaultInterestsSettings as defaultInterestSettings,
@@ -196,11 +195,11 @@ const NewsItem = ({ news }) => {
             </Heading>
 
             <Text fontSize="lg" mb={3} fontWeight="medium">
-                {humanizeSummary(news.summary)}
+                {decorateSummary(humanizeSummary(news.summary))}
             </Text>
 
             <Text opacity={0.8} lineHeight="1.6" mb={3}>
-                {humanizeSummary(news.description)}
+                {decorateSummary(humanizeSummary(news.description))}
             </Text>
 
             <Box justifySelf="center" mt={2}>
@@ -429,7 +428,13 @@ export const NewsModal = ({ isOpen, onClose }) => {
     const handleNotificationsToggle = useCallback(async () => {
         if (!('Notification' in window)) {
             toast({
-                title: NavContent(newsLang, 'notifications', 'denied', locale, defaultLocale),
+                title: NavContent(
+                    newsLang,
+                    'notifications',
+                    'denied',
+                    locale,
+                    defaultLocale
+                ),
                 status: 'warning',
                 duration: 3000
             })
@@ -456,9 +461,16 @@ export const NewsModal = ({ isOpen, onClose }) => {
                 )
             })
 
+            const userLocale = navigator.language.split('-')[0]
+            console.log("User Locale: " + userLocale)
+
             await fetch('/api/subscribe', {
                 method: 'POST',
-                body: JSON.stringify(subscription),
+                body: JSON.stringify({
+                    subscription,
+                    locale: userLocale || 'en',
+                    updatedAt: Date.now()
+                }),
                 headers: { 'Content-Type': 'application/json' }
             })
         }
@@ -470,16 +482,40 @@ export const NewsModal = ({ isOpen, onClose }) => {
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
                 toast({
-                    title: NavContent(newsLang, 'notifications', 'enabled', locale, defaultLocale),
-                    description: NavContent(newsLang, 'notifications', 'enabledDesc', locale, defaultLocale),
+                    title: NavContent(
+                        newsLang,
+                        'notifications',
+                        'enabled',
+                        locale,
+                        defaultLocale
+                    ),
+                    description: NavContent(
+                        newsLang,
+                        'notifications',
+                        'enabledDesc',
+                        locale,
+                        defaultLocale
+                    ),
                     status: 'success',
                     duration: 3000
                 })
                 await subscribeUser()
             } else {
                 toast({
-                    title: NavContent(newsLang, 'notifications', 'denied', locale, defaultLocale),
-                    description: NavContent(newsLang, 'notifications', 'deniedDesc', locale, defaultLocale),
+                    title: NavContent(
+                        newsLang,
+                        'notifications',
+                        'denied',
+                        locale,
+                        defaultLocale
+                    ),
+                    description: NavContent(
+                        newsLang,
+                        'notifications',
+                        'deniedDesc',
+                        locale,
+                        defaultLocale
+                    ),
                     status: 'warning',
                     duration: 4000
                 })
@@ -487,7 +523,13 @@ export const NewsModal = ({ isOpen, onClose }) => {
         } else {
             setNotificationsEnabled(false)
             toast({
-                title: NavContent(newsLang, 'notifications', 'disabled', locale, defaultLocale),
+                title: NavContent(
+                    newsLang,
+                    'notifications',
+                    'disabled',
+                    locale,
+                    defaultLocale
+                ),
                 status: 'info',
                 duration: 2000
             })
@@ -591,39 +633,105 @@ export const NewsModal = ({ isOpen, onClose }) => {
     )
 }
 
-export const NewsButton = ({ title, children, src, ...props }) => {
+export const NewsButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const router = useRouter()
-    const searchParams = useSearchParams()
+    const [hasUnread, setHasUnread] = useState(false)
 
     useEffect(() => {
-        if (searchParams.get('entry') === 'news' && !isOpen) {
-            const newUrl = new URL(window.location.href)
-            newUrl.searchParams.delete('entry')
-            router.replace(newUrl.toString())
+        const count = localStorage.getItem('news_unread_count')
+        setHasUnread(count > 0)
 
-            onOpen()
+        console.log('Has Unread: ' + count)
+
+        if ('serviceWorker' in navigator) {
+            const handleMessage = event => {
+                console.log('📨 SW MSG:', event.data) // DEBUG
+                if (event.data?.type === 'UNREAD_NOTIFICATION') {
+                    const count = event.data.count || 1
+                    localStorage.setItem('news_unread_count', count.toString())
+                    setHasUnread(count > 0)
+                }
+            }
+
+            navigator.serviceWorker.addEventListener('message', handleMessage)
+
+            navigator.serviceWorker.controller?.addEventListener(
+                'message',
+                handleMessage
+            )
+
+            return () => {
+                navigator.serviceWorker.removeEventListener(
+                    'message',
+                    handleMessage
+                )
+                navigator.serviceWorker.controller?.removeEventListener(
+                    'message',
+                    handleMessage
+                )
+            }
         }
-    }, [searchParams, isOpen, router, onOpen])
+    }, [])
+
+    const clearNotifications = useCallback(async () => {
+        localStorage.setItem('news_unread_count', '0') // ✅ Immediately clear
+        setHasUnread(false)
+
+        if ('serviceWorker' in navigator) {
+            const registration = await navigator.serviceWorker.ready
+            const notifications = await registration.getNotifications({
+                tag: 'portfolio-news'
+            })
+            notifications.forEach(notif => notif.close())
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isOpen) clearNotifications()
+    }, [isOpen, clearNotifications])
 
     return (
-        <>
+        <Box position="relative">
             <Button
                 colorScheme="orange"
-                align="right"
-                alignItems="center"
+                ring={hasUnread ? 3 : 0}
+                ringColor={hasUnread ? 'orange.400' : 'transparent'}
+                boxShadow={hasUnread ? '0 0 30px rgba(255, 165, 0, 0.6)' : 'md'}
+                _hover={{
+                    boxShadow: hasUnread
+                        ? '0 0 40px rgba(255, 165, 0, 0.8)'
+                        : 'md',
+                    transform: 'scale(1.05)'
+                }}
+                transition="all 0.3s ease"
                 onClick={onOpen}
+                position="relative"
                 {...props}
             >
                 {children}
+                {hasUnread && (
+                    <Box
+                        position="absolute"
+                        top="-1"
+                        right="-1"
+                        bg="red.500"
+                        color="white"
+                        borderRadius="full"
+                        w={4}
+                        h={4}
+                        alignContent="center"
+                        justifyContent="center"
+                        fontSize="xs"
+                        fontWeight="bold"
+                        boxShadow="0 0 10px red.500"
+                        animation="pulse 1.5s infinite"
+                    >
+                        {hasUnread && localStorage.getItem('news_unread_count')}
+                    </Box>
+                )}
             </Button>
 
-            <NewsModal
-                isOpen={isOpen}
-                onClose={onClose}
-                title={title}
-                src={src}
-            />
-        </>
+            <NewsModal isOpen={isOpen} onClose={onClose} />
+        </Box>
     )
 }

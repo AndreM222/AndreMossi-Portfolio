@@ -190,42 +190,56 @@ export async function POST(request) {
            BUILD NOTIFICATION CONTENT
            =========================== */
 
-        let title = ''
-        let bodyText = ''
-
-        if (newItems.length === 1) {
-            const single = newItems[0]
-
-            title =
-                NavContent(newsLang, 'types', single.type) ||
-                NavContent(newsLang, 'types', 'feat')
-
-            bodyText = humanizeSummary(single.summary)
-        } else {
-            const counts = {}
-
-            for (const item of newItems) {
-                counts[item.type] = (counts[item.type] || 0) + 1
-            }
-
-            const parts = Object.entries(counts).map(
-                ([type, count]) =>
-                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
-            )
-
-            const separator = NavContent(grammarLang, 'separator', 'content')
-            const andWord = NavContent(grammarLang, 'and', 'content')
-
-            if (parts.length === 1) {
-                bodyText = parts[0]
+        /* ===========================
+   NOTIFICATION FUNCTIONS - LANG ONLY
+   =========================== */
+        const title = lang => {
+            if (newItems.length === 1) {
+                const single = newItems[0]
+                return (
+                    NavContent(newsLang, 'types', single.type, lang, 'en') ||
+                    NavContent(newsLang, 'types', 'feat', lang, 'en')
+                )
             } else {
-                bodyText =
-                    parts.slice(0, -1).join(separator) +
+                return `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content', lang, 'en')}`
+            }
+        }
+
+        const bodyText = lang => {
+            if (newItems.length === 1) {
+                const single = newItems[0]
+                return humanizeSummary(single.summary)
+            } else {
+                const counts = {}
+                for (const item of newItems) {
+                    counts[item.type] = (counts[item.type] || 0) + 1
+                }
+
+                const parts = Object.entries(counts).map(
+                    ([type, count]) =>
+                        `${count} ${NavContent(newsLang, 'switch-types', type, lang, 'en')}`
+                )
+                const separator = NavContent(
+                    grammarLang,
+                    'separator',
+                    'content',
+                    lang,
+                    'en'
+                )
+                const andWord = NavContent(
+                    grammarLang,
+                    'and',
+                    'content',
+                    lang,
+                    'en'
+                )
+
+                return parts.length === 1
+                    ? parts[0]
+                    : parts.slice(0, -1).join(separator) +
                     andWord +
                     parts[parts.length - 1]
             }
-
-            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
         }
 
         /* ===========================
@@ -235,19 +249,19 @@ export async function POST(request) {
         const subscribers = await kv.smembers('push_subscribers')
 
         await Promise.allSettled(
-            subscribers.map(async sub => {
+            subscribers.map(async ({subString, userlang}) => {
                 try {
                     await webpush.sendNotification(
-                        sub,
+                        subString,
                         JSON.stringify({
-                            title,
-                            body: bodyText,
+                            title: title(userlang),
+                            body: bodyText(userlang),
                             url: 'https://andremossi.vercel.app/?entry=news'
                         })
                     )
                 } catch (err) {
                     if (err.statusCode === 410 || err.statusCode === 404) {
-                        await kv.srem('push_subscribers', sub)
+                        await kv.srem('push_subscribers', subString)
                     }
                 }
             })

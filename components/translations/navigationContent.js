@@ -10,7 +10,7 @@ const NavContent = (current, category, type, langLocal, langDefaultLocale) => {
         return currentTranslation?.[type] || defaultTranslation?.[type] || ''
     }
 
-    const defaultLocale = 'en'
+    const defaultLocale = langDefaultLocale || 'en'
     const currentLang = navigator.language.split('-')[0]
 
     const currentTranslation = current[category].find(

@@ -7,9 +7,19 @@ self.addEventListener('push', event => {
             icon: '/apple-touch-icon.png',
             badge: '/apple-touch-icon.png',
             vibrate: [100, 50, 100],
+            tag: 'portfolio-news',
             data: {
                 url: data.url
             }
+        }),
+
+        self.clients.matchAll().then(clients => {
+            clients.forEach(client => {
+                client.postMessage({
+                    type: 'UNREAD_NOTIFICATION',
+                    count: 1
+                })
+            })
         })
     )
 })
