@@ -467,7 +467,8 @@ export const NewsModal = ({ isOpen, onClose }) => {
             await fetch('/api/subscribe', {
                 method: 'POST',
                 body: JSON.stringify({
-                    subscription
+                    subscription,
+                    locale: userLocale || 'en'
                 }),
                 headers: { 'Content-Type': 'application/json' }
             })

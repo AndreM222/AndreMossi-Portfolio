@@ -4,10 +4,10 @@ import { parseCommitForNews } from '../../../api/gitAPI'
 import crypto from 'crypto'
 import webpush from 'web-push'
 import { humanizeSummary } from '../../../components/humanizeCommits'
-import NavContent from '../../../components/translations/navigationContent'
+// import NavContent from '../../../components/translations/navigationContent'
 
-import newsLang from '../../../locales/pages/news.json'
-import grammarLang from '../../../locales/grammarSymbols.json'
+// import newsLang from '../../../locales/pages/news.json'
+// import grammarLang from '../../../locales/grammarSymbols.json'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -196,9 +196,9 @@ export async function POST(request) {
         if (newItems.length === 1) {
             const single = newItems[0]
 
-            title =
-                NavContent(newsLang, 'types', single.type) ||
-                NavContent(newsLang, 'types', 'feat')
+            title = 'yay'
+            // NavContent(newsLang, 'types', single.type) ||
+            // NavContent(newsLang, 'types', 'feat')
 
             bodyText = humanizeSummary(single.summary)
         } else {
@@ -208,13 +208,13 @@ export async function POST(request) {
                 counts[item.type] = (counts[item.type] || 0) + 1
             }
 
-            const parts = Object.entries(counts).map(
-                ([type, count]) =>
-                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
-            )
+            const parts = 'no' //Object.entries(counts).map(
+            // ([type, count]) =>
+            //     `${count} ${NavContent(newsLang, 'switch-types', type)}`
+            // )
 
-            const separator = NavContent(grammarLang, 'separator', 'content')
-            const andWord = NavContent(grammarLang, 'and', 'content')
+            const separator = 'sep' //NavContent(grammarLang, 'separator', 'content')
+            const andWord = 'and' //NavContent(grammarLang, 'and', 'content')
 
             if (parts.length === 1) {
                 bodyText = parts[0]
@@ -225,7 +225,7 @@ export async function POST(request) {
                     parts[parts.length - 1]
             }
 
-            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
+            title = 'title' //`${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
         }
 
         /* ===========================
@@ -233,12 +233,15 @@ export async function POST(request) {
            =========================== */
 
         const subscribers = await kv.smembers('push_subscribers')
+        console.log('Subscribers raw:', subscribers)
 
         await Promise.allSettled(
-            subscribers.map(async sub => {
+            subscribers.map(async rawSub => {
+                const sub = JSON.parse(rawSub)
+
                 try {
                     await webpush.sendNotification(
-                        sub,
+                        sub.subscription,
                         JSON.stringify({
                             title,
                             body: bodyText,
@@ -247,7 +250,7 @@ export async function POST(request) {
                     )
                 } catch (err) {
                     if (err.statusCode === 410 || err.statusCode === 404) {
-                        await kv.srem('push_subscribers', sub)
+                        await kv.srem('push_subscribers', rawSub)
                     }
                 }
             })
