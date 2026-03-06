@@ -24,6 +24,17 @@ function Website({ Component, pageProps, router }) {
         }
     }, [])
 
+    useEffect(() => {
+        navigator.serviceWorker.onmessage = e => {
+            if (e.data?.type === 'news-unread') {
+                const next =
+                    (Number(localStorage.getItem('news_unread')) || 0) + 1
+                localStorage.setItem('news_unread', next)
+                window.dispatchEvent(new Event('news-update'))
+            }
+        }
+    }, [])
+
     return (
         <ChakraProvider theme={theme}>
             <Fonts />

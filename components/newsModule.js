@@ -637,29 +637,21 @@ export const NewsButton = ({ children, ...props }) => {
     const [unreadNews, setUnreadNews] = useState(0)
 
     useEffect(() => {
-        if (!('serviceWorker' in navigator)) return
+        const update = () =>
+            setUnreadNews(Number(localStorage.getItem('news_unread')) || 0)
 
-        const handler = event => {
-            if (event.data?.type === 'UNREAD_NOTIFICATION') {
-                setUnreadNews(prev => prev + event.data.count)
-            }
-        }
+        update()
 
-        navigator.serviceWorker.addEventListener('message', handler)
-
-        return () => {
-            navigator.serviceWorker.removeEventListener('message', handler)
-        }
+        window.addEventListener('news-update', update)
+        return () => window.removeEventListener('news-update', update)
     }, [])
 
-    useEffect(() => {
-        const stored = localStorage.getItem('news_unread')
-        if (stored) setUnreadNews(Number(stored))
-    }, [])
-
-    useEffect(() => {
-        if(unreadNews) localStorage.setItem('news_unread', unreadNews)
-    }, [unreadNews])
+    const openNews = () => {
+        localStorage.setItem('news_unread', 0)
+        setUnreadNews(0)
+        window.dispatchEvent(new Event('news-update'))
+        onOpen()
+    }
 
     return (
         <Box position="relative">
@@ -677,11 +669,7 @@ export const NewsButton = ({ children, ...props }) => {
                     transform: 'scale(1.05)'
                 }}
                 transition="all 0.3s ease"
-                onClick={() => {
-                    setUnreadNews(0)
-                    localStorage.setItem('news_unread', 0)
-                    onOpen()
-                }}
+                onClick={openNews}
                 position="relative"
                 {...props}
             >

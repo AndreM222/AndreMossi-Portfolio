@@ -3,11 +3,6 @@ self.addEventListener('push', event => {
 
     event.waitUntil(
         (async () => {
-            const allClients = await self.clients.matchAll({
-                type: 'window',
-                includeUncontrolled: true
-            })
-
             await self.registration.showNotification(data.title, {
                 body: data.body,
                 icon: '/apple-touch-icon.png',
@@ -18,12 +13,11 @@ self.addEventListener('push', event => {
                 }
             })
 
-            for (const client of allClients) {
-                client.postMessage({
-                    type: 'UNREAD_NOTIFICATION',
-                    count: 1
-                })
-            }
+            const clients = await self.clients.matchAll({
+                type: 'window',
+                includeUncontrolled: true
+            })
+            clients.forEach(c => c.postMessage({ type: 'news-unread' }))
         })()
     )
 })
