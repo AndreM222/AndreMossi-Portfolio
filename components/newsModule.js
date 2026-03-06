@@ -34,7 +34,8 @@ import { getDateFormat } from './dateSetup'
 import { ExperienceGridItem } from './grid-item'
 import Content from './content'
 
-import { DecorateSummary, humanizeSummary } from './humanizeCommits'
+import { DecorateSummary } from './decorateSummary'
+import { humanizeSummary } from './humanizeCommits'
 import { useRouter } from 'next/router'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import {

@@ -3,7 +3,7 @@ import { kv } from '@vercel/kv'
 import { parseCommitForNews } from '../../../api/gitAPI'
 import crypto from 'crypto'
 import webpush from 'web-push'
-// import { humanizeSummary } from '../../../components/humanizeCommits'
+import { humanizeSummary } from '../../../components/humanizeCommits'
 import NavContent from '../../../components/translations/navigationContent'
 
 import newsLang from '../../../locales/pages/news.json'
@@ -200,7 +200,7 @@ export async function POST(request) {
                 NavContent(newsLang, 'types', single.type) ||
                 NavContent(newsLang, 'types', 'feat')
 
-            bodyText = "yay" //humanizeSummary(single.summary)
+            bodyText = humanizeSummary(single.summary)
         } else {
             const counts = {}
 
@@ -233,7 +233,6 @@ export async function POST(request) {
            =========================== */
 
         const subscribers = await kv.smembers('push_subscribers')
-        console.log('Subscribers raw:', subscribers)
 
         await Promise.allSettled(
             subscribers.map(async rawSub => {
