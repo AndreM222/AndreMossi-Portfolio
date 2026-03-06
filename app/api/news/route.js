@@ -3,11 +3,11 @@ import { kv } from '@vercel/kv'
 import { parseCommitForNews } from '../../../api/gitAPI'
 import crypto from 'crypto'
 import webpush from 'web-push'
-// import { humanizeSummary } from '../../../components/humanizeCommits'
-// import NavContent from '../../../components/translations/navigationContent'
-//
-// import newsLang from '../../../locales/pages/news.json'
-// import grammarLang from '../../../locales/grammarSymbols.json'
+import { humanizeSummary } from '../../../components/humanizeCommits'
+import NavContent from '../../../components/translations/navigationContent'
+
+import newsLang from '../../../locales/pages/news.json'
+import grammarLang from '../../../locales/grammarSymbols.json'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -190,43 +190,43 @@ export async function POST(request) {
            BUILD NOTIFICATION CONTENT
            =========================== */
 
-        let title = 'test'
-        let bodyText = 'test'
+        let title = ''
+        let bodyText = ''
 
-        // if (newItems.length === 1) {
-        //     const single = newItems[0]
-        //
-        //     title =
-        //         NavContent(newsLang, 'types', single.type) ||
-        //         NavContent(newsLang, 'types', 'feat')
-        //
-        //     bodyText = humanizeSummary(single.summary)
-        // } else {
-        //     const counts = {}
-        //
-        //     for (const item of newItems) {
-        //         counts[item.type] = (counts[item.type] || 0) + 1
-        //     }
-        //
-        //     const parts = Object.entries(counts).map(
-        //         ([type, count]) =>
-        //             `${count} ${NavContent(newsLang, 'switch-types', type)}`
-        //     )
-        //
-        //     const separator = NavContent(grammarLang, 'separator', 'content')
-        //     const andWord = NavContent(grammarLang, 'and', 'content')
-        //
-        //     if (parts.length === 1) {
-        //         bodyText = parts[0]
-        //     } else {
-        //         bodyText =
-        //             parts.slice(0, -1).join(separator) +
-        //             andWord +
-        //             parts[parts.length - 1]
-        //     }
-        //
-        //     title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
-        // }
+        if (newItems.length === 1) {
+            const single = newItems[0]
+
+            title =
+                NavContent(newsLang, 'types', single.type) ||
+                NavContent(newsLang, 'types', 'feat')
+
+            bodyText = humanizeSummary(single.summary)
+        } else {
+            const counts = {}
+
+            for (const item of newItems) {
+                counts[item.type] = (counts[item.type] || 0) + 1
+            }
+
+            const parts = Object.entries(counts).map(
+                ([type, count]) =>
+                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
+            )
+
+            const separator = NavContent(grammarLang, 'separator', 'content')
+            const andWord = NavContent(grammarLang, 'and', 'content')
+
+            if (parts.length === 1) {
+                bodyText = parts[0]
+            } else {
+                bodyText =
+                    parts.slice(0, -1).join(separator) +
+                    andWord +
+                    parts[parts.length - 1]
+            }
+
+            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
+        }
 
         /* ===========================
            SEND PUSH
