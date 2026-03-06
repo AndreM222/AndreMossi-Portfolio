@@ -249,19 +249,19 @@ export async function POST(request) {
         const subscribers = await kv.smembers('push_subscribers')
 
         await Promise.allSettled(
-            subscribers.map(async ({subString, userlang}) => {
+            subscribers.map(async sub => {
                 try {
                     await webpush.sendNotification(
-                        subString,
+                        sub,
                         JSON.stringify({
-                            title: title(userlang),
-                            body: bodyText(userlang),
+                            title: title('en'),
+                            body: bodyText('en'),
                             url: 'https://andremossi.vercel.app/?entry=news'
                         })
                     )
                 } catch (err) {
                     if (err.statusCode === 410 || err.statusCode === 404) {
-                        await kv.srem('push_subscribers', subString)
+                        await kv.srem('push_subscribers', sub)
                     }
                 }
             })
