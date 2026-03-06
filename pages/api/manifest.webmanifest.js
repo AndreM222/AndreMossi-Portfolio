@@ -58,7 +58,7 @@ export default function handler(req, res) {
                 icons: [{ src: '/icons/other.png', sizes: '192x192' }]
             },
             {
-                name: NavContent(newsLang, 'news-ui', 'news', locale),
+                name: NavContent(newsLang, 'news-ui', 'newsButton', locale),
                 url: '/?news=true',
                 icons: [{ src: '/icons/news.png', sizes: '192x192' }]
             }
