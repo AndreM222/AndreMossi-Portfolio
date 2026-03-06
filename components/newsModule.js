@@ -34,7 +34,7 @@ import { getDateFormat } from './dateSetup'
 import { ExperienceGridItem } from './grid-item'
 import Content from './content'
 
-import { decorateSummary, humanizeSummary } from './humanizeCommits'
+import { DecorateSummary, humanizeSummary } from './humanizeCommits'
 import { useRouter } from 'next/router'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import {
@@ -195,11 +195,11 @@ const NewsItem = ({ news }) => {
             </Heading>
 
             <Text fontSize="lg" mb={3} fontWeight="medium">
-                {decorateSummary(humanizeSummary(news.summary))}
+                <DecorateSummary text={humanizeSummary(news.summary)} />
             </Text>
 
             <Text opacity={0.8} lineHeight="1.6" mb={3}>
-                {decorateSummary(humanizeSummary(news.description))}
+                <DecorateSummary text={humanizeSummary(news.description)} />
             </Text>
 
             <Box justifySelf="center" mt={2}>
@@ -462,7 +462,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
             })
 
             const userLocale = navigator.language.split('-')[0]
-            console.log("User Locale: " + userLocale)
+            console.log('User Locale: ' + userLocale)
 
             await fetch('/api/subscribe', {
                 method: 'POST',

@@ -20,7 +20,7 @@ export const humanizeSummary = (summary = '') => {
     return sentence.endsWith('.') ? sentence : sentence + '.'
 }
 
-export const decorateSummary = (text) => {
+export const DecorateSummary = ({ text }) => {
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const parts = useMemo(() => {
@@ -99,21 +99,13 @@ export const decorateSummary = (text) => {
                 switch (part.type) {
                     case 'link':
                         return (
-                            <Link
-                                key={i}
-                                href={part.url}
-                                isExternal
-                            >
+                            <Link key={i} href={part.url} isExternal>
                                 {part.content}
                             </Link>
                         )
                     case 'email':
                         return (
-                            <Link
-                                key={i}
-                                href={part.url}
-                                color="cyan"
-                            >
+                            <Link key={i} href={part.url} color="cyan">
                                 {part.content}
                             </Link>
                         )
@@ -128,7 +120,13 @@ export const decorateSummary = (text) => {
                                 enableScrollSpy={inView}
                             >
                                 {({ countUpRef }) => (
-                                    <Text display="inline-flex" color='orange' ref={countUpRef}>{part.suffix}</Text>
+                                    <Text
+                                        display="inline-flex"
+                                        color="orange"
+                                        ref={countUpRef}
+                                    >
+                                        {part.suffix}
+                                    </Text>
                                 )}
                             </CountUp>
                         )
