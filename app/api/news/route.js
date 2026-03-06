@@ -235,12 +235,10 @@ export async function POST(request) {
         const subscribers = await kv.smembers('push_subscribers')
 
         await Promise.allSettled(
-            subscribers.map(async rawSub => {
-                const sub = JSON.parse(rawSub)
-
+            subscribers.map(async sub => {
                 try {
                     await webpush.sendNotification(
-                        sub.subscription,
+                        sub,
                         JSON.stringify({
                             title,
                             body: bodyText,
@@ -249,7 +247,7 @@ export async function POST(request) {
                     )
                 } catch (err) {
                     if (err.statusCode === 410 || err.statusCode === 404) {
-                        await kv.srem('push_subscribers', rawSub)
+                        await kv.srem('push_subscribers', sub)
                     }
                 }
             })
