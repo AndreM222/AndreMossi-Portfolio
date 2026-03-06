@@ -468,8 +468,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
                 method: 'POST',
                 body: JSON.stringify({
                     subscription,
-                    locale: userLocale || 'en',
-                    updatedAt: Date.now()
+                    locale: userLocale || 'en'
                 }),
                 headers: { 'Content-Type': 'application/json' }
             })

@@ -3,14 +3,13 @@ import { kv } from '@vercel/kv'
 
 export async function POST(req) {
     try {
-        const { subscription, locale, updatedAt } = await req.json()
+        const { subscription, locale } = await req.json()
 
         await kv.sadd(
             'push_subscribers',
             JSON.stringify({
                 subscription,
-                locale: locale,
-                updatedAt: updatedAt
+                locale: locale
             })
         )
 
