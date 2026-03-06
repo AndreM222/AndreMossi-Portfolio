@@ -251,11 +251,13 @@ export async function POST(request) {
         await Promise.allSettled(
             subscribers.map(async sub => {
                 try {
+                    const { subscription, userLang } = JSON.parse(subStr)
+
                     await webpush.sendNotification(
-                        sub,
+                        subscription,
                         JSON.stringify({
-                            title: title('en'),
-                            body: bodyText('en'),
+                            title: title(userLang),
+                            body: bodyText(userLang),
                             url: 'https://andremossi.vercel.app/?entry=news'
                         })
                     )
