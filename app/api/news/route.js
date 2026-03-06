@@ -190,56 +190,42 @@ export async function POST(request) {
            BUILD NOTIFICATION CONTENT
            =========================== */
 
-        /* ===========================
-   NOTIFICATION FUNCTIONS - LANG ONLY
-   =========================== */
-        const title = lang => {
-            if (newItems.length === 1) {
-                const single = newItems[0]
-                return (
-                    NavContent(newsLang, 'types', single.type, lang, 'en') ||
-                    NavContent(newsLang, 'types', 'feat', lang, 'en')
-                )
-            } else {
-                return `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content', lang, 'en')}`
+        let title = ''
+        let bodyText = ''
+
+        if (newItems.length === 1) {
+            const single = newItems[0]
+
+            title =
+                NavContent(newsLang, 'types', single.type) ||
+                NavContent(newsLang, 'types', 'feat')
+
+            bodyText = humanizeSummary(single.summary)
+        } else {
+            const counts = {}
+
+            for (const item of newItems) {
+                counts[item.type] = (counts[item.type] || 0) + 1
             }
-        }
 
-        const bodyText = lang => {
-            if (newItems.length === 1) {
-                const single = newItems[0]
-                return humanizeSummary(single.summary)
+            const parts = Object.entries(counts).map(
+                ([type, count]) =>
+                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
+            )
+
+            const separator = NavContent(grammarLang, 'separator', 'content')
+            const andWord = NavContent(grammarLang, 'and', 'content')
+
+            if (parts.length === 1) {
+                bodyText = parts[0]
             } else {
-                const counts = {}
-                for (const item of newItems) {
-                    counts[item.type] = (counts[item.type] || 0) + 1
-                }
-
-                const parts = Object.entries(counts).map(
-                    ([type, count]) =>
-                        `${count} ${NavContent(newsLang, 'switch-types', type, lang, 'en')}`
-                )
-                const separator = NavContent(
-                    grammarLang,
-                    'separator',
-                    'content',
-                    lang,
-                    'en'
-                )
-                const andWord = NavContent(
-                    grammarLang,
-                    'and',
-                    'content',
-                    lang,
-                    'en'
-                )
-
-                return parts.length === 1
-                    ? parts[0]
-                    : parts.slice(0, -1).join(separator) +
+                bodyText =
+                    parts.slice(0, -1).join(separator) +
                     andWord +
                     parts[parts.length - 1]
             }
+
+            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
         }
 
         /* ===========================
@@ -251,13 +237,12 @@ export async function POST(request) {
         await Promise.allSettled(
             subscribers.map(async sub => {
                 try {
-                    const { subscription, userLang } = JSON.parse(subStr)
-
+                    const { subscription } = JSON.parse(subStr)
                     await webpush.sendNotification(
                         subscription,
                         JSON.stringify({
-                            title: title(userLang),
-                            body: bodyText(userLang),
+                            title,
+                            body: bodyText,
                             url: 'https://andremossi.vercel.app/?entry=news'
                         })
                     )
