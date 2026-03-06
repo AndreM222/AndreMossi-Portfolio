@@ -3,11 +3,11 @@ import { kv } from '@vercel/kv'
 import { parseCommitForNews } from '../../../api/gitAPI'
 import crypto from 'crypto'
 import webpush from 'web-push'
-import { humanizeSummary } from '../../../components/humanizeCommits'
-// import NavContent from '../../../components/translations/navigationContent'
+// import { humanizeSummary } from '../../../components/humanizeCommits'
+import NavContent from '../../../components/translations/navigationContent'
 
-// import newsLang from '../../../locales/pages/news.json'
-// import grammarLang from '../../../locales/grammarSymbols.json'
+import newsLang from '../../../locales/pages/news.json'
+import grammarLang from '../../../locales/grammarSymbols.json'
 
 webpush.setVapidDetails(
     'mailto:admin@yourdomain.com',
@@ -196,11 +196,11 @@ export async function POST(request) {
         if (newItems.length === 1) {
             const single = newItems[0]
 
-            title = 'yay'
-            // NavContent(newsLang, 'types', single.type) ||
-            // NavContent(newsLang, 'types', 'feat')
+            title =
+                NavContent(newsLang, 'types', single.type) ||
+                NavContent(newsLang, 'types', 'feat')
 
-            bodyText = humanizeSummary(single.summary)
+            bodyText = "yay" //humanizeSummary(single.summary)
         } else {
             const counts = {}
 
@@ -208,13 +208,13 @@ export async function POST(request) {
                 counts[item.type] = (counts[item.type] || 0) + 1
             }
 
-            const parts = 'no' //Object.entries(counts).map(
-            // ([type, count]) =>
-            //     `${count} ${NavContent(newsLang, 'switch-types', type)}`
-            // )
+            const parts = Object.entries(counts).map(
+                ([type, count]) =>
+                    `${count} ${NavContent(newsLang, 'switch-types', type)}`
+            )
 
-            const separator = 'sep' //NavContent(grammarLang, 'separator', 'content')
-            const andWord = 'and' //NavContent(grammarLang, 'and', 'content')
+            const separator = NavContent(grammarLang, 'separator', 'content')
+            const andWord = NavContent(grammarLang, 'and', 'content')
 
             if (parts.length === 1) {
                 bodyText = parts[0]
@@ -225,7 +225,7 @@ export async function POST(request) {
                     parts[parts.length - 1]
             }
 
-            title = 'title' //`${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
+            title = `${newItems.length} ${NavContent(newsLang, 'notificationMSG', 'content')}`
         }
 
         /* ===========================
