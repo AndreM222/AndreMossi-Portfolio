@@ -238,6 +238,9 @@ export async function POST(request) {
             subscribers.map(async sub => {
                 try {
                     const parsed = JSON.parse(sub)
+                    console.log("Parsed Sub: " + parsed)
+                    console.log("Parsed Sub - subscription: " + parsed.subscription)
+                    console.log("Parsed Sub - locale: " + parsed.locale)
 
                     await webpush.sendNotification(
                         parsed.subscription,
