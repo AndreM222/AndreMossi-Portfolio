@@ -17,7 +17,6 @@ self.addEventListener('push', event => {
             })
 
             for (const client of allClients) {
-                console.log("PUSH RECEIVED")
                 client.postMessage({
                     type: 'UNREAD_NOTIFICATION',
                     count: 1

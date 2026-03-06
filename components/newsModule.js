@@ -46,6 +46,7 @@ import {
 import experienceLang from '../locales/pages/experience.json'
 import newsLang from '../locales/pages/news.json'
 import NavContent from './translations/navigationContent'
+import { useSearchParams } from 'next/navigation'
 
 const MotionBox = motion(Box)
 
@@ -635,6 +636,18 @@ export const NewsModal = ({ isOpen, onClose }) => {
 export const NewsButton = ({ children, ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [unreadNews, setUnreadNews] = useState(0)
+    const router = useRouter()
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        if (searchParams.get('entry') === 'news' && !isOpen) {
+            const newUrl = new URL(window.location.href)
+            newUrl.searchParams.delete('entry')
+            router.replace(newUrl.toString())
+
+            onOpen()
+        }
+    }, [searchParams, isOpen, router, onOpen])
 
     useEffect(() => {
         if (!localStorage.getItem('news_unread')) {
@@ -650,12 +663,13 @@ export const NewsButton = ({ children, ...props }) => {
         return () => window.removeEventListener('news-update', update)
     }, [])
 
-    const openNews = () => {
-        localStorage.setItem('news_unread', 0)
-        setUnreadNews(0)
-        window.dispatchEvent(new Event('news-update'))
-        onOpen()
-    }
+    useEffect(() => {
+        if (isOpen) {
+            localStorage.setItem('news_unread', 0)
+            setUnreadNews(0)
+            window.dispatchEvent(new Event('news-update'))
+        }
+    }, [isOpen])
 
     return (
         <Box position="relative">
@@ -673,7 +687,7 @@ export const NewsButton = ({ children, ...props }) => {
                     transform: 'scale(1.05)'
                 }}
                 transition="all 0.3s ease"
-                onClick={openNews}
+                onClick={onOpen}
                 position="relative"
                 {...props}
             >
