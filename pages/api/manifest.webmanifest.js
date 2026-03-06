@@ -45,22 +45,22 @@ export default function handler(req, res) {
             {
                 name: NavContent(miscLang, 'category', 'about', locale),
                 url: '/about',
-                icons: [{ src: '/icons/about.png', sizes: '192x192' }]
+                icons: [{ src: '/icons/about.svg', sizes: '192x192' }]
             },
             {
                 name: NavContent(miscLang, 'category', 'experience', locale),
                 url: '/experience',
-                icons: [{ src: '/icons/experience.png', sizes: '192x192' }]
+                icons: [{ src: '/icons/experience.svg', sizes: '192x192' }]
             },
             {
                 name: NavContent(miscLang, 'category', 'others', locale),
                 url: '/others',
-                icons: [{ src: '/icons/other.png', sizes: '192x192' }]
+                icons: [{ src: '/icons/other.svg', sizes: '192x192' }]
             },
             {
                 name: NavContent(newsLang, 'news-ui', 'newsButton', locale),
                 url: '/?news=true',
-                icons: [{ src: '/icons/news.png', sizes: '192x192' }]
+                icons: [{ src: '/icons/qrcode.svg', sizes: '192x192' }]
             }
         ]
     }
