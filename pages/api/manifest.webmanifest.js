@@ -3,15 +3,18 @@ import newsLang from '../../locales/pages/news.json'
 import miscLang from '../../locales/misc.json'
 import indexLang from '../../locales/pages/index.json'
 
-function manifest() {
-    const name = NavContent(miscLang, 'title', 'name')
+export default function handler(req, res) {
+    const locale =
+        req.headers['accept-language']?.split(',')[0]?.split('-')[0] || 'en'
+
+    const name = NavContent(miscLang, 'title', 'name', locale)
     const shortName = name.split(' ')[0]
 
-    return {
+    const manifest = {
         name: name,
         short_name: shortName,
 
-        description: NavContent(indexLang, 'card', 'work'),
+        description: NavContent(indexLang, 'card', 'work', locale),
 
         start_url: '/',
         display: 'standalone',
@@ -40,30 +43,28 @@ function manifest() {
 
         shortcuts: [
             {
-                name: NavContent(miscLang, 'category', 'about'),
+                name: NavContent(miscLang, 'category', 'about', locale),
                 url: '/about',
                 icons: [{ src: '/icons/about.png', sizes: '192x192' }]
             },
             {
-                name: NavContent(miscLang, 'category', 'experience'),
+                name: NavContent(miscLang, 'category', 'experience', locale),
                 url: '/experience',
                 icons: [{ src: '/icons/experience.png', sizes: '192x192' }]
             },
             {
-                name: NavContent(miscLang, 'category', 'others'),
+                name: NavContent(miscLang, 'category', 'others', locale),
                 url: '/others',
                 icons: [{ src: '/icons/other.png', sizes: '192x192' }]
             },
             {
-                name: NavContent(newsLang, 'news-ui', 'news'),
-                url: '/news',
+                name: NavContent(newsLang, 'news-ui', 'news', locale),
+                url: '/?news=true',
                 icons: [{ src: '/icons/news.png', sizes: '192x192' }]
             }
         ]
     }
-}
 
-export default function handler(req, res) {
     res.setHeader('Content-Type', 'application/manifest+json')
-    res.status(200).json(manifest())
+    res.status(200).json(manifest)
 }
