@@ -237,9 +237,8 @@ export async function POST(request) {
         await Promise.allSettled(
             subscribers.map(async sub => {
                 try {
-                    const { subscription } = JSON.parse(subStr)
                     await webpush.sendNotification(
-                        subscription,
+                        sub.subscription,
                         JSON.stringify({
                             title,
                             body: bodyText,
