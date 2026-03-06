@@ -237,10 +237,13 @@ export async function POST(request) {
         await Promise.allSettled(
             subscribers.map(async sub => {
                 try {
-                    const parsed = JSON.parse(sub)
-                    console.log("Parsed Sub: " + parsed)
-                    console.log("Parsed Sub - subscription: " + parsed.subscription)
-                    console.log("Parsed Sub - locale: " + parsed.locale)
+                    ronsole.log("Sub: " + sub)
+                    console.log("Sub - subscription: " + sub.subscription)
+                    console.log("Sub - locale: " + sub.locale)
+                    // const parsed = JSON.parse(sub)
+                    // console.log("Parsed Sub: " + parsed)
+                    // console.log("Parsed Sub - subscription: " + parsed.subscription)
+                    // console.log("Parsed Sub - locale: " + parsed.locale)
                     console.log("title: " + title)
                     console.log("bodyText: " + bodyText)
 
