@@ -44,7 +44,7 @@ export default function handler(req, res) {
         shortcuts: [
             {
                 name: NavContent(miscLang, 'category', 'about', locale),
-                url: '/about',
+                url: '/',
                 icons: [{ src: '/icons/about.svg', sizes: '192x192' }]
             },
             {
@@ -54,7 +54,7 @@ export default function handler(req, res) {
             },
             {
                 name: NavContent(miscLang, 'category', 'others', locale),
-                url: '/others',
+                url: '/other',
                 icons: [{ src: '/icons/other.svg', sizes: '192x192' }]
             },
             {
