@@ -58,8 +58,13 @@ export default function handler(req, res) {
                 icons: [{ src: '/icons/other.svg', sizes: '192x192' }]
             },
             {
+                name: NavContent(miscLang, 'qrCodeBTN', 'content', locale),
+                url: '/?entry=news',
+                icons: [{ src: '/icons/news.svg', sizes: '192x192' }]
+            },
+            {
                 name: NavContent(newsLang, 'news-ui', 'newsButton', locale),
-                url: '/?news=true',
+                url: '/?entry=nfc',
                 icons: [{ src: '/icons/qrcode.svg', sizes: '192x192' }]
             }
         ]
