@@ -45,27 +45,57 @@ export default function handler(req, res) {
             {
                 name: NavContent(miscLang, 'category', 'about', locale),
                 url: '/',
-                icons: [{ src: '/icons/about.svg', sizes: '192x192' }]
+                icons: [
+                    {
+                        src: '/icons/about.svg',
+                        sizes: 'any',
+                        type: 'image/svg+xml'
+                    }
+                ]
             },
             {
                 name: NavContent(miscLang, 'category', 'experience', locale),
                 url: '/experience',
-                icons: [{ src: '/icons/experience.svg', sizes: '192x192' }]
+                icons: [
+                    {
+                        src: '/icons/experience.svg',
+                        sizes: 'any',
+                        type: 'image/svg+xml'
+                    }
+                ]
             },
             {
                 name: NavContent(miscLang, 'category', 'others', locale),
                 url: '/other',
-                icons: [{ src: '/icons/other.svg', sizes: '192x192' }]
+                icons: [
+                    {
+                        src: '/icons/other.svg',
+                        sizes: 'any',
+                        type: 'image/svg+xml'
+                    }
+                ]
             },
             {
                 name: NavContent(newsLang, 'news-ui', 'newsButton', locale),
                 url: '/?entry=news',
-                icons: [{ src: '/icons/news.svg', sizes: '192x192' }]
+                icons: [
+                    {
+                        src: '/icons/news.svg',
+                        sizes: 'any',
+                        type: 'image/svg+xml'
+                    }
+                ]
             },
             {
                 name: NavContent(miscLang, 'qrCodeBTN', 'content', locale),
                 url: '/?entry=nfc',
-                icons: [{ src: '/icons/qrcode.svg', sizes: '192x192' }]
+                icons: [
+                    {
+                        src: '/icons/qrcode.svg',
+                        sizes: 'any',
+                        type: 'image/svg+xml'
+                    }
+                ]
             }
         ]
     }
