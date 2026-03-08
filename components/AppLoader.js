@@ -1,6 +1,6 @@
 import { Box, Flex, Image } from '@chakra-ui/react'
 import { keyframes } from '@emotion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const morph = keyframes`
 0% {
@@ -61,66 +61,84 @@ const fadeOut = keyframes`
 100% { opacity: 0; }
 `
 
-export default function AppLoader({ dark, isLoading, isPWA }) {
+export default function AppLoader({ isLoading, isPWA }) {
+    const [mounted, setMounted] = useState(false)
+    const [dark, setDark] = useState(false)
+
+    useEffect(() => {
+        const media = window.matchMedia('(prefers-color-scheme: dark)')
+        setDark(media.matches)
+        setMounted(true)
+
+        const update = () => setDark(media.matches)
+        media.addEventListener('change', update)
+
+        return () => media.removeEventListener('change', update)
+    }, [])
+
     const bg = dark ? '#101015' : '#f1ece8'
     const barBg = dark ? '#ffffff' : '#000000'
     const [done, setDone] = useState(!isLoading)
 
-    return !done && (
-        <Box
-            position="fixed"
-            inset="0"
-            bg={bg}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            zIndex="9999"
-            onAnimationEndCapture={() => {
-                if (!isLoading) setDone(true)
-            }}
-            animation={
-                !isLoading ? `${fadeOut} 400ms ease forwards` : undefined
-            }
-        >
-            {isPWA && (
-                <Flex alignItems="center">
-                    <Image
-                        src="/images/LogoNav.svg"
-                        transform="translateY(-50%)"
-                        h="18px"
-                        opacity="0"
-                        animation={`${svgAppear} 900ms ease forwards`}
-                        mr={3}
-                    />
+    if (!mounted) return null
 
-                    <Box
-                        position="relative"
-                        overflow="hidden"
-                        animation={`${morph} 900ms cubic-bezier(.6,.05,.28,.91) forwards, ${bgShift} 900ms ease forwards`}
-                        sx={{ '--bar-bg': barBg }}
-                    >
-                        {/* PNG that morphs into bar */}
+    return (
+        !done && (
+            <Box
+                position="fixed"
+                inset="0"
+                bg={bg}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                zIndex="9999"
+                onAnimationEndCapture={() => {
+                    if (!isLoading) setDone(true)
+                }}
+                animation={
+                    !isLoading ? `${fadeOut} 400ms ease forwards` : undefined
+                }
+            >
+                {isPWA && (
+                    <Flex alignItems="center">
                         <Image
-                            src="/icons/icon-bg.png"
-                            position="absolute"
-                            inset="0"
-                            objectFit="contain"
-                            animation={`${pngFade} 900ms ease forwards`}
+                            src="/images/LogoNav.svg"
+                            transform="translateY(-50%)"
+                            h="18px"
+                            opacity="0"
+                            animation={`${svgAppear} 900ms ease forwards`}
+                            mr={3}
                         />
 
-                        {/* Progress fill */}
                         <Box
-                            position="absolute"
-                            left="0"
-                            top="0"
-                            bottom="0"
-                            bg="orange"
-                            animation={`${fill} 1.6s ease forwards`}
-                            animationDelay="900ms"
-                        />
-                    </Box>
-                </Flex>
-            )}
-        </Box>
+                            position="relative"
+                            overflow="hidden"
+                            animation={`${morph} 900ms cubic-bezier(.6,.05,.28,.91) forwards, ${bgShift} 900ms ease forwards`}
+                            sx={{ '--bar-bg': barBg }}
+                        >
+                            {/* PNG that morphs into bar */}
+                            <Image
+                                src="/icons/icon-bg.png"
+                                position="absolute"
+                                inset="0"
+                                objectFit="contain"
+                                animation={`${pngFade} 900ms ease forwards`}
+                            />
+
+                            {/* Progress fill */}
+                            <Box
+                                position="absolute"
+                                left="0"
+                                top="0"
+                                bottom="0"
+                                bg="orange"
+                                animation={`${fill} 1.6s ease forwards`}
+                                animationDelay="900ms"
+                            />
+                        </Box>
+                    </Flex>
+                )}
+            </Box>
+        )
     )
 }

@@ -57,7 +57,7 @@ const QRButton = ({ icon, children, ...props }) => {
 
 const today = new Date()
 
-const Footer = () => {
+const Footer = ({ ...props }) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [isVisible, setIsVisible] = useState(true)
@@ -82,6 +82,7 @@ const Footer = () => {
             p={10}
             py={2}
             marginTop="auto"
+            {...props}
         >
             <Heading as="h3" variant="section-title">
                 {Content(miscLang, 'footer', 'connect')}

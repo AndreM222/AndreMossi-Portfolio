@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { Box, Container, useColorMode } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 import Navbar from '../navbar'
 const CharModel = dynamic(() => import('../character'), {
     ssr: false
@@ -14,7 +14,6 @@ import AppLoader from '../AppLoader'
 
 const Main = ({ children, router }) => {
     const [loading, setLoading] = useState(true)
-    const { colorMode } = useColorMode()
     const [isPWA, setIsPWA] = useState(false)
 
     useEffect(() => {
@@ -520,21 +519,23 @@ const Main = ({ children, router }) => {
                     href="/splashScreens/light/8.3__iPad_Mini_portrait.png"
                 />
             </Head>
-            {<AppLoader dark={colorMode === "dark"} isLoading={loading} isPWA={isPWA} />}
+            {<AppLoader isLoading={loading} isPWA={isPWA} />}
 
-            <Navbar path={router.asPath} />
+            <Navbar path={router.asPath} opacity={loading && '0'} />
 
             <Container
                 maxW={{ base: 'container.md', lg: '90%' }}
                 height="100%"
                 pt={14}
                 pb={8}
+                opac
+                opacity={loading && '0'}
             >
                 <Analytics />
                 <CharModel />
                 {children}
             </Container>
-            <Footer />
+            <Footer opacity={loading && '0'} />
         </Box>
     )
 }
