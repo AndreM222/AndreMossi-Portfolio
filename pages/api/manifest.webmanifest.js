@@ -21,25 +21,42 @@ export default function handler(req, res) {
 
         theme_color: '#000000',
         background_color: '#000000',
+        display_override: ['window-controls-overlay'],
+
+        screenshots: [
+            {
+                src: '/splashScreens/dark/iPhone_17_Pro_Max__iPhone_16_Pro_Max_portrait.png',
+                sizes: '1320x2868',
+                type: 'image/png',
+                form_factor: 'narrow'
+            },
+            {
+                src: '/splashScreens/dark/13__iPad_Pro_M4_landscape.png',
+                sizes: '2752x2064',
+                type: 'image/png',
+                form_factor: 'wide'
+            }
+        ],
 
         icons: [
             {
-                src: '/apple-touch-icon.png',
+                src: '/app-icon-192.png',
                 sizes: '192x192',
                 type: 'image/png',
-                purpose: 'maskable'
+                purpose: 'any maskable'
             },
             {
-                src: '/apple-touch-icon.png',
+                src: '/app-icon-512.png',
                 sizes: '512x512',
                 type: 'image/png',
-                purpose: 'maskable'
+                purpose: 'any maskable'
             },
             {
-                src: '/apple-touch-icon.png',
-                sizes: '512x512',
-                type: 'image/png',
-                purpose: 'maskable'
+                src: '/app-icon.svg',
+                sizes: 'any',
+                type: 'image/svg',
+                type: "image/svg+xml",
+                purpose: 'any maskable'
             }
         ],
 
@@ -49,9 +66,9 @@ export default function handler(req, res) {
                 url: '/',
                 icons: [
                     {
-                        src: '/icons/about.svg',
-                        sizes: 'any',
-                        type: 'image/svg+xml'
+                        src: '/icons/about.png',
+                        sizes: '96x96',
+                        type: 'image/png'
                     }
                 ]
             },
@@ -60,9 +77,9 @@ export default function handler(req, res) {
                 url: '/experience',
                 icons: [
                     {
-                        src: '/icons/experience.svg',
-                        sizes: 'any',
-                        type: 'image/svg+xml'
+                        src: '/icons/experience.png',
+                        sizes: '96x96',
+                        type: 'image/png'
                     }
                 ]
             },
@@ -71,9 +88,9 @@ export default function handler(req, res) {
                 url: '/other',
                 icons: [
                     {
-                        src: '/icons/other.svg',
-                        sizes: 'any',
-                        type: 'image/svg+xml'
+                        src: '/icons/other.png',
+                        sizes: '96x96',
+                        type: 'image/png'
                     }
                 ]
             },
@@ -82,20 +99,22 @@ export default function handler(req, res) {
                 url: '/?entry=news',
                 icons: [
                     {
-                        src: '/icons/news.svg',
-                        sizes: 'any',
-                        type: 'image/svg+xml'
+                        src: '/icons/news.png',
+                        sizes: '96x96',
+                        type: 'image/png'
                     }
                 ]
             },
             {
-                name: NavContent(miscLang, 'qrCodeBTN', 'content', locale),
+                name:
+                    NavContent(miscLang, 'qrCodeBTN', 'content', locale) +
+                    'yay',
                 url: '/?entry=nfc',
                 icons: [
                     {
-                        src: '/icons/qrcode.svg',
-                        sizes: 'any',
-                        type: 'image/svg+xml'
+                        src: '/icons/qrcode.png',
+                        sizes: '96x96',
+                        type: 'image/png'
                     }
                 ]
             }

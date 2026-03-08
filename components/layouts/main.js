@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { Box, Container } from '@chakra-ui/react'
+import { Box, Container, useColorMode } from '@chakra-ui/react'
 import Navbar from '../navbar'
 const CharModel = dynamic(() => import('../character'), {
     ssr: false
@@ -9,8 +9,33 @@ import Footer from '../footer'
 import Content from '../content'
 import miscLang from '../../locales/misc.json'
 import { Analytics } from '@vercel/analytics/react'
+import { useEffect, useState } from 'react'
+import AppLoader from '../AppLoader'
 
 const Main = ({ children, router }) => {
+    const [loading, setLoading] = useState(true)
+    const { colorMode } = useColorMode()
+    const [isPWA, setIsPWA] = useState(false)
+
+    useEffect(() => {
+        const isPWA =
+            window.matchMedia('(display-mode: standalone)').matches ||
+            window.navigator.standalone
+
+        if (!isPWA) {
+            setLoading(false)
+            return
+        }
+
+        setIsPWA(true)
+
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+
+        return () => clearTimeout(timer)
+    }, [])
+
     return (
         <Box as="main" display="flex" minH="100vh" flexDir="column">
             <Head>
@@ -51,7 +76,7 @@ const Main = ({ children, router }) => {
                 />
                 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
                 <title>{Content(miscLang, 'title', 'name')}</title>
-                {/* 🌑 DARK MODE */}
+                {/* DARK MODE */}
                 <link
                     rel="apple-touch-startup-image"
                     media="screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)"
@@ -273,7 +298,7 @@ const Main = ({ children, router }) => {
                     href="/splashScreens/dark/8.3__iPad_Mini_portrait.png"
                 />
 
-                {/* ☀️ LIGHT MODE */}
+                {/* LIGHT MODE */}
                 <link
                     rel="apple-touch-startup-image"
                     media="screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)"
@@ -495,6 +520,7 @@ const Main = ({ children, router }) => {
                     href="/splashScreens/light/8.3__iPad_Mini_portrait.png"
                 />
             </Head>
+            {<AppLoader dark={colorMode === "dark"} isLoading={loading} isPWA={isPWA} />}
 
             <Navbar path={router.asPath} />
 

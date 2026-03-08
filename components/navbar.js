@@ -14,7 +14,7 @@ import {
     MenuList,
     MenuButton,
     IconButton,
-    useColorModeValue,
+    useColorModeValue
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
@@ -22,6 +22,9 @@ import miscLang from '../locales/misc.json'
 import Content from './content'
 import { MdDocumentScanner } from 'react-icons/md'
 import { PdfPreviewButton, PdfPreviewMenuItem } from './pdfViewer'
+import { IoIosApps } from 'react-icons/io'
+import { HiBriefcase } from "react-icons/hi2"
+import { FaUser } from 'react-icons/fa6'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
     const active = path === href
@@ -123,22 +126,39 @@ const Navbar = props => {
                                     aria-label="Options"
                                 />
                                 <MenuList>
-                                    <MenuItem as={MenuLink} href="/">
+                                    <MenuItem
+                                        as={MenuLink}
+                                        justifyContent="space-between"
+                                        href="/"
+                                    >
                                         {Content(miscLang, 'category', 'about')}
+                                        <FaUser />
                                     </MenuItem>
-                                    <MenuItem as={MenuLink} href="/experience">
+
+                                    <MenuItem
+                                        as={MenuLink}
+                                        justifyContent="space-between"
+                                        href="/experience"
+                                    >
                                         {Content(
                                             miscLang,
                                             'category',
                                             'experience'
                                         )}
+                                        <HiBriefcase />
                                     </MenuItem>
-                                    <MenuItem as={MenuLink} href="/other">
+
+                                    <MenuItem
+                                        as={MenuLink}
+                                        justifyContent="space-between"
+                                        href="/other"
+                                    >
                                         {Content(
                                             miscLang,
                                             'category',
                                             'others'
                                         )}
+                                        <IoIosApps />
                                     </MenuItem>
 
                                     <PdfPreviewMenuItem
