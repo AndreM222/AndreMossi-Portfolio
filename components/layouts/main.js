@@ -43,6 +43,16 @@ const Main = ({ children, router }) => {
                     name="apple-mobile-web-app-status-bar-style"
                     content="black-translucent"
                 />
+                <meta
+                    name="theme-color"
+                    content="#101015"
+                    media="(prefers-color-scheme: dark)"
+                />
+                <meta
+                    name="theme-color"
+                    content="#f1ece8"
+                    media="(prefers-color-scheme: light)"
+                />
                 <link rel="manifest" href="/api/manifest.webmanifest" />
                 <meta name="author" content="André Mossi" />
                 <meta property="og:title" content="André Mossi" />
