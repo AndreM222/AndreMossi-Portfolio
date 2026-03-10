@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion'
-import { useColorModeValue, chakra, shouldForwardProp } from '@chakra-ui/react'
+import { isValidMotionProp, motion } from 'framer-motion'
+import { chakra } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
+import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
-    shouldForwardProp: (prop) => {
-        return shouldForwardProp(prop) || prop === 'transition'
-    },
+    shouldForwardProp: prop => isValidMotionProp(prop) || isPropValid(prop)
 })
 
 const Section = ({
     children,
     delay = 0,
     align = 'left',
-    maxW = 'container.sm',
+    maxW = '2xl'
 }) => (
     <StyledDiv
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}

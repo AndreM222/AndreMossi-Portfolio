@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, useColorModeValue } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import { useColorModeValue } from "@/components/ui/color-mode"
 import Content from './content'
 import quoteLang from '../locales/quotesList.json'
 import symbolLang from '../locales/grammarSymbols.json'
@@ -19,13 +20,13 @@ export const QuoteCard = ({ quoteNum }) => {
     return (
         <Box
             boxShadow="lg"
-            maxW="container.md"
+            maxW="2xl"
             borderRadius="lg"
             bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
             p={3}
             display="grid"
             mb={10}
-            align="center"
+            justifyContent="center"
             css={{ backdropFilter: 'blur(10px)' }}
         >
             <p style={{ whiteSpace: 'pre-line' }}>

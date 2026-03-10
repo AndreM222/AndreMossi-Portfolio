@@ -27,7 +27,7 @@ const morph = keyframes`
 
 const bgShift = keyframes`
 0% { background: transparent; }
-60% { background: var(--bar-bg);; }
+60% { background: var(--bar-bg); }
 100% { background: var(--bar-bg); }
 `
 
@@ -114,9 +114,8 @@ export default function AppLoader({ isLoading, isPWA }) {
                             position="relative"
                             overflow="hidden"
                             animation={`${morph} 900ms cubic-bezier(.6,.05,.28,.91) forwards, ${bgShift} 900ms ease forwards`}
-                            sx={{ '--bar-bg': barBg }}
+                            css={{ '--bar-bg': barBg }}
                         >
-                            {/* PNG that morphs into bar */}
                             <Image
                                 src="/icons/icon-bg.png"
                                 position="absolute"
@@ -125,13 +124,12 @@ export default function AppLoader({ isLoading, isPWA }) {
                                 animation={`${pngFade} 900ms ease forwards`}
                             />
 
-                            {/* Progress fill */}
                             <Box
                                 position="absolute"
                                 left="0"
                                 top="0"
                                 bottom="0"
-                                bg="orange"
+                                bg="orange.fg"
                                 animation={`${fill} 1.6s ease forwards`}
                                 animationDelay="900ms"
                             />

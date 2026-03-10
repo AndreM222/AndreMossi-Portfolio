@@ -2,15 +2,13 @@ import {
     Container,
     Badge,
     List,
-    ListItem,
     chakra,
-    shouldForwardProp,
     Box,
     SimpleGrid,
     Skeleton,
-    useColorModeValue,
     Heading
 } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import { Title, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -23,7 +21,8 @@ import { FaBook, FaStar } from 'react-icons/fa'
 import { TbLicense } from 'react-icons/tb'
 import { FaCodeFork } from 'react-icons/fa6'
 import CountUp from 'react-countup'
-import { motion } from 'framer-motion'
+import { isValidMotionProp, motion } from 'framer-motion'
+import isPropValid from '@emotion/is-prop-valid'
 
 import githubLang from '../../locales/pages/experiences/github.json'
 import contentLang from '../../locales/experience-content.json'
@@ -32,7 +31,7 @@ import experienceLang from '../../locales/pages/experience.json'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {
-        return shouldForwardProp(prop) || prop === 'transition'
+        return isValidMotionProp(prop) || isPropValid(prop)
     }
 })
 
@@ -63,7 +62,7 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
                 {Content(experienceLang, 'category', category.toLowerCase())}
             </span>
             {loading ? (
-                <Skeleton h={5} w={20} rounded="lg" />
+                <Skeleton variant="shine" h={5} w={20} rounded="lg" />
             ) : (
                 <CountUp start={0} end={value || 0} />
             )}
@@ -115,7 +114,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                     w="fit-content"
                 >
                     {loading ? (
-                        <Skeleton h={5} w={20} rounded="lg" />
+                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
                     ) : (
                         data.language
                     )}
@@ -133,7 +132,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                     <FaStar />
                     <span>{Content(experienceLang, 'category', 'stars')}:</span>
                     {loading ? (
-                        <Skeleton h={5} w={20} rounded="lg" />
+                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
                     ) : (
                         <CountUp start={0} end={data.stars || 0} />
                     )}
@@ -142,7 +141,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                     <FaCodeFork />
                     <span>{Content(experienceLang, 'category', 'forks')}:</span>
                     {loading ? (
-                        <Skeleton h={5} w={20} rounded="lg" />
+                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
                     ) : (
                         <CountUp start={0} end={data.forks || 0} />
                     )}
@@ -157,7 +156,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                         {Content(experienceLang, 'category', 'license')}:
                     </span>
                     {loading ? (
-                        <Skeleton h={5} w={20} rounded="lg" />
+                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
                     ) : (
                         data.licence
                     )}
@@ -165,7 +164,7 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
             </Box>
             <Box alignItems="center" gap={1} mt={3}>
                 {loading ? (
-                    <Skeleton h={5} w={20} rounded="lg" />
+                    <Skeleton variant="shine" h={5} w={20} rounded="lg" />
                 ) : (
                     data.description
                 )}
@@ -235,18 +234,18 @@ const Github = () => {
                     </Badge>
                 </Title>
                 <P>{Content(githubLang, 'description', 'content')}</P>
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
                             {Content(contentLang, 'info', 'type-education')}
                         </span>
-                    </ListItem>
-                    <ListItem>
+                    </List.Item>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>
                         <CitationList list="my github" />
-                    </ListItem>
-                </List>
+                    </List.Item>
+                </List.Root>
 
                 <SimpleGrid columns={[1, 1, 3]} mb={3} gap={2}>
                     <StatItem

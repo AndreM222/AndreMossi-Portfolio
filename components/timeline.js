@@ -1,14 +1,17 @@
-import { Box, Circle, useColorModeValue } from '@chakra-ui/react'
+import { Box, Circle } from '@chakra-ui/react'
+import { useColorModeValue } from "@/components/ui/color-mode"
 import styled from '@emotion/styled'
-import { useInView, motion, useAnimationControls } from 'framer-motion'
+import { useInView, motion, useAnimationControls, isValidMotionProp } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { chakra, shouldForwardProp } from '@chakra-ui/react'
+import { chakra } from '@chakra-ui/react'
+import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {
-        return shouldForwardProp(prop) || prop === 'transition'
+        return isValidMotionProp(prop) || isPropValid(prop)
     }
 })
+
 const variants = {
     hidden: {
         y: 10,

@@ -22,7 +22,13 @@ export const GridItem = ({ children, href, title, thumbnail, ...props }) => (
     </Box>
 )
 
-export const ExperienceGridItem = ({ children, id, title, thumbnail, ...props }) => {
+export const ExperienceGridItem = ({
+    children,
+    id,
+    title,
+    thumbnail,
+    ...props
+}) => {
     const [loaded, setLoaded] = useState(false)
     const WIDTH = 720
     const HEIGHT = 400
@@ -36,7 +42,8 @@ export const ExperienceGridItem = ({ children, id, title, thumbnail, ...props })
                 cursor="pointer"
             >
                 <Skeleton
-                    isLoaded={loaded}
+                    variant="shine"
+                    loading={!loaded}
                     fadeDuration={0.4}
                     borderRadius="12px"
                 >
@@ -46,7 +53,7 @@ export const ExperienceGridItem = ({ children, id, title, thumbnail, ...props })
                         width={WIDTH}
                         height={HEIGHT}
                         className="grid-item-thumbnail"
-                        onLoadingComplete={() => setLoaded(true)}
+                        onLoad={() => setLoaded(true)}
                     />
                 </Skeleton>
                 <LinkOverlay as="div" href={`/experiences/${id}`}>

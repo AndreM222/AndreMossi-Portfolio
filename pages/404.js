@@ -3,12 +3,12 @@ import {
     Box,
     Heading,
     Container,
-    Divider,
+    Separator,
     Text,
     Button,
-    Image,
+    Image
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { FaChevronRight } from 'react-icons/fa'
 import Content from '../components/content'
 import errorLang from '../locales/pages/404.json'
 
@@ -17,30 +17,29 @@ const NotFound = () => {
         <Container>
             <Box display={{ md: 'flex' }} justifyContent="space-between">
                 <Box>
-                    <Heading as="h1">{Content(errorLang, "title", "content")}</Heading>
-                    <Text>{Content(errorLang, "description", "content")}</Text>
+                    <Heading as="h1">
+                        {Content(errorLang, 'title', 'content')}
+                    </Heading>
+                    <Text>{Content(errorLang, 'description', 'content')}</Text>
                 </Box>
-                <Box
-                    align="center"
-                >
+                <Box align="center">
                     <Image
                         maxH={20}
                         borderRadius={30}
                         src="/images/Error.png"
-                        alt='icon'
+                        alt="icon"
                     />
                 </Box>
             </Box>
-            <Divider my={6} />
+            <Separator my={6} />
 
             <Box my={6} align="center">
                 <Button
                     as={NextLink}
                     href="/"
-                    colorScheme="orange"
-                    rightIcon={<ChevronRightIcon />}
                 >
-                    {Content(errorLang, "return", "content")}
+                    {Content(errorLang, 'return', 'content')}
+                    <FaChevronRight />
                 </Button>
             </Box>
         </Container>

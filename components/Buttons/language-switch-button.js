@@ -1,13 +1,7 @@
-"use client"
+'use client'
 
-import {
-    IconButton,
-    useColorModeValue,
-    Menu,
-    MenuItem,
-    MenuList,
-    MenuButton
-} from '@chakra-ui/react'
+import { IconButton, Menu } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import { TfiWorld } from 'react-icons/tfi'
 import { forwardRef, useEffect, useState } from 'react'
 import NextLink from 'next/link'
@@ -30,7 +24,7 @@ const LanguageButton = ({ path }) => {
 
     useEffect(() => {
         const saved = localStorage.getItem('language')
-        if(saved && saved !== language) {
+        if (saved && saved !== language) {
             setLanguage(saved)
         }
     }, [])
@@ -47,27 +41,33 @@ const LanguageButton = ({ path }) => {
     }, [language])
 
     return (
-        <Menu>
-            <MenuButton
-                as={IconButton}
-                mr={2}
-                icon={<TfiWorld />}
-                colorScheme={useColorModeValue('purple', 'pink')}
-            />
-            <MenuList>
-                {locales.map(language => (
-                    <MenuItem
-                        as={MenuLink}
-                        href={path}
-                        locale={language}
-                        key={language}
-                        onClick={() => setLocale(language)}
-                    >
-                        {languageNames[language]}
-                    </MenuItem>
-                ))}
-            </MenuList>
-        </Menu>
+        <Menu.Root>
+            <Menu.Trigger asChild>
+                <IconButton
+                    mr={2}
+                    bg={useColorModeValue('purple.500', 'pink')}
+                    aria-label="Language"
+                >
+                    <TfiWorld />
+                </IconButton>
+            </Menu.Trigger>
+
+            <Menu.Positioner>
+                <Menu.Content>
+                    {locales.map(language => (
+                        <Menu.Item
+                            asChild
+                            key={language}
+                            onClick={() => setLocale(language)}
+                        >
+                            <MenuLink href={path} locale={language}>
+                                {languageNames[language]}
+                            </MenuLink>
+                        </Menu.Item>
+                    ))}
+                </Menu.Content>
+            </Menu.Positioner>
+        </Menu.Root>
     )
 }
 

@@ -1,20 +1,23 @@
 import { Box, Button } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { FaChevronRight } from 'react-icons/fa'
 import NextLink from 'next/link'
 import Content from '../content'
 import miscLang from '../../locales/misc.json'
 
 const NavBTN = ({ href, ...props }) => {
     return (
-        <Box align="center" my={4}>
+        <Box justifySelf="center" my={4}>
             <Button
                 as={NextLink}
+                bg="orange.fg"
+                _hover={{
+                    bg: 'orange.border'
+                }}
                 href={href}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="orange"
                 {...props}
             >
                 {Content(miscLang, 'moreBTN', 'content')}
+                <FaChevronRight />
             </Button>
         </Box>
     )

@@ -10,20 +10,17 @@ import {
     Heading,
     Flex,
     Menu,
-    MenuItem,
-    MenuList,
-    MenuButton,
-    IconButton,
-    useColorModeValue
+    IconButton
 } from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { useColorModeValue } from '@/components/ui/color-mode'
+import { IoMenu } from 'react-icons/io5'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
 import miscLang from '../locales/misc.json'
 import Content from './content'
 import { MdDocumentScanner } from 'react-icons/md'
 import { PdfPreviewButton, PdfPreviewMenuItem } from './pdfViewer'
 import { IoIosApps } from 'react-icons/io'
-import { HiBriefcase } from "react-icons/hi2"
+import { HiBriefcase } from 'react-icons/hi2'
 import { FaUser } from 'react-icons/fa6'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
@@ -32,20 +29,21 @@ const LinkItem = ({ href, path, children, target, ...props }) => {
     const activeColor = useColorModeValue('#ff79c6', '#bd93f9')
     return (
         <Link
-            as={NextLink}
+            asChild
             href={href}
             p={2}
+            outline="none"
             color={active ? activeColor : inactiveColor}
             target={target}
             {...props}
         >
-            {children}
+            <NextLink>{children}</NextLink>
         </Link>
     )
 }
 
 const MenuLink = forwardRef((props, ref) => (
-    <Link ref={ref} as={NextLink} {...props} />
+    <Link ref={ref} as={NextLink} {...props} justifyContent="space-between" />
 ))
 
 const Navbar = props => {
@@ -54,7 +52,6 @@ const Navbar = props => {
     return (
         <Box
             position="fixed"
-            as="nav"
             w="100%"
             bg={useColorModeValue('grayAlpha.600', 'grayAlpha.900')}
             css={{ backdropFilter: 'blur(10px)' }}
@@ -66,16 +63,17 @@ const Navbar = props => {
                 p={2}
                 maxW="95%"
                 wrap="wrap"
-                align="center"
-                justify="space-between"
+                objectPosition="center"
+                justifyContent="space-between"
+                alignItems="center"
             >
-                <Flex align="center" mr={5}>
-                    <Heading as="h1" size="lg" letterSpacing={'tighter'}>
+                <Flex mr={5}>
+                    <Heading size="xl" letterSpacing={'tighter'}>
                         <Logo />
                     </Heading>
                 </Flex>
 
-                <Box flex={1} display={{ md: 'flex' }}>
+                <Box display={{ md: 'flex' }}>
                     <Stack
                         direction={{ base: 'column', md: 'row' }}
                         display={{ base: 'none', md: 'flex' }}
@@ -97,92 +95,103 @@ const Navbar = props => {
                         </LinkItem>
                     </Stack>
 
-                    <PdfPreviewButton
-                        title={Content(miscLang, 'category', 'resume')}
-                        src={Content(miscLang, 'category', 'link-resume')}
-                        colorScheme="cyan"
-                        rightIcon={<MdDocumentScanner />}
-                        align="right"
-                        alignItems="center"
+                    <Box
                         display={{
                             base: 'none',
                             md: 'flex'
                         }}
                     >
-                        {Content(miscLang, 'category', 'resume')}
-                    </PdfPreviewButton>
-                    <Box pl={2} align="right">
+                        <PdfPreviewButton
+                            title={Content(miscLang, 'category', 'resume')}
+                            src={Content(miscLang, 'category', 'link-resume')}
+                            bg="cyan.border"
+                            _hover={{
+                                bg: 'cyan.focusRing'
+                            }}
+                            color="black"
+                            fontWeight="bold"
+                            objectPosition="right"
+                            alignItems="center"
+                        >
+                            {Content(miscLang, 'category', 'resume')}
+                            <MdDocumentScanner />
+                        </PdfPreviewButton>
+                    </Box>
+                    <Box pl={2} objectPosition="right" alignSelf="center">
                         <LanguageButton path={path} />
                         <ThemeToggleButton />
                         <Box
                             ml={2}
                             display={{ base: 'inline-block', md: 'none' }}
                         >
-                            <Menu>
-                                <MenuButton
-                                    as={IconButton}
-                                    icon={<HamburgerIcon />}
-                                    variant="outline"
-                                    aria-label="Options"
-                                />
-                                <MenuList>
-                                    <MenuItem
-                                        as={MenuLink}
-                                        justifyContent="space-between"
-                                        href="/"
+                            <Menu.Root>
+                                <Menu.Trigger asChild>
+                                    <IconButton
+                                        variant="outline"
+                                        aria-label="Options"
                                     >
-                                        {Content(miscLang, 'category', 'about')}
-                                        <FaUser />
-                                    </MenuItem>
+                                        <IoMenu />
+                                    </IconButton>
+                                </Menu.Trigger>
 
-                                    <MenuItem
-                                        as={MenuLink}
-                                        justifyContent="space-between"
-                                        href="/experience"
-                                    >
-                                        {Content(
-                                            miscLang,
-                                            'category',
-                                            'experience'
-                                        )}
-                                        <HiBriefcase />
-                                    </MenuItem>
+                                <Menu.Positioner>
+                                    <Menu.Content minW={200}>
+                                        <Menu.Item asChild>
+                                            <MenuLink href="/">
+                                                {Content(
+                                                    miscLang,
+                                                    'category',
+                                                    'about'
+                                                )}
+                                                <FaUser />
+                                            </MenuLink>
+                                        </Menu.Item>
 
-                                    <MenuItem
-                                        as={MenuLink}
-                                        justifyContent="space-between"
-                                        href="/other"
-                                    >
-                                        {Content(
-                                            miscLang,
-                                            'category',
-                                            'others'
-                                        )}
-                                        <IoIosApps />
-                                    </MenuItem>
+                                        <Menu.Item asChild>
+                                            <MenuLink href="/experience">
+                                                {Content(
+                                                    miscLang,
+                                                    'category',
+                                                    'experience'
+                                                )}
+                                                <HiBriefcase />
+                                            </MenuLink>
+                                        </Menu.Item>
 
-                                    <PdfPreviewMenuItem
-                                        justifyContent="space-between"
-                                        title={Content(
-                                            miscLang,
-                                            'category',
-                                            'resume'
-                                        )}
-                                        src={Content(
-                                            miscLang,
-                                            'category',
-                                            'link-resume'
-                                        )}
-                                    >
-                                        {Content(
-                                            miscLang,
-                                            'category',
-                                            'resume'
-                                        )}
-                                        <MdDocumentScanner />
-                                    </PdfPreviewMenuItem>
-                                </MenuList>
-                            </Menu>
+                                        <Menu.Item asChild>
+                                            <MenuLink href="/other">
+                                                {Content(
+                                                    miscLang,
+                                                    'category',
+                                                    'others'
+                                                )}
+                                                <IoIosApps />
+                                            </MenuLink>
+                                        </Menu.Item>
+
+                                        <PdfPreviewMenuItem
+                                            justifyContent="space-between"
+                                            title={Content(
+                                                miscLang,
+                                                'category',
+                                                'resume'
+                                            )}
+                                            src={Content(
+                                                miscLang,
+                                                'category',
+                                                'link-resume'
+                                            )}
+                                        >
+                                            {Content(
+                                                miscLang,
+                                                'category',
+                                                'resume'
+                                            )}
+                                            <MdDocumentScanner />
+                                        </PdfPreviewMenuItem>
+                                    </Menu.Content>
+                                </Menu.Positioner>
+                            </Menu.Root>
                         </Box>
                     </Box>
                 </Box>

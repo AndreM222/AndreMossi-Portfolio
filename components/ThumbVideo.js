@@ -1,10 +1,11 @@
 import NextLink from 'next/link'
 import { Heading, Box, Link, Badge, AspectRatio } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { FaChevronRight } from 'react-icons/fa'
 import { AiFillFolderOpen } from 'react-icons/ai'
 import { Icon } from '@chakra-ui/react'
 import miscLang from '../locales/misc.json'
 import Content from './content'
+import { useColorModeValue } from './ui/color-mode'
 
 export const Title = ({ children }) => (
     <Box>
@@ -15,7 +16,7 @@ export const Title = ({ children }) => (
         </Link>
         <span>
             &nbsp;
-            <ChevronRightIcon />
+            <FaChevronRight />
             &nbsp;
         </span>
         <Heading display="inline-block" as="h3" fontSize={20} mb={4}>
@@ -37,7 +38,7 @@ export const ThumbVideo = ({ src, alt }) => (
 )
 
 export const Meta = ({ children }) => (
-    <Badge colorScheme="cyan" mr={2}>
+    <Badge bg={useColorModeValue('cyan.400', 'cyan.200')} mr={2}>
         {children}
     </Badge>
 )

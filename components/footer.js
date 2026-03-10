@@ -5,17 +5,10 @@ import {
     IoMail,
     IoCard
 } from 'react-icons/io5'
-import { FaNewspaper, FaXTwitter } from 'react-icons/fa6'
-import {
-    Heading,
-    Button,
-    Icon,
-    Link,
-    Box,
-    SimpleGrid,
-    useColorModeValue,
-    useDisclosure
-} from '@chakra-ui/react'
+import { FaXTwitter } from 'react-icons/fa6'
+import { BiSolidNews } from 'react-icons/bi'
+import { Heading, Button, Icon, Link, Box, SimpleGrid } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import UpToggle from './Buttons/up-toggle'
 import Content from './content'
 import DateSetup from './dateSetup'
@@ -29,12 +22,8 @@ import newsLang from '../locales/pages/news.json'
 const LinkButton = ({ target, href, icon, children, ...props }) => {
     return (
         <Link href={href} target={target}>
-            <Button
-                variant="ghost"
-                colorScheme="orange"
-                leftIcon={icon}
-                {...props}
-            >
+            <Button variant="ghost" colorPalette="orange" {...props}>
+                {icon}
                 {children}
             </Button>
         </Link>
@@ -46,10 +35,10 @@ const QRButton = ({ icon, children, ...props }) => {
         <QRCodeButton
             justifyContent="left"
             variant="ghost"
-            colorScheme="orange"
-            leftIcon={icon}
+            colorPalette="orange"
             {...props}
         >
+            {icon}
             {children}
         </QRCodeButton>
     )
@@ -58,7 +47,7 @@ const QRButton = ({ icon, children, ...props }) => {
 const today = new Date()
 
 const Footer = ({ ...props }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [isOpen, setOpen] = useState(false)
 
     const [isVisible, setIsVisible] = useState(true)
     const footerButtonRef = useRef(null)
@@ -131,8 +120,7 @@ const Footer = ({ ...props }) => {
                     </LinkButton>
 
                     <QRButton
-                        onOpen={onOpen}
-                        onClose={onClose}
+                        setOpen={setOpen}
                         isOpen={isOpen}
                         icon={<Icon as={IoCard} />}
                     >
@@ -145,24 +133,29 @@ const Footer = ({ ...props }) => {
             <Box ref={footerButtonRef}>
                 <NewsButton
                     my={2}
-                    leftIcon={isVisible && <FaNewspaper />}
                     position={isVisible ? 'static' : 'fixed'}
                     bottom={!isVisible ? 4 : 'auto'}
                     left={!isVisible ? 4 : 'auto'}
                     zIndex={isVisible ? 'auto' : 999}
-                    transform={isVisible ? 'none' : 'translateY(0)'}
+                    bg="orange.fg"
+                    _hover={{
+                        transform: "translateY(0)",
+                        bg: 'orange.border'
+                    }}
                     animation={
                         isVisible ? 'slideDown 0.3s ease' : 'slideUp 0.3s ease'
                     }
-                    sx={{
+                    css={{
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                         transform: isVisible
                             ? 'translateY(0) scale(1)'
                             : 'translateY(-20px) scale(0.95)',
-                        opacity: isVisible ? 1 : 1,
+                        opacity: isVisible ? 1 : 1
                     }}
+                    p={3}
                 >
-                    {isVisible ? Content(newsLang, 'news-ui', 'newsButton') : <FaNewspaper />}
+                    <BiSolidNews />
+                    {isVisible && Content(newsLang, 'news-ui', 'newsButton')}
                 </NewsButton>
             </Box>
 

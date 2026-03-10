@@ -2,32 +2,33 @@
 
 import {
     chakra,
-    shouldForwardProp,
     Box,
     SimpleGrid,
-    Skeleton,
-    useColorModeValue
+    Skeleton
 } from '@chakra-ui/react'
+import { useColorModeValue } from "@/components/ui/color-mode"
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
 import CountUp from 'react-countup'
-import { motion } from 'framer-motion'
+import { isValidMotionProp, motion } from 'framer-motion'
 import Content from '../components/content'
 
 import experienceLang from '../locales/pages/experience.json'
+import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {
-        return shouldForwardProp(prop) || prop === 'transition'
+        return isValidMotionProp(prop) || isPropValid(prop)
     }
 })
 
 const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     <StyledDiv
+        key={loading ? "loading" : "loaded"}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: delay }}
+        transition={{ duration: 0.8, delay }}
     >
         <Box
             w="full"
@@ -50,7 +51,7 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
                 {Content(experienceLang, 'category', category.toLowerCase())}
             </span>
             {loading ? (
-                <Skeleton h={5} w={20} rounded="lg" />
+                <Skeleton h={5} w={10} rounded="lg" variant="shine"/>
             ) : (
                 <CountUp start={0} end={value || 0} />
             )}

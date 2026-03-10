@@ -2,7 +2,6 @@ import {
     Container,
     Badge,
     List,
-    ListItem,
     Heading,
     Box
 } from '@chakra-ui/react'
@@ -61,15 +60,15 @@ const Sandbox = () => {
                                 'content'
                             )}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(
                                 traceabilityLang,
                                 'EnginnerOwnerAndDecision',
                                 'list'
                             )?.map((item, index) => (
-                                <ListItem key={index}>{item}</ListItem>
+                                <List.Item key={index}>{item}</List.Item>
                             ))}
-                        </List>
+                        </List.Root>
                     </Box>
 
                     <Box
@@ -90,30 +89,30 @@ const Sandbox = () => {
                                 'content'
                             )}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(
                                 traceabilityLang,
                                 'OperationalBusinessImpact',
                                 'list'
                             )?.map((item, index) => (
-                                <ListItem key={index}>{item}</ListItem>
+                                <List.Item key={index}>{item}</List.Item>
                             ))}
-                        </List>
+                        </List.Root>
                     </Box>
                 </Box>
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
                             {Content(contentLang, 'info', 'type-education')}
                         </span>
-                    </ListItem>
+                    </List.Item>
 
-                    <ListItem>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="ai, data entry, data analysis, javascript, react, c++, shell, docker, python, rust, yolo, machine learning, timescaledb, data modeling" />
-                    </ListItem>
-                </List>
+                    </List.Item>
+                </List.Root>
 
                 <ThumbImage
                     src="/images/experiences/TracingUI.png"

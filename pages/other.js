@@ -1,4 +1,4 @@
-import { Container, Heading, Divider } from '@chakra-ui/react'
+import { Container, Heading, Separator } from '@chakra-ui/react'
 import { GridItem } from '../components/grid-item'
 import Section from '../components/section'
 import Layout from '../components/layouts/article'
@@ -18,11 +18,11 @@ const Other = () => {
                 Content(miscLang, 'category', 'others'),
             ].join(' ')}
         >
-            <Container maxW={{ base: "container.md", lg: "70%" }}>
-                <Heading as="h3">
+            <Container maxW={{ base: "2xl", lg: "70%" }}>
+                <Heading size="4xl">
                     {Content(miscLang, 'category', 'others')}
                 </Heading>{' '}
-                <Divider my={6} />
+                <Separator my={6} />
 
                 <Section delay={0.1}>
                     <Heading as="h3" variant="section-title">

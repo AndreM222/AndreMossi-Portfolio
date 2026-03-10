@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Box, Image, useColorModeValue } from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
+import { useColorModeValue } from "@/components/ui/color-mode"
 
 const AvatarIcon = () => {
     const [playing, setPlaying] = useState(false)

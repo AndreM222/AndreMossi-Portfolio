@@ -3,12 +3,13 @@ import { Link, Text } from '@chakra-ui/react'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
 import { useMemo } from 'react'
+import { useColorModeValue } from './ui/color-mode'
 
 const LINK_REGEX = /https?:\/\/[^\s<]+/g
 const EMAIL_REGEX = /[^a-zA-Z0-9]+@[^<\s]+/g
 const NUMBER_REGEX = /(\d+(?:\.\d+)?)([KMBkmb%+×]?)/g
 
-export const DecorateSummary = ({ text }) => {
+export const DecorateSummary = ({ text, ...props }) => {
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const parts = useMemo(() => {
@@ -82,7 +83,7 @@ export const DecorateSummary = ({ text }) => {
     }, [text])
 
     return (
-        <p ref={ref} style={{ lineHeight: '1.6' }}>
+        <Text ref={ref} style={{ lineHeight: '1.6' }} {...props}>
             {parts.map((part, i) => {
                 switch (part.type) {
                     case 'link':
@@ -93,7 +94,14 @@ export const DecorateSummary = ({ text }) => {
                         )
                     case 'email':
                         return (
-                            <Link key={i} href={part.url} color="cyan">
+                            <Link
+                                key={i}
+                                href={part.url}
+                                color={useColorModeValue(
+                                    'cyan.400',
+                                    'cyan.200'
+                                )}
+                            >
                                 {part.content}
                             </Link>
                         )
@@ -109,8 +117,9 @@ export const DecorateSummary = ({ text }) => {
                             >
                                 {({ countUpRef }) => (
                                     <Text
+                                        as="span"
                                         display="inline-flex"
-                                        color="orange"
+                                        color="orange.400"
                                         ref={countUpRef}
                                     >
                                         {part.suffix}
@@ -122,6 +131,6 @@ export const DecorateSummary = ({ text }) => {
                         return part.content
                 }
             })}
-        </p>
+        </Text>
     )
 }

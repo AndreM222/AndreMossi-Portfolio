@@ -1,4 +1,4 @@
-import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
+import { Container, Heading, SimpleGrid, Separator } from '@chakra-ui/react'
 import Section from '../components/section'
 import { ExperienceGridItem } from '../components/grid-item'
 import Layout from '../components/layouts/article'
@@ -16,11 +16,11 @@ const Experience = () => {
                 Content(miscLang, 'category', 'experience')
             ].join(' ')}
         >
-            <Container maxW="container.lg">
-                <Heading as="h3">
+            <Container maxW="5xl">
+                <Heading size="4xl">
                     {Content(miscLang, 'category', 'experience')}
                 </Heading>
-                <Divider my={6} />
+                <Separator my={6} />
 
                 <Heading as="h2" fontSize={25} my={6}>
                     {Content(experienceLang, 'category', 'internship')}

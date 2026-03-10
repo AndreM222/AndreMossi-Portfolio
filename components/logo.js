@@ -1,6 +1,7 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { Text, useColorModeValue } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import Content from './content'
 import miscLang from '../locales/misc.json'
@@ -28,16 +29,14 @@ const Logo = () => {
     const logoPrintImg = `/images/LogoNav.svg`
 
     return (
-        <Link href="/">
+        <Link
+            href="/"
+            fontFamily="M PLUS Rounded 1c"
+            fontWeight="bold"
+        >
             <LogoBox>
-                <Image src={logoPrintImg} width={20} height={20} alt="logo"/>
-                <Text
-                    color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-                    fontFamily="M PLUS Rounded 1c"
-                    fontWeight="bold"
-                >
-                    { Content(miscLang, 'title', 'name') }
-                </Text>
+                <Image src={logoPrintImg} width={20} height={20} alt="logo" />
+                {Content(miscLang, 'title', 'name')}
             </LogoBox>
         </Link>
     )

@@ -2,7 +2,6 @@ import {
     Container,
     Badge,
     List,
-    ListItem,
     Box,
     Heading
 } from '@chakra-ui/react'
@@ -57,13 +56,13 @@ const Dinant = () => {
                         <Heading size="sm">
                             {Content(dinantLang, 'contractSystem', 'content')}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(dinantLang, 'contractSystem', 'list')?.map(
                                 (item, index) => (
-                                    <ListItem key={index}>{item}</ListItem>
+                                    <List.Item key={index}>{item}</List.Item>
                                 )
                             )}
-                        </List>
+                        </List.Root>
                     </Box>
 
                     <Box
@@ -84,15 +83,15 @@ const Dinant = () => {
                                 'content'
                             )}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(
                                 dinantLang,
                                 'maintenancePlatform',
                                 'list'
                             )?.map((item, index) => (
-                                <ListItem key={index}>{item}</ListItem>
+                                <List.Item key={index}>{item}</List.Item>
                             ))}
-                        </List>
+                        </List.Root>
                     </Box>
 
                     <Box
@@ -109,35 +108,35 @@ const Dinant = () => {
                         <Heading size="sm">
                             {Content(dinantLang, 'ownershipImpact', 'content')}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(
                                 dinantLang,
                                 'ownershipImpact',
                                 'list'
                             )?.map((item, index) => (
-                                <ListItem key={index}>{item}</ListItem>
+                                <List.Item key={index}>{item}</List.Item>
                             ))}
-                        </List>
+                        </List.Root>
                     </Box>
                 </Box>
 
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
                             {Content(contentLang, 'info', 'type-internship')}
                         </span>
-                    </ListItem>
+                    </List.Item>
 
-                    <ListItem>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="Full-Stack Development, Data Transformation, Oracle Database, HTML, CSS, JavaScript, SQL, Data Entry, Data Analysis, Data Modeling" />
-                    </ListItem>
+                    </List.Item>
 
                     <Box justifyItems="center" margin="auto">
                         <RecommendationCard projectID="dinant" />
                     </Box>
-                </List>
+                </List.Root>
             </Container>
         </Layout>
     )

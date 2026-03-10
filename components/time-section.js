@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
-import { chakra, shouldForwardProp } from '@chakra-ui/react'
+import { isValidMotionProp, motion } from 'framer-motion'
+import { chakra } from '@chakra-ui/react'
+import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
-    shouldForwardProp: (prop) => {
-        return shouldForwardProp(prop) || prop === 'transition'
-    },
+  shouldForwardProp: prop =>
+    isValidMotionProp(prop) || isPropValid(prop)
 })
 
 const TimeSection = ({ children, delay = 0 }) => (

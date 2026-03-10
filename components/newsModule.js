@@ -1,16 +1,9 @@
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalBody,
-    ModalCloseButton,
-    ModalHeader,
+    Dialog,
     Button,
-    useColorModeValue,
-    useDisclosure,
     Heading,
     Box,
-    Divider,
+    Separator,
     Flex,
     Text,
     Switch,
@@ -18,9 +11,9 @@ import {
     HStack,
     Badge,
     Skeleton,
-    SkeletonText,
-    useToast
+    IconButton
 } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import { useCallback, useEffect, useState } from 'react'
 import { FaNewspaper } from 'react-icons/fa6'
 import { FaListAlt } from 'react-icons/fa'
@@ -38,22 +31,24 @@ import { DecorateSummary } from './decorateSummary'
 import { humanizeSummary } from './humanizeCommits'
 import { useRouter } from 'next/router'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
-import {
-    defaultInterestsSettings as defaultInterestSettings,
-    interestTypes
-} from '../api/newsAPI'
+import { defaultInterestsSettings, interestTypes } from '../api/newsAPI'
 
 import experienceLang from '../locales/pages/experience.json'
 import newsLang from '../locales/pages/news.json'
 import NavContent from './translations/navigationContent'
 import { useSearchParams } from 'next/navigation'
+import { toaster } from './ui/toaster'
+import { FiX } from 'react-icons/fi'
 
 const MotionBox = motion(Box)
 
 const InterestButton = ({ isInterestsOpen, setInterestsOpen, ...props }) => {
     return (
         <Button
-            colorScheme="orange"
+            bg="orange.fg"
+            _hover={{
+                bg: 'orange.border'
+            }}
             title="Interests"
             onClick={() => setInterestsOpen(!isInterestsOpen)}
             {...props}
@@ -70,7 +65,10 @@ const NotificationsButton = ({
 }) => {
     return (
         <Button
-            colorScheme={notificationsEnabled ? 'cyan' : 'orange'}
+            bg={notificationsEnabled ? 'cyan.fg' : 'orange.fg'}
+            _hover={{
+                bg: notificationsEnabled ? 'cyan.border' : 'orange.border'
+            }}
             title={
                 notificationsEnabled ? 'Notifications ON' : 'Notifications OFF'
             }
@@ -118,35 +116,41 @@ const NewsSkeleton = ({ ...props }) => {
         >
             <Flex justify="space-between" align="center" mb={3}>
                 <HStack>
-                    <Skeleton h={5} w={5} borderRadius={5} />
-                    <Skeleton h={5} w={20} borderRadius={5} />
+                    <Skeleton variant="shine" h={5} w={5} borderRadius={5} />
+                    <Skeleton variant="shine" h={5} w={20} borderRadius={5} />
                 </HStack>
                 <Text fontSize="sm" opacity={0.7}>
-                    <Skeleton h={5} w={20} borderRadius={5} />
+                    <Skeleton variant="shine" h={5} w={20} borderRadius={5} />
                 </Text>
             </Flex>
 
             <Heading size="md" mb={2}>
-                <Skeleton h={8} w={200} borderRadius={5} />
+                <Skeleton variant="shine" h={8} w={200} borderRadius={5} />
             </Heading>
 
             <Text fontSize="lg" mb={3} fontWeight="medium">
-                <Skeleton h={6} w={300} borderRadius={5} />
+                <Skeleton variant="shine" h={6} w={300} borderRadius={5} />
             </Text>
 
             <Text opacity={0.8} lineHeight="1.6" mb={3}>
-                <SkeletonText noOfLines={2} spacing="2" skeletonHeight="4" />
+                <Skeleton
+                    variant="shine"
+                    Text
+                    lineClamp={2}
+                    gap="2"
+                    skeletonHeight="4"
+                />
             </Text>
 
-            <Divider borderColor="whiteAlpha.300" mb={3} />
+            <Separator borderColor="whiteAlpha.300" mb={3} />
 
             <Flex gap={4} fontSize="sm" opacity={0.6}>
                 <Flex gap={1}>
                     <IoGitBranchOutline />
-                    <Skeleton h={4} w={200} borderRadius={5} />
+                    <Skeleton variant="shine" h={4} w={200} borderRadius={5} />
                 </Flex>
                 <Flex gap={1}>
-                    <Skeleton h={4} w={90} borderRadius={5} />
+                    <Skeleton variant="shine" h={4} w={90} borderRadius={5} />
                 </Flex>
             </Flex>
         </MotionBox>
@@ -183,7 +187,7 @@ const NewsItem = ({ news }) => {
             <Flex justify="space-between" align="center" mb={3}>
                 <HStack>
                     {categoryMeta.icon}
-                    <Badge colorScheme={categoryMeta.color}>
+                    <Badge colorPalette={categoryMeta.color}>
                         {Content(newsLang, 'types', news.type)}
                     </Badge>
                 </HStack>
@@ -196,13 +200,19 @@ const NewsItem = ({ news }) => {
                 {news.title.toUpperCase()}
             </Heading>
 
-            <Text fontSize="lg" mb={3} fontWeight="medium">
-                <DecorateSummary text={humanizeSummary(news.summary)} />
-            </Text>
+            <DecorateSummary
+                fontSize="lg"
+                mb={3}
+                fontWeight="medium"
+                text={humanizeSummary(news.summary)}
+            />
 
-            <Text opacity={0.8} lineHeight="1.6" mb={3}>
-                <DecorateSummary text={humanizeSummary(news.description)} />
-            </Text>
+            <DecorateSummary
+                opacity={0.8}
+                lineHeight="1.6"
+                mb={3}
+                text={humanizeSummary(news.description)}
+            />
 
             <Box justifySelf="center" mt={2}>
                 {news.type.includes([
@@ -224,7 +234,7 @@ const NewsItem = ({ news }) => {
                     )}
             </Box>
 
-            <Divider borderColor="whiteAlpha.300" mb={3} />
+            <Separator borderColor="whiteAlpha.300" mb={3} />
 
             <Flex gap={4} fontSize="sm" opacity={0.6}>
                 <Flex gap={1}>
@@ -242,16 +252,16 @@ const NewsItem = ({ news }) => {
 const InterestSettings = ({ preference, setPreferences }) => {
     return (
         <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
-            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+            <VStack gap={{ base: 4, md: 6 }} align="stretch">
                 {interestTypes.map(section => (
                     <Box key={section.id}>
-                        <Flex align="center" gap={3} mb={4}>
+                        <Flex align="center" gap={3} mb={2}>
                             {section.icon}
-                            <Heading size="lg">
+                            <Heading size="xl">
                                 {Content(newsLang, 'news-titles', section.id)}
                             </Heading>
                         </Flex>
-                        <Divider mb={4} />
+                        <Separator mb={4} />
                         <Flex
                             direction={{ base: 'column', md: 'row' }}
                             gap={4}
@@ -275,20 +285,25 @@ const InterestSettings = ({ preference, setPreferences }) => {
                                             item
                                         )}
                                     </Text>
-                                    <Switch
-                                        id={`${section.id}-${item}`}
-                                        colorScheme={section.color}
-                                        isChecked={preference[section.id][item]}
-                                        onChange={e =>
+                                    <Switch.Root
+                                        checked={preference[section.id][item]}
+                                        onCheckedChange={({ checked }) =>
                                             setPreferences(prev => ({
                                                 ...prev,
                                                 [section.id]: {
                                                     ...prev[section.id],
-                                                    [item]: e.target.checked
+                                                    [item]: checked
                                                 }
                                             }))
                                         }
-                                    />
+                                        colorPalette={section.color}
+                                    >
+                                        <Switch.HiddenInput />
+
+                                        <Switch.Control>
+                                            <Switch.Thumb />
+                                        </Switch.Control>
+                                    </Switch.Root>
                                 </Flex>
                             ))}
                         </Flex>
@@ -347,7 +362,7 @@ const NewsScreen = ({ preference }) => {
 
     return (
         <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
-            <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+            <VStack gap={{ base: 4, md: 6 }} align="stretch">
                 {isLoading &&
                     Array.from({ length: 5 }).map((_, i) => (
                         <NewsSkeleton key={`skeleton-${i}`} />
@@ -357,7 +372,7 @@ const NewsScreen = ({ preference }) => {
                     <Text color="orange.400" textAlign="center">
                         {Content(newsLang, 'news-ui', 'failed')}
                         <Button
-                            variant="link"
+                            variant="plain"
                             onClick={() =>
                                 queryClient.invalidateQueries({
                                     queryKey: ['news']
@@ -393,7 +408,7 @@ const NewsScreen = ({ preference }) => {
                         ) : (
                             <Button
                                 variant="ghost"
-                                colorScheme="orange"
+                                colorPalette="orange"
                                 onClick={() => fetchNextPage()}
                             >
                                 {Content(newsLang, 'news-ui', 'loadMore')}
@@ -406,11 +421,10 @@ const NewsScreen = ({ preference }) => {
     )
 }
 
-export const NewsModal = ({ isOpen, onClose }) => {
+export const NewsModal = ({ isOpen, setOpen }) => {
     const [permission, setPermission] = useState('default')
     const [notificationsEnabled, setNotificationsEnabled] = useState(false)
 
-    const toast = useToast()
     const { locale, defaultLocale } = useRouter()
 
     const [interestOpen, setInterestOpen] = useState(false)
@@ -429,7 +443,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
 
     const handleNotificationsToggle = useCallback(async () => {
         if (!('Notification' in window)) {
-            toast({
+            toaster.create({
                 title: NavContent(
                     newsLang,
                     'notifications',
@@ -437,7 +451,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
                     locale,
                     defaultLocale
                 ),
-                status: 'warning',
+                type: 'warning',
                 duration: 3000
             })
             return
@@ -481,7 +495,7 @@ export const NewsModal = ({ isOpen, onClose }) => {
             const permission = await Notification.requestPermission()
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
-                toast({
+                toaster.create({
                     title: NavContent(
                         newsLang,
                         'notifications',
@@ -496,12 +510,12 @@ export const NewsModal = ({ isOpen, onClose }) => {
                         locale,
                         defaultLocale
                     ),
-                    status: 'success',
+                    type: 'success',
                     duration: 3000
                 })
                 await subscribeUser()
             } else {
-                toast({
+                toaster.create({
                     title: NavContent(
                         newsLang,
                         'notifications',
@@ -516,13 +530,13 @@ export const NewsModal = ({ isOpen, onClose }) => {
                         locale,
                         defaultLocale
                     ),
-                    status: 'warning',
+                    type: 'warning',
                     duration: 4000
                 })
             }
         } else {
             setNotificationsEnabled(false)
-            toast({
+            toaster.create({
                 title: NavContent(
                     newsLang,
                     'notifications',
@@ -530,20 +544,20 @@ export const NewsModal = ({ isOpen, onClose }) => {
                     locale,
                     defaultLocale
                 ),
-                status: 'info',
+                type: 'info',
                 duration: 2000
             })
         }
-    }, [notificationsEnabled, toast])
+    }, [notificationsEnabled, toaster])
 
     const [preference, setPreferences] = useState(() => {
-        if (typeof window === 'undefined') return defaultInterestSettings
+        if (typeof window === 'undefined') return defaultInterestsSettings
 
         try {
             const saved = localStorage.getItem('andre_news_preferences')
-            return saved ? JSON.parse(saved) : defaultInterestSettings
+            return saved ? JSON.parse(saved) : defaultInterestsSettings
         } catch {
-            return defaultInterestSettings
+            return defaultInterestsSettings
         }
     })
 
@@ -561,80 +575,103 @@ export const NewsModal = ({ isOpen, onClose }) => {
     }, [preference])
 
     return (
-        <Modal
-            size="6xl"
-            isOpen={isOpen}
-            onClose={onClose}
-            isCentered
+        <Dialog.Root
+            size="xl"
+            open={isOpen}
+            onOpenChange={e => setOpen(e.open)}
+            placement="center"
             motionPreset="scale"
         >
-            <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
-            <ModalContent
-                display="flex"
-                flexDirection="column"
-                h={{ base: '85vh', md: '90vh' }}
-                bg={bgColor}
-                borderRadius="xl"
-                border="1px solid"
-                borderColor="whiteAlpha.200"
-                boxShadow="0 20px 60px rgba(0,0,0,0.5)"
-            >
-                <ModalHeader
-                    borderBottom="1px solid"
+            <Dialog.Backdrop bg="blackAlpha.700" backdropFilter="blur(6px)" />
+            <Dialog.Positioner>
+                <Dialog.Content
+                    display="flex"
+                    flexDirection="column"
+                    h={{ base: '85vh', md: '90vh' }}
+                    bg={bgColor}
+                    borderRadius="xl"
+                    border="1px solid"
                     borderColor="whiteAlpha.200"
-                    position="relative"
+                    boxShadow="0 20px 60px rgba(0,0,0,0.5)"
                 >
-                    <Flex
-                        position="absolute"
-                        left={4}
-                        top={4}
-                        gap={2}
-                        zIndex={20}
+                    <Dialog.Header
+                        borderBottom="1px solid"
+                        borderColor="whiteAlpha.200"
+                        position="relative"
                     >
-                        <InterestButton
-                            isInterestsOpen={interestOpen}
-                            setInterestsOpen={setInterestOpen}
+                        <Flex
+                            position="absolute"
+                            left={4}
+                            top={4}
+                            gap={2}
+                            zIndex={20}
+                        >
+                            <InterestButton
+                                isInterestsOpen={interestOpen}
+                                setInterestsOpen={setInterestOpen}
+                                size="sm"
+                            />
+                            <NotificationsButton
+                                notificationsEnabled={notificationsEnabled}
+                                onToggle={handleNotificationsToggle}
+                                permission={permission}
+                            />
+                        </Flex>
+
+                        <Flex pt={12} m="auto">
+                            <Heading zIndex={10} size="3xl">
+                                {interestOpen
+                                    ? Content(
+                                        newsLang,
+                                        'news-titles',
+                                        'interests'
+                                    )
+                                    : Content(
+                                        newsLang,
+                                        'news-titles',
+                                        'latestUpdates'
+                                    )}
+                            </Heading>
+                        </Flex>
+                    </Dialog.Header>
+
+                    <Dialog.CloseTrigger asChild>
+                        <IconButton
+                            aria-label="Close"
                             size="sm"
-                        />
-                        <NotificationsButton
-                            notificationsEnabled={notificationsEnabled}
-                            onToggle={handleNotificationsToggle}
-                            permission={permission}
-                        />
-                    </Flex>
+                            position="absolute"
+                            top="8px"
+                            right="16px"
+                            zIndex="10"
+                            variant="ghost"
+                        >
+                            <FiX />
+                        </IconButton>
+                    </Dialog.CloseTrigger>
 
-                    <Flex direction="column" align="center" pt={12}>
-                        <Heading zIndex={10}>
-                            {interestOpen
-                                ? Content(newsLang, 'news-titles', 'interests')
-                                : Content(
-                                    newsLang,
-                                    'news-titles',
-                                    'latestUpdates'
-                                )}
-                        </Heading>
-                    </Flex>
-                </ModalHeader>
-
-                <ModalCloseButton size="lg" borderRadius="full" />
-
-                <ModalBody p={0} flex="1" overflow="hidden" display="flex">
-                    {interestOpen ? (
-                        <InterestSettings
-                            preference={preference}
-                            setPreferences={setPreferences}
-                        />
-                    ) : (
-                        <NewsScreen preference={preference} />
-                    )}
-                </ModalBody>
-            </ModalContent>
-        </Modal>
+                    <Dialog.Body
+                        p={0}
+                        flex="1"
+                        overflow="hidden"
+                        display="flex"
+                    >
+                        {interestOpen ? (
+                            <InterestSettings
+                                preference={preference}
+                                setPreferences={setPreferences}
+                            />
+                        ) : (
+                            <NewsScreen preference={preference} />
+                        )}
+                    </Dialog.Body>
+                </Dialog.Content>
+            </Dialog.Positioner>
+        </Dialog.Root>
     )
 }
 
 export const NewsButton = ({ children, ...props }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [isOpen, setOpen] = useState(false)
     const [unreadNews, setUnreadNews] = useState(0)
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -647,7 +684,7 @@ export const NewsButton = ({ children, ...props }) => {
 
             onOpen()
         }
-    }, [searchParams, isOpen, router, onOpen])
+    }, [searchParams, isOpen, router])
 
     useEffect(() => {
         if (!localStorage.getItem('news_unread')) {
@@ -674,7 +711,6 @@ export const NewsButton = ({ children, ...props }) => {
     return (
         <Box position="relative">
             <Button
-                colorScheme="orange"
                 ring={unreadNews ? 3 : 0}
                 ringColor={unreadNews ? 'orange.400' : 'transparent'}
                 boxShadow={
@@ -687,7 +723,7 @@ export const NewsButton = ({ children, ...props }) => {
                     transform: 'scale(1.05)'
                 }}
                 transition="all 0.3s ease"
-                onClick={onOpen}
+                onClick={() => setOpen(true)}
                 position="relative"
                 {...props}
             >
@@ -702,19 +738,13 @@ export const NewsButton = ({ children, ...props }) => {
                         borderRadius="full"
                         w={4}
                         h={4}
-                        alignContent="center"
-                        justifyContent="center"
-                        fontSize="xs"
-                        fontWeight="bold"
                         boxShadow="0 0 10px red.500"
                         animation="pulse 1.5s infinite"
-                    >
-                        {unreadNews}
-                    </Box>
+                    />
                 )}
             </Button>
 
-            <NewsModal isOpen={isOpen} onClose={onClose} />
+            <NewsModal isOpen={isOpen} setOpen={setOpen} />
         </Box>
     )
 }

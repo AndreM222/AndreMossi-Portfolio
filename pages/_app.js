@@ -1,11 +1,13 @@
-import { ChakraProvider } from '@chakra-ui/react'
+'use client'
+import { Provider } from '@/components/ui/provider'
 import Layout from '../components/layouts/main'
-import theme from '../lib/theme'
 import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import '../lib/sweeper.css'
 import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from '@/ui/toaster'
+import { ClientOnly } from '@chakra-ui/react'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -46,16 +48,19 @@ function Website({ Component, pageProps, router }) {
     }, [])
 
     return (
-        <ChakraProvider theme={theme}>
+        <Provider>
             <Fonts />
             <QueryClientProvider client={queryClient}>
-                <Layout router={router}>
-                    <AnimatePresence mode="wait" initial={true}>
-                        <Component {...pageProps} key={router.route} />
-                    </AnimatePresence>
-                </Layout>
+                <ClientOnly>
+                    <Toaster />
+                    <Layout router={router}>
+                        <AnimatePresence mode="wait" initial={true}>
+                            <Component {...pageProps} key={router.route} />
+                        </AnimatePresence>
+                    </Layout>
+                </ClientOnly>
             </QueryClientProvider>
-        </ChakraProvider>
+        </Provider>
     )
 }
 

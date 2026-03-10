@@ -1,20 +1,16 @@
 import {
-    AlertIcon,
+    Alert,
     Box,
-    AlertTitle,
-    AlertDescription,
     Alert,
     CloseButton,
     useDisclosure,
-    chakra,
-    shouldForwardProp
+    chakra
 } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import isPropValid from '@emotion/is-prop-valid'
+import { isValidMotionProp, motion } from 'framer-motion'
 
 const StyledDiv = chakra(motion.div, {
-    shouldForwardProp: prop => {
-        return shouldForwardProp(prop) || prop === 'transition'
-    }
+    shouldForwardProp: prop => isValidMotionProp(prop) || isPropValid(prop)
 })
 
 const AlertNotification = ({
@@ -32,7 +28,7 @@ const AlertNotification = ({
             <StyledDiv
                 position="fixed"
                 right={{ base: '0', lg: '50%' }}
-                    rounded="lg"
+                rounded="lg"
                 top="1/2"
                 zIndex="50"
                 w={{ base: 'full', sm: 'fit-content' }}
@@ -41,17 +37,19 @@ const AlertNotification = ({
                 m={3}
                 transition={{ duration: 0.6, delay: delay }}
             >
-                <Alert
+                <Alert.Root
                     rounded="lg"
                     backdropFilter="auto"
                     status={type}
-                    variant="left-accent"
+                    variant="subtle"
+                    borderStartWidth="3px"
+                    borderStartColor="colorPalette.solid"
                     {...props}
                 >
-                    <AlertIcon />
+                    <Alert.Indicator />
                     <Box>
-                        <AlertTitle>{title}</AlertTitle>
-                        <AlertDescription>{children}</AlertDescription>
+                        <Alert.Title>{title}</Alert.Title>
+                        <Alert.Description>{children}</Alert.Description>
                     </Box>
                     <CloseButton
                         alignSelf="flex-start"
@@ -60,7 +58,7 @@ const AlertNotification = ({
                         top={-1}
                         onClick={onClose}
                     />
-                </Alert>
+                </Alert.Root>
             </StyledDiv>
         )
 

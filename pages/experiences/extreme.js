@@ -1,4 +1,4 @@
-import { Container, Badge, List, ListItem } from '@chakra-ui/react'
+import { Container, Badge, List } from '@chakra-ui/react'
 import { Title, ThumbImage, Meta } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -30,16 +30,16 @@ const Extreme = () => {
                     </Badge>
                 </Title>
                 <Paragraph>{Content(extremeLang, 'description', 'content')}</Paragraph>
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>{Content(contentLang, 'info', 'type-education')}</span>
-                    </ListItem>
-                    <ListItem>
+                    </List.Item>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="introduction to networks" />
-                    </ListItem>
-                </List>
+                    </List.Item>
+                </List.Root>
                 <ThumbImage
                     src="/images/experiences/Extreme-Certificate.png"
                     alt="Extreme Certificate"

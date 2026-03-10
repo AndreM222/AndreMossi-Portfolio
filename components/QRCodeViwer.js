@@ -1,21 +1,14 @@
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalBody,
+    Dialog,
     Button,
-    useColorModeValue,
     Heading,
     Flex,
     Box,
-    ModalCloseButton,
     Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverBody,
-    PopoverCloseButton,
-    IconButton
+    IconButton,
+    Portal
 } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import { QRCodeCanvas } from 'qrcode.react'
 import { motion } from 'framer-motion'
 
@@ -24,7 +17,9 @@ import indexLang from '../locales/pages/index.json'
 import { IoIosGlobe, IoIosShare, IoLogoGithub } from 'react-icons/io'
 import Content from './content'
 import { useCallback, useEffect, useState } from 'react'
-import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
+import { MdEmail } from 'react-icons/md'
+import { FaPhone } from 'react-icons/fa6'
+import { FiX } from 'react-icons/fi'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
@@ -138,7 +133,10 @@ export const FrontCard = ({ isOpen, ...props }) => {
             let i = 0
             const timer = setInterval(() => {
                 if (i < name.length) {
-                    setNameText(prev => prev + name[i])
+                    const char = name[i]
+                    if (char) {
+                        setNameText(prev => prev + char)
+                    }
                     i++
                 } else {
                     clearInterval(timer)
@@ -201,7 +199,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     }}
                 />
 
-                <Heading size="lg" letterSpacing="tight" overflow="hidden">
+                <Heading size="3xl" letterSpacing="tight" overflow="hidden">
                     {nameText}
                     <motion.span
                         style={{
@@ -224,7 +222,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     />
                 </Heading>
                 {Content(miscLang, 'title', 'subname') && (
-                    <Box mt={-2} fontSize="lg" opacity={0.9}>
+                    <Box mt={-1} fontSize="lg" opacity={0.9}>
                         {Content(miscLang, 'title', 'subname')}
                     </Box>
                 )}
@@ -250,10 +248,10 @@ export const FrontCard = ({ isOpen, ...props }) => {
 
                         {canShare && (
                             <Button
-                                size="xs"
+                                size="2xs"
                                 variant="ghost"
-                                colorScheme="orange"
                                 borderRadius="full"
+                                colorPalette="orange"
                                 onClick={() => shareUrl()}
                                 _focus={{ boxShadow: 'none' }}
                                 _focusVisible={{ boxShadow: 'none' }}
@@ -329,16 +327,14 @@ export const FrontCard = ({ isOpen, ...props }) => {
                             fgColor="#a98f63"
                             level="H"
                         />
-                        <Popover
-                            isOpen={showShareMenu}
+                        <Popover.Root
+                            open={showShareMenu}
                             placement="top"
                             autoFocus={false}
-                            closeOnBlur={true}
-                            onClose={() => {
-                                setShowShareMenu(false)
-                            }}
+                            closeOnInteractOutside
+                            onOpenChange={() => setShowShareMenu(false)}
                         >
-                            <PopoverTrigger>
+                            <Popover.Trigger asChild>
                                 <Box
                                     position="absolute"
                                     top={0}
@@ -347,107 +343,151 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                     w="1px"
                                     h="1px"
                                 />
-                            </PopoverTrigger>
-                            <PopoverContent
-                                bg={qrBg}
-                                backdropFilter="blur(20px)"
-                                border="1px solid"
-                                borderColor="whiteAlpha.300"
-                                shadow="2xl"
-                                borderRadius="xl"
-                                p={2}
-                                minW="0"
-                                w="auto"
-                                outline="none"
-                            >
-                                <PopoverCloseButton
-                                    position="absolute"
-                                    top={-2}
-                                    right={-2}
-                                    size="sm"
-                                    borderRadius="full"
-                                    borderWidth={2}
-                                    bg={useColorModeValue('white', 'grey')}
-                                />
-                                <PopoverBody p={1}>
-                                    <Flex gap={1}>
-                                        <IconButton
-                                            icon={<IoIosGlobe />}
-                                            size="sm"
-                                            title="Website"
-                                            aria-label="Website QR"
-                                            variant={
-                                                currentQRURL === nfcUrl
-                                                    ? 'solid'
-                                                    : 'ghost'
-                                            }
-                                            colorScheme="orange"
-                                            minW="40px"
-                                            h="40px"
-                                            onClick={() => {
-                                                setShowShareMenu(false)
-                                                setCurrentQRURL(nfcUrl)
-                                            }}
-                                        />
-                                        <IconButton
-                                            icon={<IoLogoGithub />}
-                                            size="sm"
-                                            title="GitHub"
-                                            aria-label="GitHub QR"
-                                            variant={
-                                                currentQRURL === gitUrl
-                                                    ? 'solid'
-                                                    : 'ghost'
-                                            }
-                                            colorScheme="purple"
-                                            minW="40px"
-                                            h="40px"
-                                            onClick={() => {
-                                                setShowShareMenu(false)
-                                                setCurrentQRURL(gitUrl)
-                                            }}
-                                        />
+                            </Popover.Trigger>
 
-                                        <IconButton
-                                            icon={<EmailIcon />}
-                                            size="sm"
-                                            title="Email"
-                                            aria-label="Email QR"
-                                            variant={
-                                                currentQRURL === emailAddress
-                                                    ? 'solid'
-                                                    : 'ghost'
-                                            }
-                                            colorScheme="blue"
-                                            minW="40px"
-                                            h="40px"
-                                            onClick={() => {
-                                                setShowShareMenu(false)
-                                                setCurrentQRURL(emailAddress)
-                                            }}
-                                        />
-                                        <IconButton
-                                            icon={<PhoneIcon />}
-                                            size="sm"
-                                            title="Phone"
-                                            aria-label="Phone QR"
-                                            variant={
-                                                currentQRURL === phoneNumber
-                                                    ? 'solid'
-                                                    : 'ghost'
-                                            }
-                                            colorScheme="green"
-                                            minW="40px"
-                                            h="40px"
-                                            onClick={() => {
-                                                setShowShareMenu(false)
-                                                setCurrentQRURL(phoneNumber)
-                                            }}
-                                        />
-                                    </Flex>
-                                </PopoverBody>
-                            </PopoverContent>
-                        </Popover>
+                            <Portal>
+                                <Popover.Positioner>
+                                    <Popover.Content
+                                        bg={qrBg}
+                                        backdropFilter="blur(20px)"
+                                        border="1px solid"
+                                        borderColor="whiteAlpha.300"
+                                        shadow="2xl"
+                                        borderRadius="xl"
+                                        p={2}
+                                        w="auto"
+                                    >
+                                        <Popover.Body p={1}>
+                                            <Flex gap={1}>
+                                                <IconButton
+                                                    size="sm"
+                                                    title="Website"
+                                                    aria-label="Website QR"
+                                                    variant={
+                                                        currentQRURL === nfcUrl
+                                                            ? 'solid'
+                                                            : 'ghost'
+                                                    }
+                                                    minW="40px"
+                                                    h="40px"
+                                                    color={
+                                                        currentQRURL === nfcUrl
+                                                            ? 'AccentColorText'
+                                                            : 'orange.fg'
+                                                    }
+                                                    bg={
+                                                        currentQRURL === nfcUrl
+                                                            ? 'orange.fg'
+                                                            : 'none'
+                                                    }
+                                                    onClick={() => {
+                                                        setShowShareMenu(false)
+                                                        setCurrentQRURL(nfcUrl)
+                                                    }}
+                                                >
+                                                    <IoIosGlobe />
+                                                </IconButton>
+                                                <IconButton
+                                                    size="sm"
+                                                    title="GitHub"
+                                                    aria-label="GitHub QR"
+                                                    variant={
+                                                        currentQRURL === gitUrl
+                                                            ? 'solid'
+                                                            : 'ghost'
+                                                    }
+                                                    color={
+                                                        currentQRURL === gitUrl
+                                                            ? 'AccentColorText'
+                                                            : 'purple.fg'
+                                                    }
+                                                    bg={
+                                                        currentQRURL === gitUrl
+                                                            ? 'purple.fg'
+                                                            : 'none'
+                                                    }
+                                                    minW="40px"
+                                                    h="40px"
+                                                    onClick={() => {
+                                                        setShowShareMenu(false)
+                                                        setCurrentQRURL(gitUrl)
+                                                    }}
+                                                >
+                                                    <IoLogoGithub />
+                                                </IconButton>
+
+                                                <IconButton
+                                                    size="sm"
+                                                    title="Email"
+                                                    aria-label="Email QR"
+                                                    variant={
+                                                        currentQRURL ===
+                                                            emailAddress
+                                                            ? 'solid'
+                                                            : 'ghost'
+                                                    }
+                                                    color={
+                                                        currentQRURL ===
+                                                            emailAddress
+                                                            ? 'AccentColorText'
+                                                            : 'blue.fg'
+                                                    }
+                                                    bg={
+                                                        currentQRURL ===
+                                                            emailAddress
+                                                            ? 'blue.fg'
+                                                            : 'none'
+                                                    }
+                                                    minW="40px"
+                                                    h="40px"
+                                                    onClick={() => {
+                                                        setShowShareMenu(false)
+                                                        setCurrentQRURL(
+                                                            emailAddress
+                                                        )
+                                                    }}
+                                                >
+                                                    <MdEmail />
+                                                </IconButton>
+                                                <IconButton
+                                                    size="sm"
+                                                    title="Phone"
+                                                    aria-label="Phone QR"
+                                                    variant={
+                                                        currentQRURL ===
+                                                            phoneNumber
+                                                            ? 'solid'
+                                                            : 'ghost'
+                                                    }
+                                                    color={
+                                                        currentQRURL ===
+                                                            phoneNumber
+                                                            ? 'AccentColorText'
+                                                            : 'green.fg'
+                                                    }
+                                                    bg={
+                                                        currentQRURL ===
+                                                            phoneNumber
+                                                            ? 'green.fg'
+                                                            : 'none'
+                                                    }
+                                                    minW="40px"
+                                                    h="40px"
+                                                    onClick={() => {
+                                                        setShowShareMenu(false)
+                                                        setCurrentQRURL(
+                                                            phoneNumber
+                                                        )
+                                                    }}
+                                                >
+                                                    <FaPhone />
+                                                </IconButton>
+                                            </Flex>
+                                        </Popover.Body>
+                                    </Popover.Content>
+                                </Popover.Positioner>
+                            </Portal>
+                        </Popover.Root>
                     </Box>
                 </motion.div>
             </Flex>
@@ -513,7 +553,7 @@ export const BackCard = ({ ...props }) => {
             }}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            sx={{
+            css={{
                 borderRadius: '2xl',
                 overflow: 'hidden',
                 background: isHovering
@@ -598,8 +638,8 @@ export const BackCard = ({ ...props }) => {
                 }}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
-                sx={{
-                    background: isHovering
+                css={{
+                    "& background": isHovering
                         ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
                 rgba(169,143,99,0.15) 0%, transparent 60%)`
                         : 'transparent'
@@ -707,7 +747,7 @@ export const BackCard = ({ ...props }) => {
                         >
                             <Heading
                                 mt={4}
-                                size="xl"
+                                size="4xl"
                                 letterSpacing="tight"
                                 color="#a98f63"
                                 display={{ base: 'none', md: 'flex' }}
@@ -786,7 +826,7 @@ export const BackCard = ({ ...props }) => {
     )
 }
 
-export const QRCodeModal = ({ isOpen, onClose }) => {
+export const QRCodeModal = ({ isOpen, setOpen }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
     const [isFlipped, setIsFlipped] = useState(false)
 
@@ -807,18 +847,9 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
     }, [isOpen])
 
     return (
-        <Modal
-            size="4xl"
-            isOpen={isOpen}
-            onClose={onClose}
-            isCentered
-            motionPreset="scale"
-            blockScrollOnMount
-        >
-            <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(6px)" />
-
-            <ModalContent h={{ base: '725px', md: '430px' }} bg="none">
-                <ModalBody p={0} h="100%" position="relative">
+        <Dialog.Positioner>
+            <Dialog.Content h={{ base: '725px', md: '430px' }} bg="none">
+                <Dialog.Body p={0} h="100%" position="relative">
                     <motion.div
                         drag="x"
                         tabIndex={-1}
@@ -842,7 +873,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                                 Math.abs(info.offset.y) > 120 ||
                                 Math.abs(info.velocity.y) > 800
                             ) {
-                                onClose()
+                                setOpen(false)
                             }
                         }}
                         animate={{
@@ -895,7 +926,7 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                             }}
                         />
                     </motion.div>
-                </ModalBody>
+                </Dialog.Body>
                 <MotionBox
                     position="absolute"
                     top="16px"
@@ -913,34 +944,48 @@ export const QRCodeModal = ({ isOpen, onClose }) => {
                         }
                     }}
                 >
-                    <ModalCloseButton
-                        borderRadius="full"
-                        backdropFilter="blur(6px)"
-                        bg={closeBg}
-                        _hover={{ bg: closeHoverBg, color: '#a98f63' }}
-                        position="relative"
-                        zIndex={10}
-                    />
+                    <Dialog.CloseTrigger position="relative">
+                        <IconButton
+                            size="xs"
+                            borderRadius="full"
+                            color="CaptionText"
+                            backdropFilter="blur(6px)"
+                            bg={closeBg}
+                            _hover={{ bg: closeHoverBg, color: '#a98f63' }}
+                            zIndex={10}
+                        >
+                            <FiX />
+                        </IconButton>
+                    </Dialog.CloseTrigger>
                 </MotionBox>
-            </ModalContent>
-        </Modal>
+            </Dialog.Content>
+        </Dialog.Positioner>
     )
 }
 
-export const QRCodeButton = ({
-    isOpen,
-    onOpen,
-    onClose,
-    children,
-    ...props
-}) => {
+export const QRCodeButton = ({ isOpen, setOpen, children, ...props }) => {
     return (
         <>
-            <Button onClick={onOpen} {...props}>
+            <Button onClick={setOpen} {...props}>
                 {children}
             </Button>
+            <Dialog.Root
+                size="xl"
+                open={isOpen}
+                onOpenChange={e => setOpen(e.open)}
+                placement="center"
+                motionPreset="scale"
+                preventScroll
+            >
+                <Dialog.Backdrop
+                    bg="blackAlpha.700"
+                    backdropFilter="blur(6px)"
+                />
 
-            <QRCodeModal isOpen={isOpen} onClose={onClose} />
+                <Portal>
+                    <QRCodeModal isOpen={isOpen} setOpen={setOpen} />
+                </Portal>
+            </Dialog.Root>
         </>
     )
 }

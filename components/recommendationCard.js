@@ -1,33 +1,23 @@
 'use client'
 
-import {
-    Box,
-    Button,
-    chakra,
-    Image,
-    shouldForwardProp,
-    SimpleGrid,
-    useColorModeValue
-} from '@chakra-ui/react'
+import { Box, Button, chakra, Image, SimpleGrid } from '@chakra-ui/react'
+import { useColorModeValue } from '@/components/ui/color-mode'
 import NextLink from 'next/link'
 import Content from './content'
-import {
-    CalendarIcon,
-    ChevronRightIcon,
-    EmailIcon,
-    PhoneIcon
-} from '@chakra-ui/icons'
+import { FaChevronRight } from 'react-icons/fa'
 import DateSetup, { getDateFormat } from './dateSetup'
-import { motion } from 'framer-motion'
+import { isValidMotionProp, motion } from 'framer-motion'
 
 import miscLang from '../locales/misc.json'
 import letterLang from '../locales/recommendations.json'
 import { PdfPreviewButton } from './pdfViewer'
+import { MdEmail } from 'react-icons/md'
+import { FaPhone } from 'react-icons/fa6'
+import { LuCalendarRange } from 'react-icons/lu'
+import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
-    shouldForwardProp: prop => {
-        return shouldForwardProp(prop) || prop === 'transition'
-    }
+    shouldForwardProp: prop => isValidMotionProp(prop) || isPropValid(prop)
 })
 
 const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
@@ -111,7 +101,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         {projectContent.title}
                     </Box>
                     <Box display="inline-flex" alignItems="center" gap={2}>
-                        <CalendarIcon />
+                        <LuCalendarRange />
 
                         <DateSetup date={getDateFormat(projectContent.date)} />
                     </Box>
@@ -137,7 +127,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         w="full"
                     >
                         <Box display="inline-flex" gap={2} alignItems="center">
-                            <PhoneIcon />
+                            <FaPhone />
                             <div>
                                 <NextLink href={'tel:' + projectContent.phone}>
                                     {projectContent.phone}
@@ -145,7 +135,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                             </div>
                         </Box>
                         <Box display="inline-flex" gap={2} alignItems="center">
-                            <EmailIcon />
+                            <MdEmail />
                             <div>
                                 <NextLink
                                     href={'mailto:' + projectContent.mail}
@@ -160,18 +150,20 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         <Button
                             as={NextLink}
                             href={`/experiences/${projectContent.id}`}
-                            rightIcon={<ChevronRightIcon />}
-                            colorScheme="orange"
+                            bg="orange.fg"
+                            _hover={{
+                                bg: 'orange.border'
+                            }}
                         >
                             {Content(miscLang, 'moreBTN', 'content')}
+                            <FaChevronRight />
                         </Button>
                         <PdfPreviewButton
                             title={projectContent.title}
                             src={`/PDF/Recommendations/${projectContent.id}.pdf`}
-                            rightIcon={<ChevronRightIcon />}
-                            colorScheme="orange"
                         >
                             {Content(miscLang, 'letterBTN', 'content')}
+                            <FaChevronRight />
                         </PdfPreviewButton>
                     </SimpleGrid>
                 </Box>

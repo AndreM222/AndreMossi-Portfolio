@@ -1,4 +1,4 @@
-import { Container, Box, Heading, useDisclosure } from '@chakra-ui/react'
+import { Container, Box, Heading } from '@chakra-ui/react'
 import Section from '../components/section'
 import Paragraph from '../components/paragraph'
 import { TimeBox, TimeYear } from '../components/timeline'
@@ -19,7 +19,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [ isOpen, setOpen ] = useState(false)
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -34,26 +34,26 @@ const Page = () => {
             newUrl.searchParams.delete('entry')
             router.replace(newUrl.toString())
 
-            onOpen()
+            setOpen(true)
         }
-    }, [searchParams, isOpen, router, onOpen])
+    }, [searchParams, isOpen, router])
 
     return (
         <Layout>
-            <Container maxW={{ base: 'container.md', lg: '100%' }}>
-                <Box maxW="container.md" m="auto">
+            <Container maxW={{ base: '2xl', lg: '100%' }}>
+                <Box maxW="2xl" m="auto">
                     <QuoteCard quoteNum={idQuote} />
 
                     <StatsMenu />
 
                     <Box
                         display={{ md: 'flex' }}
-                        maxW="container.md"
+                        maxW="2xl"
                         my="auto"
                         mb={10}
                     >
                         <Box flexGrow={1}>
-                            <Heading as="h2" variant="page-title">
+                            <Heading size="4xl" >
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
                             <p>{Content(indexLang, 'card', 'work')}</p>
@@ -63,12 +63,11 @@ const Page = () => {
                             flexShrink={0}
                             mt={{ base: 4, md: 0 }}
                             ml={{ md: 6 }}
-                            align="center"
+                            justifySelf="center"
                         >
                             <QRCodeButton
-                                onOpen={onOpen}
-                                onClose={onClose}
                                 isOpen={isOpen}
+                                setOpen={setOpen}
                                 variant="ghost"
                                 borderRadius="full"
                                 w="auto"

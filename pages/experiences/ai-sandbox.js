@@ -1,11 +1,4 @@
-import {
-    Container,
-    Badge,
-    List,
-    ListItem,
-    Box,
-    Heading
-} from '@chakra-ui/react'
+import { Container, Badge, List, Box, Heading } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -20,7 +13,7 @@ import experienceLang from '../../locales/pages/experience.json'
 import miscLang from '../../locales/misc.json'
 import RecommendationCard from '../../components/recommendationCard'
 import { PdfPreviewButton } from '../../components/pdfViewer'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { FaChevronRight } from 'react-icons/fa'
 
 const Sandbox = () => {
     return (
@@ -68,45 +61,44 @@ const Sandbox = () => {
                                 'content'
                             )}
                         </Heading>
-                        <List spacing={1} styleType="disc" ml={4}>
+                        <List.Root gap={1} listStyleType="disc" ml={4}>
                             {Content(
                                 sandboxLang,
                                 'technicalDetails',
                                 'list'
                             )?.map((item, index) => (
-                                <ListItem key={index}>{item}</ListItem>
+                                <List.Item key={index}>{item}</List.Item>
                             ))}
-                        </List>
+                        </List.Root>
                     </Box>
                 </Box>
 
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
                             {Content(contentLang, 'info', 'type-research')}
                         </span>
-                    </ListItem>
+                    </List.Item>
 
-                    <ListItem>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="Full-Stack Development, C++, Unreal Engine, Cuda, CMake, blueprints, ai, latex" />
-                    </ListItem>
+                    </List.Item>
 
-                    <ListItem>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'link')}</Meta>
                         <CitationList list="AI Entity, World Generator, ASEE Published Research, sigma xi conference, tag ai sandbox, latex of research" />
-                    </ListItem>
-                </List>
+                    </List.Item>
+                </List.Root>
 
-                <Box align="center" my={4}>
+                <Box justifySelf="center" my={4}>
                     <PdfPreviewButton
                         src={Content(sandboxLang, 'paper', 'url')}
                         title={Content(experienceLang, 'ai-sandbox', 'title')}
-                        rightIcon={<ChevronRightIcon />}
-                        colorScheme="orange"
                     >
                         {Content(miscLang, 'moreBTN', 'content')}
+                        <FaChevronRight />
                     </PdfPreviewButton>
                 </Box>
 

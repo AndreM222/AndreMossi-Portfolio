@@ -1,4 +1,4 @@
-import { Container, Badge, List, ListItem } from '@chakra-ui/react'
+import { Container, Badge, List  } from '@chakra-ui/react'
 import { Title, ThumbImage, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -30,18 +30,18 @@ const Harvard = () => {
                     </Badge>
                 </Title>
                 <P>{Content(harvardLang, 'description', 'content')}</P>
-                <List ml={4} my={4}>
-                    <ListItem>
+                <List.Root ml={4} my={4} variant="plain">
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
                         <span>
                             {Content(contentLang, 'info', 'type-education')}
                         </span>
-                    </ListItem>
-                    <ListItem>
+                    </List.Item>
+                    <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>
                         <ExperienceList list="C, Python, Javascript, CSS, Html, SQL" />
-                    </ListItem>
-                </List>
+                    </List.Item>
+                </List.Root>
                 <ThumbImage src="/images/experiences/CS50x.png" alt="Harvard" />
             </Container>
         </Layout>
