@@ -91,7 +91,7 @@ export const PdfPreviewModal = ({ title, src }) => {
                             gap={2}
                             mt={2}
                             direction={{ base: 'column', sm: 'row' }}
-                            align="center"
+                            alignItems="center"
                         >
                             {typeArray &&
                                 src.map(currPDFInfo => (
@@ -101,6 +101,7 @@ export const PdfPreviewModal = ({ title, src }) => {
                                         size="sm"
                                         flex={1}
                                         minW="0"
+                                        w="full"
                                         onClick={() => {
                                             setLoaded(false)
                                             setPDF(currPDFInfo.src)
