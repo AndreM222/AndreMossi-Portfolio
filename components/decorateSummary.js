@@ -1,4 +1,3 @@
-'use client'
 import { Link, Text } from '@chakra-ui/react'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
@@ -10,6 +9,7 @@ const EMAIL_REGEX = /[^a-zA-Z0-9]+@[^<\s]+/g
 const NUMBER_REGEX = /(\d+(?:\.\d+)?)([KMBkmb%+×]?)/g
 
 export const DecorateSummary = ({ text, ...props }) => {
+    const emailColor = useColorModeValue('cyan.400', 'cyan.200')
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const parts = useMemo(() => {
@@ -97,10 +97,7 @@ export const DecorateSummary = ({ text, ...props }) => {
                             <Link
                                 key={i}
                                 href={part.url}
-                                color={useColorModeValue(
-                                    'cyan.400',
-                                    'cyan.200'
-                                )}
+                                color={emailColor}
                             >
                                 {part.content}
                             </Link>

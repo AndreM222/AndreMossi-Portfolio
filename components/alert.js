@@ -1,7 +1,6 @@
 import {
     Alert,
     Box,
-    Alert,
     CloseButton,
     useDisclosure,
     chakra
