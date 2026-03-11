@@ -400,10 +400,10 @@ const NewsScreen = ({ preference }) => {
     )
 
     useEffect(() => {
-        if (inView && hasNextPage && !isFetchingNextPage) {
+        if (hasNextPage && !isFetchingNextPage) {
             fetchNextPage()
         }
-    }, [inView, hasNextPage, fetchNextPage, isFetchingNextPage])
+    }, [hasNextPage, fetchNextPage, isFetchingNextPage])
 
     const allNews = useMemo(() => data?.pages.flat() ?? [], [data])
 
