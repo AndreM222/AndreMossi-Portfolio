@@ -764,7 +764,7 @@ export const NewsButton = ({ children, ...props }) => {
 
     useEffect(() => {
         const loadUnread = () => {
-            const dbReq = indexedDB.open('portfolio-db', 1)
+            const dbReq = indexedDB.open('portfolio-db', 2)
 
             dbReq.onupgradeneeded = event => {
                 const db = event.target.result
@@ -812,7 +812,7 @@ export const NewsButton = ({ children, ...props }) => {
         const handler = event => {
             if (event.data?.type !== 'UNREAD_NOTIFICATION') return
 
-            const dbReq = indexedDB.open('portfolio-db', 1)
+            const dbReq = indexedDB.open('portfolio-db', 2)
 
             dbReq.onsuccess = () => {
                 const db = dbReq.result
@@ -836,7 +836,7 @@ export const NewsButton = ({ children, ...props }) => {
     useEffect(() => {
         if (!isOpen) return
 
-        const dbReq = indexedDB.open('portfolio-db', 1)
+        const dbReq = indexedDB.open('portfolio-db', 2)
 
         dbReq.onsuccess = () => {
             const db = dbReq.result

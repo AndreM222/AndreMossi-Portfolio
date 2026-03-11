@@ -1,6 +1,6 @@
 function openDB() {
-    return new Promise(resolve => {
-        const req = indexedDB.open('portfolio-db', 1)
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open('portfolio-db', 2)
 
         req.onupgradeneeded = e => {
             const db = e.target.result
@@ -11,6 +11,7 @@ function openDB() {
         }
 
         req.onsuccess = () => resolve(req.result)
+        req.onerror = reject
     })
 }
 
@@ -21,14 +22,14 @@ async function incrementUnread() {
         const tx = db.transaction('kv', 'readwrite')
         const store = tx.objectStore('kv')
 
-        const request = store.get('news_unread')
+        const req = store.get('news_unread')
 
-        request.onsuccess = () => {
-            const current = request.result || 0
+        req.onsuccess = () => {
+            const current = req.result || 0
             store.put(current + 1, 'news_unread')
         }
 
-        request.onerror = reject
+        req.onerror = reject
         tx.oncomplete = resolve
         tx.onerror = reject
     })
@@ -47,9 +48,7 @@ self.addEventListener('push', event => {
                 data: { url: data.url }
             })
 
-            console.log('push received')
             await incrementUnread()
-            console.log('unread incremented')
 
             const allClients = await clients.matchAll({
                 type: 'window',
