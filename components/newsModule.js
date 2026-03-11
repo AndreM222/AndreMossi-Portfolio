@@ -399,12 +399,6 @@ const NewsScreen = ({ preference }) => {
         [fetchNextPage, hasNextPage, isFetchingNextPage]
     )
 
-    useEffect(() => {
-        if (hasNextPage && !isFetchingNextPage) {
-            fetchNextPage()
-        }
-    }, [hasNextPage, fetchNextPage, isFetchingNextPage])
-
     const allNews = useMemo(() => data?.pages.flat() ?? [], [data])
 
     return (
@@ -485,13 +479,30 @@ export const NewsModal = ({ isOpen, setOpen }) => {
     const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && 'Notification' in window) {
+        const initNotifications = async () => {
+            if (!('Notification' in window) || !('serviceWorker' in navigator))
+                return
+
             setPermission(Notification.permission)
 
-            const savedEnabled =
-                localStorage.getItem('andre_notifications_enabled') === 'true'
-            setNotificationsEnabled(savedEnabled)
+            try {
+                const registration = await navigator.serviceWorker.ready
+                const subscription =
+                    await registration.pushManager.getSubscription()
+
+                const enabled = !!subscription
+                setNotificationsEnabled(enabled)
+
+                localStorage.setItem(
+                    'andre_notifications_enabled',
+                    enabled.toString()
+                )
+            } catch (e) {
+                console.error('Failed to check subscription', e)
+            }
         }
+
+        initNotifications()
     }, [])
 
     const handleNotificationsToggle = useCallback(async () => {
@@ -545,7 +556,10 @@ export const NewsModal = ({ isOpen, setOpen }) => {
         const nextEnabled = !notificationsEnabled
 
         if (nextEnabled) {
-            const permission = await Notification.requestPermission()
+            const permission =
+                Notification.permission === 'granted'
+                    ? 'granted'
+                    : await Notification.requestPermission()
             if (permission === 'granted') {
                 setNotificationsEnabled(true)
                 toaster.create({
@@ -588,7 +602,16 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                 })
             }
         } else {
+            const registration = await navigator.serviceWorker.ready
+            const subscription =
+                await registration.pushManager.getSubscription()
+
+            if (subscription) {
+                await subscription.unsubscribe()
+            }
+
             setNotificationsEnabled(false)
+            localStorage.setItem('andre_notifications_enabled', 'false')
             toaster.create({
                 title: NavContent(
                     newsLang,
