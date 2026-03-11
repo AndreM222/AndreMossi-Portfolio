@@ -766,6 +766,14 @@ export const NewsButton = ({ children, ...props }) => {
         const loadUnread = () => {
             const dbReq = indexedDB.open('portfolio-db', 1)
 
+            dbReq.onupgradeneeded = event => {
+                const db = event.target.result
+
+                if (!db.objectStoreNames.contains('kv')) {
+                    db.createObjectStore('kv')
+                }
+            }
+
             dbReq.onsuccess = () => {
                 const db = dbReq.result
                 const tx = db.transaction('kv', 'readonly')
@@ -779,11 +787,32 @@ export const NewsButton = ({ children, ...props }) => {
             }
         }
 
-        loadUnread() // ← add this
+        loadUnread()
+    }, [])
 
-        window.addEventListener('news-update', loadUnread)
+    useEffect(() => {
+        const handler = event => {
+            if (event.data?.type !== 'UNREAD_NOTIFICATION') return
 
-        return () => window.removeEventListener('news-update', loadUnread)
+            const dbReq = indexedDB.open('portfolio-db', 1)
+
+            dbReq.onsuccess = () => {
+                const db = dbReq.result
+                const tx = db.transaction('kv', 'readonly')
+                const store = tx.objectStore('kv')
+
+                const getReq = store.get('news_unread')
+
+                getReq.onsuccess = () => {
+                    setUnreadNews(getReq.result || 0)
+                }
+            }
+        }
+
+        navigator.serviceWorker?.addEventListener('message', handler)
+
+        return () =>
+            navigator.serviceWorker?.removeEventListener('message', handler)
     }, [])
 
     useEffect(() => {

@@ -1,14 +1,16 @@
 function openDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open('portfolio-db', 1)
+    return new Promise(resolve => {
+        const req = indexedDB.open('portfolio-db', 1)
 
-        request.onupgradeneeded = () => {
-            const db = request.result
-            db.createObjectStore('kv')
+        req.onupgradeneeded = e => {
+            const db = e.target.result
+
+            if (!db.objectStoreNames.contains('kv')) {
+                db.createObjectStore('kv')
+            }
         }
 
-        request.onsuccess = () => resolve(request.result)
-        request.onerror = () => reject(request.error)
+        req.onsuccess = () => resolve(req.result)
     })
 }
 
@@ -24,7 +26,9 @@ async function incrementUnread() {
         getReq.onsuccess = () => {
             const current = getReq.result || 0
             store.put(current + 1, 'news_unread')
-            resolve()
+
+            tx.oncomplete = () => resolve()
+            tx.onerror = reject
         }
 
         getReq.onerror = reject
