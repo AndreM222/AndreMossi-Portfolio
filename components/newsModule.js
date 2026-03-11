@@ -776,6 +776,24 @@ export const NewsButton = ({ children, ...props }) => {
 
             dbReq.onsuccess = () => {
                 const db = dbReq.result
+
+                if (!db.objectStoreNames.contains('kv')) {
+                    db.close()
+
+                    const upgradeReq = indexedDB.open('portfolio-db', 2)
+
+                    upgradeReq.onupgradeneeded = e => {
+                        const upgradedDB = e.target.result
+                        upgradedDB.createObjectStore('kv')
+                    }
+
+                    upgradeReq.onsuccess = () => {
+                        setUnreadNews(0)
+                    }
+
+                    return
+                }
+
                 const tx = db.transaction('kv', 'readonly')
                 const store = tx.objectStore('kv')
 
