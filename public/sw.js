@@ -21,17 +21,16 @@ async function incrementUnread() {
         const tx = db.transaction('kv', 'readwrite')
         const store = tx.objectStore('kv')
 
-        const getReq = store.get('news_unread')
+        const request = store.get('news_unread')
 
-        getReq.onsuccess = () => {
-            const current = getReq.result || 0
+        request.onsuccess = () => {
+            const current = request.result || 0
             store.put(current + 1, 'news_unread')
-
-            tx.oncomplete = () => resolve()
-            tx.onerror = reject
         }
 
-        getReq.onerror = reject
+        request.onerror = reject
+        tx.oncomplete = resolve
+        tx.onerror = reject
     })
 }
 
@@ -48,7 +47,9 @@ self.addEventListener('push', event => {
                 data: { url: data.url }
             })
 
+            console.log('push received')
             await incrementUnread()
+            console.log('unread incremented')
 
             const allClients = await clients.matchAll({
                 type: 'window',
