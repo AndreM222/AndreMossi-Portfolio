@@ -1,6 +1,6 @@
 'use client'
 
-import { IconButton } from '@chakra-ui/react'
+import { ClientOnly, IconButton } from '@chakra-ui/react'
 import { useColorMode } from '@/components/ui/color-mode'
 import { IoSunnyOutline } from 'react-icons/io5'
 import { FaMoon } from 'react-icons/fa6'
@@ -24,7 +24,13 @@ const ThemeToggleButton = () => {
                     bg={{ _light: 'purple.500', _dark: 'pink' }}
                     onClick={toggleColorMode}
                 >
-                    {colorMode === 'light' ? <FaMoon /> : <IoSunnyOutline />}
+                    <ClientOnly>
+                        {colorMode === 'light' ? (
+                            <FaMoon />
+                        ) : (
+                            <IoSunnyOutline />
+                        )}
+                    </ClientOnly>
                 </IconButton>
             </motion.div>
         </AnimatePresence>
