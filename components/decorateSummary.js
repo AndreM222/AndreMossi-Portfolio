@@ -83,9 +83,7 @@ export const DecorateSummary = ({ text, ...props }) => {
         })
 
         const foreignRegex =
-            mainLang === 'ja'
-                ? LANGUAGE_REGEXES.en
-                : LANGUAGE_REGEXES.ja
+            mainLang === 'ja' ? LANGUAGE_REGEXES.en : LANGUAGE_REGEXES.ja
 
         const foreignMatches = [...text.matchAll(foreignRegex)]
         foreignMatches.forEach(match => {
@@ -131,25 +129,25 @@ export const DecorateSummary = ({ text, ...props }) => {
                         )
                     case 'number':
                         return (
-                            <CountUp
+                            <Text
                                 key={i}
-                                end={part.value}
-                                duration={1.5}
-                                separator=","
-                                decimals={part.value % 1 !== 0 ? 1 : 0}
-                                autoAnimate={inView}
+                                as="span"
+                                display="inline-flex"
+                                color="orange.400"
                             >
-                                {({ countUpRef }) => (
-                                    <Text
-                                        as="span"
-                                        display="inline-flex"
-                                        color="orange.400"
-                                        ref={countUpRef}
-                                    >
-                                        {part.suffix}
-                                    </Text>
-                                )}
-                            </CountUp>
+                                <CountUp
+                                    end={part.value}
+                                    duration={1.5}
+                                    separator=","
+                                    decimals={part.value % 1 !== 0 ? 1 : 0}
+                                    start={inView ? undefined : 0}
+                                >
+                                    {({ countUpRef }) => (
+                                        <span ref={countUpRef} />
+                                    )}
+                                </CountUp>
+                                {part.suffix}
+                            </Text>
                         )
                     case 'foreign':
                         return (
