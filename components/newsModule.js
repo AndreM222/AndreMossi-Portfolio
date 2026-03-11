@@ -14,10 +14,10 @@ import {
     IconButton
 } from '@chakra-ui/react'
 import { useColorModeValue } from '@/components/ui/color-mode'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FaNewspaper } from 'react-icons/fa6'
 import { FaListAlt } from 'react-icons/fa'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
     IoGitBranchOutline,
     IoNotifications,
@@ -198,7 +198,7 @@ const NewsItem = ({ news }) => {
             <Heading size="md" mb={2} color="#a98f63">
                 {news.type === 'stars' || news.type === 'repository'
                     ? Content(newsLang, 'news-titles', news.type)
-                        : news.title.toUpperCase()}
+                    : news.title?.toUpperCase()}
             </Heading>
 
             <DecorateSummary
@@ -243,12 +243,12 @@ const NewsItem = ({ news }) => {
                                 'description',
                                 { repo: news.title }
                             )
-                            : news.description.toUpperCase()
+                            : news.description?.toUpperCase()
                 )}
             />
 
             <Box justifySelf="center" mt={2}>
-                {news.type.includes([
+                {news.type?.includes([
                     'experience',
                     'intern',
                     'research',
@@ -367,11 +367,10 @@ const NewsScreen = ({ preference }) => {
         queryKey: ['news', preference],
         queryFn: fetchNewsPage,
         initialPageParam: 1,
-        getNextPageParam: (lastPage, pages) => {
-            return lastPage.length === 10 ? pages.length + 1 : undefined
-        },
+        getNextPageParam: (lastPage, pages) =>
+            lastPage.length === 10 ? pages.length + 1 : undefined,
         select: data => ({
-            pages: data.pages.flatMap(page =>
+            pages: data.pages.map(page =>
                 page.filter(item => {
                     const prefs = preference[item.category]
                     return prefs?.[item.type]
@@ -381,9 +380,24 @@ const NewsScreen = ({ preference }) => {
         })
     })
 
-    const { ref, inView } = useInView({
-        threshold: 0.1
-    })
+    const containerRef = useRef(null)
+
+    const fetchMoreOnBottomReached = useCallback(
+        container => {
+            if (!container) return
+
+            const { scrollHeight, scrollTop, clientHeight } = container
+
+            if (
+                scrollHeight - scrollTop - clientHeight < 300 &&
+                hasNextPage &&
+                !isFetchingNextPage
+            ) {
+                fetchNextPage()
+            }
+        },
+        [fetchNextPage, hasNextPage, isFetchingNextPage]
+    )
 
     useEffect(() => {
         if (inView && hasNextPage && !isFetchingNextPage) {
@@ -391,10 +405,16 @@ const NewsScreen = ({ preference }) => {
         }
     }, [inView, hasNextPage, fetchNextPage, isFetchingNextPage])
 
-    const allNews = data?.pages || []
+    const allNews = useMemo(() => data?.pages.flat() ?? [], [data])
 
     return (
-        <Box flex="1" overflowY="auto" p={{ base: 4, md: 8 }}>
+        <Box
+            ref={containerRef}
+            flex="1"
+            overflowY="auto"
+            p={{ base: 4, md: 8 }}
+            onScroll={e => fetchMoreOnBottomReached(e.currentTarget)}
+        >
             <VStack gap={{ base: 4, md: 6 }} align="stretch">
                 {isLoading &&
                     Array.from({ length: 5 }).map((_, i) => (
@@ -433,7 +453,7 @@ const NewsScreen = ({ preference }) => {
                     ))}
 
                 {hasNextPage && (
-                    <Box ref={ref} textAlign="center">
+                    <Box textAlign="center">
                         {isFetchingNextPage ? (
                             Array.from({ length: 5 }).map((_, i) => (
                                 <NewsSkeleton key={`skeleton-${i}`} />

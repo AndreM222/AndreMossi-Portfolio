@@ -25,27 +25,6 @@ export const DecorateSummary = ({ text, ...props }) => {
 
         const mainLang = checkLang(text)
 
-        const numMatches = [...text.matchAll(NUMBER_REGEX)]
-        numMatches.forEach(match => {
-            const [full, value, suffix] = match
-            const start = match.index
-
-            if (start > lastIndex) {
-                tokens.push({
-                    type: 'text',
-                    content: text.slice(lastIndex, start)
-                })
-            }
-
-            tokens.push({
-                type: 'number',
-                value: parseFloat(value),
-                suffix,
-                full
-            })
-            lastIndex = start + full.length
-        })
-
         // 2️⃣ Links
         const linkMatches = [...text.matchAll(LINK_REGEX)]
         linkMatches.forEach(match => {
@@ -80,6 +59,27 @@ export const DecorateSummary = ({ text, ...props }) => {
                 })
                 lastIndex = start + match[0].length
             }
+        })
+
+        const numMatches = [...text.matchAll(NUMBER_REGEX)]
+        numMatches.forEach(match => {
+            const [full, value, suffix] = match
+            const start = match.index
+
+            if (start > lastIndex) {
+                tokens.push({
+                    type: 'text',
+                    content: text.slice(lastIndex, start)
+                })
+            }
+
+            tokens.push({
+                type: 'number',
+                value: parseFloat(value),
+                suffix,
+                full
+            })
+            lastIndex = start + full.length
         })
 
         const foreignRegex =

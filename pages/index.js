@@ -19,7 +19,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 const Page = () => {
     const [idQuote, setIdQuote] = useState(null)
-    const [ isOpen, setOpen ] = useState(false)
+    const [isOpen, setOpen] = useState(false)
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -47,13 +47,12 @@ const Page = () => {
                     <StatsMenu />
 
                     <Box
-                        display={{ md: 'flex' }}
+                        display={{ base: 'block', md: 'flex' }}
                         maxW="2xl"
-                        my="auto"
                         mb={10}
                     >
                         <Box flexGrow={1}>
-                            <Heading size="4xl" >
+                            <Heading size="4xl">
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
                             <p>{Content(indexLang, 'card', 'work')}</p>
@@ -61,9 +60,13 @@ const Page = () => {
                         </Box>
                         <Box
                             flexShrink={0}
-                            mt={{ base: 4, md: 0 }}
+                            mt={{ base: 6, md: 0 }}
                             ml={{ md: 6 }}
-                            justifySelf="center"
+                            display="flex"
+                            justifyContent={{
+                                base: 'center',
+                                md: 'flex-start'
+                            }}
                         >
                             <QRCodeButton
                                 isOpen={isOpen}
