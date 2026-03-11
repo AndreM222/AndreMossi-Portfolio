@@ -117,28 +117,27 @@ const NewsSkeleton = ({ ...props }) => {
                     <Skeleton variant="shine" h={5} w={5} borderRadius={5} />
                     <Skeleton variant="shine" h={5} w={20} borderRadius={5} />
                 </HStack>
-                <Text fontSize="sm" opacity={0.7}>
+                <Box fontSize="sm" opacity={0.7}>
                     <Skeleton variant="shine" h={5} w={20} borderRadius={5} />
-                </Text>
+                </Box>
             </Flex>
 
             <Heading size="md" mb={2}>
                 <Skeleton variant="shine" h={8} w={200} borderRadius={5} />
             </Heading>
 
-            <Text fontSize="lg" mb={3} fontWeight="medium">
+            <Box fontSize="lg" mb={3} fontWeight="medium">
                 <Skeleton variant="shine" h={6} w={300} borderRadius={5} />
-            </Text>
+            </Box>
 
-            <Text opacity={0.8} lineHeight="1.6" mb={3}>
+            <Box opacity={0.8} lineHeight="1.6" mb={3}>
                 <Skeleton
                     variant="shine"
-                    Text
                     lineClamp={2}
                     gap="2"
                     skeletonHeight="4"
                 />
-            </Text>
+            </Box>
 
             <Separator borderColor="whiteAlpha.300" mb={3} />
 
@@ -351,7 +350,7 @@ const fetchNewsPage = async ({ pageParam = 1 }) => {
     return res.json()
 }
 
-const NewsScreen = ({ preference }) => {
+const NewsScreen = ({ preference, lang, defaultLang }) => {
     const queryClient = useQueryClient()
 
     const {
@@ -456,7 +455,7 @@ const NewsScreen = ({ preference }) => {
                                 colorPalette="orange"
                                 onClick={() => fetchNextPage()}
                             >
-                                {Content(newsLang, 'news-ui', 'loadMore')}
+                                {NavContent(newsLang, 'news-ui', 'loadMore', lang, defaultLang)}
                             </Button>
                         )}
                     </Box>
@@ -735,7 +734,7 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                                 setPreferences={setPreferences}
                             />
                         ) : (
-                            <NewsScreen preference={preference} />
+                            <NewsScreen preference={preference} lang={locale} defaultLang={defaultLocale} />
                         )}
                     </Dialog.Body>
                 </Dialog.Content>

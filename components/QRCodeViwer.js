@@ -45,7 +45,7 @@ const useShareUrl = () => {
 }
 
 const SetCurrentCharacter = ({ character }) => (
-    <p>
+    <Box as="span">
         {character === ' ' ? (
             '\u00A0'
         ) : character === 'ー' ? (
@@ -67,7 +67,7 @@ const SetCurrentCharacter = ({ character }) => (
         ) : (
             character.toUpperCase()
         )}
-    </p>
+    </Box>
 )
 
 export const FrontCard = ({ isOpen, ...props }) => {
@@ -945,7 +945,7 @@ export const QRCodeModal = ({ isOpen, setOpen }) => {
                         }
                     }}
                 >
-                    <Dialog.CloseTrigger position="relative">
+                    <Dialog.CloseTrigger asChild position="relative">
                         <IconButton
                             size="xs"
                             borderRadius="full"
