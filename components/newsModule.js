@@ -243,7 +243,7 @@ const NewsItem = ({ news }) => {
                                 'description',
                                 { repo: news.title }
                             )
-                            : news.description?.toUpperCase()
+                            : news.description
                 )}
             />
 
