@@ -229,5 +229,39 @@
             "locale": "es",
             "content": "Actualizaciones publicadas"
         }
+    ],
+    "starNotification": [
+        {
+            "locale": "en",
+            "title": "New star",
+            "description": "New star on {repo}. Thanks everyone for the support. Will always strive for more."
+        },
+        {
+            "locale": "ja",
+            "title": "新しいスター登場",
+            "description": "{repo}には新しいスター。皆んなさん、とても有難うございます。よく頑張ります。"
+        },
+        {
+            "locale": "es",
+            "title": "Nueva Estrella",
+            "description": "Nueva Estrella en {repo}. Muchas gracias a todos por el apollo. Continuare creando mas."
+        }
+    ],
+    "newRepoNotification": [
+        {
+            "locale": "en",
+            "title": "New repository developed",
+            "description": "{repo} is the most recent project in development. Would you like to try this project?"
+        },
+        {
+            "locale": "ja",
+            "title": "新しいレポジトリ開発した",
+            "description": "{repo}のリポジトリは最新開発中です。このプロジェクトを使ってみてみませんか？"
+        },
+        {
+            "locale": "es",
+            "title": "Nueva repositorio desarrollado",
+            "description": "{repo} es el repositorio mas nuevo en desarrollo. Desearia probar este project?"
+        }
     ]
 }

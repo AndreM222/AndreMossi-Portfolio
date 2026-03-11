@@ -4,7 +4,9 @@ import { parseCommitForNews } from '../../../api/gitAPI'
 import crypto from 'crypto'
 import webpush from 'web-push'
 import { humanizeSummary } from '../../../components/humanizeCommits'
-import NavContent from '../../../components/translations/navigationContent'
+import NavContent, {
+    NavContentWithVars
+} from '../../../components/translations/navigationContent'
 
 import newsLang from '../../../locales/pages/news.json'
 import grammarLang from '../../../locales/grammarSymbols.json'
@@ -172,10 +174,6 @@ export async function POST(request) {
             return NextResponse.json({ success: true, skipped: true })
         }
 
-        if (!newItems.length) {
-            return NextResponse.json({ success: true, skipped: true })
-        }
-
         // Insert oldest first (UNCHANGED)
         for (const item of [...newItems].reverse()) {
             await kv.lpush('news_feed', {
@@ -194,6 +192,26 @@ export async function POST(request) {
             if (newItems.length === 1) {
                 const single = newItems[0]
 
+                if (single.type === 'stars') {
+                    return NavContentWithVars(
+                        newsLang,
+                        'starNotification',
+                        'title',
+                        locale,
+                        { repo: single.title }
+                    )
+                }
+
+                if (single.type === 'repository') {
+                    return NavContentWithVars(
+                        newsLang,
+                        'newRepoNotification',
+                        'title',
+                        locale,
+                        { repo: single.title }
+                    )
+                }
+
                 return (
                     NavContent(newsLang, 'types', single.type, locale) ||
                     NavContent(newsLang, 'types', 'feat', locale)
@@ -206,6 +224,27 @@ export async function POST(request) {
         const buildNotificationBody = (locale, newItems) => {
             if (newItems.length === 1) {
                 const single = newItems[0]
+
+                if (single.type === 'stars') {
+                    return NavContentWithVars(
+                        newsLang,
+                        'starNotification',
+                        'description',
+                        locale,
+                        { repo: single.title }
+                    )
+                }
+
+                if (single.type === 'repository') {
+                    return NavContentWithVars(
+                        newsLang,
+                        'newRepoNotification',
+                        'description',
+                        locale,
+                        { repo: single.title }
+                    )
+                }
+
                 return humanizeSummary(single.summary)
             }
 

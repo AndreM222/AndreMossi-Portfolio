@@ -13,4 +13,19 @@ const Content = (current, category, type) => {
     return currentTranslation?.[type] || defaultTranslation?.[type] || ''
 }
 
+export const injectVars = (text = '', vars = {}) => {
+    let result = text
+
+    Object.entries(vars).forEach(([key, value]) => {
+        result = result.replaceAll(`{${key}}`, value)
+    })
+
+    return result
+}
+
+export const ContentWithVars = (langData, section, field, vars = {}) => {
+    const text = Content(langData, section, field)
+    return injectVars(text, vars)
+}
+
 export default Content

@@ -23,4 +23,25 @@ const NavContent = (current, category, type, langLocal, langDefaultLocale) => {
     return currentTranslation?.[type] || defaultTranslation?.[type] || ''
 }
 
+export const injectVars = (text = '', vars = {}) => {
+    let result = text
+
+    Object.entries(vars).forEach(([key, value]) => {
+        result = result.replaceAll(`{${key}}`, value)
+    })
+
+    return result
+}
+
+export const NavContentWithVars = (
+    langData,
+    section,
+    field,
+    locale,
+    vars = {}
+) => {
+    const text = NavContent(langData, section, field, locale)
+    return injectVars(text, vars)
+}
+
 export default NavContent
