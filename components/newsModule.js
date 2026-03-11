@@ -758,29 +758,46 @@ export const NewsButton = ({ children, ...props }) => {
             newUrl.searchParams.delete('entry')
             router.replace(newUrl.toString())
 
-            onOpen()
+            setOpen(true)
         }
     }, [searchParams, isOpen, router])
 
     useEffect(() => {
-        if (!localStorage.getItem('news_unread')) {
-            localStorage.setItem('news_unread', 0)
+        const loadUnread = () => {
+            const dbReq = indexedDB.open('portfolio-db', 1)
+
+            dbReq.onsuccess = () => {
+                const db = dbReq.result
+                const tx = db.transaction('kv', 'readonly')
+                const store = tx.objectStore('kv')
+
+                const getReq = store.get('news_unread')
+
+                getReq.onsuccess = () => {
+                    setUnreadNews(getReq.result || 0)
+                }
+            }
         }
 
-        const update = () =>
-            setUnreadNews(Number(localStorage.getItem('news_unread')) || 0)
+        loadUnread() // ← add this
 
-        update()
+        window.addEventListener('news-update', loadUnread)
 
-        window.addEventListener('news-update', update)
-        return () => window.removeEventListener('news-update', update)
+        return () => window.removeEventListener('news-update', loadUnread)
     }, [])
 
     useEffect(() => {
-        if (isOpen) {
-            localStorage.setItem('news_unread', 0)
+        if (!isOpen) return
+
+        const dbReq = indexedDB.open('portfolio-db', 1)
+
+        dbReq.onsuccess = () => {
+            const db = dbReq.result
+            const tx = db.transaction('kv', 'readwrite')
+            const store = tx.objectStore('kv')
+
+            store.put(0, 'news_unread')
             setUnreadNews(0)
-            window.dispatchEvent(new Event('news-update'))
         }
     }, [isOpen])
 

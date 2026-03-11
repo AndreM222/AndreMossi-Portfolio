@@ -31,12 +31,6 @@ function Website({ Component, pageProps, router }) {
 
         const handler = event => {
             if (event.data?.type === 'UNREAD_NOTIFICATION') {
-                const current = Number(localStorage.getItem('news_unread')) || 0
-
-                const next = current + event.data.count
-
-                localStorage.setItem('news_unread', next)
-
                 window.dispatchEvent(new Event('news-update'))
             }
         }
