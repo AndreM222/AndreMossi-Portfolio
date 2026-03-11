@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Box, Image } from '@chakra-ui/react'
-import { useColorModeValue } from "@/components/ui/color-mode"
 
 const AvatarIcon = () => {
     const [playing, setPlaying] = useState(false)
@@ -26,7 +25,7 @@ const AvatarIcon = () => {
 
     return (
         <Box
-            borderColor={useColorModeValue('blackAlpha.700', 'whiteAlpha.800')}
+            borderColor={{_light: 'blackAlpha.700', _dark: 'whiteAlpha.800'}}
             borderWidth={2}
             borderStyle="solid"
             w="100px"

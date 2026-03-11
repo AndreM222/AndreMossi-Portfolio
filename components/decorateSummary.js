@@ -2,7 +2,6 @@ import { Link, Text } from '@chakra-ui/react'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
 import { useMemo } from 'react'
-import { useColorModeValue } from './ui/color-mode'
 
 import grammarLang from '../locales/grammarSymbols.json'
 import NavContent from './translations/navigationContent'
@@ -16,7 +15,7 @@ const LANGUAGE_REGEXES = {
 }
 
 export const DecorateSummary = ({ text, ...props }) => {
-    const emailColor = useColorModeValue('cyan.400', 'cyan.200')
+    const emailColor = {_light: 'cyan.400', _dark: 'cyan.200'}
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const parts = useMemo(() => {

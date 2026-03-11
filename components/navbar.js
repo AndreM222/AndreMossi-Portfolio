@@ -12,7 +12,6 @@ import {
     Menu,
     IconButton
 } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { IoMenu } from 'react-icons/io5'
 import ThemeToggleButton from './Buttons/theme-toggle-button'
 import miscLang from '../locales/misc.json'
@@ -25,8 +24,8 @@ import { FaUser } from 'react-icons/fa6'
 
 const LinkItem = ({ href, path, children, target, ...props }) => {
     const active = path === href
-    const inactiveColor = useColorModeValue('gray.800', 'whiteAlpha.900')
-    const activeColor = useColorModeValue('#ff79c6', '#bd93f9')
+    const inactiveColor = { _light: 'gray.800', _dark: 'whiteAlpha.900' }
+    const activeColor = { _light: '#ff79c6', _dark: '#bd93f9' }
     return (
         <Link
             asChild
@@ -53,7 +52,7 @@ const Navbar = props => {
         <Box
             position="fixed"
             w="100%"
-            bg={useColorModeValue('grayAlpha.600', 'grayAlpha.900')}
+            bg={{ _light: 'grayAlpha.600', _dark: 'grayAlpha.900' }}
             css={{ backdropFilter: 'blur(10px)' }}
             zIndex={10}
             {...props}

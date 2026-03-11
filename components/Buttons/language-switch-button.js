@@ -1,7 +1,6 @@
 'use client'
 
 import { IconButton, Menu } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { TfiWorld } from 'react-icons/tfi'
 import { forwardRef, useEffect, useState } from 'react'
 import NextLink from 'next/link'
@@ -45,7 +44,7 @@ const LanguageButton = ({ path }) => {
             <Menu.Trigger asChild>
                 <IconButton
                     mr={2}
-                    bg={useColorModeValue('purple.500', 'pink')}
+                    bg={{ _light: 'purple.500', _dark: 'pink' }}
                     aria-label="Language"
                 >
                     <TfiWorld />

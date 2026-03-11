@@ -7,7 +7,6 @@ import '../lib/sweeper.css'
 import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from '@/ui/toaster'
-import { ClientOnly } from '@chakra-ui/react'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -45,14 +44,12 @@ function Website({ Component, pageProps, router }) {
         <Provider>
             <Fonts />
             <QueryClientProvider client={queryClient}>
-                <ClientOnly>
-                    <Toaster />
-                    <Layout router={router}>
-                        <AnimatePresence mode="wait" initial={true}>
-                            <Component {...pageProps} key={router.route} />
-                        </AnimatePresence>
-                    </Layout>
-                </ClientOnly>
+                <Toaster />
+                <Layout router={router}>
+                    <AnimatePresence mode="wait" initial={true}>
+                        <Component {...pageProps} key={router.route} />
+                    </AnimatePresence>
+                </Layout>
             </QueryClientProvider>
         </Provider>
     )

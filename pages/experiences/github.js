@@ -8,7 +8,6 @@ import {
     Skeleton,
     Heading
 } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { Title, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -43,9 +42,9 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     >
         <Box
             w="full"
-            bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+            bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
             borderStyle="solid"
-            borderColor={useColorModeValue('blackAlpha.800', 'whiteAlpha.500')}
+            borderColor={{ _light: 'blackAlpha.800', _dark: 'whiteAlpha.500' }}
             boxShadow="lg"
             borderWidth={2}
             display="inline-flex"
@@ -74,9 +73,9 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
     return (
         <Box
             w="full"
-            bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+            bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
             borderStyle="solid"
-            borderColor={useColorModeValue('blackAlpha.800', 'whiteAlpha.500')}
+            borderColor={{ _light: 'blackAlpha.800', _dark: 'whiteAlpha.500' }}
             boxShadow="lg"
             borderWidth={2}
             display="grid"
@@ -102,13 +101,13 @@ const TopRepoSecton = ({ loading, data, ...props }) => {
                             : 'none'
                     }
                     fontSize="10px"
-                    bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+                    bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
                     borderStyle="solid"
                     borderWidth={2}
-                    borderColor={useColorModeValue(
-                        'blackAlpha.800',
-                        'whiteAlpha.500'
-                    )}
+                    borderColor={{
+                        _light: 'blackAlpha.800',
+                        _dark: 'whiteAlpha.500'
+                    }}
                     p={1}
                     borderRadius={5}
                     w="fit-content"

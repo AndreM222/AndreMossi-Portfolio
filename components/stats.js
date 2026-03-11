@@ -6,7 +6,6 @@ import {
     SimpleGrid,
     Skeleton
 } from '@chakra-ui/react'
-import { useColorModeValue } from "@/components/ui/color-mode"
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
@@ -32,9 +31,9 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     >
         <Box
             w="full"
-            bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+            bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
             borderStyle="solid"
-            borderColor={useColorModeValue('blackAlpha.800', 'whiteAlpha.500')}
+            borderColor={{_light: 'blackAlpha.800', _dark: 'whiteAlpha.500'}}
             boxShadow="lg"
             borderWidth={2}
             display="inline-flex"

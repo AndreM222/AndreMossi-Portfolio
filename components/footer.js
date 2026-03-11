@@ -8,7 +8,6 @@ import {
 import { FaXTwitter } from 'react-icons/fa6'
 import { BiSolidNews } from 'react-icons/bi'
 import { Heading, Button, Icon, Link, Box, SimpleGrid } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import UpToggle from './Buttons/up-toggle'
 import Content from './content'
 import DateSetup from './dateSetup'
@@ -67,7 +66,7 @@ const Footer = ({ ...props }) => {
 
     return (
         <Box
-            bg={useColorModeValue('whiteAlpha.600', 'whiteAlpha.100')}
+            bg={{_light: 'whiteAlpha.600', _dark: 'whiteAlpha.100'}}
             p={10}
             py={2}
             marginTop="auto"
@@ -160,7 +159,7 @@ const Footer = ({ ...props }) => {
             </Box>
 
             <Box
-                color={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
+                color={{_light: 'blackAlpha.500', _dark: 'whiteAlpha.500'}}
                 textAlign={{ base: 'center', sm: 'left' }}
             >
                 &copy; <DateSetup date={`${today.getFullYear()}`} />{' '}

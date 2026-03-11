@@ -1,6 +1,5 @@
 import { isValidMotionProp, motion } from 'framer-motion'
 import { chakra } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import isPropValid from '@emotion/is-prop-valid'
 
 const StyledDiv = chakra(motion.div, {
@@ -14,7 +13,7 @@ const Section = ({
     maxW = '2xl'
 }) => (
     <StyledDiv
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+        bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
         boxShadow="lg"
         p={3}
         borderRadius="lg"

@@ -1,19 +1,19 @@
-"use client"
+'use client'
 
 import { IconButton } from '@chakra-ui/react'
-import { useColorModeValue, useColorMode } from '@/components/ui/color-mode'
+import { useColorMode } from '@/components/ui/color-mode'
 import { IoSunnyOutline } from 'react-icons/io5'
 import { FaMoon } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const ThemeToggleButton = () => {
-    const { toggleColorMode } = useColorMode()
+    const { toggleColorMode, colorMode } = useColorMode()
 
     return (
         <AnimatePresence mode="wait" initial={false}>
             <motion.div
                 style={{ display: 'inline-block' }}
-                key={useColorModeValue('light', 'dark')}
+                key={colorMode === 'light' ? 'light' : 'dark'}
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 20, opacity: 0 }}
@@ -21,10 +21,10 @@ const ThemeToggleButton = () => {
             >
                 <IconButton
                     aria-label="Toggle theme"
-                    bg={useColorModeValue('purple.500', 'pink')}
+                    bg={{ _light: 'purple.500', _dark: 'pink' }}
                     onClick={toggleColorMode}
                 >
-                    {useColorModeValue(<FaMoon />, <IoSunnyOutline />)}
+                    {colorMode === 'light' ? <FaMoon /> : <IoSunnyOutline />}
                 </IconButton>
             </motion.div>
         </AnimatePresence>

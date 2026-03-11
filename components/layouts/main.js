@@ -520,23 +520,21 @@ const Main = ({ children, router }) => {
                 />
             </Head>
             {<AppLoader isLoading={loading} isPWA={isPWA} />}
-
             <Navbar path={router.asPath} opacity={loading && '0'} />
 
-            <Container
-                maxW={{ base: '2xl', lg: '90%' }}
-                height="100%"
-                pt={14}
-                pb={8}
-                opac
-                opacity={loading && '0'}
-            >
-                <Analytics />
-                <CharModel />
-                {children}
-            </Container>
+                <Container
+                    maxW={{ base: '2xl', lg: '90%' }}
+                    height="100%"
+                    pt={14}
+                    pb={8}
+                    opac
+                    opacity={loading && '0'}
+                >
+                    <Analytics />
+                    <CharModel />
+                    {children}
+                </Container>
             <Footer opacity={loading && '0'} />
-
         </Box>
     )
 }

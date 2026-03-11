@@ -1,7 +1,6 @@
 'use client'
 
 import { Box } from '@chakra-ui/react'
-import { useColorModeValue } from "@/components/ui/color-mode"
 import Content from './content'
 import quoteLang from '../locales/quotesList.json'
 import symbolLang from '../locales/grammarSymbols.json'
@@ -22,7 +21,7 @@ export const QuoteCard = ({ quoteNum }) => {
             boxShadow="lg"
             maxW="2xl"
             borderRadius="lg"
-            bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+            bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
             p={3}
             display="grid"
             mb={10}
@@ -44,7 +43,7 @@ export const QuoteCard = ({ quoteNum }) => {
                     height="4px"
                     borderRadius="lg"
                     mr={2}
-                    bg={useColorModeValue('blackAlpha.800', 'whiteAlpha.800')}
+                    bg={{_light: 'blackAlpha.800', _dark: 'whiteAlpha.800'}}
                 />
                 {Content(symbolLang, 'qb-author', 'start')}
                 {Content(quoteLang, quoteId, 'author')}

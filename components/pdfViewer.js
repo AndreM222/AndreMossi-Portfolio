@@ -11,7 +11,6 @@ import {
     Portal,
     IconButton
 } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { useEffect, useState } from 'react'
 import { FiDownload, FiExternalLink, FiX } from 'react-icons/fi'
 import { RiLock2Fill } from 'react-icons/ri'
@@ -30,7 +29,7 @@ export const PdfPreviewModal = ({ title, src }) => {
         setPDF(typeArray ? src[0].src : src)
     }, [src, typeArray])
 
-    const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+    const bgColor = {_light: '#f4f0fc', _dark: '#1C1C20'}
 
     return (
         <Dialog.Positioner>
@@ -224,7 +223,7 @@ const MobileFallback = ({ src, loaded, setLoaded }) => (
             </Text>
 
             <Button
-                bg={useColorModeValue('cyan.400', 'cyan.200')}
+                bg={{_light: 'cyan.400', _dark: 'cyan.200'}}
                 color="black"
                 borderRadius="full"
                 px={8}

@@ -13,7 +13,6 @@ import {
     Skeleton,
     IconButton
 } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FaNewspaper } from 'react-icons/fa6'
 import { FaListAlt } from 'react-icons/fa'
@@ -88,16 +87,16 @@ const getCategoryMeta = category =>
     interestTypes.find(t => t.id === category) ?? interestTypes[0]
 
 const NewsSkeleton = ({ ...props }) => {
-    const cardShadow = useColorModeValue(
-        '0 10px 30px rgba(0,0,0,0.12)',
-        '0 10px 30px rgba(0,0,0,0.6)'
-    )
+    const cardShadow = {
+        _light: '0 10px 30px rgba(0,0,0,0.12)',
+        _dark: '0 10px 30px rgba(0,0,0,0.6)'
+    }
 
     return (
         <MotionBox
             p={6}
             borderRadius="2xl"
-            bg={useColorModeValue('whiteAlpha.900', 'whiteAlpha.50')}
+            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.50' }}
             backdropFilter="blur(10px)"
             border="1px solid"
             borderColor="whiteAlpha.200"
@@ -155,19 +154,18 @@ const NewsSkeleton = ({ ...props }) => {
         </MotionBox>
     )
 }
-
 const NewsItem = ({ news }) => {
     const categoryMeta = getCategoryMeta(news.category)
-    const cardShadow = useColorModeValue(
-        '0 10px 30px rgba(0,0,0,0.12)',
-        '0 10px 30px rgba(0,0,0,0.6)'
-    )
+    const cardShadow = {
+        _light: '0 10px 30px rgba(0,0,0,0.12)',
+        _dark: '0 10px 30px rgba(0,0,0,0.6)'
+    }
 
     return (
         <MotionBox
             p={6}
             borderRadius="2xl"
-            bg={useColorModeValue('whiteAlpha.900', 'whiteAlpha.50')}
+            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.50' }}
             backdropFilter="blur(10px)"
             border="1px solid"
             borderColor="whiteAlpha.200"
@@ -476,7 +474,7 @@ export const NewsModal = ({ isOpen, setOpen }) => {
 
     const [interestOpen, setInterestOpen] = useState(false)
 
-    const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+    const bgColor = { _light: '#f4f0fc', _dark: '#1C1C20' }
 
     useEffect(() => {
         const initNotifications = async () => {

@@ -1,5 +1,4 @@
 import { Box, Circle } from '@chakra-ui/react'
-import { useColorModeValue } from "@/components/ui/color-mode"
 import styled from '@emotion/styled'
 import { useInView, motion, useAnimationControls, isValidMotionProp } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
@@ -67,7 +66,7 @@ export const TimeBox = ({ children, last = false }) => {
                     display={{ base: 'none', md: 'flex' }}
                     w={last == true ? 3 : 2}
                     h={last == true ? 3 : 12}
-                    bg={useColorModeValue('blackAlpha.500', 'whiteAlpha.500')}
+                    bg={{_light: 'blackAlpha.500', _dark: 'whiteAlpha.500'}}
                 />
             </StyledDiv>
         </Box>

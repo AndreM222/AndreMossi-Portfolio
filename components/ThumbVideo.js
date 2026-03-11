@@ -5,7 +5,6 @@ import { AiFillFolderOpen } from 'react-icons/ai'
 import { Icon } from '@chakra-ui/react'
 import miscLang from '../locales/misc.json'
 import Content from './content'
-import { useColorModeValue } from './ui/color-mode'
 
 export const Title = ({ children }) => (
     <Box>
@@ -38,7 +37,7 @@ export const ThumbVideo = ({ src, alt }) => (
 )
 
 export const Meta = ({ children }) => (
-    <Badge bg={useColorModeValue('cyan.400', 'cyan.200')} mr={2}>
+    <Badge bg={{ _light: 'cyan.400', _dark: 'cyan.200' }} mr={2}>
         {children}
     </Badge>
 )

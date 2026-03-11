@@ -8,7 +8,6 @@ import {
     IconButton,
     Portal
 } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import { QRCodeCanvas } from 'qrcode.react'
 import { motion } from 'framer-motion'
 
@@ -81,38 +80,40 @@ export const FrontCard = ({ isOpen, ...props }) => {
     const [nameText, setNameText] = useState('')
     const name = Content(miscLang, 'title', 'name')
 
-    const dividerColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+    const dividerColor = { _light: 'blackAlpha.200', _dark: 'whiteAlpha.200' }
 
-    const rightGradient = useColorModeValue(
-        {
-            base: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
-            xs: 'radial(circle at center, rgba(169,143,99,0.25), transparent 50%)',
-            md: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)'
+    const rightGradient = {
+        base: {
+            _light: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+            _dark: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
         },
-        {
-            base: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)',
-            xs: 'radial(circle at center, rgba(169,143,99,0.15), transparent 50%)',
-            md: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
+        xs: {
+            _light: 'radial(circle at center, rgba(169,143,99,0.25), transparent 50%)',
+            _dark: 'radial(circle at center, rgba(169,143,99,0.15), transparent 50%)'
+        },
+        md: {
+            _light: 'radial(circle at center, rgba(169,143,99,0.25), transparent 70%)',
+            _dark: 'radial(circle at center, rgba(169,143,99,0.15), transparent 70%)'
         }
-    )
+    }
 
-    const lightupShadow = useColorModeValue(
-        isFloating
+    const lightupShadow = {
+        _light: isFloating
             ? '0 0 10px 2px rgba(169,143,99,0.35)'
             : '0 0 40px 12px rgba(169,143,99,0.9)',
-        isFloating
+        _dark: isFloating
             ? '0 0 8px 2px rgba(169,143,99,0.15)'
             : '0 0 40px 12px rgba(169,143,99,0.7)'
-    )
+    }
 
-    const qrShadow = useColorModeValue(
-        isFloating
+    const qrShadow = {
+        _light: isFloating
             ? '0 0 16px 4px rgba(169,143,99,0.5)'
             : '0 0 32px 8px rgba(169,143,99,0.7)',
-        isFloating
+        _dark: isFloating
             ? '0 0 12px 3px rgba(169,143,99,0.4)'
             : '0 0 24px 7px rgba(169,143,99,0.6)'
-    )
+    }
 
     useEffect(() => {
         if (isOpen) {
@@ -161,7 +162,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
         }
     }, [longPressTimer])
 
-    const qrBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50')
+    const qrBg = { _light: 'whiteAlpha.800', _dark: 'whiteAlpha.50' }
 
     return (
         <Flex
@@ -496,10 +497,10 @@ export const FrontCard = ({ isOpen, ...props }) => {
 }
 
 export const BackCard = ({ ...props }) => {
-    const lightupShadow = useColorModeValue(
-        '0 0 40px 12px rgba(169,143,99,0.9)',
-        '0 0 40px 12px rgba(169,143,99,0.7)'
-    )
+    const lightupShadow = {
+        _light: '0 0 40px 12px rgba(169,143,99,0.9)',
+        _dark: '0 0 40px 12px rgba(169,143,99,0.7)'
+    }
 
     const name = Content(miscLang, 'title', 'name')
     const nameLetters = name.split('')
@@ -639,7 +640,7 @@ export const BackCard = ({ ...props }) => {
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 css={{
-                    "& background": isHovering
+                    '& background': isHovering
                         ? `radial-gradient(circle 400px at ${pos.x} ${pos.y},
                 rgba(169,143,99,0.15) 0%, transparent 60%)`
                         : 'transparent'
@@ -827,18 +828,18 @@ export const BackCard = ({ ...props }) => {
 }
 
 export const QRCodeModal = ({ isOpen, setOpen }) => {
-    const bgColor = useColorModeValue('#f4f0fc', '#1C1C20')
+    const bgColor = { _light: '#f4f0fc', _dark: '#1C1C20' }
     const [isFlipped, setIsFlipped] = useState(false)
 
     const flip = () => setIsFlipped(prev => !prev)
 
-    const modalBorderColor = useColorModeValue(
-        'blackAlpha.200',
-        'whiteAlpha.200'
-    )
+    const modalBorderColor = {
+        _light: 'blackAlpha.200',
+        _dark: 'whiteAlpha.200'
+    }
 
-    const closeBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
-    const closeHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
+    const closeBg = { _light: 'blackAlpha.100', _dark: 'whiteAlpha.100' }
+    const closeHoverBg = { _light: 'blackAlpha.200', _dark: 'whiteAlpha.300' }
 
     useEffect(() => {
         if (isOpen) {

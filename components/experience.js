@@ -5,16 +5,20 @@ import { AiFillFolderOpen } from 'react-icons/ai'
 import { Icon } from '@chakra-ui/react'
 import miscLang from '../locales/misc.json'
 import Content from './content'
-import { useColorModeValue } from './ui/color-mode'
 
 export const Title = ({ children }) => (
-    <Box display="inline-flex" alignItems="center" gap={2} justifyItems="center">
+    <Box
+        display="inline-flex"
+        alignItems="center"
+        gap={2}
+        justifyItems="center"
+    >
         <Link as={NextLink} href="/experience">
             <Icon as={AiFillFolderOpen} />
             &nbsp;
             {Content(miscLang, 'category', 'experience')}
         </Link>
-            <FaChevronRight size={10} />
+        <FaChevronRight size={10} />
         <Heading display="inline-block" as="h3" fontSize={20}>
             {children}
         </Heading>
@@ -26,7 +30,11 @@ export const ThumbImage = ({ src, alt }) => (
 )
 
 export const Meta = ({ children }) => (
-    <Badge bg={useColorModeValue('cyan.100', '#26333a')} color={useColorModeValue('cyan.800', '#9decf9')} mr={2}>
+    <Badge
+        bg={{ _light: 'cyan.100', _dark: '#26333a' }}
+        color={{ _light: 'cyan.800', _dark: '#9decf9' }}
+        mr={2}
+    >
         {children}
     </Badge>
 )

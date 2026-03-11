@@ -1,7 +1,6 @@
 'use client'
 
 import { Box, Button, chakra, Image, SimpleGrid } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
 import NextLink from 'next/link'
 import Content from './content'
 import { FaChevronRight } from 'react-icons/fa'
@@ -53,11 +52,8 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         zIndex={1}
                         alignSelf="anchor-center"
                         my="auto"
-                        bg={useColorModeValue('white', 'black')}
-                        borderColor={useColorModeValue(
-                            'blackAlpha.700',
-                            'whiteAlpha.300'
-                        )}
+                        bg={{ _light: 'white', _dark: 'black' }}
+                        borderColor={{ _light: 'blackAlpha.700', _dark: 'whiteAlpha.300' }}
                         borderWidth={2}
                         top={2}
                         left={-4}
@@ -70,10 +66,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         borderRadius="100%"
                         borderWidth={2}
                         borderStyle="solid"
-                        borderColor={useColorModeValue(
-                            'blackAlpha.700',
-                            'whiteAlpha.300'
-                        )}
+                        borderColor={{ _light: 'blackAlpha.700', _dark: 'whiteAlpha.300' }}
                         maxW={{ base: '60px', md: '15%' }}
                         margin="auto"
                         src={'/images/recommendation/' + projectContent.image}
@@ -84,10 +77,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                     gridTemplateRows="auto auto auto 1fr auto auto"
                     boxShadow="lg"
                     gap={2}
-                    bg={useColorModeValue(
-                        'color-mix(in srgb, white 50%, #f1ece8)',
-                        'color-mix(in srgb, white 8%, #101015)'
-                    )}
+                    bg={{ _light: 'color-mix(in srgb, white 50%, #f1ece8)', _dark: 'color-mix(in srgb, white 8%, #101015)'}}
                     borderRadius="lg"
                     p={3}
                     pt={6}
@@ -107,20 +97,14 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                     </Box>
                     <Box
                         justifySelf="center"
-                        bg={useColorModeValue(
-                            'blackAlpha.200',
-                            'blackAlpha.400'
-                        )}
+                        bg={{ _light: 'blackAlpha.200', _dark: 'blackAlpha.400' }}
                         p={2}
                         borderRadius="lg"
                     >
                         <i>{projectContent.description}...</i>
                     </Box>
                     <Box
-                        bg={useColorModeValue(
-                            'blackAlpha.200',
-                            'blackAlpha.400'
-                        )}
+                        bg={{ _light: 'blackAlpha.200', _dark: 'blackAlpha.400' }}
                         p={2}
                         display="grid"
                         borderRadius="lg"
