@@ -25,10 +25,9 @@ import {
 } from 'react-icons/io5'
 import { getDateFormat } from './dateSetup'
 import { ExperienceGridItem } from './grid-item'
-import Content from './content'
+import Content, { ContentWithVars } from './content'
 
-import { DecorateSummary } from './decorateSummary'
-import { humanizeSummary } from './humanizeCommits'
+import { DecorateSummary, humanizeSummary } from './decorateSummary'
 import { useRouter } from 'next/router'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import { defaultInterestsSettings, interestTypes } from '../api/newsAPI'
@@ -197,21 +196,55 @@ const NewsItem = ({ news }) => {
             </Flex>
 
             <Heading size="md" mb={2} color="#a98f63">
-                {news.title.toUpperCase()}
+                {news.type === 'stars' || news.type === 'repository'
+                    ? Content(newsLang, 'news-titles', news.type)
+                        : news.title.toUpperCase()}
             </Heading>
 
             <DecorateSummary
                 fontSize="lg"
                 mb={3}
                 fontWeight="medium"
-                text={humanizeSummary(news.summary)}
+                text={humanizeSummary(
+                    news.type === 'stars'
+                        ? ContentWithVars(
+                            newsLang,
+                            'starNotification',
+                            'summary',
+                            { repo: news.title }
+                        )
+                        : news.type === 'repository'
+                            ? ContentWithVars(
+                                newsLang,
+                                'newRepoNotification',
+                                'summary',
+                                { repo: news.title }
+                            )
+                            : news.summary
+                )}
             />
 
             <DecorateSummary
                 opacity={0.8}
                 lineHeight="1.6"
                 mb={3}
-                text={humanizeSummary(news.description)}
+                text={humanizeSummary(
+                    news.type === 'stars'
+                        ? ContentWithVars(
+                            newsLang,
+                            'starNotification',
+                            'description',
+                            { repo: news.title }
+                        )
+                        : news.type === 'repository'
+                            ? ContentWithVars(
+                                newsLang,
+                                'newRepoNotification',
+                                'description',
+                                { repo: news.title }
+                            )
+                            : news.description.toUpperCase()
+                )}
             />
 
             <Box justifySelf="center" mt={2}>
@@ -242,7 +275,7 @@ const NewsItem = ({ news }) => {
                     <Text>{news.branch}</Text>
                 </Flex>
                 <Flex gap={1}>
-                    <Text>#{news.commit.slice(-7)}</Text>
+                    {news.commit && <Text>#{news.commit.slice(-7)}</Text>}
                 </Flex>
             </Flex>
         </MotionBox>

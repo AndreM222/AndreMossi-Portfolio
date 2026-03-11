@@ -13,6 +13,16 @@
             "content": ", "
         }
     ],
+    "dot": [
+        {
+            "locale": "en",
+            "content": "."
+        },
+        {
+            "locale": "ja",
+            "content": "。"
+        }
+    ],
     "space": [
         {
             "locale": "en",

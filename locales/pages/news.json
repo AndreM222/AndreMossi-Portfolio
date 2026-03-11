@@ -7,7 +7,9 @@
             "experience": "Experience",
             "resume": "Resume",
             "developer": "Development",
-            "latestUpdates": "Latest Updates"
+            "latestUpdates": "Latest Updates",
+            "stars": "New star",
+            "repository": "New repository developed"
         },
         {
             "locale": "ja",
@@ -16,7 +18,9 @@
             "experience": "経験",
             "resume": "履歴書",
             "developer": "開発",
-            "latestUpdates": "最新アップデート"
+            "latestUpdates": "最新アップデート",
+            "stars": "新しいスターを獲得しました",
+            "repository": "新ポジトリ開発中"
         },
         {
             "locale": "es",
@@ -25,7 +29,9 @@
             "experience": "Experiencia",
             "resume": "Currículum",
             "developer": "Desarrollo",
-            "latestUpdates": "Últimas Actualizaciones"
+            "latestUpdates": "Últimas Actualizaciones",
+            "stars": "Nueva Estrella",
+            "repository": "Nueva repositorio desarrollado"
         }
     ],
     "news-ui": [
@@ -120,7 +126,7 @@
             "projects": "プロジェクト更新",
             "timeline": "キャリアタイムライン更新",
             "about": "自己紹介更新",
-            "stars": "新しいスターを獲得しました",
+            "stars": "新スター登場",
             "repository": "新しいリポジトリを作成しました",
             "resume-en": "英語履歴書更新",
             "resume-es": "スペイン語履歴書更新",
@@ -233,34 +239,34 @@
     "starNotification": [
         {
             "locale": "en",
-            "title": "New star",
+            "summary": "New star",
             "description": "New star on {repo}. Thanks everyone for the support. Will always strive for more."
         },
         {
             "locale": "ja",
-            "title": "新しいスター登場",
+            "summary": "新しいスター登場",
             "description": "{repo}には新しいスター。皆んなさん、とても有難うございます。よく頑張ります。"
         },
         {
             "locale": "es",
-            "title": "Nueva Estrella",
+            "summary": "Nueva Estrella",
             "description": "Nueva Estrella en {repo}. Muchas gracias a todos por el apollo. Continuare creando mas."
         }
     ],
     "newRepoNotification": [
         {
             "locale": "en",
-            "title": "New repository developed",
+            "summary": "New repository developed",
             "description": "{repo} is the most recent project in development. Would you like to try this project?"
         },
         {
             "locale": "ja",
-            "title": "新しいレポジトリ開発した",
+            "summary": "新しいレポジトリ開発した",
             "description": "{repo}のリポジトリは最新開発中です。このプロジェクトを使ってみてみませんか？"
         },
         {
             "locale": "es",
-            "title": "Nueva repositorio desarrollado",
+            "summary": "Nueva repositorio desarrollado",
             "description": "{repo} es el repositorio mas nuevo en desarrollo. Desearia probar este project?"
         }
     ]
