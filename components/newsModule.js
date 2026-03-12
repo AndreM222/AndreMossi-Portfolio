@@ -37,6 +37,7 @@ import NavContent from './translations/navigationContent'
 import { useSearchParams } from 'next/navigation'
 import { toaster } from './ui/toaster'
 import { FiX } from 'react-icons/fi'
+import { AiFillBell } from 'react-icons/ai'
 
 const MotionBox = motion(Box)
 
@@ -352,6 +353,9 @@ const fetchNewsPage = async ({ pageParam = 1 }) => {
 
 const NewsScreen = ({ preference, lang, defaultLang }) => {
     const queryClient = useQueryClient()
+    const [newItemsAvailable, setNewItemsAvailable] = useState(false)
+    const [latestKnownId, setLatestKnownId] = useState(null)
+    const containerRef = useRef(null)
 
     const {
         data,
@@ -363,6 +367,7 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
     } = useInfiniteQuery({
         queryKey: ['news', preference],
         queryFn: fetchNewsPage,
+        refetchInterval: 30000,
         initialPageParam: 1,
         getNextPageParam: (lastPage, pages) =>
             lastPage.length === 10 ? pages.length + 1 : undefined,
@@ -377,7 +382,35 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
         })
     })
 
-    const containerRef = useRef(null)
+    useEffect(() => {
+        if (!data?.pages?.length) return
+
+        const firstItem = data.pages[0]?.[0]
+        if (!firstItem) return
+
+        if (!latestKnownId) {
+            setLatestKnownId(firstItem.id)
+            return
+        }
+
+        if (firstItem.id !== latestKnownId) {
+            setNewItemsAvailable(true)
+        }
+    }, [data, latestKnownId])
+
+    const loadNewItems = () => {
+        setLatestKnownId(data.pages[0][0].id)
+        setNewItemsAvailable(false)
+
+        queryClient.invalidateQueries({
+            queryKey: ['news']
+        })
+
+        containerRef.current?.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
 
     const fetchMoreOnBottomReached = useCallback(
         container => {
@@ -403,10 +436,36 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
             ref={containerRef}
             flex="1"
             overflowY="auto"
-            p={{ base: 4, md: 8 }}
             onScroll={e => fetchMoreOnBottomReached(e.currentTarget)}
         >
-            <VStack gap={{ base: 4, md: 6 }} align="stretch">
+            {newItemsAvailable && (
+                <MotionBox
+                    position="fixed"
+                    zIndex="20"
+                    w="full"
+                    display="flex"
+                    justifyContent="center"
+                    mt={2}
+                    initial={{ y: -40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -40, opacity: 0 }}
+                >
+                    <Button
+                        opacity="90%"
+                        borderRadius="full"
+                        boxShadow="lg"
+                        onClick={loadNewItems}
+                    >
+                        <AiFillBell />
+                        {Content(newsLang, 'news-ui', 'newupdates')}
+                    </Button>
+                </MotionBox>
+            )}
+            <VStack
+                gap={{ base: 4, md: 6 }}
+                align="stretch"
+                m={{ base: 4, md: 8 }}
+            >
                 {isLoading &&
                     Array.from({ length: 5 }).map((_, i) => (
                         <NewsSkeleton key={`skeleton-${i}`} />
@@ -455,7 +514,13 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
                                 colorPalette="orange"
                                 onClick={() => fetchNextPage()}
                             >
-                                {NavContent(newsLang, 'news-ui', 'loadMore', lang, defaultLang)}
+                                {NavContent(
+                                    newsLang,
+                                    'news-ui',
+                                    'loadMore',
+                                    lang,
+                                    defaultLang
+                                )}
                             </Button>
                         )}
                     </Box>
@@ -734,7 +799,11 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                                 setPreferences={setPreferences}
                             />
                         ) : (
-                            <NewsScreen preference={preference} lang={locale} defaultLang={defaultLocale} />
+                            <NewsScreen
+                                preference={preference}
+                                lang={locale}
+                                defaultLang={defaultLocale}
+                            />
                         )}
                     </Dialog.Body>
                 </Dialog.Content>
