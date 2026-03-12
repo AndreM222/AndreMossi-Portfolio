@@ -272,5 +272,19 @@
             "summary": "Nueva repositorio desarrollado",
             "description": "{repo} es el repositorio mas nuevo en desarrollo. Desearia probar este project?"
         }
+    ],
+    "pdfDescriptionMSG": [
+        {
+            "locale": "en",
+            "content": "The {pdf} from the {lang} language has updated"
+        },
+        {
+            "locale": "ja",
+            "content": "{lang}の{pdf}は新しいアップデートがあります"
+        },
+        {
+            "locale": "es",
+            "content": "El {pdf} de el lenguaje {lang} se ha actualizado"
+        }
     ]
 }

@@ -33,6 +33,7 @@ import { defaultInterestsSettings, interestTypes } from '../api/newsAPI'
 
 import experienceLang from '../locales/pages/experience.json'
 import newsLang from '../locales/pages/news.json'
+import miscLang from '../locales/misc.json'
 import NavContent from './translations/navigationContent'
 import { useSearchParams } from 'next/navigation'
 import { toaster } from './ui/toaster'
@@ -161,6 +162,37 @@ const NewsItem = ({ news }) => {
         _dark: '0 10px 30px rgba(0,0,0,0.6)'
     }
 
+    const hasMultiplePdf = lang => {
+        const categoryData = NavContent(
+            miscLang,
+            'category',
+            'link-resume',
+            lang
+        )
+
+        if (typeof categoryData === 'string') return false
+
+        return true
+    }
+
+    const getResumeData = (selectedName, lang) => {
+        const categoryData = NavContent(
+            miscLang,
+            'category',
+            'link-resume',
+            lang
+        )
+
+        if (!categoryData) return null
+
+        if (!hasMultiplePdf(lang))
+            return { src: categoryData.src, name: categoryData.name }
+
+        const matching = categoryData.find(item => item.name === selectedName)
+        console.log('Name: ' + categoryData[0].name)
+        return matching ? { src: matching.src, name: matching.name } : null
+    }
+
     return (
         <MotionBox
             p={6}
@@ -246,23 +278,106 @@ const NewsItem = ({ news }) => {
             />
 
             <Box justifySelf="center" mt={2}>
-                {news.type?.includes([
-                    'experience',
-                    'intern',
-                    'research',
-                    'awards',
-                    'projects'
-                ]) && (
-                        <ExperienceGridItem
-                            id={news.title}
-                            title={Content(experienceLang, news.title, 'title')}
-                            thumbnail={Content(
-                                experienceLang,
-                                news.title,
-                                'img-url'
-                            )}
+                {news.type?.includes(interestTypes[1]['types']) && (
+                    <ExperienceGridItem
+                        id={news.title}
+                        mb={2}
+                        title={Content(experienceLang, news.title, 'title')}
+                        thumbnail={Content(
+                            experienceLang,
+                            news.title,
+                            'img-url'
+                        )}
+                    />
+                )}
+                {interestTypes[2]['types'].includes(news.type) && (
+                    <Flex
+                        position="relative"
+                        direction="column"
+                        align="center"
+                        justify="center"
+                        mb={2}
+                        h="100%"
+                        overflow="hidden"
+                        borderRadius="lg"
+                    >
+                        <iframe
+                            src={`${'/PDF/Rireki-Andre-JP.pdf'}#toolbar=0&navpanes=0&scrollbar=0&page=1`}
+                            width="100%"
+                            height="100%"
+                            style={{
+                                border: 'none',
+                                filter: 'blur(4px) brightness(0.75)',
+                                pointerEvents: 'none',
+                                transform: 'scale(1.05)',
+                                transition: 'opacity 0.4s ease'
+                            }}
                         />
-                    )}
+
+                        <Box
+                            position="absolute"
+                            inset="0"
+                            backdropFilter="blur(2px)"
+                            background="rgba(0, 0, 0, 0.35)"
+                        />
+
+                        <Flex
+                            position="absolute"
+                            direction="column"
+                            align="center"
+                            gap={4}
+                            textAlign="center"
+                            px={6}
+                            transition="opacity 0.4s ease"
+                        >
+                            <Text
+                                fontSize="md"
+                                fontWeight="semibold"
+                                color="white"
+                            >
+                                {ContentWithVars(
+                                    newsLang,
+                                    'pdfDescriptionMSG',
+                                    'content',
+                                    {
+                                        pdf: hasMultiplePdf(news.type.slice(-2))
+                                            ? getResumeData(
+                                                news.title,
+                                                news.type.slice(-2)
+                                            ).name
+                                            : Content(
+                                                miscLang,
+                                                'category',
+                                                'resume'
+                                            ),
+                                        lang: Content(
+                                            newsLang,
+                                            'switch-types',
+                                            news.type
+                                        )
+                                    }
+                                )}
+                            </Text>
+                            <Button
+                                bg={{ _light: 'cyan.400', _dark: 'cyan.200' }}
+                                color="black"
+                                borderRadius="full"
+                                px={8}
+                                onClick={() =>
+                                    window.open(
+                                        getResumeData(
+                                            news.title,
+                                            news.type.slice(-2)
+                                        ).src,
+                                        '_blank'
+                                    )
+                                }
+                            >
+                                {Content(miscLang, 'viewPDFBTN', 'content')}
+                            </Button>
+                        </Flex>
+                    </Flex>
+                )}
             </Box>
 
             <Separator borderColor="whiteAlpha.300" mb={3} />
