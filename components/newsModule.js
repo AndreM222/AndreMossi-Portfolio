@@ -39,6 +39,7 @@ import { useSearchParams } from 'next/navigation'
 import { toaster } from './ui/toaster'
 import { FiX } from 'react-icons/fi'
 import { AiFillBell } from 'react-icons/ai'
+import { BiChevronRight } from 'react-icons/bi'
 
 const MotionBox = motion(Box)
 
@@ -302,7 +303,10 @@ const NewsItem = ({ news }) => {
                         borderRadius="lg"
                     >
                         <iframe
-                            src={`${'/PDF/Rireki-Andre-JP.pdf'}#toolbar=0&navpanes=0&scrollbar=0&page=1`}
+                            src={
+                                getResumeData(news.title, news.type.slice(-2))
+                                    .src
+                            }
                             width="100%"
                             height="100%"
                             style={{
@@ -382,14 +386,27 @@ const NewsItem = ({ news }) => {
 
             <Separator borderColor="whiteAlpha.300" mb={3} />
 
-            <Flex gap={4} fontSize="sm" opacity={0.6}>
-                <Flex gap={1}>
-                    <IoGitBranchOutline />
-                    <Text>{news.branch}</Text>
+            <Flex justifyContent="space-between" alignItems="center">
+                <Flex gap={4} fontSize="sm" opacity={0.6}>
+                    <Flex gap={1}>
+                        <IoGitBranchOutline />
+                        <Text>{news.branch}</Text>
+                    </Flex>
+                    <Flex gap={1}>
+                        {news.commit && <Text>#{news.commit.slice(-7)}</Text>}
+                    </Flex>
                 </Flex>
-                <Flex gap={1}>
-                    {news.commit && <Text>#{news.commit.slice(-7)}</Text>}
-                </Flex>
+                <IconButton
+                    bg="orange.fg"
+                    size="xs"
+                    _hover={{
+                        bg: 'orange.border'
+                    }}
+                    title="Interests"
+                    onClick={() => window.open(`https://github.com/AndreM222/${news.branch}`, '_blank')}
+                >
+                    <BiChevronRight />
+                </IconButton>
             </Flex>
         </MotionBox>
     )
