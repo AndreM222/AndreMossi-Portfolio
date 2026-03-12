@@ -103,12 +103,12 @@ export default function AppLoader({ isLoading, isPWA }) {
                 {isPWA && (
                     <Flex alignItems="center">
                         <Image
-                            h="18px"
-                            src="/images/LogoNav.svg"
-                            transform="translateY(-50%)"
                             opacity="0"
-                            animation={`${svgAppear} 900ms ease forwards`}
+                            h="18px"
+                            transform="translateY(-50%)"
                             mr={3}
+                            src="/images/LogoNav.svg"
+                            animation={`${svgAppear} 900ms ease forwards`}
                         />
 
                         <Box
