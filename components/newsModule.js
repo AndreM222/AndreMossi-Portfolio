@@ -566,8 +566,23 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
                     exit={{ y: -40, opacity: 0 }}
                 >
                     <Button
-                        opacity="90%"
+                        backdropFilter="blur(20px)"
+                        border="1px solid"
+                        color="cyan"
+                        shadow="2xl"
+                        boxShadowColor="red"
+                        bg={{
+                            _light: 'blackAlpha.500',
+                            _dark: 'whiteAlpha.500'
+                        }}
                         borderRadius="full"
+                        _hover={{
+                            transform: 'translateY(6px)',
+                            bg: {
+                                _light: 'blackAlpha.700',
+                                _dark: 'whiteAlpha.700'
+                            }
+                        }}
                         boxShadow="lg"
                         onClick={loadNewItems}
                     >
