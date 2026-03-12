@@ -78,6 +78,7 @@ export default function AppLoader({ isLoading, isPWA }) {
 
     const bg = dark ? '#101015' : '#f1ece8'
     const barBg = dark ? '#ffffff' : '#000000'
+    const barFg = dark ? 'orange.300' : 'orange.600'
     const [done, setDone] = useState(!isLoading)
 
     if (!mounted) return null
@@ -102,9 +103,9 @@ export default function AppLoader({ isLoading, isPWA }) {
                 {isPWA && (
                     <Flex alignItems="center">
                         <Image
+                            h="18px"
                             src="/images/LogoNav.svg"
                             transform="translateY(-50%)"
-                            h="18px"
                             opacity="0"
                             animation={`${svgAppear} 900ms ease forwards`}
                             mr={3}
@@ -129,7 +130,7 @@ export default function AppLoader({ isLoading, isPWA }) {
                                 left="0"
                                 top="0"
                                 bottom="0"
-                                bg="orange.fg"
+                                bg={barFg}
                                 animation={`${fill} 1.6s ease forwards`}
                                 animationDelay="900ms"
                             />
