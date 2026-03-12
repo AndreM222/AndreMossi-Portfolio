@@ -112,7 +112,7 @@
             "repository": "New Repository Made",
             "resume-en": "Resume English Updated",
             "resume-es": "Resume Spanish Updated",
-            "resume-jp": "Resume Japanese Updated"
+            "resume-ja": "Resume Japanese Updated"
         },
         {
             "locale": "ja",
@@ -133,7 +133,7 @@
             "repository": "新しいリポジトリを作成しました",
             "resume-en": "英語履歴書更新",
             "resume-es": "スペイン語履歴書更新",
-            "resume-jp": "日本語履歴書更新"
+            "resume-ja": "日本語履歴書更新"
         },
         {
             "locale": "es",
@@ -154,7 +154,7 @@
             "repository": "Nuevo Repositori Creado",
             "resume-en": "Currículum Inglés Actualizado",
             "resume-es": "Currículum Español Actualizado",
-            "resume-jp": "Currículum Japonés Actualizado"
+            "resume-ja": "Currículum Japonés Actualizado"
         }
     ],
     "switch-types": [
