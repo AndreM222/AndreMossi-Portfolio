@@ -18,7 +18,7 @@ export const interestTypes = [
         id: 'resume',
         color: 'orange',
         icon: <FaFileAlt />,
-        types: ['english', 'spanish', 'japanese']
+        types: ['resume-en', 'resume-es', 'resume-ja']
     },
     {
         id: 'developer',
@@ -43,7 +43,7 @@ export const defaultInterestsSettings = {
         projects: true,
         certifications: true
     },
-    resume: { english: true, spanish: true, japanese: true },
+    resume: { 'resume-en': true, 'resume-es': true, 'resume-ja': true },
     developer: {
         fix: true,
         perf: true,
