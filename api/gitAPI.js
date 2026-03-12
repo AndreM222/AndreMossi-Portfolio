@@ -176,7 +176,7 @@ export const parseCommitForNews = commit => {
 
     const firstLine = commit.message.split('\n')[0]
 
-    const match = firstLine.match(/^(\w+)(?:\(([^)]+)\))?: (.+)/i)
+    const match = firstLine.match(/^([\w-]+)(?:\(([^)]+)\))?: (.+)/i)
 
     const type = match ? match[1].toLowerCase() : 'chore'
     const scope = match ? match[2] : null

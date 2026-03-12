@@ -138,7 +138,7 @@ const Footer = ({ ...props }) => {
                     zIndex={isVisible ? 'auto' : 999}
                     bg="orange.fg"
                     _hover={{
-                        transform: "translateY(0)",
+                        transform: "translateY(-10px)",
                         bg: 'orange.border'
                     }}
                     animation={
