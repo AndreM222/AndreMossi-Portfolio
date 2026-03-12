@@ -28,7 +28,7 @@ export const QuoteCard = ({ quoteNum }) => {
             justifyContent="center"
             css={{ backdropFilter: 'blur(10px)' }}
         >
-            <p style={{ whiteSpace: 'pre-line' }}>
+            <p style={{ whiteSpace: 'pre-line', textAlign: 'center' }}>
                 {Content(symbolLang, 'qb-sentence', 'start')}
                 {Content(quoteLang, quoteId, 'content')}
                 {Content(symbolLang, 'qb-sentence', 'end')}
@@ -37,6 +37,7 @@ export const QuoteCard = ({ quoteNum }) => {
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
+                textAlign="center"
             >
                 <Box
                     width="20px"
