@@ -523,11 +523,14 @@ const NewsScreen = ({
     const [lastSeen, setLastSeen] = useState(null)
 
     useEffect(() => {
-        setLastSeen(
-            notificationsEnabled ? localStorage.getItem('lastSeenNews') : null
-        )
+        if (!notificationsEnabled) return
 
-        localStorage.setItem('lastSeenNews', new Date().getTime())
+        if (isOpen) {
+            const stored = localStorage.getItem('lastSeenNews')
+            setLastSeen(stored ? Number(stored) : null)
+        } else {
+            localStorage.setItem('lastSeenNews', Date.now())
+        }
     }, [isOpen, notificationsEnabled])
 
     const {
