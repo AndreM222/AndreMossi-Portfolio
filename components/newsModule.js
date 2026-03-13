@@ -192,7 +192,6 @@ const NewsItem = ({ news, lastSeen }) => {
             return { src: categoryData.src, name: categoryData.name }
 
         const matching = categoryData.find(item => item.name === selectedName)
-        console.log('Name: ' + categoryData[0].name)
         return matching ? { src: matching.src, name: matching.name } : null
     }
 
