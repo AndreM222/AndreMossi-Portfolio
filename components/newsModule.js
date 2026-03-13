@@ -156,11 +156,15 @@ const NewsSkeleton = ({ ...props }) => {
         </MotionBox>
     )
 }
-const NewsItem = ({ news }) => {
+const NewsItem = ({ news, lastSeen }) => {
     const categoryMeta = getCategoryMeta(news.category)
     const cardShadow = {
         _light: '0 10px 30px rgba(0,0,0,0.12)',
         _dark: '0 10px 30px rgba(0,0,0,0.6)'
+    }
+    const cardShadowUnseen = {
+        _light: '0 10px 18px orange',
+        _dark: '0 10px 18px cyan'
     }
 
     const hasMultiplePdf = lang => {
@@ -204,7 +208,11 @@ const NewsItem = ({ news }) => {
             borderColor="whiteAlpha.200"
             mb={4}
             cursor="pointer"
-            boxShadow={cardShadow}
+            boxShadow={
+                lastSeen && news.createdAt > lastSeen
+                    ? cardShadowUnseen
+                    : cardShadow
+            }
             _hover={{
                 boxShadow: `0 0 24px ${categoryMeta.color}.400`,
                 transform: 'translateY(-2px)'
@@ -403,7 +411,12 @@ const NewsItem = ({ news }) => {
                         bg: 'orange.border'
                     }}
                     title="Interests"
-                    onClick={() => window.open(`https://github.com/AndreM222/${news.branch}`, '_blank')}
+                    onClick={() =>
+                        window.open(
+                            `https://github.com/AndreM222/${news.branch}`,
+                            '_blank'
+                        )
+                    }
                 >
                     <BiChevronRight />
                 </IconButton>
@@ -483,11 +496,26 @@ const fetchNewsPage = async ({ pageParam = 1 }) => {
     return res.json()
 }
 
-const NewsScreen = ({ preference, lang, defaultLang }) => {
+const NewsScreen = ({
+    preference,
+    lang,
+    defaultLang,
+    isOpen,
+    notificationsEnabled
+}) => {
     const queryClient = useQueryClient()
     const [newItemsAvailable, setNewItemsAvailable] = useState(false)
     const [latestKnownId, setLatestKnownId] = useState(null)
     const containerRef = useRef(null)
+    const [lastSeen, setLastSeen] = useState(null)
+
+    useEffect(() => {
+        setLastSeen(
+            notificationsEnabled ? localStorage.getItem('lastSeenNews') : null
+        )
+
+        localStorage.setItem('lastSeenNews', new Date().getTime())
+    }, [isOpen, notificationsEnabled])
 
     const {
         data,
@@ -585,9 +613,9 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
                     <Button
                         backdropFilter="blur(20px)"
                         border="1px solid"
-                        color="cyan"
+                        color={{ _dark: 'cyan', _light: 'orange' }}
                         shadow="2xl"
-                        boxShadowColor="red"
+                        boxShadowColor="black"
                         bg={{
                             _light: 'blackAlpha.500',
                             _dark: 'whiteAlpha.500'
@@ -646,6 +674,7 @@ const NewsScreen = ({ preference, lang, defaultLang }) => {
                         <NewsItem
                             key={`${newsItem.id}-${idx}`}
                             news={newsItem}
+                            lastSeen={lastSeen}
                         />
                     ))}
 
@@ -950,6 +979,8 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                                 preference={preference}
                                 lang={locale}
                                 defaultLang={defaultLocale}
+                                isOpen={isOpen}
+                                notificationsEnabled={notificationsEnabled}
                             />
                         )}
                     </Dialog.Body>
