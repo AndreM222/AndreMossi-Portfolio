@@ -189,7 +189,11 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     backgroundSize="100% 200%"
                     animate={{
                         backgroundPosition: ['0% 0%', '0% 200%'],
-                        boxShadow: lightupShadow
+                        boxShadow: [
+                            '0 0 12px 2px rgba(169,143,99,0.3)',
+                            lightupShadow,
+                            '0 0 12px 2px rgba(169,143,99,0.3)'
+                        ]
                     }}
                     transition={{
                         backgroundPosition: {

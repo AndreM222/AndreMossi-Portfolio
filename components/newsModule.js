@@ -162,10 +162,8 @@ const NewsItem = ({ news, lastSeen }) => {
         _light: '0 10px 30px rgba(0,0,0,0.12)',
         _dark: '0 10px 30px rgba(0,0,0,0.6)'
     }
-    const cardShadowUnseen = {
-        _light: '0 10px 18px orange',
-        _dark: '0 10px 18px cyan'
-    }
+
+    const isNew = lastSeen && news.createdAt > lastSeen
 
     const hasMultiplePdf = lang => {
         const categoryData = NavContent(
@@ -205,14 +203,11 @@ const NewsItem = ({ news, lastSeen }) => {
             bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.50' }}
             backdropFilter="blur(10px)"
             border="1px solid"
+            position="relative"
             borderColor="whiteAlpha.200"
             mb={4}
             cursor="pointer"
-            boxShadow={
-                lastSeen && news.createdAt > lastSeen
-                    ? cardShadowUnseen
-                    : cardShadow
-            }
+            boxShadow={cardShadow}
             _hover={{
                 boxShadow: `0 0 24px ${categoryMeta.color}.400`,
                 transform: 'translateY(-2px)'
@@ -222,6 +217,25 @@ const NewsItem = ({ news, lastSeen }) => {
             transition={{ duration: 0.3 }}
             whileHover={{ scale: 1.02 }}
         >
+            {isNew && (
+                <Badge
+                    position="absolute"
+                    top="-12px"
+                    right="-12px"
+                    px={3}
+                    py={1}
+                    borderRadius="full"
+                    fontSize="10px"
+                    letterSpacing="0.08em"
+                    fontWeight="bold"
+                    textTransform="uppercase"
+                    bg={`${categoryMeta.color}.400`}
+                    color="black"
+                    boxShadow={`0 0 12px var(--chakra-colors-${categoryMeta.color}-400)`}
+                >
+                    {Content(newsLang, 'news-ui', 'new')}
+                </Badge>
+            )}
             <Flex justify="space-between" align="center" mb={3}>
                 <HStack>
                     {categoryMeta.icon}

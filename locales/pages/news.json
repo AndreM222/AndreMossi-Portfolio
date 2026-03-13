@@ -42,7 +42,8 @@
             "newupdates": "New updates available",
             "loadMore": "Load more news",
             "failed": "Failed to load news",
-            "newsButton": "News"
+            "newsButton": "News",
+            "new": "New"
         },
         {
             "locale": "ja",
@@ -51,7 +52,8 @@
             "newupdates": "アップデートが利用可能です",
             "loadMore": "さらに読み込み",
             "failed": "ニュースの読み込みに失敗しました",
-            "newsButton": "ニュース"
+            "newsButton": "ニュース",
+            "new": "最新"
         },
         {
             "locale": "es",
@@ -60,7 +62,8 @@
             "newupdates": "New updates available",
             "loadMore": "Cargar más noticias",
             "failed": "Error al cargar noticias",
-            "newsButton": "Noticias"
+            "newsButton": "Noticias",
+            "new": "Nuevo"
         }
     ],
     "notifications": [
