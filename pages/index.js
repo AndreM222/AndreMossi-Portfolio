@@ -55,6 +55,11 @@ const Page = () => {
                             <Heading size="4xl">
                                 {Content(miscLang, 'title', 'name')}
                             </Heading>
+                            {Content(miscLang, 'title', 'subname') && (
+                                <Box mt={-2} mb={1} fontSize="lg" opacity={0.9}>
+                                    {Content(miscLang, 'title', 'subname')}
+                                </Box>
+                            )}
                             <p>{Content(indexLang, 'card', 'work')}</p>
                             <p>{Content(indexLang, 'card', 'type')}</p>
                         </Box>
