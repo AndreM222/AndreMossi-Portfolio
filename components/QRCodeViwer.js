@@ -18,7 +18,10 @@ import Content from './content'
 import { useCallback, useEffect, useState } from 'react'
 import { MdEmail } from 'react-icons/md'
 import { FaPhone } from 'react-icons/fa6'
-import { FiX } from 'react-icons/fi'
+import {
+    DialogBodyFlip,
+    DialogCloseFlip
+} from './layouts/dialogBody'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
@@ -832,18 +835,9 @@ export const BackCard = ({ ...props }) => {
 }
 
 export const QRCodeModal = ({ isOpen, setOpen }) => {
-    const bgColor = { _light: '#f4f0fc', _dark: '#1C1C20' }
     const [isFlipped, setIsFlipped] = useState(false)
 
     const flip = () => setIsFlipped(prev => !prev)
-
-    const modalBorderColor = {
-        _light: 'blackAlpha.200',
-        _dark: 'whiteAlpha.200'
-    }
-
-    const closeBg = { _light: 'blackAlpha.100', _dark: 'whiteAlpha.100' }
-    const closeHoverBg = { _light: 'blackAlpha.200', _dark: 'whiteAlpha.300' }
 
     useEffect(() => {
         if (isOpen) {
@@ -854,115 +848,39 @@ export const QRCodeModal = ({ isOpen, setOpen }) => {
     return (
         <Dialog.Positioner>
             <Dialog.Content h={{ base: '725px', md: '430px' }} bg="none">
-                <Dialog.Body p={0} h="100%" position="relative">
-                    <motion.div
-                        drag="x"
-                        tabIndex={-1}
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={0.2}
-                        onDragEnd={(event, info) => {
-                            const swipeThreshold = 80
-                            const velocityThreshold = 500
-
-                            if (
-                                info.offset.x > swipeThreshold ||
-                                info.velocity.x > velocityThreshold
-                            ) {
-                                setIsFlipped(false)
-                            } else if (
-                                info.offset.x < -swipeThreshold ||
-                                info.velocity.x < -velocityThreshold
-                            ) {
-                                setIsFlipped(true)
-                            } else if (
-                                Math.abs(info.offset.y) > 120 ||
-                                Math.abs(info.velocity.y) > 800
-                            ) {
-                                setOpen(false)
-                            }
-                        }}
-                        animate={{
-                            x: 0,
-                            rotateY: isFlipped ? 180 : 0
-                        }}
-                        transition={{
-                            type: 'tween',
-                            duration: 0.25,
-                            ease: 'easeOut'
-                        }}
-                        style={{
-                            height: '100%',
-                            cursor: 'grab',
-                            WebkitTapHighlightColor: 'transparent',
-                            outline: 'none'
-                        }}
-                        whileTap={{ cursor: 'grabbing' }}
-                        whileDrag={{ scale: 0.98 }}
-                    >
-                        <Box
-                            bg={bgColor}
-                            borderRadius="2xl"
-                            border="1px solid"
-                            borderColor={modalBorderColor}
-                            h="full"
-                        >
-                            {!isFlipped ? (
-                                <FrontCard isOpen={isOpen} />
-                            ) : (
-                                <BackCard transform="rotateY(180deg)" />
-                            )}
-                        </Box>
-                        <Box
-                            position="absolute"
-                            bottom="0"
-                            right="0"
-                            width="30px"
-                            height="30px"
-                            bg="#a98f63"
-                            roundedBottomRight="2xl"
-                            roundedTopLeft="2xl"
-                            boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
-                            onClick={flip}
-                            cursor="pointer"
-                            aria-label="Flip card"
-                            _active={{
-                                bg: '#967c4a',
-                                boxShadow: '0 0 8px rgba(0,0,0,0.5) inset'
-                            }}
-                        />
-                    </motion.div>
-                </Dialog.Body>
-                <MotionBox
-                    position="absolute"
-                    top="16px"
-                    right="16px"
-                    animate={{
-                        scale: isFlipped
-                            ? [1, 0.95, 1.1, 1]
-                            : [1, 1.05, 0.95, 1]
-                    }}
-                    transition={{
-                        scale: {
-                            duration: 0.4,
-                            times: [0, 0.3, 0.6, 1],
-                            ease: ['easeOut', 'easeIn', 'easeOut', 'easeIn']
-                        }
-                    }}
+                <DialogBodyFlip
+                    setFlippedX={setIsFlipped}
+                    isFlippedX={isFlipped}
+                    setFlippedY={setOpen}
+                    isFlippedY={isOpen}
+                    shouldRotateX={true}
                 >
-                    <Dialog.CloseTrigger asChild position="relative">
-                        <IconButton
-                            size="xs"
-                            borderRadius="full"
-                            color="CaptionText"
-                            backdropFilter="blur(6px)"
-                            bg={closeBg}
-                            _hover={{ bg: closeHoverBg, color: '#a98f63' }}
-                            zIndex={10}
-                        >
-                            <FiX />
-                        </IconButton>
-                    </Dialog.CloseTrigger>
-                </MotionBox>
+                    {!isFlipped ? (
+                        <FrontCard isOpen={isOpen} />
+                    ) : (
+                        <BackCard transform="rotateY(180deg)" />
+                    )}
+                    <Box
+                        position="absolute"
+                        bottom="0"
+                        right="0"
+                        width="30px"
+                        height="30px"
+                        bg="#a98f63"
+                        roundedBottomRight="2xl"
+                        roundedTopLeft="2xl"
+                        boxShadow="0 0 4px rgba(0,0,0,0.25) inset"
+                        onClick={flip}
+                        cursor="pointer"
+                        aria-label="Flip card"
+                        _active={{
+                            bg: '#967c4a',
+                            boxShadow: '0 0 8px rgba(0,0,0,0.5) inset'
+                        }}
+                    />
+                </DialogBodyFlip>
+
+                <DialogCloseFlip isFlipped={isFlipped} />
             </Dialog.Content>
         </Dialog.Positioner>
     )

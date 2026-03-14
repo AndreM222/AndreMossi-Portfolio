@@ -8,17 +8,17 @@ import {
     Box,
     Separator,
     Icon,
-    Portal,
-    IconButton
+    Portal
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { FiDownload, FiExternalLink, FiX } from 'react-icons/fi'
+import { FiDownload, FiExternalLink } from 'react-icons/fi'
 import { RiLock2Fill } from 'react-icons/ri'
 import Content from './content'
 
 import miscLang from '../locales/misc.json'
+import { DialogCloseFlip, DialogContentFlip } from './layouts/dialogBody'
 
-export const PdfPreviewModal = ({ title, src }) => {
+export const PdfPreviewModal = ({ title, src, setOpen }) => {
     const [loaded, setLoaded] = useState(false)
     const isMobile = useBreakpointValue({ base: true, md: false })
     const typeArray = Array.isArray(src)
@@ -29,19 +29,15 @@ export const PdfPreviewModal = ({ title, src }) => {
         setPDF(typeArray ? src[0].src : src)
     }, [src, typeArray])
 
-    const bgColor = {_light: '#f4f0fc', _dark: '#1C1C20'}
-
     return (
         <Dialog.Positioner>
             <Dialog.Backdrop bg="blackAlpha.700" backdropFilter="blur(6px)" />
-            <Dialog.Content
+            <DialogContentFlip
+                setFlippedX={() => setOpen(false)}
+                setFlippedY={() => setOpen(false)}
                 display="flex"
                 flexDirection="column"
                 h={{ base: '85vh', md: '90vh' }}
-                bg={bgColor}
-                borderRadius="xl"
-                border="1px solid"
-                borderColor="whiteAlpha.200"
                 boxShadow="0 20px 60px rgba(0,0,0,0.5)"
             >
                 <Dialog.Header
@@ -113,21 +109,9 @@ export const PdfPreviewModal = ({ title, src }) => {
                     </Box>
                 </Dialog.Header>
 
-                <Dialog.CloseTrigger asChild>
-                    <IconButton
-                        aria-label="Close"
-                        size="sm"
-                        position="absolute"
-                        top="8px"
-                        right="16px"
-                        zIndex="10"
-                        variant="ghost"
-                    >
-                        <FiX />
-                    </IconButton>
-                </Dialog.CloseTrigger>
+                <DialogCloseFlip position="static" top="0" right="0" />
 
-                <Dialog.Body p={0} flex="1" overflow="hidden">
+                <Dialog.Body p={0} flex="1" overflow="hidden" display="flex">
                     {isMobile ? (
                         <MobileFallback
                             src={currPDF}
@@ -142,7 +126,7 @@ export const PdfPreviewModal = ({ title, src }) => {
                         />
                     )}
                 </Dialog.Body>
-            </Dialog.Content>
+            </DialogContentFlip>
         </Dialog.Positioner>
     )
 }
@@ -179,7 +163,9 @@ const MobileFallback = ({ src, loaded, setLoaded }) => (
     <Flex
         position="relative"
         direction="column"
+        display="flex"
         align="center"
+        w="100%"
         justify="center"
         h="100%"
         overflow="hidden"
@@ -223,7 +209,7 @@ const MobileFallback = ({ src, loaded, setLoaded }) => (
             </Text>
 
             <Button
-                bg={{_light: 'cyan.400', _dark: 'cyan.200'}}
+                bg={{ _light: 'cyan.400', _dark: 'cyan.200' }}
                 color="black"
                 borderRadius="full"
                 px={8}
@@ -236,10 +222,13 @@ const MobileFallback = ({ src, loaded, setLoaded }) => (
 )
 
 export const PdfPreviewButton = ({ title, src, children, ...props }) => {
+    const [isOpen, setOpen] = useState()
     return (
         <Dialog.Root
             size="xl"
             placement="center"
+            open={isOpen}
+            onOpenChange={e => setOpen(e.open)}
             motionPreset="scale"
             preventScroll
         >
@@ -257,17 +246,20 @@ export const PdfPreviewButton = ({ title, src, children, ...props }) => {
             </Dialog.Trigger>
 
             <Portal>
-                <PdfPreviewModal title={title} src={src} />
+                <PdfPreviewModal title={title} src={src} setOpen={setOpen} />
             </Portal>
         </Dialog.Root>
     )
 }
 
 export const PdfPreviewMenuItem = ({ title, src, children, ...props }) => {
+    const [isOpen, setOpen] = useState()
     return (
         <Dialog.Root
             size="xl"
             placement="center"
+            open={isOpen}
+            onOpenChange={e => setOpen(e.open)}
             motionPreset="scale"
             preventScroll
         >
@@ -292,7 +284,7 @@ export const PdfPreviewMenuItem = ({ title, src, children, ...props }) => {
                 </Button>
             </Dialog.Trigger>
             <Portal>
-                <PdfPreviewModal title={title} src={src} />
+                <PdfPreviewModal title={title} src={src} setOpen={setOpen} />
             </Portal>
         </Dialog.Root>
     )

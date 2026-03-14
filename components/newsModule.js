@@ -37,9 +37,9 @@ import miscLang from '../locales/misc.json'
 import NavContent from './translations/navigationContent'
 import { useSearchParams } from 'next/navigation'
 import { toaster } from './ui/toaster'
-import { FiX } from 'react-icons/fi'
 import { AiFillBell } from 'react-icons/ai'
 import { BiChevronRight } from 'react-icons/bi'
+import { DialogCloseFlip, DialogContentFlip } from './layouts/dialogBody'
 
 const MotionBox = motion(Box)
 
@@ -730,8 +730,6 @@ export const NewsModal = ({ isOpen, setOpen }) => {
 
     const [interestOpen, setInterestOpen] = useState(false)
 
-    const bgColor = { _light: '#f4f0fc', _dark: '#1C1C20' }
-
     useEffect(() => {
         const initNotifications = async () => {
             if (!('Notification' in window) || !('serviceWorker' in navigator))
@@ -914,14 +912,12 @@ export const NewsModal = ({ isOpen, setOpen }) => {
         >
             <Dialog.Backdrop bg="blackAlpha.700" backdropFilter="blur(6px)" />
             <Dialog.Positioner>
-                <Dialog.Content
+                <DialogContentFlip
+                    setFlippedX={() => setOpen(false)}
+                    setFlippedY={() => setOpen(false)}
                     display="flex"
                     flexDirection="column"
                     h={{ base: '85vh', md: '90vh' }}
-                    bg={bgColor}
-                    borderRadius="xl"
-                    border="1px solid"
-                    borderColor="whiteAlpha.200"
                     boxShadow="0 20px 60px rgba(0,0,0,0.5)"
                 >
                     <Dialog.Header
@@ -965,19 +961,11 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                         </Flex>
                     </Dialog.Header>
 
-                    <Dialog.CloseTrigger asChild>
-                        <IconButton
-                            aria-label="Close"
-                            size="sm"
-                            position="absolute"
-                            top="8px"
-                            right="16px"
-                            zIndex="10"
-                            variant="ghost"
-                        >
-                            <FiX />
-                        </IconButton>
-                    </Dialog.CloseTrigger>
+                    <DialogCloseFlip
+                        position="static"
+                        top="0"
+                        right="0"
+                    />
 
                     <Dialog.Body
                         p={0}
@@ -1000,7 +988,7 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                             />
                         )}
                     </Dialog.Body>
-                </Dialog.Content>
+                </DialogContentFlip>
             </Dialog.Positioner>
         </Dialog.Root>
     )
