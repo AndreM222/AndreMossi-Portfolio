@@ -10,7 +10,7 @@ export const DialogCloseFlip = ({ isFlipped, ...props }) => {
     const closeBg = { _light: 'blackAlpha.100', _dark: 'whiteAlpha.100' }
     const { trigger } = useWebHaptics()
 
-    const useHaptic = () => {
+    const triggerHaptic = () => {
         trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }])
     }
     const closeHoverBg = { _light: 'blackAlpha.200', _dark: 'whiteAlpha.300' }
@@ -39,7 +39,7 @@ export const DialogCloseFlip = ({ isFlipped, ...props }) => {
                     bg={closeBg}
                     _hover={{ bg: closeHoverBg, color: '#a98f63' }}
                     zIndex={10}
-                    onClick={() => useHaptic()}
+                    onClick={() => triggerHaptic()}
                 >
                     <FiX />
                 </IconButton>
@@ -63,7 +63,7 @@ export const DialogBodyFlip = ({
 
     const { trigger } = useWebHaptics()
 
-    const useHaptic = () => {
+    const triggerHaptic = () => {
         trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }])
     }
 
@@ -94,21 +94,21 @@ export const DialogBodyFlip = ({
                         (info.offset.x > swipeThreshold ||
                             info.velocity.x > velocityThreshold)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedX(shouldRotateX ? false : !isFlippedX)
                     } else if (
                         !disableFlipX &&
                         (info.offset.x < -swipeThreshold ||
                             info.velocity.x < -velocityThreshold)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedX(shouldRotateX ? true : !isFlippedX)
                     } else if (
                         !disableFlipY &&
                         (Math.abs(info.offset.y) > 120 ||
                             Math.abs(info.velocity.y) > 800)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedY(!isFlippedY)
                     }
                 }}
@@ -160,7 +160,7 @@ export const DialogContentFlip = ({
 
     const { trigger } = useWebHaptics()
 
-    const useHaptic = () => {
+    const triggerHaptic = () => {
         trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }])
     }
 
@@ -190,21 +190,21 @@ export const DialogContentFlip = ({
                         (info.offset.x > swipeThreshold ||
                             info.velocity.x > velocityThreshold)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedX(shouldRotateX ? false : !isFlippedX)
                     } else if (
                         !disableFlipX &&
                         (info.offset.x < -swipeThreshold ||
                             info.velocity.x < -velocityThreshold)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedX(shouldRotateX ? true : !isFlippedX)
                     } else if (
                         !disableFlipY &&
                         (Math.abs(info.offset.y) > 120 ||
                             Math.abs(info.velocity.y) > 800)
                     ) {
-                        useHaptic()
+                        triggerHaptic()
                         setFlippedY(!isFlippedY)
                     }
                 }}

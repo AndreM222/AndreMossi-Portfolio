@@ -79,7 +79,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
     const [currentQRURL, setCurrentQRURL] = useState(nfcUrl)
     const { trigger } = useWebHaptics()
 
-    const useHaptic = () => {
+    const triggerHaptic = () => {
         trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }])
     }
 
@@ -155,7 +155,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
 
     const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
-            useHaptic()
+            triggerHaptic()
             setShowShareMenu(true)
         }, 500)
 
@@ -346,7 +346,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                             autoFocus={false}
                             closeOnInteractOutside
                             onOpenChange={() => {
-                                useHaptic()
+                                triggerHaptic()
                                 setShowShareMenu(false)
                             }}
                         >
