@@ -914,7 +914,7 @@ export const NewsModal = ({ isOpen, setOpen }) => {
             <Dialog.Positioner>
                 <DialogContentFlip
                     setFlippedX={() => setOpen(false)}
-                    setFlippedY={() => setOpen(false)}
+                    disableFlipY={true}
                     display="flex"
                     flexDirection="column"
                     h={{ base: '85vh', md: '90vh' }}

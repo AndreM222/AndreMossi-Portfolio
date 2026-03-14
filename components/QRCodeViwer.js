@@ -18,10 +18,8 @@ import Content from './content'
 import { useCallback, useEffect, useState } from 'react'
 import { MdEmail } from 'react-icons/md'
 import { FaPhone } from 'react-icons/fa6'
-import {
-    DialogBodyFlip,
-    DialogCloseFlip
-} from './layouts/dialogBody'
+import { DialogBodyFlip, DialogCloseFlip } from './layouts/dialogBody'
+import { useWebHaptics } from 'web-haptics/react'
 
 const MotionBox = motion(Box)
 const webUrl = 'https://andremossi.vercel.app'
@@ -79,6 +77,11 @@ export const FrontCard = ({ isOpen, ...props }) => {
     const [showShareMenu, setShowShareMenu] = useState(false)
     const [longPressTimer, setLongPressTimer] = useState(null)
     const [currentQRURL, setCurrentQRURL] = useState(nfcUrl)
+    const { trigger } = useWebHaptics()
+
+    const useHaptic = () => {
+        trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }])
+    }
 
     const [nameText, setNameText] = useState('')
     const name = Content(miscLang, 'title', 'name')
@@ -152,6 +155,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
 
     const handleQRPress = useCallback(() => {
         const timer = setTimeout(() => {
+            useHaptic()
             setShowShareMenu(true)
         }, 500)
 
@@ -260,6 +264,7 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                 variant="ghost"
                                 borderRadius="full"
                                 colorPalette="orange"
+                                outline="none"
                                 onClick={() => shareUrl()}
                                 _focus={{ boxShadow: 'none' }}
                                 _focusVisible={{ boxShadow: 'none' }}
@@ -340,7 +345,10 @@ export const FrontCard = ({ isOpen, ...props }) => {
                             placement="top"
                             autoFocus={false}
                             closeOnInteractOutside
-                            onOpenChange={() => setShowShareMenu(false)}
+                            onOpenChange={() => {
+                                useHaptic()
+                                setShowShareMenu(false)
+                            }}
                         >
                             <Popover.Trigger asChild>
                                 <Box
