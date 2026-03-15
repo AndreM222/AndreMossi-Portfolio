@@ -42,6 +42,12 @@ const Main = ({ children, router }) => {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta
                     name="apple-mobile-web-app-status-bar-style"
+                    content="default"
+                />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta
+                    name="apple-mobile-web-app-status-bar-style"
                     content="black-translucent"
                 />
                 <link rel="manifest" href="/api/manifest.webmanifest" />
@@ -523,18 +529,18 @@ const Main = ({ children, router }) => {
             {<AppLoader isLoading={loading} isPWA={isPWA} />}
             <OfflineIndicator />
             <Navbar path={router.asPath} opacity={loading && '0'} />
-                <Container
-                    maxW={{ base: '2xl', lg: '90%' }}
-                    height="100%"
-                    pt={14}
-                    pb={8}
-                    opac
-                    opacity={loading && '0'}
-                >
-                    <Analytics />
-                    <CharModel />
-                    {children}
-                </Container>
+            <Container
+                maxW={{ base: '2xl', lg: '90%' }}
+                height="100%"
+                pt={14}
+                pb={8}
+                opac
+                opacity={loading && '0'}
+            >
+                <Analytics />
+                <CharModel />
+                {children}
+            </Container>
             <Footer opacity={loading && '0'} />
         </Box>
     )
