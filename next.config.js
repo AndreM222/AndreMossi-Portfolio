@@ -7,6 +7,7 @@ const withPWA = require('next-pwa')({
     disable: process.env.NODE_ENV === 'development',
 
     runtimeCaching,
+    cacheOnFrontEndNav: true,
 
     cacheStartUrl: true,
     dynamicStartUrl: true,
@@ -14,7 +15,7 @@ const withPWA = require('next-pwa')({
     fallbacks: {
         document: '/_offline'
     },
-    buildExcludes: [/app-build-manifest\.json$/]
+    buildExcludes: [/middleware-manifest\.json$/, /app-build-manifest\.json$/]
 })
 
 const nextConfig = {
