@@ -11,6 +11,7 @@ import miscLang from '../../locales/misc.json'
 import { Analytics } from '@vercel/analytics/react'
 import { useEffect, useState } from 'react'
 import AppLoader from '../AppLoader'
+import OfflineIndicator from '@/offlineIndicator'
 
 const Main = ({ children, router }) => {
     const [loading, setLoading] = useState(true)
@@ -520,8 +521,8 @@ const Main = ({ children, router }) => {
                 />
             </Head>
             {<AppLoader isLoading={loading} isPWA={isPWA} />}
+            <OfflineIndicator />
             <Navbar path={router.asPath} opacity={loading && '0'} />
-
                 <Container
                     maxW={{ base: '2xl', lg: '90%' }}
                     height="100%"

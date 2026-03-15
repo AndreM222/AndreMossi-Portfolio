@@ -13,7 +13,6 @@
             "content": "No Se Encontro"
         }
     ],
-
     "description": [
         {
             "locale": "en",
@@ -28,7 +27,6 @@
             "content": "La pagina que buscas no se encontro."
         }
     ],
-
     "return": [
         {
             "locale": "en",
@@ -41,6 +39,29 @@
         {
             "locale": "es",
             "content": "Volver a Casa"
+        }
+    ],
+    "offline": [
+        {
+            "locale": "en",
+            "title": "You're offline",
+            "subtitle": "This portfolio is installed as a PWA, so most of the UI is still ",
+            "cached": "cached",
+            "usable": " and usable."
+        },
+        {
+            "locale": "ja",
+            "title": "オフラインです",
+            "subtitle": "このポートフォリオはPWAとしてインストールされているため、UIのほとんどの部分がまだ ",
+            "cached": "キャッシュ済み",
+            "usable": " で使用可能です。"
+        },
+        {
+            "locale": "es",
+            "title": "Estás desconectado",
+            "subtitle": "Este portafolio está instalado como PWA, por lo que la mayor parte de la interfaz sigue ",
+            "cached": "en caché",
+            "usable": " y usable."
         }
     ]
 }
