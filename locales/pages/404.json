@@ -47,21 +47,24 @@
             "title": "You're offline",
             "subtitle": "This portfolio is installed as a PWA, so most of the UI is still ",
             "cached": "cached",
-            "usable": " and usable."
+            "usable": " and usable.",
+            "liveData": "Some live data (like GitHub activity or external embeds) may not update until you're back online."
         },
         {
             "locale": "ja",
             "title": "オフラインです",
             "subtitle": "このポートフォリオはPWAとしてインストールされているため、UIのほとんどの部分がまだ ",
             "cached": "キャッシュ済み",
-            "usable": " で使用可能です。"
+            "usable": " で使用可能です。",
+            "liveData": "一部のライブデータ（GitHubのアクティビティや外部埋め込みなど）は、オンラインに戻るまで更新されません。"
         },
         {
             "locale": "es",
             "title": "Estás desconectado",
             "subtitle": "Este portafolio está instalado como PWA, por lo que la mayor parte de la interfaz sigue ",
             "cached": "en caché",
-            "usable": " y usable."
+            "usable": " y usable.",
+            "liveData": "Algunos datos en vivo (como actividad de GitHub o embeds externos) no se actualizarán hasta que vuelvas a conectarte."
         }
     ]
 }
