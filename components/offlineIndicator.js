@@ -36,19 +36,16 @@ const OfflineIndicator = () => {
             p={1}
             borderRadius="lg"
             backdropFilter="blur(12px)"
-            bgGradient="linear(to-r, red.500, red.600)"
-            bg="red.500"
-            color="white"
+            bg="rgba(239, 68, 68, 0.25)"
+            bgGradient="linear(to-r, rgba(248,113,113,0.35), rgba(239,68,68,0.15))"
+            border="1px solid rgba(239, 68, 68, 0.6)"
             display="flex"
             alignItems="center"
             gap={2}
             boxShadow="lg"
+            color="white"
             opacity={0.95}
             cursor="pointer"
-            _hover={{
-                transform: 'scale(1.05)',
-                boxShadow: '0 8px 25px rgba(239, 68, 68, 0.6)'
-            }}
             transition="opacity 0.3s ease, transform 0.2s"
             transform={online ? 'scale(0.8)' : 'scale(1)'}
             style={{
@@ -66,16 +63,18 @@ const OfflineIndicator = () => {
                 onClose={() => setShowTooltip(false)}
             >
                 <Popover.Content
-                    bgGradient="linear(to-b, gray.900, gray.800)"
+                    backdropFilter="blur(38px)"
+                    bg="rgba(0,0,0,0.88)"
+                    bgGradient="linear(to-r, rgba(0,0,0,0.5), rgba(30,30,30,0.2))"
+                    sx={{
+                        backdropFilter: 'blur(14px)',
+                        WebkitBackdropFilter: 'blur(14px)'
+                    }}
                     border="1px solid"
                     borderColor="red.500"
-                    color="white"
                     borderRadius="xl"
                     boxShadow="2xl"
                     minW="200px"
-                    _focusVisible={{
-                        boxShadow: '0 0 0 3px rgba(239, 68, 68, 0.4)'
-                    }}
                 >
                     <Popover.Body p={2} fontSize="sm">
                         <Text fontWeight="medium" mb={1}>
