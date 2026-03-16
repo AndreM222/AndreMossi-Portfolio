@@ -1,6 +1,15 @@
 'use client'
 
-import { Box, Button, chakra, Image, SimpleGrid } from '@chakra-ui/react'
+import {
+    Badge,
+    Box,
+    Button,
+    chakra,
+    Flex,
+    Image,
+    SimpleGrid,
+    Text
+} from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Content from './content'
 import { FaChevronRight } from 'react-icons/fa'
@@ -32,108 +41,213 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
         mail: Content(letterLang, projectID, 'mail')
     }
 
+    const MotionBox = motion(Box)
+
     return (
-        <Box
-            w="100%"
-            maxW={{ base: '92vw', sm: '380px', md: '400px' }}
-            mx="auto"
-            {...props}
+        <StyledDiv
+            suppressHydrationWarning
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: delay }}
         >
-            <StyledDiv
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: delay }}
+            <MotionBox
+                w="100%"
+                maxW={{ base: '92vw', sm: '380px', md: '400px' }}
+                mx="auto"
+                borderRadius="3xl"
+                overflow="hidden"
+                boxShadow={{
+                    _light: '0 35px 80px -20px rgba(0,0,0,0.15)',
+                    _dark: '0 35px 80px -20px rgba(0,0,0,0.8)'
+                }}
+                bg="white"
+                _dark={{ bg: 'gray.900' }}
+                position="relative"
+                cursor="pointer"
+                transition="all 0.4s cubic-bezier(0.23, 1, 0.32, 1)"
+                {...props}
             >
-                <Box position="relative">
-                    <Box
-                        p={1}
-                        h="fit-content"
+                <Box
+                    position="relative"
+                    h={{ base: '150px', md: '240px' }}
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                >
+                    <Image
+                        src={'/images/recommendation/' + projectContent.image}
+                        w="full"
+                        filter="auto"
+                        blur="20px"
+                        contrast="1.5"
                         position="absolute"
-                        zIndex={1}
-                        alignSelf="anchor-center"
-                        my="auto"
-                        bg={{ _light: 'white', _dark: 'black' }}
-                        borderColor={{ _light: 'blackAlpha.700', _dark: 'whiteAlpha.300' }}
-                        borderWidth={2}
-                        top={2}
-                        left={-4}
-                        borderRadius="lg"
+                        dropShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+                        h="full"
+                        objectFit="cover"
+                        objectPosition="center"
+                        transition="all 0.4s ease"
+                        _hover={{ transform: 'scale(1.05)' }}
+                    />
+
+                    <Image
+                        src={'/images/recommendation/' + projectContent.image}
+                        w={20}
+                        h={20}
+                        borderRadius="full"
+                        objectFit="cover"
+                        position="relative"
+                        boxShadow="0 12px 30px rgba(0,0,0,0.45)" // strong separation
+                        border="1px solid rgba(0,0,0,0.9)"
+                        bg="white"
+                        transition="transform 0.3s ease, box-shadow 0.3s ease"
+                        pointerEvents="none"
+                    />
+
+                    <Badge
+                        position="absolute"
+                        top={4}
+                        left={4}
+                        bg="white"
+                        color="gray.900"
+                        px={3}
+                        py={1}
+                        fontSize="xs"
+                        fontWeight="bold"
+                        borderRadius="full"
+                        boxShadow="0 4px 12px rgba(0,0,0,0.3)"
                     >
                         {projectContent.company}
-                    </Box>
-                    <Image
-                        pointerEvents="none"
-                        borderRadius="100%"
-                        borderWidth={2}
-                        borderStyle="solid"
-                        borderColor={{ _light: 'blackAlpha.700', _dark: 'whiteAlpha.300' }}
-                        maxW={{ base: '60px', md: '15%' }}
-                        margin="auto"
-                        src={'/images/recommendation/' + projectContent.image}
-                    />
+                    </Badge>
                 </Box>
-                <Box
-                    display="grid"
-                    gridTemplateRows="auto auto auto 1fr auto auto"
-                    boxShadow="lg"
-                    gap={2}
-                    bg={{ _light: 'color-mix(in srgb, white 50%, #f1ece8)', _dark: 'color-mix(in srgb, white 8%, #101015)'}}
-                    borderRadius="lg"
-                    p={3}
-                    pt={6}
-                    mt={-6}
-                    minH="520px"
-                >
-                    <Box justifySelf="center">
-                        <b>{projectContent.author}</b>
-                    </Box>
-                    <Box justifySelf="center" mt={-3}>
-                        {projectContent.title}
-                    </Box>
-                    <Box display="inline-flex" alignItems="center" gap={2}>
-                        <LuCalendarRange />
 
-                        <DateSetup date={getDateFormat(projectContent.date)} />
-                    </Box>
-                    <Box
-                        justifySelf="center"
-                        bg={{ _light: 'blackAlpha.200', _dark: 'blackAlpha.400' }}
-                        p={2}
-                        borderRadius="lg"
-                    >
-                        <i>{projectContent.description}...</i>
-                    </Box>
-                    <Box
-                        bg={{ _light: 'blackAlpha.200', _dark: 'blackAlpha.400' }}
-                        p={2}
-                        display="grid"
-                        borderRadius="lg"
-                        w="full"
-                    >
-                        <Box display="inline-flex" gap={2} alignItems="center">
-                            <FaPhone />
-                            <div>
-                                <NextLink href={'tel:' + projectContent.phone}>
-                                    {projectContent.phone}
-                                </NextLink>
-                            </div>
+                <Box p={4} pb={4}>
+                    <Flex align="center" gap={3} mb={2}>
+                        <Box>
+                            <Text
+                                fontSize={{ base: 'xl', md: 'xl' }}
+                                fontWeight="black"
+                            >
+                                {projectContent.author}
+                            </Text>
+                            <Text
+                                fontSize="sm"
+                                color="orange.600"
+                                _dark={{ color: 'orange.400' }}
+                            >
+                                {projectContent.title}
+                            </Text>
                         </Box>
-                        <Box display="inline-flex" gap={2} alignItems="center">
-                            <MdEmail />
-                            <div>
-                                <NextLink
-                                    href={'mailto:' + projectContent.mail}
+                    </Flex>
+
+                    <Flex align="center" gap={2} mb={3} opacity={0.8}>
+                        <Box
+                            w={6}
+                            h={6}
+                            bg="gray.100"
+                            _dark={{ bg: 'gray.800' }}
+                            borderRadius="full"
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <LuCalendarRange size={12} color="gray.600" />
+                        </Box>
+                        <Text fontSize="sm">
+                            <DateSetup
+                                date={getDateFormat(projectContent.date)}
+                            />
+                        </Text>
+                    </Flex>
+
+                    <Text
+                        fontSize="sm"
+                        fontStyle="italic"
+                        color="gray.700"
+                        _dark={{ color: 'gray.300' }}
+                        lineHeight="1.7"
+                        mb={6}
+                        noOfLines={3}
+                    >
+                        {projectContent.description}...
+                    </Text>
+
+                    <Box display="grid" gap={2} mb={3}>
+                        <NextLink
+                            href={'tel:' + projectContent.phone}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Flex
+                                p={2}
+                                borderRadius="2xl"
+                                bg="green.50"
+                                _dark={{ bg: 'green.900' }}
+                                align="center"
+                                gap={3}
+                                _hover={{
+                                    bg: 'green.500'
+                                }}
+                                transition="all 0.3s ease"
+                                border="1px solid"
+                                borderColor="green.500"
+                            >
+                                <Box
+                                    w={8}
+                                    h={8}
+                                    bg="green.500"
+                                    borderRadius="full"
+                                    display="flex"
+                                    alignItems="center"
+                                    justifyContent="center"
                                 >
+                                    <FaPhone size={14} color="white" />
+                                </Box>
+                                <Text fontSize="sm" fontWeight="medium">
+                                    {projectContent.phone}
+                                </Text>
+                            </Flex>
+                        </NextLink>
+
+                        <NextLink
+                            href={'mailto:' + projectContent.mail}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Flex
+                                p={2}
+                                borderRadius="2xl"
+                                bg="blue.50"
+                                _dark={{ bg: 'blue.900' }}
+                                align="center"
+                                gap={3}
+                                _hover={{
+                                    bg: 'blue.500'
+                                }}
+                                transition="all 0.3s ease"
+                                border="1px solid"
+                                borderColor="blue.500"
+                            >
+                                <Box
+                                    w={8}
+                                    h={8}
+                                    bg="blue.500"
+                                    borderRadius="full"
+                                    display="flex"
+                                    alignItems="center"
+                                    justifyContent="center"
+                                >
+                                    <MdEmail size={16} color="white" />
+                                </Box>
+                                <Text fontSize="sm" fontWeight="medium">
                                     {projectContent.mail}
-                                </NextLink>
-                            </div>
-                        </Box>
+                                </Text>
+                            </Flex>
+                        </NextLink>
                     </Box>
 
-                    <SimpleGrid columns={[2]} gap={2}>
+                    <SimpleGrid columns={{ base: 1, md: 2 }} gap={3}>
                         <Button
                             as={NextLink}
                             href={`/experiences/${projectContent.id}`}
+                            w="full"
                             bg="orange.fg"
                             _hover={{
                                 bg: 'orange.border'
@@ -151,8 +265,8 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         </PdfPreviewButton>
                     </SimpleGrid>
                 </Box>
-            </StyledDiv>
-        </Box>
+            </MotionBox>
+        </StyledDiv>
     )
 }
 
