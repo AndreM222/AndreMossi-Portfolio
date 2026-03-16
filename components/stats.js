@@ -1,11 +1,6 @@
 'use client'
 
-import {
-    chakra,
-    Box,
-    SimpleGrid,
-    Skeleton
-} from '@chakra-ui/react'
+import { chakra, Box, SimpleGrid, Skeleton, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaTrophy, FaBook, FaStar } from 'react-icons/fa'
@@ -30,30 +25,64 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
         transition={{ duration: 0.8, delay }}
     >
         <Box
+            p={2}
             w="full"
-            bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
-            borderStyle="solid"
-            borderColor={{_light: 'blackAlpha.800', _dark: 'whiteAlpha.500'}}
-            boxShadow="lg"
-            borderWidth={2}
-            display="inline-flex"
-            h={10}
-            gap={1}
-            rounded="lg"
-            justifyContent="center"
+            h={12}
+            borderRadius="2xl"
+            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
+            backdropFilter="blur(10px)"
+            border="1px solid"
+            borderColor="whiteAlpha.200"
+            boxShadow={{
+                _light: '0 10px 30px rgba(0,0,0,0.12)',
+                _dark: '0 10px 30px rgba(0,0,0,0.6)'
+            }}
+            display="flex"
             alignItems="center"
+            gap={2}
+            cursor="pointer"
+            _hover={{
+                boxShadow: `0 0 24px orange.400`,
+                transform: 'translateY(-2px)'
+            }}
+            transition="all 0.3s ease"
             as={NextLink}
+            alignContent="center"
+            justifyItems="center"
             href={href}
         >
-            {icon}
-            <span>
-                {Content(experienceLang, 'category', category.toLowerCase())}
-            </span>
-            {loading ? (
-                <Skeleton h={5} w={10} rounded="lg" variant="shine"/>
-            ) : (
-                <CountUp start={0} end={value || 0} />
-            )}
+            <Box
+                borderRadius="xl"
+                display="flex"
+                bg="none"
+                alignItems="center"
+                justifyContent="center"
+            >
+                {icon}
+            </Box>
+
+            <Box textAlign="center"  display="inline-flex" gap={2} alignContent="center">
+                <Text
+                    fontSize="md"
+                    opacity={0.7}
+                    fontWeight="medium"
+                    textTransform="uppercase"
+                    letterSpacing="0.05em"
+                >
+                    {Content(
+                        experienceLang,
+                        'category',
+                        category.toLowerCase()
+                    )}
+                </Text>
+                {loading ? (
+                    <Skeleton variant="shine" h={6} w={10} rounded="lg" />
+                ) : (
+                    <Text fontSize="md" fontWeight="bold">
+                        <CountUp start={0} end={value || 0} />
+                    </Text>
+                )}
+            </Box>
         </Box>
     </StyledDiv>
 )

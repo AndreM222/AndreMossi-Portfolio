@@ -6,7 +6,9 @@ import {
     Box,
     SimpleGrid,
     Skeleton,
-    Heading
+    Heading,
+    Flex,
+    Text
 } from '@chakra-ui/react'
 import { Title, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
@@ -34,141 +36,289 @@ const StyledDiv = chakra(motion.div, {
     }
 })
 
+const MotionBox = motion(Box)
+
 const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
-    <StyledDiv
+    <MotionBox
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: delay }}
+        whileHover={{ scale: 1.02 }}
+        display="inline-flex"
     >
         <Box
+            p={2}
             w="full"
-            bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
-            borderStyle="solid"
-            borderColor={{ _light: 'blackAlpha.800', _dark: 'whiteAlpha.500' }}
-            boxShadow="lg"
-            borderWidth={2}
-            display="inline-flex"
-            gap={1}
-            h={10}
-            justifyContent="center"
-            rounded="lg"
+            h={12}
+            borderRadius="2xl"
+            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
+            backdropFilter="blur(10px)"
+            border="1px solid"
+            borderColor="whiteAlpha.200"
+            boxShadow={{
+                _light: '0 10px 30px rgba(0,0,0,0.12)',
+                _dark: '0 10px 30px rgba(0,0,0,0.6)'
+            }}
+            display="flex"
             alignItems="center"
+            gap={2}
+            cursor="pointer"
+            _hover={{
+                boxShadow: `0 0 24px orange.400`,
+                transform: 'translateY(-2px)'
+            }}
+            transition="all 0.3s ease"
             as={NextLink}
+            justifyItems="center"
             href={href}
         >
-            {icon}
-            <span>
-                {Content(experienceLang, 'category', category.toLowerCase())}
-            </span>
-            {loading ? (
-                <Skeleton variant="shine" h={5} w={20} rounded="lg" />
-            ) : (
-                <CountUp start={0} end={value || 0} />
-            )}
-        </Box>
-    </StyledDiv>
-)
-
-const TopRepoSecton = ({ loading, data, ...props }) => {
-    return (
-        <Box
-            w="full"
-            bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
-            borderStyle="solid"
-            borderColor={{ _light: 'blackAlpha.800', _dark: 'whiteAlpha.500' }}
-            boxShadow="lg"
-            borderWidth={2}
-            display="grid"
-            rounded="lg"
-            p={2}
-            alignItems="center"
-            as={NextLink}
-            href={data.url}
-            {...props}
-        >
             <Box
-                display="inline-flex"
-                alignItems="center"
-                justifyContent="space-between"
-            >
-                <Heading size="md" variant="repo-title">
-                    {data.name}
-                </Heading>
-                <Heading
-                    display={
-                        data.language && data.language !== 'Unknown'
-                            ? ''
-                            : 'none'
-                    }
-                    fontSize="10px"
-                    bg={{ _light: 'whiteAlpha.500', _dark: 'whiteAlpha.200' }}
-                    borderStyle="solid"
-                    borderWidth={2}
-                    borderColor={{
-                        _light: 'blackAlpha.800',
-                        _dark: 'whiteAlpha.500'
-                    }}
-                    p={1}
-                    borderRadius={5}
-                    w="fit-content"
-                >
-                    {loading ? (
-                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
-                    ) : (
-                        data.language
-                    )}
-                </Heading>
-            </Box>
-
-            <Box
+                borderRadius="xl"
                 display="flex"
-                gap={3}
-                fontSize="sm"
-                flexWrap="wrap"
-                rowGap={0}
+                bg="none"
+                alignItems="center"
+                justifyContent="center"
             >
-                <Box display="inline-flex" alignItems="center" gap={1}>
-                    <FaStar />
-                    <span>{Content(experienceLang, 'category', 'stars')}:</span>
-                    {loading ? (
-                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
-                    ) : (
-                        <CountUp start={0} end={data.stars || 0} />
-                    )}
-                </Box>
-                <Box display="inline-flex" alignItems="center" gap={1}>
-                    <FaCodeFork />
-                    <span>{Content(experienceLang, 'category', 'forks')}:</span>
-                    {loading ? (
-                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
-                    ) : (
-                        <CountUp start={0} end={data.forks || 0} />
-                    )}
-                </Box>
-                <Box
-                    display={data.licence === 'None' ? 'none' : 'inline-flex'}
-                    alignItems="center"
-                    gap={1}
-                >
-                    <TbLicense />
-                    <span>
-                        {Content(experienceLang, 'category', 'license')}:
-                    </span>
-                    {loading ? (
-                        <Skeleton variant="shine" h={5} w={20} rounded="lg" />
-                    ) : (
-                        data.licence
-                    )}
-                </Box>
+                {icon}
             </Box>
-            <Box alignItems="center" gap={1} mt={3}>
+
+            {/* Label & Value */}
+            <Box textAlign="center" flex={1} display="inline-flex" gap={2}>
+                <Text
+                    fontSize="md"
+                    opacity={0.7}
+                    fontWeight="medium"
+                    textTransform="uppercase"
+                    letterSpacing="0.05em"
+                    mb={1}
+                >
+                    {Content(
+                        experienceLang,
+                        'category',
+                        category.toLowerCase()
+                    )}
+                </Text>
                 {loading ? (
-                    <Skeleton variant="shine" h={5} w={20} rounded="lg" />
+                    <Skeleton variant="shine" h={6} w={10} rounded="lg" />
                 ) : (
-                    data.description
+                    <Text fontSize="md" fontWeight="bold">
+                        <CountUp start={0} end={value || 0} />
+                    </Text>
                 )}
             </Box>
         </Box>
+    </MotionBox>
+)
+
+const TopRepoSecton = ({ loading, data, ...props }) => {
+    const cardShadow = {
+        _light: '0 10px 30px rgba(0,0,0,0.12)',
+        _dark: '0 10px 30px rgba(0,0,0,0.6)'
+    }
+
+    return (
+        <MotionBox
+            borderRadius="2xl"
+            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
+            backdropFilter="blur(10px)"
+            border="1px solid"
+            borderColor="whiteAlpha.200"
+            boxShadow={cardShadow}
+            mb={4}
+            cursor="pointer"
+            _hover={{
+                boxShadow: `0 0 24px orange.400`,
+                transform: 'translateY(-2px)'
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            as={NextLink}
+            href={data.url}
+            w="full"
+            position="relative"
+            overflow="hidden"
+            {...props}
+        >
+            <Box p={{ base: 4, md: 6 }} position="relative" zIndex={1}>
+                <Flex
+                    justify="space-between"
+                    align="center"
+                    mb={{ base: 3, md: 4 }}
+                >
+                    <Heading
+                        size={{ base: 'sm', md: 'md' }}
+                        mb={{ base: 2, md: 0 }}
+                    >
+                        {loading ? (
+                            <Skeleton variant="shine" h={6} w="80%" />
+                        ) : (
+                            data.name
+                        )}
+                    </Heading>
+
+                    {data.language && data.language !== 'Unknown' && (
+                        <Badge
+                            bg="cyan.100"
+                            _dark={{
+                                bg: 'cyan.700',
+                                color: 'cyan'
+                            }}
+                            color="cyan.700"
+                            px={{ base: 2, md: 3 }}
+                            py={1}
+                            borderRadius="full"
+                            fontSize="xs"
+                            fontWeight="medium"
+                        >
+                            {loading ? (
+                                <Skeleton
+                                    variant="shine"
+                                    h={4}
+                                    w={16}
+                                    rounded="full"
+                                />
+                            ) : (
+                                data.language
+                            )}
+                        </Badge>
+                    )}
+                </Flex>
+
+                {/* Stats */}
+                <Box
+                    display="flex"
+                    flexDirection={{ base: 'column', md: 'row' }}
+                    gap={{ base: 3, md: 4 }}
+                    mb={{ base: 3, md: 4 }}
+                    flexWrap="wrap"
+                >
+                    <Flex align="center" gap={2} minW={0}>
+                        <Box
+                            w={8}
+                            h={8}
+                            borderRadius="full"
+                            bg="orange.50"
+                            _dark={{ bg: 'orange.900' }}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <FaStar size={12} color="orange.500" />
+                        </Box>
+                        <Box>
+                            <Text fontSize="xs" opacity={0.7} mb={0.5}>
+                                {Content(experienceLang, 'category', 'stars')}:
+                            </Text>
+                            {loading ? (
+                                <Skeleton
+                                    variant="shine"
+                                    h={5}
+                                    w={12}
+                                    rounded="md"
+                                />
+                            ) : (
+                                <Text
+                                    fontSize={{ base: 'md', md: 'lg' }}
+                                    fontWeight="bold"
+                                >
+                                    {data.stars || 0}
+                                </Text>
+                            )}
+                        </Box>
+                    </Flex>
+
+                    <Flex align="center" gap={2} minW={0}>
+                        <Box
+                            w={8}
+                            h={8}
+                            borderRadius="full"
+                            bg="green.50"
+                            _dark={{ bg: 'green.900' }}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <FaCodeFork size={12} color="green.500" />
+                        </Box>
+                        <Box>
+                            <Text fontSize="xs" opacity={0.7} mb={0.5}>
+                                {Content(experienceLang, 'category', 'forks')}:
+                            </Text>
+                            {loading ? (
+                                <Skeleton
+                                    variant="shine"
+                                    h={5}
+                                    w={12}
+                                    rounded="md"
+                                />
+                            ) : (
+                                <Text
+                                    fontSize={{ base: 'md', md: 'lg' }}
+                                    fontWeight="bold"
+                                >
+                                    {data.forks || 0}
+                                </Text>
+                            )}
+                        </Box>
+                    </Flex>
+
+                    {data.licence !== 'None' && (
+                        <Flex align="center" gap={2} minW={0}>
+                            <Box
+                                w={8}
+                                h={8}
+                                borderRadius="full"
+                                bg="purple.50"
+                                _dark={{ bg: 'purple.900' }}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <TbLicense size={12} color="purple.500" />
+                            </Box>
+                            <Box>
+                                <Text fontSize="xs" opacity={0.7} mb={0.5}>
+                                    {Content(
+                                        experienceLang,
+                                        'category',
+                                        'license'
+                                    )}
+                                    :
+                                </Text>
+                                {loading ? (
+                                    <Skeleton
+                                        variant="shine"
+                                        h={5}
+                                        w={20}
+                                        rounded="md"
+                                    />
+                                ) : (
+                                    <Text fontSize="sm" fontWeight="medium">
+                                        {data.licence}
+                                    </Text>
+                                )}
+                            </Box>
+                        </Flex>
+                    )}
+                </Box>
+
+                {/* Description */}
+                {loading ? (
+                    <Skeleton variant="shine" h={5} w="full" rounded="md" />
+                ) : (
+                    <Text
+                        fontSize="sm"
+                        lineHeight="1.6"
+                        opacity={0.9}
+                        noOfLines={2}
+                    >
+                        {data.description}
+                    </Text>
+                )}
+            </Box>
+        </MotionBox>
     )
 }
 
