@@ -6,13 +6,11 @@ import miscLang from '../../locales/misc.json'
 
 const NavBTN = ({ href, ...props }) => {
     return (
-        <Box justifySelf="center" my={4}>
+        <Box display="flex" justifyContent="center" my={4}>
             <Button
                 as={NextLink}
                 bg="orange.fg"
-                _hover={{
-                    bg: 'orange.border'
-                }}
+                _hover={{ bg: 'orange.border' }}
                 href={href}
                 {...props}
             >
