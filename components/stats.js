@@ -17,7 +17,7 @@ const StyledDiv = chakra(motion.div, {
     }
 })
 
-const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
+export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
     <StyledDiv
         key={loading ? "loading" : "loaded"}
         initial={{ y: 10, opacity: 0 }}
@@ -65,8 +65,6 @@ const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
                 <Text
                     fontSize="md"
                     opacity={0.7}
-                    fontWeight="medium"
-                    textTransform="uppercase"
                     letterSpacing="0.05em"
                 >
                     {Content(

@@ -2,13 +2,13 @@ import {
     Container,
     Badge,
     List,
-    chakra,
     Box,
     SimpleGrid,
     Skeleton,
     Heading,
     Flex,
-    Text
+    Text,
+    chakra
 } from '@chakra-ui/react'
 import { Title, Meta } from '../../components/experience'
 import P from '../../components/paragraph'
@@ -21,94 +21,21 @@ import { useEffect, useState } from 'react'
 import { FaBook, FaStar } from 'react-icons/fa'
 import { TbLicense } from 'react-icons/tb'
 import { FaCodeFork } from 'react-icons/fa6'
-import CountUp from 'react-countup'
-import { isValidMotionProp, motion } from 'framer-motion'
-import isPropValid from '@emotion/is-prop-valid'
+import { motion } from 'framer-motion'
 
 import githubLang from '../../locales/pages/experiences/github.json'
 import contentLang from '../../locales/experience-content.json'
 import miscLang from '../../locales/misc.json'
 import experienceLang from '../../locales/pages/experience.json'
+import { StatItem } from '@/stats'
+
+const MotionBox = motion(Box)
 
 const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => {
         return isValidMotionProp(prop) || isPropValid(prop)
     }
 })
-
-const MotionBox = motion(Box)
-
-const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
-    <MotionBox
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: delay }}
-        whileHover={{ scale: 1.02 }}
-        display="inline-flex"
-    >
-        <Box
-            p={2}
-            w="full"
-            h={12}
-            borderRadius="2xl"
-            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
-            backdropFilter="blur(10px)"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-            boxShadow={{
-                _light: '0 10px 30px rgba(0,0,0,0.12)',
-                _dark: '0 10px 30px rgba(0,0,0,0.6)'
-            }}
-            display="flex"
-            alignItems="center"
-            gap={2}
-            cursor="pointer"
-            _hover={{
-                boxShadow: `0 0 24px orange.400`,
-                transform: 'translateY(-2px)'
-            }}
-            transition="all 0.3s ease"
-            as={NextLink}
-            justifyItems="center"
-            href={href}
-        >
-            <Box
-                borderRadius="xl"
-                display="flex"
-                bg="none"
-                alignItems="center"
-                justifyContent="center"
-            >
-                {icon}
-            </Box>
-
-            {/* Label & Value */}
-            <Box textAlign="center" flex={1} display="inline-flex" gap={2}>
-                <Text
-                    fontSize="md"
-                    opacity={0.7}
-                    fontWeight="medium"
-                    textTransform="uppercase"
-                    letterSpacing="0.05em"
-                    mb={1}
-                >
-                    {Content(
-                        experienceLang,
-                        'category',
-                        category.toLowerCase()
-                    )}
-                </Text>
-                {loading ? (
-                    <Skeleton variant="shine" h={6} w={10} rounded="lg" />
-                ) : (
-                    <Text fontSize="md" fontWeight="bold">
-                        <CountUp start={0} end={value || 0} />
-                    </Text>
-                )}
-            </Box>
-        </Box>
-    </MotionBox>
-)
 
 const TopRepoSecton = ({ loading, data, ...props }) => {
     const cardShadow = {
