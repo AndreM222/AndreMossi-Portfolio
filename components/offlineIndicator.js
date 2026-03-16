@@ -30,8 +30,8 @@ const OfflineIndicator = () => {
     return (
         <Box
             position="fixed"
-            bottom="16px"
-            right="16px"
+            bottom={10}
+            right={4}
             zIndex="9999"
             p={1}
             borderRadius="lg"
