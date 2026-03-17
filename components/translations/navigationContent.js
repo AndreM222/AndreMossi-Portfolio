@@ -1,26 +1,33 @@
-const NavContent = (current, category, type, langLocal, langDefaultLocale) => {
-    if (langLocal) {
-        const currentTranslation = current[category].find(
-            lang => lang.locale === langLocal
-        )
-        const defaultTranslation = current[category].find(
-            lang => lang.locale === langDefaultLocale
-        )
-
-        return currentTranslation?.[type] || defaultTranslation?.[type] || ''
+const getValue = (currentTranslation, defaultTranslation, type) => {
+    if (currentTranslation && type in currentTranslation) {
+        return currentTranslation[type]
     }
 
+    if (defaultTranslation && type in defaultTranslation) {
+        return defaultTranslation[type]
+    }
+
+    return ''
+}
+
+const NavContent = (current, category, type, langLocal, langDefaultLocale) => {
     const defaultLocale = langDefaultLocale || 'en'
-    const currentLang = navigator.language.split('-')[0]
+
+    let currentLang = langLocal
+
+    if (!currentLang && typeof navigator !== 'undefined') {
+        currentLang = navigator.language.split('-')[0]
+    }
 
     const currentTranslation = current[category].find(
         lang => lang.locale === currentLang
     )
+
     const defaultTranslation = current[category].find(
         lang => lang.locale === defaultLocale
     )
 
-    return currentTranslation?.[type] || defaultTranslation?.[type] || ''
+    return getValue(currentTranslation, defaultTranslation, type)
 }
 
 export const injectVars = (text = '', vars = {}) => {
