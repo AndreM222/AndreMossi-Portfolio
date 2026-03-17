@@ -1,4 +1,16 @@
-const runtimeCaching = require('next-pwa/cache')
+const defaultCaching = require('next-pwa/cache')
+
+const runtimeCaching = [
+    {
+        urlPattern: ({ request }) => request.mode === 'navigate',
+        handler: 'NetworkFirst',
+        options: {
+            cacheName: 'pages',
+            networkTimeoutSeconds: 3
+        }
+    },
+    ...defaultCaching
+]
 
 const withPWA = require('next-pwa')({
     dest: 'public',
@@ -10,13 +22,20 @@ const withPWA = require('next-pwa')({
     cacheOnFrontEndNav: true,
 
     cacheStartUrl: true,
-    dynamicStartUrl: true,
+    dynamicStartUrl: false,
+
     customWorkerDir: 'worker',
 
     fallbacks: {
         document: '/_offline'
     },
-    buildExcludes: [/middleware-manifest\.json$/, /app-build-manifest\.json$/]
+
+    buildExcludes: [
+        /middleware-manifest\.json$/,
+        /app-build-manifest\.json$/,
+        /_buildManifest\.js$/,
+        /_ssgManifest\.js$/
+    ]
 })
 
 const nextConfig = {
