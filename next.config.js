@@ -16,6 +16,17 @@ const runtimeCaching = [
             cacheName: 'next-static-assets'
         }
     },
+    {
+        urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/i,
+        handler: 'StaleWhileRevalidate',
+        options: {
+            cacheName: 'images',
+            expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+            }
+        }
+    },
     ...defaultCaching
 ]
 
