@@ -9,6 +9,13 @@ const runtimeCaching = [
             networkTimeoutSeconds: 3
         }
     },
+    {
+        urlPattern: /_next\/static\//,
+        handler: 'StaleWhileRevalidate',
+        options: {
+            cacheName: 'next-static-assets'
+        }
+    },
     ...defaultCaching
 ]
 
@@ -22,6 +29,7 @@ const withPWA = require('next-pwa')({
     cacheOnFrontEndNav: true,
 
     cacheStartUrl: true,
+    reloadOnOnline: true,
     dynamicStartUrl: false,
 
     customWorkerDir: 'worker',
@@ -30,12 +38,7 @@ const withPWA = require('next-pwa')({
         document: '/_offline'
     },
 
-    buildExcludes: [
-        /middleware-manifest\.json$/,
-        /app-build-manifest\.json$/,
-        /_buildManifest\.js$/,
-        /_ssgManifest\.js$/
-    ]
+    buildExcludes: [/middleware-manifest\.json$/, /app-build-manifest\.json$/]
 })
 
 const nextConfig = {
