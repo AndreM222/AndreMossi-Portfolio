@@ -1,4 +1,4 @@
-import { Box, Circle, Flex } from '@chakra-ui/react'
+import { Box, Circle, Text } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import {
     useInView,
@@ -78,13 +78,12 @@ export const TimeBox = ({ children, index }) => {
                     exit="exit"
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                    <Flex
-                        textAlign="left"
-                        fontSize="20px"
-                    >
-                        <Box color="orange.400" textWrap="nowrap">{children[0]}</Box>
+                    <Text textAlign="left" fontSize="20px">
+                        <Box as="span" color="orange.400" mr={2}>
+                            {children[0]}
+                        </Box>
                         {children[1]}
-                    </Flex>
+                    </Text>
                 </StyledDiv>
             </Box>
 
