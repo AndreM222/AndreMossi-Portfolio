@@ -28,7 +28,7 @@ export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) =>
             p={2}
             w="full"
             h={12}
-            borderRadius="2xl"
+            borderRadius="xl"
             bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
             backdropFilter="blur(10px)"
             border="1px solid"
@@ -74,7 +74,7 @@ export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) =>
                     )}
                 </Text>
                 {loading ? (
-                    <Skeleton variant="shine" h={6} w={10} rounded="lg" />
+                    <Skeleton variant="shine" h={6} w={8} rounded="lg" />
                 ) : (
                     <Text fontSize="md" fontWeight="bold">
                         <CountUp start={0} end={value || 0} />

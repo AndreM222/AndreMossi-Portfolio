@@ -54,7 +54,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                 w="100%"
                 maxW={{ base: '92vw', sm: '380px', md: '400px' }}
                 mx="auto"
-                borderRadius="3xl"
+                borderRadius="xl"
                 overflow="hidden"
                 boxShadow={{
                     _light: '0 35px 80px -20px rgba(0,0,0,0.15)',
@@ -171,37 +171,38 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         {projectContent.description}...
                     </Text>
 
-                    <Box display="grid" gap={2} mb={3}>
+                    <Box display="grid" mb={3}>
                         <NextLink
                             href={'tel:' + projectContent.phone}
                             style={{ textDecoration: 'none' }}
                         >
                             <Flex
                                 p={2}
-                                borderRadius="2xl"
-                                bg="green.50"
-                                _dark={{ bg: 'green.900' }}
+                                borderTopRadius="2xl"
+                                bg="menuBg"
                                 align="center"
+                                color="green.500"
                                 gap={3}
                                 _hover={{
-                                    bg: 'green.500'
+                                    bg: 'green.500',
+                                    color: 'white'
                                 }}
                                 transition="all 0.3s ease"
-                                border="1px solid"
-                                borderColor="green.500"
                             >
                                 <Box
                                     w={8}
                                     h={8}
-                                    bg="green.500"
-                                    borderRadius="full"
                                     display="flex"
                                     alignItems="center"
                                     justifyContent="center"
                                 >
-                                    <FaPhone size={14} color="white" />
+                                    <FaPhone size={14} />
                                 </Box>
-                                <Text fontSize="sm" fontWeight="medium">
+                                <Text
+                                    fontSize="sm"
+                                    fontWeight="medium"
+                                    color="white"
+                                >
                                     {projectContent.phone}
                                 </Text>
                             </Flex>
@@ -213,30 +214,32 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                         >
                             <Flex
                                 p={2}
-                                borderRadius="2xl"
-                                bg="blue.50"
-                                _dark={{ bg: 'blue.900' }}
+                                borderBottomRadius="2xl"
+                                bg="menuBg"
                                 align="center"
                                 gap={3}
+                                color="blue.500"
                                 _hover={{
-                                    bg: 'blue.500'
+                                    bg: 'blue.500',
+                                    color: 'white'
                                 }}
                                 transition="all 0.3s ease"
-                                border="1px solid"
-                                borderColor="blue.500"
                             >
                                 <Box
                                     w={8}
                                     h={8}
-                                    bg="blue.500"
                                     borderRadius="full"
                                     display="flex"
                                     alignItems="center"
                                     justifyContent="center"
                                 >
-                                    <MdEmail size={16} color="white" />
+                                    <MdEmail size={16} />
                                 </Box>
-                                <Text fontSize="sm" fontWeight="medium">
+                                <Text
+                                    fontSize="sm"
+                                    fontWeight="medium"
+                                    color="white"
+                                >
                                     {projectContent.mail}
                                 </Text>
                             </Flex>
