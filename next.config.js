@@ -11,6 +11,7 @@ const withPWA = require('next-pwa')({
 
     cacheStartUrl: true,
     dynamicStartUrl: true,
+    customWorkerDir: 'worker',
 
     fallbacks: {
         document: '/_offline'
