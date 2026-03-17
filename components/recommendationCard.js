@@ -185,7 +185,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                                 gap={3}
                                 _hover={{
                                     bg: 'green.500',
-                                    color: 'white'
+                                    color: 'bg.inverted'
                                 }}
                                 transition="all 0.3s ease"
                             >
@@ -201,7 +201,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                                 <Text
                                     fontSize="sm"
                                     fontWeight="medium"
-                                    color="white"
+                                    color="bg.inverted"
                                 >
                                     {projectContent.phone}
                                 </Text>
@@ -221,14 +221,13 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                                 color="blue.500"
                                 _hover={{
                                     bg: 'blue.500',
-                                    color: 'white'
+                                    color: 'bg.inverted'
                                 }}
                                 transition="all 0.3s ease"
                             >
                                 <Box
                                     w={8}
                                     h={8}
-                                    borderRadius="full"
                                     display="flex"
                                     alignItems="center"
                                     justifyContent="center"
@@ -238,7 +237,7 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
                                 <Text
                                     fontSize="sm"
                                     fontWeight="medium"
-                                    color="white"
+                                    color="bg.inverted"
                                 >
                                     {projectContent.mail}
                                 </Text>
