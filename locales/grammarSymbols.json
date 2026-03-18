@@ -21,6 +21,10 @@
         {
             "locale": "ja",
             "content": "。"
+        },
+        {
+            "locale": "en",
+            "content": "."
         }
     ],
     "space": [

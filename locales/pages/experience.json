@@ -9,11 +9,13 @@
         {
             "locale": "ja",
             "title": "ハーバード大学",
+            "img-url": "/images/experiences/Banners/Harvard-Banner.png",
             "description": "ハーバード大学のオンライン授業"
         },
         {
             "locale": "es",
             "title": "Harvard",
+            "img-url": "/images/experiences/Banners/Harvard-Banner.png",
             "description": "Clase en línea de Harvard introducción a Computer Science"
         }
     ],
@@ -27,11 +29,13 @@
         {
             "locale": "ja",
             "title": "ぎゃノン大学",
+            "img-url": "/images/experiences/Banners/Gannon-Banner.png",
             "description": "コンピューターサイエンスの学士号"
         },
         {
             "locale": "es",
             "title": "Gannon",
+            "img-url": "/images/experiences/Banners/Gannon-Banner.png",
             "description": "Bachilerato en Sciencia de Computacion"
         }
     ],
@@ -45,11 +49,13 @@
         {
             "locale": "ja",
             "title": "コンピュータビジョンシステム",
+            "img-url": "/images/experiences/Banners/Traceability-Banner.png",
             "description": "AIは物を見るとWebアプリケーションで見える"
         },
         {
             "locale": "es",
             "title": "Sistema de Visión Artificial",
+            "img-url": "/images/experiences/Banners/Traceability-Banner.png",
             "description": "Usamos AI para detectar objectos y mostrar en un web application"
         }
     ],
@@ -63,11 +69,13 @@
         {
             "locale": "ja",
             "title": "Dowal学校、2016年",
+            "img-url": "/images/experiences/Banners/Dowal-2016p-Banner.png",
             "description": "学内のソフトウェアエンジニアイベント"
         },
         {
             "locale": "es",
             "title": "Dowal 2016",
+            "img-url": "/images/experiences/Banners/Dowal-2016p-Banner.png",
             "description": "Feria technologica llevada a cabo en Dowal School"
         }
     ],
@@ -81,11 +89,13 @@
         {
             "locale": "ja",
             "title": "Dowal学校、2020年",
+            "img-url": "/images/experiences/Banners/Dowal-2020p-Banner.png",
             "description": "学内のソフトウェアエンジニアイベント"
         },
         {
             "locale": "es",
             "title": "Dowal 2020",
+            "img-url": "/images/experiences/Banners/Dowal-2020p-Banner.png",
             "description": "Feria technologica llevada a cabo en Dowal School"
         }
     ],
@@ -98,11 +108,14 @@
         },
         {
             "locale": "ja",
+            "title": "Extreme Networks",
+            "img-url": "/images/experiences/Banners/ExtremeNetworks-Banner.png",
             "description": "大学のExtreme Networks証明書"
         },
         {
             "locale": "es",
             "title": "Extreme Networks",
+            "img-url": "/images/experiences/Banners/ExtremeNetworks-Banner.png",
             "description": "Complete la clase de Extreme Networks en la universidad"
         }
     ],
@@ -115,11 +128,14 @@
         },
         {
             "locale": "ja",
+            "title": "GitHub",
+            "img-url": "/images/experiences/Banners/Git-Banner.png",
             "description": "私の面白いプロジェクト"
         },
         {
             "locale": "es",
             "title": "GitHub",
+            "img-url": "/images/experiences/Banners/Git-Banner.png",
             "description": "Proyectos para practica y diversión"
         }
     ],
@@ -133,11 +149,13 @@
         {
             "locale": "ja",
             "title": "Dinant",
+            "img-url": "/images/experiences/Banners/Dinant-Banner.png",
             "description": "ラテン系の輸出大企業"
         },
         {
             "locale": "es",
             "title": "Dinant",
+            "img-url": "/images/experiences/Banners/Dinant-Banner.png",
             "description": "Compania de manufactura y exportaciones globales"
         }
     ],
@@ -151,11 +169,13 @@
         {
             "locale": "ja",
             "title": "AI鬼ごっこサンドボックス",
+            "img-url": "/images/experiences/Banners/AI-Sandbox-Banner.png",
             "description": "AI研究プロジェクト"
         },
         {
             "locale": "es",
             "title": "AI Jugando Las Traes",
+            "img-url": "/images/experiences/Banners/AI-Sandbox-Banner.png",
             "description": "Un AI-Sandbox para estudiar el comportamiento de organismos"
         }
     ],
@@ -193,6 +213,7 @@
             "projects": "Projectos",
             "repositories": "Repositorios",
             "stars": "Estrellas",
+            "forks": "Forks",
             "license": "Licensia"
         }
     ]

@@ -89,6 +89,12 @@
             "year": "年",
             "month": "月",
             "day": "日"
+        },
+        {
+            "locale": "es",
+            "year": "",
+            "month": "",
+            "day": ""
         }
     ],
     "format": [
@@ -101,6 +107,11 @@
             "locale": "ja",
             "content": "%year% %month% %day%",
             "slash": "%year%/%month%/%day%"
+        },
+        {
+            "locale": "es",
+            "content": "%month% %day%, %year%",
+            "slash": "%month%/%day%/%year%"
         }
     ]
 }
