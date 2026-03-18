@@ -10,21 +10,10 @@ const runtimeCaching = [
         }
     },
     {
-        urlPattern: /_next\/static\//,
+        urlPattern: ({ request }) => request.destination === 'image',
         handler: 'StaleWhileRevalidate',
         options: {
-            cacheName: 'next-static-assets'
-        }
-    },
-    {
-        urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/i,
-        handler: 'StaleWhileRevalidate',
-        options: {
-            cacheName: 'images',
-            expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-            }
+            cacheName: 'images'
         }
     },
     ...defaultCaching
@@ -46,7 +35,8 @@ const withPWA = require('next-pwa')({
     customWorkerDir: 'worker',
 
     fallbacks: {
-        document: '/_offline'
+        document: '/_offline',
+        image: '/images/Error.png'
     },
 
     buildExcludes: [/middleware-manifest\.json$/, /app-build-manifest\.json$/]
