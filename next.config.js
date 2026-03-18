@@ -1,4 +1,34 @@
-const runtimeCaching = require('next-pwa/cache')
+const defaultCaching = require('next-pwa/cache')
+
+const runtimeCaching = [
+    {
+        urlPattern: ({ request }) => request.mode === 'navigate',
+        handler: 'NetworkFirst',
+        options: {
+            cacheName: 'pages',
+            networkTimeoutSeconds: 3
+        }
+    },
+    {
+        urlPattern: /_next\/static\//,
+        handler: 'StaleWhileRevalidate',
+        options: {
+            cacheName: 'next-static-assets'
+        }
+    },
+    {
+        urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/i,
+        handler: 'StaleWhileRevalidate',
+        options: {
+            cacheName: 'images',
+            expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+            }
+        }
+    },
+    ...defaultCaching
+]
 
 const withPWA = require('next-pwa')({
     dest: 'public',
