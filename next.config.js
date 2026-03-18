@@ -5,15 +5,18 @@ const runtimeCaching = [
         urlPattern: ({ request }) => request.mode === 'navigate',
         handler: 'NetworkFirst',
         options: {
-            cacheName: 'pages',
-            networkTimeoutSeconds: 3
+            cacheName: 'pages-v2',
+            networkTimeoutSeconds: 3,
+            cacheableResponse: {
+                statuses: [200]
+            }
         }
     },
     {
         urlPattern: ({ request }) => request.destination === 'image',
         handler: 'StaleWhileRevalidate',
         options: {
-            cacheName: 'images'
+            cacheName: 'images-v2'
         }
     },
     ...defaultCaching
@@ -26,7 +29,7 @@ const withPWA = require('next-pwa')({
     disable: process.env.NODE_ENV === 'development',
 
     runtimeCaching,
-    cacheOnFrontEndNav: true,
+    cacheOnFrontEndNav: false,
 
     cacheStartUrl: true,
     reloadOnOnline: true,

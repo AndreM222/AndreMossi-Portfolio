@@ -6,17 +6,15 @@ const Content = (current, category, type) => {
     const currentTranslation = current[category].find(
         lang => lang.locale === locale
     )
+
     const defaultTranslation = current[category].find(
         lang => lang.locale === defaultLocale
     )
 
-    const value = currentTranslation?.[type]
-
-    if (value !== undefined && value !== null && value !== '') {
-        return value
-    }
-
-    return defaultTranslation?.[type] || ''
+    return (
+        currentTranslation?.[type] ??
+        defaultTranslation?.[type]
+    )
 }
 
 export const injectVars = (text = '', vars = {}) => {
