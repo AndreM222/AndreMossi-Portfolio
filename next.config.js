@@ -40,12 +40,15 @@ const withPWA = require('next-pwa')({
     cacheOnFrontEndNav: true,
 
     cacheStartUrl: true,
-    dynamicStartUrl: true,
+    reloadOnOnline: true,
+    dynamicStartUrl: false,
+
     customWorkerDir: 'worker',
 
     fallbacks: {
         document: '/_offline'
     },
+
     buildExcludes: [/middleware-manifest\.json$/, /app-build-manifest\.json$/]
 })
 
