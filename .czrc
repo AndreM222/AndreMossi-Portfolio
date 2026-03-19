@@ -34,12 +34,16 @@
           "title": "Intern"
         },
         "research": {
-          "description": "Research/project experience updates",
+          "description": "Research experience updates",
           "title": "Research"
         },
         "awards": {
-          "description": "New awards/certifications",
+          "description": "New awards",
           "title": "Awards"
+        },
+        "certifications": {
+          "description": "New certifications",
+          "title": "Certifications"
         },
         "projects": {
           "description": "Portfolio project updates",
