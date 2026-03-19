@@ -250,7 +250,10 @@ const NewsItem = ({ news, lastSeen }) => {
             <Heading size="md" mb={2} color="#a98f63">
                 {news.type === 'stars' || news.type === 'repository'
                     ? Content(newsLang, 'news-titles', news.type)
-                    : news.title?.toUpperCase()}
+                    : news.type?.includes(interestTypes[1]['types']) &&
+                        experienceLang[news.title]
+                        ? Content(experienceLang, news.title, 'title')
+                        : news.title?.toUpperCase()}
             </Heading>
 
             <DecorateSummary
@@ -300,18 +303,19 @@ const NewsItem = ({ news, lastSeen }) => {
             />
 
             <Box justifySelf="center" mt={2}>
-                {news.type?.includes(interestTypes[1]['types']) && (
-                    <ExperienceGridItem
-                        id={news.title}
-                        mb={2}
-                        title={Content(experienceLang, news.title, 'title')}
-                        thumbnail={Content(
-                            experienceLang,
-                            news.title,
-                            'img-url'
-                        )}
-                    />
-                )}
+                {news.type?.includes(interestTypes[1]['types']) &&
+                    experienceLang[news.title] && (
+                        <ExperienceGridItem
+                            id={news.title}
+                            mb={2}
+                            title={Content(experienceLang, news.title, 'title')}
+                            thumbnail={Content(
+                                experienceLang,
+                                news.title,
+                                'img-url'
+                            )}
+                        />
+                    )}
                 {interestTypes[2]['types'].includes(news.type) && (
                     <Flex
                         position="relative"
@@ -961,11 +965,7 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                         </Flex>
                     </Dialog.Header>
 
-                    <DialogCloseFlip
-                        position="static"
-                        top="0"
-                        right="0"
-                    />
+                    <DialogCloseFlip position="static" top="0" right="0" />
 
                     <Dialog.Body
                         p={0}
