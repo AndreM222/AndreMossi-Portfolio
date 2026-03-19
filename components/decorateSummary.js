@@ -15,7 +15,7 @@ const LANGUAGE_REGEXES = {
 }
 
 export const DecorateSummary = ({ text, ...props }) => {
-    const emailColor = {_light: 'cyan.400', _dark: 'cyan.200'}
+    const emailColor = { _light: 'cyan.400', _dark: 'cyan.200' }
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const parts = useMemo(() => {
@@ -76,7 +76,8 @@ export const DecorateSummary = ({ text, ...props }) => {
                 type: 'number',
                 value: parseFloat(value),
                 suffix,
-                full
+                full,
+                hasComma: full.includes(',')
             })
             lastIndex = start + full.length
         })
@@ -137,7 +138,7 @@ export const DecorateSummary = ({ text, ...props }) => {
                                 <CountUp
                                     end={part.value}
                                     duration={1.5}
-                                    separator=","
+                                    separator={part.hasComma ? ',' : ''}
                                     decimals={part.value % 1 !== 0 ? 1 : 0}
                                     start={inView ? undefined : 0}
                                 >

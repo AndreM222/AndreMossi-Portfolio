@@ -250,7 +250,7 @@ const NewsItem = ({ news, lastSeen }) => {
             <Heading size="md" mb={2} color="#a98f63">
                 {news.type === 'stars' || news.type === 'repository'
                     ? Content(newsLang, 'news-titles', news.type)
-                    : news.type?.includes(interestTypes[1]['types']) &&
+                    : interestTypes[1]['types'].includes(news.type) &&
                         experienceLang[news.title]
                         ? Content(experienceLang, news.title, 'title')
                         : news.title?.toUpperCase()}
@@ -303,7 +303,7 @@ const NewsItem = ({ news, lastSeen }) => {
             />
 
             <Box justifySelf="center" mt={2}>
-                {news.type?.includes(interestTypes[1]['types']) &&
+                {interestTypes[1]['types'].includes(news.type) &&
                     experienceLang[news.title] && (
                         <ExperienceGridItem
                             id={news.title}
