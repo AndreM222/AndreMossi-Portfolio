@@ -31,7 +31,17 @@
             "rust": "Rust",
             "yolo": "Ultralytics Yolo",
             "machine learning": "Machine Learning",
-            "timescaledb": "TimescaleDB"
+            "timescaledb": "TimescaleDB",
+            "japanese language": "Japanese Language",
+            "cross-cultural communication": "Cross-Cultural Communication",
+            "adaptability": "Adaptability",
+            "discipline": "Discipline",
+            "immersive learning": "Immersive Learning",
+            "daily communication": "Daily Communication",
+            "reading and writing": "Reading and Writing",
+            "listening comprehension": "Listening Comprehension",
+            "speaking": "Speaking",
+            "cultural awareness": "Cultural Awareness"
         },
         {
             "locale": "ja",
@@ -63,7 +73,17 @@
             "rust": "Rust",
             "yolo": "Ultralytics Yolo",
             "machine learning": "Machine Learning",
-            "timescaledb": "TimescaleDB"
+            "timescaledb": "TimescaleDB",
+            "japanese language": "日本語",
+            "cross-cultural communication": "異文化コミュニケーション",
+            "adaptability": "適応力",
+            "discipline": "規律",
+            "immersive learning": "没入型学習",
+            "daily communication": "日常会話",
+            "reading and writing": "読み書き",
+            "listening comprehension": "聴解力",
+            "speaking": "会話力",
+            "cultural awareness": "文化理解"
         },
         {
             "locale": "es",
@@ -95,7 +115,17 @@
             "rust": "Rust",
             "yolo": "Ultralytics Yolo",
             "machine learning": "Aprendizaje Automatico",
-            "timescaledb": "TimescaleDB"
+            "timescaledb": "TimescaleDB",
+            "japanese language": "Idioma Japonés",
+            "cross-cultural communication": "Comunicación Intercultural",
+            "adaptability": "Adaptabilidad",
+            "discipline": "Disciplina",
+            "immersive learning": "Aprendizaje Inmersivo",
+            "daily communication": "Comunicación Diaria",
+            "reading and writing": "Lectura y Escritura",
+            "listening comprehension": "Comprensión Auditiva",
+            "speaking": "Expresión Oral",
+            "cultural awareness": "Conciencia Cultural"
         }
     ]
 }

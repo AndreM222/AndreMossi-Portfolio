@@ -216,6 +216,28 @@ const Experience = () => {
                             )}
                         </ExperienceGridItem>
                     </Section>
+
+                    <Section delay={0.4}>
+                        <ExperienceGridItem
+                            id="isi"
+                            title={Content(
+                                experienceLang,
+                                'isi',
+                                'title'
+                            )}
+                            thumbnail={Content(
+                                experienceLang,
+                                'isi',
+                                'img-url'
+                            )}
+                        >
+                            {Content(
+                                experienceLang,
+                                'isi',
+                                'description'
+                            )}
+                        </ExperienceGridItem>
+                    </Section>
                 </SimpleGrid>
             </Container>
         </Layout>

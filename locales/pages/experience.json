@@ -179,6 +179,26 @@
             "description": "Un AI-Sandbox para estudiar el comportamiento de organismos"
         }
     ],
+    "isi": [
+        {
+            "locale": "en",
+            "title": "ISI Language School",
+            "img-url": "/images/experiences/Banners/ISI-Banner.png",
+            "description": "Is a prestiguous Japanese language school situated in Japan"
+        },
+        {
+            "locale": "ja",
+            "title": "ISI日本語学校",
+            "img-url": "/images/experiences/Banners/ISI-Banner.png",
+            "description": "日本の名門日本語学校"
+        },
+        {
+            "locale": "es",
+            "title": "ISI Escuela de Japones",
+            "img-url": "/images/experiences/Banners/ISI-Banner.png",
+            "description": "Escuela prestigiosa de japones situada en Japon"
+        }
+    ],
     "category": [
         {
             "locale": "en",

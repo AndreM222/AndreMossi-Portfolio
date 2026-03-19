@@ -1,0 +1,112 @@
+{
+    "description": [
+        {
+            "locale": "en",
+            "content": "At ISI Language School in Japan, I completed an intensive Japanese language program focused on communication, discipline, and real-world application. I balanced daily language study with ongoing technical work, strengthening my ability to operate in multilingual and cross-cultural environments."
+        },
+        {
+            "locale": "ja",
+            "content": "ISI日本語学校にて、実践的なコミュニケーション能力と規律を重視した日本語集中プログラムを修了しました。日々の語学学習と並行して技術的な活動も継続し、多言語・多文化環境での対応力を高めました。"
+        },
+        {
+            "locale": "es",
+            "content": "En ISI Language School en Japón, completé un programa intensivo de idioma japonés enfocado en comunicación y aplicación en el mundo real. Mantuve un balance entre el estudio diario del idioma y mi desarrollo técnico, fortaleciendo mi capacidad de trabajar en entornos multiculturales."
+        }
+    ],
+    "languageTraining": [
+        {
+            "locale": "en",
+            "content": "Intensive Japanese Language Training",
+            "list": [
+                "Completed a full-time immersive Japanese language program in Japan.",
+                "Developed practical communication skills for daily life, academic settings, and professional environments.",
+                "Strengthened reading, writing, listening, and speaking through structured coursework and real-world interaction.",
+                "Adapted quickly to a Japanese-only learning environment, improving comprehension and response speed."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "日本語集中トレーニング",
+            "list": [
+                "日本にてフルタイムの日本語集中プログラムを修了。",
+                "日常生活・学術・ビジネス環境での実践的なコミュニケーション能力を向上。",
+                "体系的な授業と実生活での使用を通じて、読む・書く・聞く・話す能力を強化。",
+                "日本語のみの環境に迅速に適応し、理解力と応答速度を向上。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Entrenamiento Intensivo de Japonés",
+            "list": [
+                "Completé un programa intensivo de japonés a tiempo completo en Japón.",
+                "Desarrollé habilidades de comunicación práctica para la vida diaria y entornos profesionales.",
+                "Fortalecí lectura, escritura, comprensión auditiva y expresión oral mediante estudio estructurado.",
+                "Me adapté rápidamente a un entorno de aprendizaje completamente en japonés."
+            ]
+        }
+    ],
+    "crossCultural": [
+        {
+            "locale": "en",
+            "content": "Cross-Cultural Adaptability",
+            "list": [
+                "Lived and studied independently in Japan, adapting to a new cultural and professional environment.",
+                "Developed awareness of Japanese communication styles, expectations, and workplace culture.",
+                "Built the ability to navigate ambiguity and solve problems in unfamiliar settings.",
+                "Collaborated and interacted with international peers from diverse backgrounds."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "異文化適応力",
+            "list": [
+                "日本での生活と学習を通じて、新しい文化・環境に適応。",
+                "日本のコミュニケーションスタイルや職場文化への理解を向上。",
+                "不確実な状況における問題解決能力を強化。",
+                "多様な国籍の学生との交流・協働を経験。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Adaptabilidad Intercultural",
+            "list": [
+                "Viví y estudié en Japón adaptándome a una nueva cultura y entorno.",
+                "Desarrollé entendimiento del estilo de comunicación y cultura laboral japonesa.",
+                "Fortalecí la capacidad de resolver problemas en entornos desconocidos.",
+                "Interactué con estudiantes internacionales de diversos orígenes."
+            ]
+        }
+    ],
+    "disciplineGrowth": [
+        {
+            "locale": "en",
+            "content": "Discipline and Continuous Growth",
+            "list": [
+                "Maintained a structured daily routine balancing language study, personal development, and technical work.",
+                "Demonstrated long-term commitment by completing a multi-month program abroad.",
+                "Improved consistency, focus, and ability to learn complex systems over time.",
+                "Continued building technical projects alongside language studies."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "規律と継続的成長",
+            "list": [
+                "語学学習と自己成長、技術活動を両立する日々のルーティンを維持。",
+                "海外での長期プログラムを修了し、継続力を証明。",
+                "集中力と継続的な学習能力を向上。",
+                "日本語学習と並行して技術プロジェクトの開発を継続。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Disciplina y Crecimiento Continuo",
+            "list": [
+                "Mantuve una rutina diaria estructurada combinando estudio, desarrollo personal y trabajo técnico.",
+                "Demostré compromiso al completar un programa de varios meses en el extranjero.",
+                "Mejoré consistencia, enfoque y capacidad de aprendizaje continuo.",
+                "Continué desarrollando proyectos técnicos durante mis estudios."
+            ]
+        }
+    ]
+}
