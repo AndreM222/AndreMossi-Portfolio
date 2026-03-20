@@ -156,15 +156,8 @@ const NewsSkeleton = ({ ...props }) => {
         </MotionBox>
     )
 }
-const NewsItem = ({ news, lastSeen }) => {
-    const categoryMeta = getCategoryMeta(news.category)
-    const cardShadow = {
-        _light: '0 10px 30px rgba(0,0,0,0.12)',
-        _dark: '0 10px 30px rgba(0,0,0,0.6)'
-    }
 
-    const isNew = lastSeen && news.createdAt > lastSeen
-
+const PdfPreview = ({ news }) => {
     const hasMultiplePdf = lang => {
         const categoryData = NavContent(
             miscLang,
@@ -196,17 +189,90 @@ const NewsItem = ({ news, lastSeen }) => {
     }
 
     return (
+        <Flex
+            position="relative"
+            direction="column"
+            align="center"
+            justify="center"
+            mb={2}
+            h="100%"
+            overflow="hidden"
+            borderRadius="lg"
+        >
+            <iframe
+                src={getResumeData(news.title, news.type.slice(-2)).src}
+                width="100%"
+                height="100%"
+                style={{
+                    border: 'none',
+                    filter: 'blur(4px) brightness(0.75)',
+                    pointerEvents: 'none',
+                    transform: 'scale(1.05)',
+                    transition: 'opacity 0.4s ease'
+                }}
+            />
+
+            <Box
+                position="absolute"
+                inset="0"
+                backdropFilter="blur(2px)"
+                background="rgba(0, 0, 0, 0.35)"
+            />
+
+            <Flex
+                position="absolute"
+                direction="column"
+                align="center"
+                gap={4}
+                textAlign="center"
+                px={6}
+                transition="opacity 0.4s ease"
+            >
+                <Text fontSize="md" fontWeight="semibold" color="white">
+                    {ContentWithVars(newsLang, 'pdfDescriptionMSG', 'content', {
+                        pdf: hasMultiplePdf(news.type.slice(-2))
+                            ? getResumeData(news.title, news.type.slice(-2))
+                                .name
+                            : Content(miscLang, 'category', 'resume'),
+                        lang: Content(newsLang, 'switch-types', news.type)
+                    })}
+                </Text>
+                <Button
+                    bg={{ _light: 'cyan.400', _dark: 'cyan.200' }}
+                    color="black"
+                    borderRadius="full"
+                    px={8}
+                    onClick={() =>
+                        window.open(
+                            getResumeData(news.title, news.type.slice(-2)).src,
+                            '_blank'
+                        )
+                    }
+                >
+                    {Content(miscLang, 'viewPDFBTN', 'content')}
+                </Button>
+            </Flex>
+        </Flex>
+    )
+}
+
+const NewsItem = ({ news, lastSeen }) => {
+    const categoryMeta = getCategoryMeta(news.category)
+
+    const isNew = lastSeen && news.createdAt > lastSeen
+
+    return (
         <MotionBox
-            p={6}
-            borderRadius="2xl"
-            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.50' }}
+            borderRadius="cardBase"
+            bg="cardBase.bg"
             backdropFilter="blur(10px)"
             border="1px solid"
+            borderColor="cardBase.borderColor"
+            boxShadow="cardBase.normal"
+            p={6}
             position="relative"
-            borderColor="whiteAlpha.200"
             mb={4}
             cursor="pointer"
-            boxShadow={cardShadow}
             _hover={{
                 boxShadow: `0 0 24px ${categoryMeta.color}.400`,
                 transform: 'translateY(-2px)'
@@ -317,95 +383,7 @@ const NewsItem = ({ news, lastSeen }) => {
                         />
                     )}
                 {interestTypes[2]['types'].includes(news.type) && (
-                    <Flex
-                        position="relative"
-                        direction="column"
-                        align="center"
-                        justify="center"
-                        mb={2}
-                        h="100%"
-                        overflow="hidden"
-                        borderRadius="lg"
-                    >
-                        <iframe
-                            src={
-                                getResumeData(news.title, news.type.slice(-2))
-                                    .src
-                            }
-                            width="100%"
-                            height="100%"
-                            style={{
-                                border: 'none',
-                                filter: 'blur(4px) brightness(0.75)',
-                                pointerEvents: 'none',
-                                transform: 'scale(1.05)',
-                                transition: 'opacity 0.4s ease'
-                            }}
-                        />
-
-                        <Box
-                            position="absolute"
-                            inset="0"
-                            backdropFilter="blur(2px)"
-                            background="rgba(0, 0, 0, 0.35)"
-                        />
-
-                        <Flex
-                            position="absolute"
-                            direction="column"
-                            align="center"
-                            gap={4}
-                            textAlign="center"
-                            px={6}
-                            transition="opacity 0.4s ease"
-                        >
-                            <Text
-                                fontSize="md"
-                                fontWeight="semibold"
-                                color="white"
-                            >
-                                {ContentWithVars(
-                                    newsLang,
-                                    'pdfDescriptionMSG',
-                                    'content',
-                                    {
-                                        pdf: hasMultiplePdf(news.type.slice(-2))
-                                            ? getResumeData(
-                                                news.title,
-                                                news.type.slice(-2)
-                                            ).name
-                                            : Content(
-                                                miscLang,
-                                                'category',
-                                                'resume'
-                                            ),
-                                        lang: Content(
-                                            newsLang,
-                                            'switch-types',
-                                            news.type
-                                        )
-                                    }
-                                )}
-                            </Text>
-                            <Button
-                                bg={{ _light: 'cyan.400', _dark: 'cyan.200' }}
-                                color="black"
-                                borderRadius="full"
-                                px={8}
-                                onClick={() =>
-                                    window.open(
-                                        getResumeData(
-                                            news.title,
-                                            news.type.slice(-2)
-                                        ).src,
-                                        '_blank'
-                                    )
-                                }
-                            >
-                                {Content(miscLang, 'viewPDFBTN', 'content')}
-                            </Button>
-                        </Flex>
-                    </Flex>
+                    <PdfPreview news={news} />
                 )}
             </Box>
 

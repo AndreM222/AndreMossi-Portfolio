@@ -18,10 +18,13 @@ export const QuoteCard = ({ quoteNum }) => {
 
     return (
         <Box
-            boxShadow="lg"
+            borderRadius="cardBase"
+            bg="cardBase.bg"
+            backdropFilter="blur(10px)"
+            border="1px solid"
+            borderColor="cardBase.borderColor"
+            boxShadow="cardBase.normal"
             maxW="2xl"
-            borderRadius="lg"
-            bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
             p={3}
             display="grid"
             mb={10}
@@ -44,7 +47,7 @@ export const QuoteCard = ({ quoteNum }) => {
                     height="4px"
                     borderRadius="lg"
                     mr={2}
-                    bg={{_light: 'blackAlpha.800', _dark: 'whiteAlpha.800'}}
+                    bg={{ _light: 'blackAlpha.800', _dark: 'whiteAlpha.800' }}
                 />
                 {Content(symbolLang, 'qb-author', 'start')}
                 {Content(quoteLang, quoteId, 'author')}

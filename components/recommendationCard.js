@@ -51,17 +51,16 @@ const RecommendationCard = ({ projectID, delay = 0, ...props }) => {
             transition={{ duration: 0.8, delay: delay }}
         >
             <MotionBox
+                borderRadius="cardBase"
+                backdropFilter="blur(10px)"
+                border="1px solid"
+                borderColor="cardBase.borderColor"
+                boxShadow="cardBase.normal"
                 w="100%"
-                maxW={{ base: '92vw', sm: '380px', md: '400px' }}
+                maxW={{ base: '92vw', sm: '380px', md: '410px' }}
                 mx="auto"
-                borderRadius="xl"
                 overflow="hidden"
-                boxShadow={{
-                    _light: '0 35px 80px -20px rgba(0,0,0,0.15)',
-                    _dark: '0 35px 80px -20px rgba(0,0,0,0.8)'
-                }}
-                bg="white"
-                _dark={{ bg: 'gray.900' }}
+                bg="cardBase.bgNoShadow"
                 position="relative"
                 cursor="pointer"
                 transition="all 0.4s cubic-bezier(0.23, 1, 0.32, 1)"

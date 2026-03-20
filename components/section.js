@@ -6,17 +6,15 @@ const StyledDiv = chakra(motion.div, {
     shouldForwardProp: prop => isValidMotionProp(prop) || isPropValid(prop)
 })
 
-const Section = ({
-    children,
-    delay = 0,
-    align = 'left',
-    maxW = '2xl'
-}) => (
+const Section = ({ children, delay = 0, align = 'left', maxW = '2xl' }) => (
     <StyledDiv
-        bg={{_light: 'whiteAlpha.500', _dark: 'whiteAlpha.200'}}
-        boxShadow="lg"
+        borderRadius="cardBase"
+        bg="cardBase.bg"
+        backdropFilter="blur(10px)"
+        border="1px solid"
+        borderColor="cardBase.borderColor"
+        boxShadow="cardBase.normal"
         p={3}
-        borderRadius="lg"
         align={align}
         ml={align == 'left' ? 0 : 'auto'}
         initial={{ y: 10, opacity: 0 }}

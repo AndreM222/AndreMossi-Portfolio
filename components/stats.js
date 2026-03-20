@@ -28,15 +28,12 @@ export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) =>
             p={2}
             w="full"
             h={12}
-            borderRadius="xl"
-            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
+            borderRadius="cardBase"
+            bg="cardBase.bg"
             backdropFilter="blur(10px)"
             border="1px solid"
-            borderColor="whiteAlpha.200"
-            boxShadow={{
-                _light: '0 10px 30px rgba(0,0,0,0.12)',
-                _dark: '0 10px 30px rgba(0,0,0,0.6)'
-            }}
+            borderColor="cardBase.borderColor"
+            boxShadow="cardBase.normal"
             display="flex"
             alignItems="center"
             gap={2}

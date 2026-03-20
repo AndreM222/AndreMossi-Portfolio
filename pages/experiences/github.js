@@ -38,19 +38,14 @@ const StyledDiv = chakra(motion.div, {
 })
 
 const TopRepoSecton = ({ loading, data, ...props }) => {
-    const cardShadow = {
-        _light: '0 10px 30px rgba(0,0,0,0.12)',
-        _dark: '0 10px 30px rgba(0,0,0,0.6)'
-    }
-
     return (
         <MotionBox
-            borderRadius="2xl"
-            bg={{ _light: 'whiteAlpha.900', _dark: 'whiteAlpha.100' }}
+            borderRadius="cardBase"
+            bg="cardBase.bg"
             backdropFilter="blur(10px)"
             border="1px solid"
-            borderColor="whiteAlpha.200"
-            boxShadow={cardShadow}
+            borderColor="cardBase.borderColor"
+            boxShadow="cardBase.normal"
             mb={4}
             cursor="pointer"
             _hover={{

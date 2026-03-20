@@ -65,13 +65,7 @@ const Footer = ({ ...props }) => {
     }, [])
 
     return (
-        <Box
-            bg={{_light: 'whiteAlpha.600', _dark: 'whiteAlpha.100'}}
-            p={10}
-            py={2}
-            marginTop="auto"
-            {...props}
-        >
+        <Box bg="cardBase.bg" p={10} py={2} marginTop="auto" {...props}>
             <Heading as="h3" variant="section-title">
                 {Content(miscLang, 'footer', 'connect')}
             </Heading>
@@ -138,7 +132,7 @@ const Footer = ({ ...props }) => {
                     zIndex={isVisible ? 'auto' : 999}
                     bg="orange.fg"
                     _hover={{
-                        transform: "translateY(-10px)",
+                        transform: 'translateY(-10px)',
                         bg: 'orange.border'
                     }}
                     animation={
@@ -159,7 +153,7 @@ const Footer = ({ ...props }) => {
             </Box>
 
             <Box
-                color={{_light: 'blackAlpha.500', _dark: 'whiteAlpha.500'}}
+                color={{ _light: 'blackAlpha.500', _dark: 'whiteAlpha.500' }}
                 textAlign={{ base: 'center', sm: 'left' }}
             >
                 &copy; <DateSetup date={`${today.getFullYear()}`} />{' '}
