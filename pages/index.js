@@ -173,7 +173,7 @@ const Page = () => {
                     </TimeBox>
                     <TimeBox index={7}>
                         <TimeYear>
-                            <DateSetup date="2025 to present" />
+                            <DateSetup date="2025 to 2026" />
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'isi-language-school')}
                     </TimeBox>
