@@ -53,17 +53,19 @@ const SetCurrentCharacter = ({ character }) => (
             '｜'
         ) : character === '-' ? (
             <Box
-                h="15px"
-                bg="linear-gradient(180deg, transparent, #a98f63, transparent)"
-                w="1px"
+                width="20px"
+                h="4px"
+                borderRadius="full"
                 my={2}
+                background="linear-gradient(180deg, transparent, #a98f63, transparent)"
             />
         ) : character === '｜' || character === '|' ? (
             <Box
-                h="1px"
-                bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
-                w="20px"
+                width="20px"
+                h="4px"
+                borderRadius="full"
                 my={2}
+                background="linear-gradient(180deg, transparent, #a98f63, transparent)"
             />
         ) : (
             character.toUpperCase()
@@ -822,10 +824,12 @@ export const BackCard = ({ ...props }) => {
                         mt={2}
                     >
                         <Box
-                            h="1px"
-                            bg="linear-gradient(90deg, transparent, #a98f63, transparent)"
-                            w="40%"
+                            width="40%"
+                            h="4px"
+                            borderRadius="full"
+                            mt={-2}
                             mb={3}
+                            background="linear-gradient(180deg, transparent, #a98f63, transparent)"
                         />
 
                         <Box fontSize="md" opacity={0.8}>
