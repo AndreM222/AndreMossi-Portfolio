@@ -182,7 +182,7 @@ const PdfPreview = ({ news }) => {
         if (!categoryData) return null
 
         if (!hasMultiplePdf(lang))
-            return { src: categoryData.src, name: categoryData.name }
+            return { src: categoryData, name: "CV" }
 
         const matching = categoryData.find(item => item.name === selectedName)
         return matching ? { src: matching.src, name: matching.name } : null
