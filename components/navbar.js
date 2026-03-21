@@ -134,7 +134,7 @@ const Navbar = props => {
                                 </Menu.Trigger>
 
                                 <Menu.Positioner>
-                                    <Menu.Content minW={200}>
+                                    <Menu.Content>
                                         <Menu.Item asChild>
                                             <MenuLink href="/">
                                                 {Content(
