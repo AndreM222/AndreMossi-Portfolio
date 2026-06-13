@@ -139,6 +139,26 @@
             "description": "Proyectos para practica y diversión"
         }
     ],
+    "ingenieriaDigital": [
+        {
+            "locale": "en",
+            "title": "Ingenieria Digital",
+            "img-url": "/images/experiences/Banners/IngenieriaDigital-Banner.png",
+            "description": "Software and automation with AI development company"
+        },
+        {
+            "locale": "ja",
+            "title": "Ingenieria Digital",
+            "img-url": "/images/experiences/Banners/IngenieriaDigital-Banner.png",
+            "description": "ソフトウエアとAI自動化会社"
+        },
+        {
+            "locale": "es",
+            "title": "Ingenieria Digital",
+            "img-url": "/images/experiences/Banners/IngenieriaDigital-Banner.png",
+            "description": "Compania de desarollo de software y automatizavion con IA"
+        }
+    ],
     "dinant": [
         {
             "locale": "en",
@@ -202,6 +222,7 @@
     "category": [
         {
             "locale": "en",
+            "work": "Work",
             "internship": "Internship",
             "projects": "Projects",
             "awards": "Awards",
@@ -214,6 +235,7 @@
         },
         {
             "locale": "ja",
+            "work": "仕事",
             "internship": "インターン",
             "projects": "プロジェクト",
             "awards": "賞",
@@ -226,6 +248,7 @@
         },
         {
             "locale": "es",
+            "work": "Trabajo",
             "internship": "Pasantia",
             "awards": "Premios",
             "certificates": "Certificados",

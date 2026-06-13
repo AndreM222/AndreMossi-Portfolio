@@ -6,6 +6,7 @@
             "type-education": "Education",
             "type-internship": "Internship",
             "type-research": "Research",
+            "type-job": "Job",
             "link": "Link",
             "content": "Content",
             "award": "Award"
@@ -16,6 +17,7 @@
             "type-education": "勉強",
             "type-internship": "インターン",
             "type-research": "研究",
+            "type-job": "仕事",
             "link": "リンク",
             "content": "内容",
             "award": "賞"
@@ -26,6 +28,7 @@
             "type-education": "Educación",
             "type-internship": "Pasantia",
             "type-research": "Investigacion",
+            "type-job": "Trabajo",
             "link": "Enlace",
             "award": "Premio",
             "content": "Contenido"

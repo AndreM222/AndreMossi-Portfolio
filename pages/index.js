@@ -177,6 +177,12 @@ const Page = () => {
                         </TimeYear>
                         {Content(indexLang, 'timeline', 'isi-language-school')}
                     </TimeBox>
+                    <TimeBox index={8}>
+                        <TimeYear>
+                            <DateSetup date="2026 to present" />
+                        </TimeYear>
+                        {Content(indexLang, 'timeline', 'ingenieria digital')}
+                    </TimeBox>
                 </TimeSection>
             </Container>
         </Layout>

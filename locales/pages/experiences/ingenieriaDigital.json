@@ -1,0 +1,118 @@
+{
+    "description": [
+        {
+            "locale": "en",
+            "content": "At Ingeniería Digital, I work as a Full-Stack Developer and AI Systems Engineer building AI-powered platforms for healthcare and insurance industries. My responsibilities span frontend development, backend services, cloud infrastructure, OCR pipelines, computer vision integrations, database architecture, and AI-assisted workflows deployed for production use."
+        },
+        {
+            "locale": "ja",
+            "content": "Ingeniería Digitalでは、フルスタック開発者兼AIシステムエンジニアとして勤務しています。医療および保険業界向けのAIプラットフォームを開発し、フロントエンド、バックエンド、クラウド、OCR、コンピュータビジョン、AIワークフローの設計と実装を担当しています。"
+        },
+        {
+            "locale": "es",
+            "content": "En Ingeniería Digital trabajo como Desarrollador Full-Stack e Ingeniero de Sistemas de IA desarrollando plataformas impulsadas por inteligencia artificial para los sectores de salud y seguros. Mis responsabilidades abarcan desarrollo frontend, servicios backend, infraestructura cloud, procesamiento OCR, visión por computadora e integración de modelos de IA para entornos de producción."
+        }
+    ],
+
+    "medicalPlatform": [
+        {
+            "locale": "en",
+            "content": "AI-Assisted Medical Document Generation Platform",
+            "list": [
+                "Developed a healthcare platform for generating post-surgery medical reports using OCR extraction, AI-assisted grammar correction, and automated document structuring.",
+                "Integrated Amazon Textract, OpenAI APIs, AWS S3, PostgreSQL, and Auth0 to build secure end-to-end document workflows.",
+                "Designed scalable file processing pipelines supporting document upload, OCR extraction, cloud storage, report generation, and version management.",
+                "Implemented multilingual support and automated translation asset generation to support deployments across multiple regions."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "AI支援型医療文書生成プラットフォーム",
+            "list": [
+                "OCR抽出、AIによる文法修正、自動文書構成を活用した術後医療レポート生成プラットフォームを開発。",
+                "Amazon Textract、OpenAI API、AWS S3、PostgreSQL、Auth0を統合し、安全な文書ワークフローを構築。",
+                "アップロードからOCR処理、クラウド保存、レポート生成まで対応するスケーラブルな処理パイプラインを設計。",
+                "多地域展開を支援する多言語対応機能を実装。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Plataforma de Generación de Documentos Médicos Asistida por IA",
+            "list": [
+                "Desarrollé una plataforma para generar reportes médicos postoperatorios mediante extracción OCR, corrección gramatical asistida por IA y estructuración automática de documentos.",
+                "Integré Amazon Textract, OpenAI, AWS S3, PostgreSQL y Auth0 para construir flujos de trabajo seguros de extremo a extremo.",
+                "Diseñé pipelines escalables para carga de documentos, extracción OCR, almacenamiento cloud y generación de reportes.",
+                "Implementé soporte multilenguaje para despliegues internacionales."
+            ]
+        }
+    ],
+
+    "vehiclePlatform": [
+        {
+            "locale": "en",
+            "content": "AI Vehicle Damage Assessment Platform",
+            "list": [
+                "Developed an AI-powered vehicle damage assessment system utilizing multimodal AI workflows, VIN history analysis, and insurance estimation pipelines.",
+                "Integrated computer vision and LLM APIs to analyze vehicle imagery and support insurance decision-making processes.",
+                "Built Playwright-based data acquisition services for collecting and processing vehicle information from external sources.",
+                "Implemented interactive damage annotation tools using Konva for visual review and validation of detected damages.",
+                "Developed client-facing and administrative dashboards using React, Next.js, TypeScript, PostgreSQL, AWS S3, and Shadcn/UI."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "AI車両損傷評価プラットフォーム",
+            "list": [
+                "マルチモーダルAI、VIN履歴分析、保険見積もりを活用した車両損傷評価システムを開発。",
+                "コンピュータビジョンおよびLLM APIを統合し、車両画像分析を実現。",
+                "Playwrightを利用した車両データ収集サービスを開発。",
+                "Konvaを用いた損傷注釈ツールを実装。",
+                "React、Next.js、TypeScript、PostgreSQLを用いたダッシュボードを構築。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Plataforma de Evaluación de Daños Vehiculares Asistida por IA",
+            "list": [
+                "Desarrollé una plataforma de evaluación de daños vehiculares utilizando flujos multimodales de IA, análisis de historial VIN y estimaciones para seguros.",
+                "Integré APIs de visión por computadora y modelos de lenguaje para analizar imágenes de vehículos y respaldar procesos de decisión en seguros.",
+                "Desarrollé servicios de adquisición de datos utilizando Playwright para recopilar información vehicular desde fuentes externas.",
+                "Implementé herramientas de anotación visual utilizando Konva para validar daños detectados.",
+                "Construí dashboards administrativos y para clientes utilizando React, Next.js, TypeScript, PostgreSQL, AWS S3 y Shadcn/UI."
+            ]
+        }
+    ],
+
+    "engineeringImpact": [
+        {
+            "locale": "en",
+            "content": "Engineering Practices and Delivery",
+            "list": [
+                "Maintained CI/CD pipelines and development standards using GitHub Actions, Husky, ESLint, Prettier, Commitizen, and lint-staged.",
+                "Collaborated across frontend, backend, AI, and cloud infrastructure components throughout the software lifecycle.",
+                "Designed scalable architectures leveraging PostgreSQL, AWS S3, OCR services, AI APIs, and cloud-native deployment practices.",
+                "Delivered production-ready solutions serving healthcare and insurance business workflows."
+            ]
+        },
+        {
+            "locale": "ja",
+            "content": "エンジニアリングおよび成果",
+            "list": [
+                "GitHub ActionsやHuskyを利用したCI/CD環境を維持。",
+                "フロントエンド、バックエンド、AI、クラウド全体で開発を担当。",
+                "PostgreSQL、AWS S3、OCRサービスを活用した拡張性の高いアーキテクチャを設計。",
+                "医療および保険業務向けの本番システムを提供。"
+            ]
+        },
+        {
+            "locale": "es",
+            "content": "Ingeniería y Entrega",
+            "list": [
+                "Mantuve estándares de desarrollo y CI/CD mediante GitHub Actions, Husky, ESLint, Prettier y Commitizen.",
+                "Colaboré en componentes frontend, backend, IA e infraestructura cloud.",
+                "Diseñé arquitecturas escalables utilizando PostgreSQL, AWS S3, OCR e integraciones de IA.",
+                "Entregué soluciones listas para producción utilizadas en flujos de trabajo médicos y de seguros."
+            ]
+        }
+    ]
+}

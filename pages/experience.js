@@ -23,6 +23,26 @@ const Experience = () => {
                 <Separator my={6} />
 
                 <Heading as="h2" fontSize={25} my={6}>
+                    {Content(experienceLang, 'category', 'work')}
+                </Heading>
+
+                <SimpleGrid columns={[1, 1, 3]} gap={6}>
+                    <Section>
+                        <ExperienceGridItem
+                            id="ingenieriaDigital"
+                            title={Content(experienceLang, 'ingenieriaDigital', 'title')}
+                            thumbnail={Content(
+                                experienceLang,
+                                'ingenieriaDigital',
+                                'img-url'
+                            )}
+                        >
+                            {Content(experienceLang, 'ingenieriaDigital', 'description')}
+                        </ExperienceGridItem>
+                    </Section>
+                </SimpleGrid>
+
+                <Heading as="h2" fontSize={25} my={6}>
                     {Content(experienceLang, 'category', 'internship')}
                 </Heading>
 
