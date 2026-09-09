@@ -325,6 +325,7 @@ const NewsItem = ({ news, lastSeen }) => {
                 fontSize="lg"
                 mb={3}
                 fontWeight="medium"
+                sourceUrl={`https://github.com/AndreM222/${news.branch}`}
                 text={humanizeSummary(
                     news.type === 'stars'
                         ? ContentWithVars(
@@ -348,6 +349,7 @@ const NewsItem = ({ news, lastSeen }) => {
                 opacity={0.8}
                 lineHeight="1.6"
                 mb={3}
+                sourceUrl={`https://github.com/AndreM222/${news.branch}`}
                 text={humanizeSummary(
                     news.type === 'stars'
                         ? ContentWithVars(

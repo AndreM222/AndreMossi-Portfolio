@@ -185,6 +185,22 @@ const checkLang = text => {
     return mainLang
 }
 
+function getPreviewBlocks(blocks, { maxChars = 500 } = {}) {
+    const preview = []
+    let charCount = 0
+
+    for (const block of blocks) {
+        preview.push(block)
+
+        if (block.type === 'table') break
+
+        charCount += block.content.length
+        if (charCount >= maxChars) break
+    }
+
+    return { preview, hasMore: preview.length < blocks.length }
+}
+
 const renderToken = (part, i, { inView, emailColor }) => {
     switch (part.type) {
         case 'inline_block':
@@ -250,15 +266,19 @@ const InlineText = ({ text, inView, emailColor, ...props }) => {
     )
 }
 
-export const DecorateSummary = ({ text, ...props }) => {
+export const DecorateSummary = ({ text, sourceUrl, ...props }) => {
     const emailColor = { _light: 'cyan.400', _dark: 'cyan.200' }
     const { ref, inView } = useInView({ threshold: 0.1 })
 
     const blocks = useMemo(() => splitBlocks(text), [text])
+    const { preview, hasMore } = useMemo(
+        () => getPreviewBlocks(blocks),
+        [blocks]
+    )
 
     return (
         <div ref={ref}>
-            {blocks.map((block, i) => {
+            {preview.map((block, i) => {
                 if (block.type === 'table') {
                     const { header, aligns, rows } = parseTable(block.content)
                     return (
@@ -275,8 +295,8 @@ export const DecorateSummary = ({ text, ...props }) => {
                                 '& thead': {
                                     position: 'sticky',
                                     top: 0,
-                                    zIndex: 1,
-                                },
+                                    zIndex: 1
+                                }
                             }}
                         >
                             <Table.Header>
@@ -308,7 +328,11 @@ export const DecorateSummary = ({ text, ...props }) => {
                                 {rows.map((row, ri) => (
                                     <Table.Row
                                         key={ri}
-                                        bg={ri % 2 === 0 ? 'bg.canvas' : 'bg.muted'}
+                                        bg={
+                                            ri % 2 === 0
+                                                ? 'bg.canvas'
+                                                : 'bg.muted'
+                                        }
                                         _hover={{ bg: 'bg.emphasized' }}
                                         transition="background 150ms ease"
                                     >
@@ -349,6 +373,18 @@ export const DecorateSummary = ({ text, ...props }) => {
                     />
                 )
             })}
+            {hasMore && sourceUrl && (
+                <Link
+                    href={sourceUrl}
+                    isExternal
+                    color="cyan.400"
+                    fontSize="sm"
+                    mt={1}
+                    display="inline-block"
+                >
+                    View full details on GitHub →
+                </Link>
+            )}
         </div>
     )
 }
