@@ -17,9 +17,16 @@ const StyledDiv = chakra(motion.div, {
     }
 })
 
-export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) => (
+export const StatItem = ({
+    loading,
+    icon,
+    href,
+    category,
+    value,
+    delay = 0
+}) => (
     <StyledDiv
-        key={loading ? "loading" : "loaded"}
+        key={loading ? 'loading' : 'loaded'}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay }}
@@ -58,12 +65,13 @@ export const StatItem = ({ loading, icon, href, category, value, delay = 0 }) =>
                 {icon}
             </Box>
 
-            <Box textAlign="center"  display="inline-flex" gap={2} alignContent="center">
-                <Text
-                    fontSize="md"
-                    opacity={0.7}
-                    letterSpacing="0.05em"
-                >
+            <Box
+                textAlign="center"
+                display="inline-flex"
+                gap={2}
+                alignContent="center"
+            >
+                <Text fontSize="md" opacity={0.7} letterSpacing="0.05em">
                     {Content(
                         experienceLang,
                         'category',

@@ -4,7 +4,10 @@ import dateSymbolLang from '../locales/dateSymbols.json'
 import grammarSymbolLang from '../locales/grammarSymbols.json'
 
 const itemSetup = ({ date, sepFormat }) => {
-    const items = sepFormat === 'slash' ? date.toLowerCase().split('/') : date.toLowerCase().split(' ')
+    const items =
+        sepFormat === 'slash'
+            ? date.toLowerCase().split('/')
+            : date.toLowerCase().split(' ')
 
     return items
         .map((item, index) => {
@@ -32,7 +35,7 @@ const itemSetup = ({ date, sepFormat }) => {
                 index > 0 &&
                 currTime !== 'to' &&
                 Content(grammarSymbolLang, 'space', 'content').toLowerCase() ===
-                'true'
+                    'true'
             )
                 return ' ' + translatedTime
 
@@ -51,7 +54,7 @@ const spaceSetup = ({ date, sepFormat }) => {
             return index === 0
                 ? itemSetup({ date: currTime, sepFormat: sepFormat })
                 : Content(dateSymbolLang, 'to', 'content') +
-                itemSetup({ date: currTime, sepFormat: sepFormat })
+                      itemSetup({ date: currTime, sepFormat: sepFormat })
         })
         .join('')
 }
@@ -90,13 +93,16 @@ export const getDateFormat = (date, sepFormat) => {
 
     return applyFormat(format, {
         year: year,
-        month: sepFormat === "slash" ? parseInt(monthStr, 10) : monthKeys[monthIndex],
+        month:
+            sepFormat === 'slash'
+                ? parseInt(monthStr, 10)
+                : monthKeys[monthIndex],
         day: parseInt(dayStr, 10)
     })
 }
 
 const DateSetup = ({ date, sepFormat }) => {
-    if (!date) return <div/>
+    if (!date) return <div />
 
     const groups = date.toLowerCase().split(',')
 
@@ -106,9 +112,9 @@ const DateSetup = ({ date, sepFormat }) => {
                 const currTime = item.trim()
 
                 return index === 0
-                    ? spaceSetup({ date: currTime, sepFormat: sepFormat})
+                    ? spaceSetup({ date: currTime, sepFormat: sepFormat })
                     : Content(grammarSymbolLang, 'separator', 'content') +
-                    spaceSetup({ date: currTime, sepFormat: sepFormat })
+                          spaceSetup({ date: currTime, sepFormat: sepFormat })
             })}
         </span>
     )

@@ -38,7 +38,7 @@ const useShareUrl = () => {
                     title: 'Andre Mossi · Portfolio',
                     url: nfcUrl
                 })
-            } catch (err) { }
+            } catch (err) {}
         }
     }
 
@@ -310,14 +310,14 @@ export const FrontCard = ({ isOpen, ...props }) => {
                     transition={
                         isFloating
                             ? {
-                                repeat: Infinity,
-                                duration: 4,
-                                ease: 'easeInOut'
-                            }
+                                  repeat: Infinity,
+                                  duration: 4,
+                                  ease: 'easeInOut'
+                              }
                             : {
-                                duration: 0.4,
-                                ease: 'easeOut'
-                            }
+                                  duration: 0.4,
+                                  ease: 'easeOut'
+                              }
                     }
                     style={{ cursor: 'pointer' }}
                 >
@@ -440,19 +440,19 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                                     aria-label="Email QR"
                                                     variant={
                                                         currentQRURL ===
-                                                            emailAddress
+                                                        emailAddress
                                                             ? 'solid'
                                                             : 'ghost'
                                                     }
                                                     color={
                                                         currentQRURL ===
-                                                            emailAddress
+                                                        emailAddress
                                                             ? 'AccentColorText'
                                                             : 'blue.fg'
                                                     }
                                                     bg={
                                                         currentQRURL ===
-                                                            emailAddress
+                                                        emailAddress
                                                             ? 'blue.fg'
                                                             : 'none'
                                                     }
@@ -473,19 +473,19 @@ export const FrontCard = ({ isOpen, ...props }) => {
                                                     aria-label="Phone QR"
                                                     variant={
                                                         currentQRURL ===
-                                                            phoneNumber
+                                                        phoneNumber
                                                             ? 'solid'
                                                             : 'ghost'
                                                     }
                                                     color={
                                                         currentQRURL ===
-                                                            phoneNumber
+                                                        phoneNumber
                                                             ? 'AccentColorText'
                                                             : 'green.fg'
                                                     }
                                                     bg={
                                                         currentQRURL ===
-                                                            phoneNumber
+                                                        phoneNumber
                                                             ? 'green.fg'
                                                             : 'none'
                                                     }

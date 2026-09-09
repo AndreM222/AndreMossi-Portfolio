@@ -29,7 +29,9 @@ const Extreme = () => {
                         <DateSetup date="2020" />
                     </Badge>
                 </Title>
-                <Paragraph>{Content(dowalLang, 'description', 'content')}</Paragraph>
+                <Paragraph>
+                    {Content(dowalLang, 'description', 'content')}
+                </Paragraph>
                 <List.Root ml={4} my={4} variant="plain">
                     <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>

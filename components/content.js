@@ -11,10 +11,7 @@ const Content = (current, category, type) => {
         lang => lang.locale === defaultLocale
     )
 
-    return (
-        currentTranslation?.[type] ??
-        defaultTranslation?.[type]
-    )
+    return currentTranslation?.[type] ?? defaultTranslation?.[type]
 }
 
 export const injectVars = (text = '', vars = {}) => {

@@ -181,8 +181,7 @@ const PdfPreview = ({ news }) => {
 
         if (!categoryData) return null
 
-        if (!hasMultiplePdf(lang))
-            return { src: categoryData, name: "CV" }
+        if (!hasMultiplePdf(lang)) return { src: categoryData, name: 'CV' }
 
         const matching = categoryData.find(item => item.name === selectedName)
         return matching ? { src: matching.src, name: matching.name } : null
@@ -232,7 +231,7 @@ const PdfPreview = ({ news }) => {
                     {ContentWithVars(newsLang, 'pdfDescriptionMSG', 'content', {
                         pdf: hasMultiplePdf(news.type.slice(-2))
                             ? getResumeData(news.title, news.type.slice(-2))
-                                .name
+                                  .name
                             : Content(miscLang, 'category', 'resume'),
                         lang: Content(newsLang, 'switch-types', news.type)
                     })}
@@ -318,8 +317,8 @@ const NewsItem = ({ news, lastSeen }) => {
                     ? Content(newsLang, 'news-titles', news.type)
                     : interestTypes[1]['types'].includes(news.type) &&
                         experienceLang[news.title]
-                        ? Content(experienceLang, news.title, 'title')
-                        : news.title?.toUpperCase()}
+                      ? Content(experienceLang, news.title, 'title')
+                      : news.title?.toUpperCase()}
             </Heading>
 
             <DecorateSummary
@@ -329,19 +328,19 @@ const NewsItem = ({ news, lastSeen }) => {
                 text={humanizeSummary(
                     news.type === 'stars'
                         ? ContentWithVars(
-                            newsLang,
-                            'starNotification',
-                            'summary',
-                            { repo: news.title }
-                        )
+                              newsLang,
+                              'starNotification',
+                              'summary',
+                              { repo: news.title }
+                          )
                         : news.type === 'repository'
-                            ? ContentWithVars(
+                          ? ContentWithVars(
                                 newsLang,
                                 'newRepoNotification',
                                 'summary',
                                 { repo: news.title }
                             )
-                            : news.summary
+                          : news.summary
                 )}
             />
 
@@ -352,19 +351,19 @@ const NewsItem = ({ news, lastSeen }) => {
                 text={humanizeSummary(
                     news.type === 'stars'
                         ? ContentWithVars(
-                            newsLang,
-                            'starNotification',
-                            'description',
-                            { repo: news.title }
-                        )
+                              newsLang,
+                              'starNotification',
+                              'description',
+                              { repo: news.title }
+                          )
                         : news.type === 'repository'
-                            ? ContentWithVars(
+                          ? ContentWithVars(
                                 newsLang,
                                 'newRepoNotification',
                                 'description',
                                 { repo: news.title }
                             )
-                            : news.description
+                          : news.description
                 )}
             />
 
@@ -930,15 +929,15 @@ export const NewsModal = ({ isOpen, setOpen }) => {
                             <Heading zIndex={10} size="3xl">
                                 {interestOpen
                                     ? Content(
-                                        newsLang,
-                                        'news-titles',
-                                        'interests'
-                                    )
+                                          newsLang,
+                                          'news-titles',
+                                          'interests'
+                                      )
                                     : Content(
-                                        newsLang,
-                                        'news-titles',
-                                        'latestUpdates'
-                                    )}
+                                          newsLang,
+                                          'news-titles',
+                                          'latestUpdates'
+                                      )}
                             </Heading>
                         </Flex>
                     </Dialog.Header>

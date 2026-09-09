@@ -20,7 +20,7 @@ const ExperienceList = ({ list }) => {
                     return index === 0
                         ? translation
                         : Content(symbolLang, 'separator', 'content') +
-                        (hasSpace ? ' ' + translation : translation)
+                              (hasSpace ? ' ' + translation : translation)
             })}
         </span>
     )

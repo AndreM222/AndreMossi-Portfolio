@@ -55,7 +55,7 @@ export default function handler(req, res) {
                 src: '/app-icon.svg',
                 sizes: 'any',
                 type: 'image/svg',
-                type: "image/svg+xml",
+                type: 'image/svg+xml',
                 purpose: 'any maskable'
             }
         ],

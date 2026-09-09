@@ -25,15 +25,15 @@ The website as of now supports the following languages:
 
 I used react internationalization to apply the ability of multiple languages and it gets the translation from json files which I created.
 
-__*I am striving to have native-like fluency in English and Japanese. Feedback is appreciated.*__
+**_I am striving to have native-like fluency in English and Japanese. Feedback is appreciated._**
 
 <h2>Upcoming 💡</h2>
 
 - Animated Character
 - Upgrade All Packages
 - Render the PDF From Script Instead of Opening PDF
-- Improve Japanese Translations *(While I Study More)*
-- Random Quotes *(That I like)*
+- Improve Japanese Translations _(While I Study More)_
+- Random Quotes _(That I like)_
 
 <h2>License 🪪</h2>
 

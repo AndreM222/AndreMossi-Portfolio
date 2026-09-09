@@ -29,11 +29,7 @@ const Logo = () => {
     const logoPrintImg = `/images/LogoNav.svg`
 
     return (
-        <Link
-            href="/"
-            fontFamily="M PLUS Rounded 1c"
-            fontWeight="bold"
-        >
+        <Link href="/" fontFamily="M PLUS Rounded 1c" fontWeight="bold">
             <LogoBox>
                 <Image src={logoPrintImg} width={20} height={20} alt="logo" />
                 {Content(miscLang, 'title', 'name')}

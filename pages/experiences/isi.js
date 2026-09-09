@@ -38,7 +38,7 @@ const Isi = () => {
                     <Box
                         display={
                             Content(isiLang, 'languageTraining', 'content') ===
-                                ' '
+                            ' '
                                 ? 'none'
                                 : ''
                         }
@@ -77,7 +77,7 @@ const Isi = () => {
                     <Box
                         display={
                             Content(isiLang, 'disciplineGrowth', 'content') ===
-                                ' '
+                            ' '
                                 ? 'none'
                                 : ''
                         }

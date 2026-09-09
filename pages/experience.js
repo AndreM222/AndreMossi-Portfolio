@@ -30,14 +30,22 @@ const Experience = () => {
                     <Section>
                         <ExperienceGridItem
                             id="ingenieriaDigital"
-                            title={Content(experienceLang, 'ingenieriaDigital', 'title')}
+                            title={Content(
+                                experienceLang,
+                                'ingenieriaDigital',
+                                'title'
+                            )}
                             thumbnail={Content(
                                 experienceLang,
                                 'ingenieriaDigital',
                                 'img-url'
                             )}
                         >
-                            {Content(experienceLang, 'ingenieriaDigital', 'description')}
+                            {Content(
+                                experienceLang,
+                                'ingenieriaDigital',
+                                'description'
+                            )}
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>
@@ -240,22 +248,14 @@ const Experience = () => {
                     <Section delay={0.4}>
                         <ExperienceGridItem
                             id="isi"
-                            title={Content(
-                                experienceLang,
-                                'isi',
-                                'title'
-                            )}
+                            title={Content(experienceLang, 'isi', 'title')}
                             thumbnail={Content(
                                 experienceLang,
                                 'isi',
                                 'img-url'
                             )}
                         >
-                            {Content(
-                                experienceLang,
-                                'isi',
-                                'description'
-                            )}
+                            {Content(experienceLang, 'isi', 'description')}
                         </ExperienceGridItem>
                     </Section>
                 </SimpleGrid>

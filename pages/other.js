@@ -15,15 +15,14 @@ const Other = () => {
             title={[
                 Content(miscLang, 'title', 'name'),
                 '-',
-                Content(miscLang, 'category', 'others'),
+                Content(miscLang, 'category', 'others')
             ].join(' ')}
         >
-            <Container maxW={{ base: "2xl", lg: "70%" }}>
+            <Container maxW={{ base: '2xl', lg: '70%' }}>
                 <Heading size="4xl">
                     {Content(miscLang, 'category', 'others')}
                 </Heading>{' '}
                 <Separator my={6} />
-
                 <Section delay={0.1}>
                     <Heading as="h3" variant="section-title">
                         {Content(othersLang, 'beginning', 'title')}
@@ -32,8 +31,7 @@ const Other = () => {
                         {Content(othersLang, 'beginning', 'content')}
                     </Paragraph>
                 </Section>
-
-                <Section delay={0.2} align='right'>
+                <Section delay={0.2} align="right">
                     <Heading as="h3" variant="section-title">
                         {Content(othersLang, 'editor', 'title')}
                     </Heading>
@@ -49,7 +47,6 @@ const Other = () => {
                         {Content(othersLang, 'thumbnailEditor', 'description')}
                     </GridItem>
                 </Section>
-
                 <Section delay={0.3}>
                     <Heading as="h3" variant="section-title">
                         {Content(othersLang, 'culture', 'title')}

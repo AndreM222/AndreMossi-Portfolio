@@ -42,8 +42,14 @@ const gannon = () => {
                         <ExperienceList list="C++, Python, Javascript, CSS, Html, SQL, Shell, Introduction to Networks, C#" />
                     </List.Item>
                 </List.Root>
-                <ThumbImage src="/images/experiences/Gannon-Certificate.png" alt="gannon" />
-                <ThumbImage src="/images/experiences/Gannon-Ceremony-Graduation.png" alt="gannon" />
+                <ThumbImage
+                    src="/images/experiences/Gannon-Certificate.png"
+                    alt="gannon"
+                />
+                <ThumbImage
+                    src="/images/experiences/Gannon-Ceremony-Graduation.png"
+                    alt="gannon"
+                />
             </Container>
         </Layout>
     )

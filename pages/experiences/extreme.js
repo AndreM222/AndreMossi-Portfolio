@@ -29,11 +29,15 @@ const Extreme = () => {
                         <DateSetup date="2022" />
                     </Badge>
                 </Title>
-                <Paragraph>{Content(extremeLang, 'description', 'content')}</Paragraph>
+                <Paragraph>
+                    {Content(extremeLang, 'description', 'content')}
+                </Paragraph>
                 <List.Root ml={4} my={4} variant="plain">
                     <List.Item>
                         <Meta>{Content(contentLang, 'info', 'type')}</Meta>
-                        <span>{Content(contentLang, 'info', 'type-education')}</span>
+                        <span>
+                            {Content(contentLang, 'info', 'type-education')}
+                        </span>
                     </List.Item>
                     <List.Item>
                         <Meta>{Content(contentLang, 'info', 'content')}</Meta>

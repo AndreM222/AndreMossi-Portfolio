@@ -9,7 +9,7 @@ const AvatarIcon = () => {
 
     useEffect(() => {
         const resume = () => {
-            videoRef.current?.play().catch(() => { })
+            videoRef.current?.play().catch(() => {})
         }
 
         document.addEventListener('visibilitychange', resume)
@@ -25,7 +25,7 @@ const AvatarIcon = () => {
 
     return (
         <Box
-            borderColor={{_light: 'blackAlpha.700', _dark: 'whiteAlpha.800'}}
+            borderColor={{ _light: 'blackAlpha.700', _dark: 'whiteAlpha.800' }}
             borderWidth={2}
             borderStyle="solid"
             w="100px"

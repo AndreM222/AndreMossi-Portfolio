@@ -46,9 +46,7 @@ const RecommendationSection = ({ delay = 0 }) => {
                 >
                     {recommendationsID.map(id => {
                         return (
-                            <SwiperSlide
-                                key={id + '_card'}
-                            >
+                            <SwiperSlide key={id + '_card'}>
                                 <RecommendationCard
                                     projectID={id}
                                     delay={delay}

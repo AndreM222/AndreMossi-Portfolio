@@ -1,10 +1,4 @@
-import {
-    Container,
-    Badge,
-    List,
-    Box,
-    Heading
-} from '@chakra-ui/react'
+import { Container, Badge, List, Box, Heading } from '@chakra-ui/react'
 import { Title, Meta } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
@@ -44,11 +38,8 @@ const Dinant = () => {
                 <Box display="grid" gridRowGap={5}>
                     <Box
                         display={
-                            Content(
-                                dinantLang,
-                                'contractSystem',
-                                'content'
-                            ) === ' '
+                            Content(dinantLang, 'contractSystem', 'content') ===
+                            ' '
                                 ? 'none'
                                 : ''
                         }

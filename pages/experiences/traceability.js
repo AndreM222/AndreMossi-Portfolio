@@ -1,10 +1,4 @@
-import {
-    Container,
-    Badge,
-    List,
-    Heading,
-    Box
-} from '@chakra-ui/react'
+import { Container, Badge, List, Heading, Box } from '@chakra-ui/react'
 import { Title, Meta, ThumbImage } from '../../components/experience'
 import Paragraph from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
