@@ -62,15 +62,16 @@ if __name__ == "__main__":
         ),
         (
             "Papers/MS_Style/Rireki-Andre-JP.pdf",
-            "public/PDF/Rireki-Andre-JP.pdf",
+            "Papers/JA_Style/rirekisho/JP/Rireki-Andre-JP.pdf"
         ),
         (
             "Papers/MS_Style/SKS-Andre-JP.pdf",
-            "public/PDF/SKS-Andre-JP.pdf",
+            "Papers/JA_Style/shokumu_keireki_sho/JP/SKS-Andre-JP.pdf"
         ),
     ]
 
-    GITHUB_TOKEN = None  # Set this from an environment variable for a private repo.
+    # Set this from an environment variable for a private repo.
+    GITHUB_TOKEN = None
 
     for source_path, output_path in files:
         download_pdf(
@@ -82,13 +83,13 @@ if __name__ == "__main__":
             token=GITHUB_TOKEN,
         )
 
-
     subprocess.run(
         ["git", "config", "user.name", "github-actions[bot]"],
         check=True,
     )
     subprocess.run(
-        ["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
+        ["git", "config", "user.email",
+            "41898282+github-actions[bot]@users.noreply.github.com"],
         check=True,
     )
 
@@ -109,7 +110,8 @@ if __name__ == "__main__":
 
         subject = f"{commit_type}({stem}): {title}"
         subprocess.run(
-            ["git", "commit", "-m", subject, "-m", f"Source CV commit: {SOURCE_SHA}"],
+            ["git", "commit", "-m", subject, "-m",
+                f"Source CV commit: {SOURCE_SHA}"],
             check=True,
         )
         made_commits = True
