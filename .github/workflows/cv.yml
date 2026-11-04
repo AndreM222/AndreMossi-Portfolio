@@ -14,7 +14,7 @@ jobs:
             - name: Check out portfolio repository
               uses: actions/checkout@v4
               with:
-                  ref: main
+                  ref: master
 
             - name: Set up Python
               uses: actions/setup-python@v5

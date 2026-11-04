@@ -117,4 +117,4 @@ if __name__ == "__main__":
         made_commits = True
 
     if made_commits:
-        subprocess.run(["git", "push", "origin", "main"], check=True)
+        subprocess.run(["git", "push", "origin", "master"], check=True)
