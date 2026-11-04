@@ -88,7 +88,11 @@ def main() -> None:
             token=cv_repo_token,
         )
 
-    branch_name = f"automation/cv-update-{source_sha[:12]}"
+    run_id = os.environ["GITHUB_RUN_ID"]
+    run_attempt = os.environ["GITHUB_RUN_ATTEMPT"]
+    branch_name = (
+        f"automation/cv-update-{source_sha[:12]}-{run_id}-{run_attempt}"
+    )
 
     subprocess.run(
         ["git", "config", "user.name", "github-actions[bot]"],
