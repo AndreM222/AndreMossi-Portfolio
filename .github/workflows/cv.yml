@@ -1,31 +1,55 @@
 name: CV Updater
 
 on:
-    repository_dispatch:
-        types: [project_update]
+  repository_dispatch:
+    types: [project_update]
 
 permissions:
-    contents: write
+  contents: write
+  pull-requests: write
 
 jobs:
-    run-task:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Check out portfolio repository
-              uses: actions/checkout@v4
-              with:
-                  ref: master
+  run-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
 
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
-            - name: Install dependencies
-              run: python -m pip install requests
+      - name: Install dependencies
+        run: python -m pip install requests
 
-            - name: Download CV files
-              run: python scripts/update.py
-              env:
-                  SOURCE_SHA: ${{ github.event.client_payload.source_sha }}
-                  CV_REPO_TOKEN: ${{ secrets.CV_REPO_TOKEN }}
+      - name: Download CV files and push update branch
+        id: sync
+        run: python scripts/update.py
+        env:
+          SOURCE_SHA: ${{ github.event.client_payload.source_sha }}
+          CV_REPO_TOKEN: ${{ secrets.CV_REPO_TOKEN }}
+
+      - name: Open pull request
+        if: steps.sync.outputs.has_commits == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.sync.outputs.branch }}
+        run: |
+          existing_pr=$(gh pr list \
+            --head "$BRANCH" \
+            --base master \
+            --json url \
+            --jq '.[0].url')
+
+          if [ -n "$existing_pr" ]; then
+            echo "Pull request already exists: $existing_pr"
+          else
+            gh pr create \
+              --base master \
+              --head "$BRANCH" \
+              --title "Update CVs" \
+              --body "Automated CV update from source commit $SOURCE_SHA."
+          fi

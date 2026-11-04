@@ -1,7 +1,8 @@
 from pathlib import Path
-import requests
 import os
 import subprocess
+
+import requests
 
 
 COMMIT_INFO = {
@@ -11,18 +12,37 @@ COMMIT_INFO = {
     "SKS-Andre-JP": ("resume-ja", "Resume Japanese"),
 }
 
+FILES = [
+    (
+        "Papers/MS_Style/EN/MS-AndreCV-EN.pdf",
+        "public/PDF/MS-AndreCV-EN.pdf",
+    ),
+    (
+        "Papers/MS_Style/ES/MS-AndreCV-ES.pdf",
+        "public/PDF/MS-AndreCV-ES.pdf",
+    ),
+    (
+        "Papers/JA_Style/rirekisho/JP/Rireki-Andre-JP.pdf",
+        "public/PDF/Rireki-Andre-JP.pdf",
+    ),
+    (
+        "Papers/JA_Style/shokumu_keireki_sho/JP/SKS-Andre-JP.pdf",
+        "public/PDF/SKS-Andre-JP.pdf",
+    ),
+]
+
 
 def download_pdf(
     repo_owner: str,
     repo_name: str,
     file_path: str,
-    branch: str,
+    revision: str,
     output_file: str,
     token: str | None = None,
 ) -> None:
     url = (
         f"https://raw.githubusercontent.com/"
-        f"{repo_owner}/{repo_name}/{branch}/{file_path}"
+        f"{repo_owner}/{repo_name}/{revision}/{file_path}"
     )
 
     headers = {}
@@ -45,63 +65,55 @@ def download_pdf(
     print(f"Saved PDF to: {output_path.resolve()}")
 
 
-if __name__ == "__main__":
-    # These should point to the repository that contains the source PDFs.
-    OWNER = "AndreM222"
-    REPO = "Resume"
-    SOURCE_SHA = os.environ["SOURCE_SHA"]
+def set_action_output(name: str, value: str) -> None:
+    output_file = os.environ.get("GITHUB_OUTPUT")
+    if output_file:
+        with open(output_file, "a", encoding="utf-8") as file:
+            file.write(f"{name}={value}\n")
 
-    files = [
-        (
-            "Papers/MS_Style/EN/MS-AndreCV-EN.pdf",
-            "public/PDF/MS-AndreCV-EN.pdf",
-        ),
-        (
-            "Papers/MS_Style/ES/MS-AndreCV-ES.pdf",
-            "public/PDF/MS-AndreCV-ES.pdf",
-        ),
-        (
-            "Papers/JA_Style/rirekisho/JP/Rireki-Andre-JP.pdf",
-            "public/PDF/Rireki-Andre-JP.pdf",
-        ),
-        (
-            "Papers/JA_Style/shokumu_keireki_sho/JP/SKS-Andre-JP.pdf",
-            "public/PDF/SKS-Andre-JP.pdf",
-        ),
-    ]
 
-    # Set this from an environment variable for a private repo.
-    GITHUB_TOKEN = None
+def main() -> None:
+    owner = "AndreM222"
+    repo = "Resume"
+    source_sha = os.environ["SOURCE_SHA"]
+    cv_repo_token = os.environ.get("CV_REPO_TOKEN")
 
-    for source_path, output_path in files:
+    for source_path, output_path in FILES:
         download_pdf(
-            repo_owner=OWNER,
-            repo_name=REPO,
+            repo_owner=owner,
+            repo_name=repo,
             file_path=source_path,
+            revision=source_sha,
             output_file=output_path,
-            branch=SOURCE_SHA,
-            token=GITHUB_TOKEN,
+            token=cv_repo_token,
         )
+
+    branch_name = f"automation/cv-update-{source_sha[:12]}"
 
     subprocess.run(
         ["git", "config", "user.name", "github-actions[bot]"],
         check=True,
     )
     subprocess.run(
-        ["git", "config", "user.email",
-            "41898282+github-actions[bot]@users.noreply.github.com"],
+        [
+            "git",
+            "config",
+            "user.email",
+            "41898282+github-actions[bot]@users.noreply.github.com",
+        ],
         check=True,
     )
+    subprocess.run(["git", "checkout", "-b", branch_name], check=True)
 
     made_commits = False
 
-    for _, output_path in files:
+    for _, output_path in FILES:
         stem = Path(output_path).stem
         commit_type, title = COMMIT_INFO[stem]
 
         subprocess.run(["git", "add", "--", output_path], check=True)
 
-        # Skip this PDF if its contents haven't changed.
+        # Skip this PDF if its contents have not changed.
         result = subprocess.run(["git", "diff", "--cached", "--quiet"])
         if result.returncode == 0:
             continue
@@ -110,11 +122,31 @@ if __name__ == "__main__":
 
         subject = f"{commit_type}({stem}): {title}"
         subprocess.run(
-            ["git", "commit", "-m", subject, "-m",
-                f"Source CV commit: {SOURCE_SHA}"],
+            [
+                "git",
+                "commit",
+                "-m",
+                subject,
+                "-m",
+                f"Source CV commit: {source_sha}",
+            ],
             check=True,
         )
         made_commits = True
 
-    if made_commits:
-        subprocess.run(["git", "push", "origin", "master"], check=True)
+    if not made_commits:
+        print("No PDFs changed; no branch or pull request is needed.")
+        set_action_output("has_commits", "false")
+        return
+
+    subprocess.run(
+        ["git", "push", "--set-upstream", "origin", branch_name],
+        check=True,
+    )
+
+    set_action_output("has_commits", "true")
+    set_action_output("branch", branch_name)
+
+
+if __name__ == "__main__":
+    main()
