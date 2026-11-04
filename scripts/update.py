@@ -61,12 +61,12 @@ if __name__ == "__main__":
             "public/PDF/MS-AndreCV-ES.pdf",
         ),
         (
-            "Papers/MS_Style/Rireki-Andre-JP.pdf",
-            "Papers/JA_Style/rirekisho/JP/Rireki-Andre-JP.pdf"
+            "Papers/JA_Style/rirekisho/JP/Rireki-Andre-JP.pdf",
+            "public/PDF/Rireki-Andre-JP.pdf",
         ),
         (
-            "Papers/MS_Style/SKS-Andre-JP.pdf",
-            "Papers/JA_Style/shokumu_keireki_sho/JP/SKS-Andre-JP.pdf"
+            "Papers/JA_Style/shokumu_keireki_sho/JP/SKS-Andre-JP.pdf",
+            "public/PDF/SKS-Andre-JP.pdf",
         ),
     ]
 
