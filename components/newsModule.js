@@ -158,6 +158,8 @@ const NewsSkeleton = ({ ...props }) => {
 }
 
 const PdfPreview = ({ news }) => {
+    const lang = news.type.slice(-2)
+
     const hasMultiplePdf = lang => {
         const categoryData = NavContent(
             miscLang,
@@ -187,6 +189,10 @@ const PdfPreview = ({ news }) => {
         return matching ? { src: matching.src, name: matching.name } : null
     }
 
+    const resumeData = getResumeData(news.title, lang)
+
+    if (!resumeData) return null
+
     return (
         <Flex
             position="relative"
@@ -199,7 +205,7 @@ const PdfPreview = ({ news }) => {
             borderRadius="lg"
         >
             <iframe
-                src={getResumeData(news.title, news.type.slice(-2)).src}
+                src={resumeData.src}
                 width="100%"
                 height="100%"
                 style={{
@@ -229,9 +235,8 @@ const PdfPreview = ({ news }) => {
             >
                 <Text fontSize="md" fontWeight="semibold" color="white">
                     {ContentWithVars(newsLang, 'pdfDescriptionMSG', 'content', {
-                        pdf: hasMultiplePdf(news.type.slice(-2))
-                            ? getResumeData(news.title, news.type.slice(-2))
-                                  .name
+                        pdf: hasMultiplePdf(lang)
+                            ? resumeData.name
                             : Content(miscLang, 'category', 'resume'),
                         lang: Content(newsLang, 'switch-types', news.type)
                     })}
@@ -243,7 +248,7 @@ const PdfPreview = ({ news }) => {
                     px={8}
                     onClick={() =>
                         window.open(
-                            getResumeData(news.title, news.type.slice(-2)).src,
+                            resumeData.src,
                             '_blank'
                         )
                     }

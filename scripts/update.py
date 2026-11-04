@@ -132,7 +132,7 @@ def main() -> None:
                 "-m",
                 subject,
                 "-m",
-                f"Source CV commit: {source_sha}",
+                f"Just updated my experience information found in my CV. Check it out!",
             ],
             check=True,
         )
